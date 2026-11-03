@@ -9,7 +9,7 @@ import { ANA, PLAY } from "../engine.js";
 import { videoList, lineViewer } from "../ui.js";
 import { probe, isWin, isLoss, isDrawish, pieceCount } from "../tb.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 
 const UNIT_COLORS = ["#4f8a3c", "#3d7ea6", "#8a5cc2", "#c2603c", "#2f8f83", "#b5862a", "#6a5acd", "#c23c6a", "#3c6ac2", "#8a3c3c", "#2a7f5a", "#7a5230"];
 const BANDS = { l1: "0–400", l2: "200–600", l3: "400–800", l4: "600–1100", l5: "900–1300", l6: "900–1400", l7: "1000–1500" };
@@ -55,7 +55,7 @@ export function renderHub(root) {
 export function renderCourse(root) {
   const s = state();
   root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Zero to 2000</h2></div><div class="path" style="max-width:720px"><div class="empty">Loading course…</div></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   loadCourse().then((C) => {
     let nextFound = false;
     const html = C.map((lv, k) => {

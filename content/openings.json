@@ -762,39 +762,47 @@
       "text": "Attack the pinned d5 knight a third time."
      },
      {
-      "san": "Ncb4",
+      "san": "Nb4",
       "text": "Black defends d5 again and threatens ...Nxc2+, forking your king and rook."
      },
      {
-      "san": "Qe4",
-      "text": "Clever: the queen defends c2, attacks d5 again and keeps watching the king on the e-file."
+      "san": "O-O",
+      "text": "Castle first! Your king gets safe, and the rook can come to e1 – right onto the file where Black's king stands."
      },
      {
       "san": "c6",
       "text": "Black adds a pawn to defend the d5 knight."
      },
      {
-      "san": "a3",
-      "text": "Kick away the b4 knight."
-     },
-     {
-      "san": "Na6",
-      "text": "The knight retreats."
-     },
-     {
       "san": "d4",
-      "text": "Open more lines toward Black's king and free your c1 bishop."
+      "text": "Open the centre. More open lines mean more danger for a king on e6."
      },
      {
-      "san": "Nac7",
-      "text": "The knight comes to c7 to defend d5 once more."
+      "san": "Qf6",
+      "text": "Black offers a queen trade – the best way to take the sting out of an attack."
      },
      {
-      "san": "O-O",
-      "text": "Get your king safe and bring the rook into the attack via f1 or e1."
+      "san": "Qe2",
+      "text": "Keep the queens on. The queen now stands on the e-file, facing Black's king."
+     },
+     {
+      "san": "Ke7",
+      "text": "The king steps back, away from the centre squares."
+     },
+     {
+      "san": "dxe5",
+      "text": "Take the pawn with tempo on Black's queen."
+     },
+     {
+      "san": "Qg6",
+      "text": "The queen moves away and stays near Black's king."
+     },
+     {
+      "san": "Ne4",
+      "text": "Bring the knight to e4, where it eyes d6, f6 and g5. You have two pawns and a strong attack for the piece."
      }
     ],
-    "summary": "You are a piece down, but Black's king is stuck in the middle. Keep attacking with Bf4, Re1 and f4-f5 – if you slow down, the extra piece wins. Note: 6.d4 instead of 6.Nxf7 is even stronger, but the Fried Liver is great practice."
+    "summary": "You are a piece down for two pawns, but Black's king is stuck in the middle and you have open lines (engine: White better, about +0.5). Keep attacking with Bg5, Rd1 and f4 – if you slow down, the extra piece wins. Note: 6.d4 instead of 6.Nxf7 is even stronger, and the old move 9.Qe4 is weaker than 9.O-O."
    },
    {
     "id": "italian-two-knights-na5",
@@ -1577,7 +1585,8 @@
      },
      {
       "san": "Ngf6",
-      "text": "The natural move, but a terrible blunder! (5...Ndf6 was correct.)"
+      "text": "**Blunder (??)** – the natural move, but this is the mistake to avoid! The e7 pawn is pinned, so d6 is not covered. (5...Ndf6 was correct.)",
+      "dubious": true
      },
      {
       "san": "Nd6#",
@@ -3787,23 +3796,19 @@
       "text": "Black retreats."
      },
      {
-      "san": "e5",
-      "text": "Kick the bishop again and gain space."
-     },
-     {
-      "san": "Be7",
-      "text": "Black retreats."
-     },
-     {
       "san": "Nd2",
-      "text": "Develop the knight. Next comes Nf3 or Ne4 to protect your kingside."
+      "text": "Develop the knight first. It can come to f3 to defend h2 and to kick the g4 knight. (9.e5 is also good, but 9.Nd2 is stronger.)"
      },
      {
       "san": "c5",
-      "text": "Black tries to open lines."
+      "text": "Black tries to open lines against your centre."
+     },
+     {
+      "san": "h3",
+      "text": "Kick the g4 knight. Black's pieces are running out of good squares (engine about +4 for you)."
      }
     ],
-    "summary": "You are a pawn up with a strong center. Do not grab more material – play Nf3, h3 to kick the g4 knight, and castle when it is safe."
+    "summary": "You are a pawn up with a strong center. Do not grab more material – play Nf3 or Nc4, keep the g4 knight under pressure, and castle when it is safe."
    },
    {
     "id": "stafford-trap-bg5",
@@ -3853,7 +3858,8 @@
      },
      {
       "san": "Bg5",
-      "text": "THE MISTAKE. It looks natural to pin the knight, but the pin is not real."
+      "text": "**Mistake (??)** – this is the move to avoid. It looks natural to pin the knight, but the pin is not real. (6.Be2 was correct.)",
+      "dubious": true
      },
      {
       "san": "Nxe4",
@@ -3861,7 +3867,8 @@
      },
      {
       "san": "Bxd8",
-      "text": "Taking the queen loses. (After 7.dxe4 Bxf2+ 8.Kxf2 Qxd1 Black wins your queen instead.)"
+      "text": "**Blunder (??)** – taking the queen loses at once. (After 7.dxe4 Bxf2+ 8.Kxf2 Qxd1 Black wins your queen instead, so 6.Bg5 was already the real mistake.)",
+      "dubious": true
      },
      {
       "san": "Bxf2+",

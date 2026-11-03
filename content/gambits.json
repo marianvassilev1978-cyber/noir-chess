@@ -5,10 +5,10 @@
   "side": "w",
   "level": "Intermediate",
   "eco": "B15",
-  "tagline": "1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Nf6 5.Ng5 h6 6.Nxf7!? – a knight sacrifice on f7, made famous by the Bulgarian streamer CM Volen Dyulgerov (Witty_Alien). Objectively unsound (about −1.5), but very dangerous in blitz and rapid.",
+  "tagline": "1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Nf6 5.Ng5 h6 6.Nxf7!? – a knight sacrifice on f7, made famous by the Bulgarian streamer CM Volen Dyulgerov (Witty_Alien). Objectively unsound: the engine says about −2 to −2.5 with best defence. Very dangerous in blitz and rapid, not for serious games.",
   "ideas": [
    "The gambit was popularised by **CM Volen Dyulgerov – 'Witty_Alien' – a Bulgarian chess streamer**. It is a weapon against the Caro-Kann, the same opening you play as Black.",
-   "**Be honest with yourself:** after 6.Nxf7 Kxf7 the engine says Black is better by about 1.5 pawns. You play it because Black must find many precise moves in a row, and in fast games most players don't.",
+   "**Be honest with yourself:** after 6.Nxf7 Kxf7 the engine says Black is better by about 2 to 2.5 pawns. You play it because Black must find many precise moves in a row, and in fast games most players don't.",
    "Black's king stands on **f7** and can never castle. Your whole plan is to **open lines toward it**: Bc4+, Nf3-e5+, Qe2, castle long, then g4-g5 and the rooks on the e- and f-files.",
    "**e5 and h4 are magic squares** for your f3 knight: from there it gives check to a king on f7 or g6 and often forks something at the same time (a bishop on g4 or f5).",
    "The **e6 pawn is pinned** by your bishop on c4 when Black's king is on f7. Pile up on it with Qe2 and Re1.",
@@ -336,8 +336,8 @@
       "text": "Black develops the last knight."
      },
      {
-      "san": "Qe2",
-      "text": "Connect your rooks and bring the queen closer. Engine: White is clearly better (about +2.8)."
+      "san": "c3",
+      "text": "Support d4 with a pawn, so that ...exd4 does not open lines for Black. White is clearly better (engine about +5)."
      }
     ],
     "summary": "Two lessons: (1) a king on g6 is a target for knight checks from e5 and h4; (2) before every move, ask 'can a knight check my king and hit something else?'. Black's correct answer to 7.Bc4+ was 7...e6 or 7...Be6."
@@ -427,20 +427,20 @@
   "side": "w",
   "level": "Intermediate",
   "eco": "B18",
-  "tagline": "1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Bf5 5.Ng5 Bg6 6.N1f3 h6 7.Ne6!? fxe6 8.Ne5 – Witty_Alien's second Caro-Kann weapon (2024). Unsound (about −1.3 to −1.5), but full of traps on the light squares.",
+  "tagline": "1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Bf5 5.Ng5 Bg6 6.N1f3 h6 7.Ne6!? fxe6 8.Ne5 – Witty_Alien's second Caro-Kann weapon (2024). Unsound (engine about −1.2 to −1.5), but full of traps on the light squares.",
   "ideas": [
    "Like the Alien, the Martian Gambit comes from the Bulgarian streamer **Witty_Alien (CM Volen Dyulgerov)**, who introduced it in 2024. It hits the Classical Caro-Kann (4...Bf5).",
    "You sacrifice a knight on **e6** to wreck Black's pawns: after ...fxe6 the squares **e6, f7 and g6** are weak and Black's king has no pawn shelter on the f-file.",
    "After 8.Ne5 the knight **attacks the bishop on g6**. Black has no pawn on f7 or h7 to protect it any more, so any slow developing move (8...Nf6? or 8...Nd7?) loses the bishop and then the rook on h8.",
-   "Your attacking pieces: **Bd3** (trade Black's light-squared defender), **Ng6** (cramps the rook on h8), **Qh5+** or **Qg4** (hit e6 and g6), and later **Re1** against the e6 pawn.",
+   "Your attacking pieces: **Bc4** (aims at the weak e6 pawn – after 8...Bh7 this is stronger than Bd3), **f4** to support the e5 knight, **Qh5+** or **Qg4** (hit e6 and g6), **Ng6** when it can hit the h8 rook, and later **Re1** against the e6 pawn.",
    "**Be honest:** with 8...Bf5! or 8...Bh7! Black keeps the extra piece and the engine says Black is clearly better. Use the Martian as a surprise weapon in fast games."
   ],
   "lines": [
    {
     "id": "martian-main",
-    "name": "Main line: 8...Bh7 9.Bd3 Nf6 10.Ng6",
+    "name": "Main line: 8...Bh7 9.Bc4 Nd7 10.f4",
     "type": "main",
-    "intro": "Black saves the bishop with 8...Bh7, a good move. You trade or block Black's light-squared bishop, plant a knight on g6 and play against the weak e6 pawn.",
+    "intro": "Black saves the bishop with 8...Bh7, a good move. You aim at the weak e6 pawn with Bc4, support your e5 knight with f4, and gain space on the kingside.",
     "moves": [
      {
       "san": "e4",
@@ -507,51 +507,59 @@
       "text": "A good answer: the bishop hides on h7, where nothing can attack it right now."
      },
      {
-      "san": "Bd3",
-      "text": "Offer a bishop trade. Black's light-squared bishop is the main defender of the weak light squares (e6, f7, g6)."
+      "san": "Bc4",
+      "text": "Aim the bishop at **e6**, the weakest point in Black's camp. This is stronger than 9.Bd3."
      },
      {
-      "san": "Nf6",
-      "text": "Black develops instead of trading."
+      "san": "Nd7",
+      "text": "Black develops and challenges your strong e5 knight."
      },
      {
-      "san": "Ng6",
-      "text": "The knight lands on **g6**: it attacks the rook on h8, blocks the bishop on h7 and cramps Black's whole kingside."
+      "san": "f4",
+      "text": "Support the e5 knight with a pawn so it cannot be chased away easily."
      },
      {
-      "san": "Rg8",
-      "text": "The rook steps aside."
+      "san": "Bf5",
+      "text": "Black's bishop comes back to fight for the light squares."
+     },
+     {
+      "san": "g4",
+      "text": "Kick the bishop and gain space on the kingside."
+     },
+     {
+      "san": "Be4",
+      "text": "The bishop jumps to e4, a strong central square."
      },
      {
       "san": "O-O",
-      "text": "Castle and get your last pieces into the game. Your rook can come to e1 to hit e6."
+      "text": "Castle. Your rook on f1 now supports f4-f5 later."
      },
      {
-      "san": "Qxd4",
-      "text": "Black grabs a central pawn – the d4 pawn was no longer protected because your bishop on d3 blocks the queen."
+      "san": "h5",
+      "text": "Black attacks your g4 pawn to open the h-file."
      },
      {
-      "san": "c3",
-      "text": "Kick the queen with tempo. Every tempo counts when you are a piece down."
-     },
-     {
-      "san": "Qd8",
-      "text": "The queen goes home."
-     },
-     {
-      "san": "Re1",
-      "text": "The rook goes to the e-file and attacks the weak **e6 pawn**."
-     },
-     {
-      "san": "e5",
-      "text": "Black gets the pawn out of the attack and tries to free the position."
+      "san": "Qe2",
+      "text": "Bring the queen next to your bishop and the e6 target."
      },
      {
       "san": "Nxe5",
-      "text": "Take it. Now your bishop on d3 and Black's bishop on h7 face each other, and your queen can come to b3 to look at the light squares (g8, e6) next."
+      "text": "Black trades off your best knight."
+     },
+     {
+      "san": "dxe5",
+      "text": "Recapture. The e5 pawn cramps Black's knight and bishop."
+     },
+     {
+      "san": "Bd5",
+      "text": "Black blocks your c4 bishop's attack on e6."
+     },
+     {
+      "san": "g5",
+      "text": "Keep the kingside closed so Black's h-file and knight stay quiet. Next: Be3, Rad1 and c4 to chase the d5 bishop."
      }
     ],
-    "summary": "Black is objectively better (engine about −2): you are a piece down for pawns. Your practical chances come from Black's weak light squares and the king that can't easily castle. Typical continuation: ...Bxd3 Qb3 hitting g8 and e6. Play fast and keep pieces on."
+    "summary": "Black is objectively better (engine about −1.2): you are a piece down for two pawns. Your practical chances come from the e5 and f4 pawns, Black's weak e6 pawn and the king that cannot castle easily. Plans: Be3, Rad1, c4 to kick the d5 bishop, and f4-f5 at the right moment. Play fast and keep pieces on."
    },
    {
     "id": "martian-trap-nd7",
@@ -733,23 +741,27 @@
       "text": "Black at least saves the bishop from your e5 knight."
      },
      {
-      "san": "Qb4",
-      "text": "Your queen becomes active and attacks b7 and e7."
-     },
-     {
-      "san": "b6",
-      "text": "Black protects the b-pawn."
-     },
-     {
       "san": "g4",
-      "text": "Chase the bishop with a pawn. With a queen against a knight you can be aggressive."
+      "text": "Chase the bishop at once. With a queen against a knight you can be aggressive."
      },
      {
       "san": "Bh7",
-      "text": "The bishop retreats. White is completely winning (engine about +6)."
+      "text": "The bishop retreats."
+     },
+     {
+      "san": "Bc4",
+      "text": "Develop with an attack on the weak e6 pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black defends."
+     },
+     {
+      "san": "Bxe6",
+      "text": "Take the e6 pawn. White is completely winning (engine about +10)."
      }
     ],
-    "summary": "Before you capture, always ask: 'is this piece protected?' Here the d4 pawn was protected by the queen on d1. Simple, but it happens a lot in fast games."
+    "summary": "Before you capture, always ask: 'is this piece protected?' Here the d4 pawn was protected by the queen on d1. After the queen trade, just develop with tempo – g4 and Bc4 – and collect more pawns."
    }
   ]
  },
@@ -1399,7 +1411,7 @@
   "side": "w",
   "level": "Intermediate",
   "eco": "C30–C39",
-  "tagline": "1.e4 e5 2.f4 – the most famous gambit in chess history. You offer the f-pawn to open the f-file and build a big center. Objectively slightly worse for White (about −0.5), but playable at every level.",
+  "tagline": "1.e4 e5 2.f4 – the most famous gambit in chess history. You offer the f-pawn to open the f-file and build a big center. Objectively slightly worse for White (engine about −0.5 to −0.8), but playable at every level.",
   "ideas": [
    "**2.f4** attacks e5. If Black takes (2...exf4), you play **d4** and **Bxf4** and get the ideal two-pawn center plus an open f-file for your rook.",
    "**Play 3.Nf3 first.** The knight stops the annoying **...Qh4+** check, which is only possible because the f-pawn has moved.",
@@ -1643,7 +1655,7 @@
   "side": "w",
   "level": "Intermediate",
   "eco": "C21",
-  "tagline": "1.e4 e5 2.d4 exd4 3.c3 dxc3 4.Bc4 cxb2 5.Bxb2 – two pawns for two monster bishops aimed at f7 and g7. Sound enough for club play; with best defence (5...d5!) Black reaches equality.",
+  "tagline": "1.e4 e5 2.d4 exd4 3.c3 dxc3 4.Bc4 cxb2 5.Bxb2 – two pawns for two monster bishops aimed at f7 and g7. Sound enough for club play; with best defence (5...d5!) Black is a little better (engine about −0.5) and the game usually heads for an equal endgame.",
   "ideas": [
    "You give **two pawns** (c- and b-pawns) to open the diagonals: the **c4 bishop hits f7** and the **b2 bishop hits g7**. Black's kingside becomes a target.",
    "Develop fast: **Nc3, Ne2 (or Nf3), O-O**, then Qg4/Qb3, Re1 and e4-e5 ideas.",
@@ -2365,7 +2377,7 @@
   "side": "w",
   "level": "Intermediate",
   "eco": "D00",
-  "tagline": "1.d4 d5 2.e4 dxe4 3.Nc3 Nf6 4.f3 – a pawn for a lead in development and the open f-file. Dubious (about −0.5 to −0.8), but a favourite of attacking club players.",
+  "tagline": "1.d4 d5 2.e4 dxe4 3.Nc3 Nf6 4.f3 – a pawn for a lead in development and the open f-file. Dubious (engine about −0.7), but a favourite of attacking club players.",
   "ideas": [
    "The gambit is **4.f3**: after ...exf3 Nxf3 you have all pieces ready (Nc3, Nf3, Bd3/Bc4, Bg5) and an **open f-file** for your rook after castling.",
    "Typical attack: **O-O, Qe1-h4**, Bg5 or Bh6, and Ng5. Black's king on the kingside is the target.",
@@ -2390,7 +2402,7 @@
      },
      {
       "san": "e4",
-      "text": "**The Blackmar-Diemer.** You offer the e-pawn right away."
+      "text": "**The Blackmar-Diemer.** You offer the e-pawn right away. Objectively dubious: the engine prefers 2.c4 by almost a pawn and says Black is a little better (about −0.7). You play it for fast development, not for the evaluation."
      },
      {
       "san": "dxe4",
@@ -2475,7 +2487,7 @@
      },
      {
       "san": "e4",
-      "text": "The Blackmar-Diemer."
+      "text": "The Blackmar-Diemer. Objectively dubious: the engine prefers 2.c4 by almost a pawn and says Black is a little better (about −0.7). You play it for fast development, not for the evaluation."
      },
      {
       "san": "dxe4",
@@ -2552,7 +2564,7 @@
      },
      {
       "san": "e4",
-      "text": "The Blackmar-Diemer."
+      "text": "The Blackmar-Diemer. Objectively dubious: the engine prefers 2.c4 by almost a pawn and says Black is a little better (about −0.7). You play it for fast development, not for the evaluation."
      },
      {
       "san": "dxe4",
@@ -2613,11 +2625,11 @@
   "side": "w",
   "level": "Beginner",
   "eco": "C47",
-  "tagline": "1.e4 e5 2.Nf3 Nc6 3.Nc3 Nf6 4.Nxe5!? – a crazy knight sacrifice for a big pawn center. Honestly: it is unsound (about −1.2). Play it for fun in blitz, not in serious games.",
+  "tagline": "1.e4 e5 2.Nf3 Nc6 3.Nc3 Nf6 4.Nxe5!? – a crazy knight sacrifice for a big pawn center. Honestly: it is unsound (engine about −1.7). Play it for fun in blitz, not in serious games.",
   "ideas": [
    "You give a **knight for a pawn** in the Four Knights Game. In return: **d4 and e5** kick Black's knights around and you gain lots of space.",
    "Typical follow-up: **e5, Bc4, Qf3/Qh5**, and h4-h5 to chase the knight from g6.",
-   "**Be honest:** after **5...Nc6! 6.d5 Bb4!** Black gives back a little material and is clearly better. Learn that line so you aren't shocked.",
+   "**Be honest:** after 4.Nxe5 the engine says Black is better by about 1.5–2 pawns. The line **5...Nc6! 6.d5 Bb4!** is Black's most forcing answer – learn it so you aren't shocked.",
    "Why play it at all? It's a fun way to learn attacking with pawns and space – and many opponents in blitz react badly."
   ],
   "lines": [
@@ -2653,7 +2665,7 @@
      },
      {
       "san": "Nxe5",
-      "text": "**The Halloween Gambit!** You give a knight for a pawn to start chasing Black's knights."
+      "text": "**The Halloween Gambit!** You give a knight for a pawn to start chasing Black's knights. Objectively unsound: the engine says about −1.7."
      },
      {
       "san": "Nxe5",
@@ -2702,7 +2714,7 @@
     "id": "halloween-refutation",
     "name": "The refutation: 5...Nc6! 6.d5 Bb4!",
     "type": "variation",
-    "intro": "Know the danger. If Black retreats the knight to c6 and counter-attacks with ...Bb4, your center collapses. Here is the best you can do.",
+    "intro": "Know the danger. If Black retreats the knight to c6 and counter-attacks with ...Bb4, your center collapses. Here is the best you can do: give material back and develop.",
     "moves": [
      {
       "san": "e4",
@@ -2730,7 +2742,7 @@
      },
      {
       "san": "Nxe5",
-      "text": "The Halloween Gambit."
+      "text": "The Halloween Gambit – objectively unsound (engine about −1.7 after this move)."
      },
      {
       "san": "Nxe5",
@@ -2769,19 +2781,43 @@
       "text": "Black protects the e4 knight and lines the queen up against your king."
      },
      {
-      "san": "Qxg7",
-      "text": "Grab the g7 pawn and attack the rook on h8."
-     },
-     {
-      "san": "Nxc3+",
-      "text": "**Discovered check** from the e7 queen."
-     },
-     {
       "san": "Be3",
-      "text": "Block with the bishop. Black is better (engine about −0.8), but there is still a fight."
+      "text": "Put a piece on the e-file between Black's queen and your king, so a knight move from e4 is no longer a discovered check. Grabbing g7 with 9.Qxg7 looks tempting, but it lets Black's pieces in."
+     },
+     {
+      "san": "O-O",
+      "text": "Black castles. Material is equal, but Black is better developed."
+     },
+     {
+      "san": "Bd3",
+      "text": "Attack the e4 knight a second time and develop."
+     },
+     {
+      "san": "Nxc3",
+      "text": "Black trades the knight."
+     },
+     {
+      "san": "bxc3",
+      "text": "Recapture. Your pawns are a bit damaged, but your bishops are active."
+     },
+     {
+      "san": "Bd6",
+      "text": "The b4 bishop was attacked by your c3 pawn, so it goes back."
+     },
+     {
+      "san": "cxb7",
+      "text": "Trade your loose c6 pawn for Black's b7 pawn."
+     },
+     {
+      "san": "Bxb7",
+      "text": "Black recaptures. Material is completely equal."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle. Black is a little better (engine about −0.3) because of your doubled c-pawns, but you survived."
      }
     ],
-    "summary": "This is why the Halloween is unsound: 5...Nc6! and 6...Bb4! hit back hard. In blitz you can still survive – but don't expect an advantage."
+    "summary": "This is why the Halloween is unsound: 5...Nc6! and 6...Bb4! hit back hard. With 9.Be3 and 10.Bd3 you get an almost equal game – but no advantage at all."
    }
   ]
  },
@@ -2791,11 +2827,11 @@
   "side": "b",
   "level": "Beginner",
   "eco": "A40",
-  "tagline": "1.d4 e5?! – a cheeky pawn sacrifice with one famous trap: ...Qe7, ...Qb4+ and ...Qxb2 ending in ...Qc1#. Honestly: unsound (about +1 for White). A blitz surprise only.",
+  "tagline": "1.d4 e5?! – a cheeky pawn sacrifice with one famous trap: ...Qe7, ...Qb4+ and ...Qxb2 ending in ...Qc1#. Honestly: unsound (engine about +1.2 for White at once, and about +2 if White finds 6.Nc3!). A blitz surprise only.",
   "ideas": [
    "After **1...e5 2.dxe5 Nc6 3.Nf3 Qe7** Black attacks e5 and prepares **...Qb4+**, which hits the king and the b2 pawn at the same time.",
    "**The famous trap:** 4.Bf4? Qb4+ 5.Bd2 Qxb2 6.Bc3? Bb4! 7.Qd2 Bxc3 8.Qxc3 **Qc1#**. The c3 bishop is pinned to the king, so it cannot take your queen.",
-   "**Be honest:** a careful opponent plays **6.Nc3!** (or simply avoids 4.Bf4) and Black is just worse. The engine gives White about +1 to +1.5.",
+   "**Be honest:** a careful opponent plays **6.Nc3!** (or simply avoids 4.Bf4) and Black is just worse. The engine gives White about +1.2, and about +2 after 6.Nc3!.",
    "Use it as a rare surprise in bullet/blitz. In serious games against 1.d4 stick to your normal openings (Slav, QGD)."
   ],
   "lines": [
@@ -2811,7 +2847,7 @@
      },
      {
       "san": "e5",
-      "text": "**The Englund Gambit.** You offer the e-pawn right away. It's objectively bad (engine about +1), but it sets up a famous trap."
+      "text": "**The Englund Gambit.** You offer the e-pawn right away. It's objectively bad (engine about +1.2 for White), but it sets up a famous trap."
      },
      {
       "san": "dxe5",
@@ -2884,7 +2920,7 @@
      },
      {
       "san": "e5",
-      "text": "The Englund Gambit."
+      "text": "The Englund Gambit – objectively bad (engine about +1.2 for White; 1...d5 is much better)."
      },
      {
       "san": "dxe5",
@@ -2961,7 +2997,7 @@
      },
      {
       "san": "e5",
-      "text": "The Englund Gambit."
+      "text": "The Englund Gambit – objectively bad (engine about +1.2 for White; 1...d5 is much better)."
      },
      {
       "san": "dxe5",
@@ -3018,7 +3054,7 @@
   "side": "b",
   "level": "Intermediate",
   "eco": "A51–A52",
-  "tagline": "1.d4 Nf6 2.c4 e5 – Black offers the e-pawn and usually wins it back with ...Ng4. Respectable: White is only a little better (about +0.4 to +0.7), and there's a famous ...Nd3# trap.",
+  "tagline": "1.d4 Nf6 2.c4 e5 – Black offers the e-pawn and usually wins it back with ...Ng4. Respectable: White is better (engine about +0.7 to +1), and there's a famous ...Nd3# trap.",
   "ideas": [
    "After **2...e5 3.dxe5 Ng4** the e5 pawn is attacked by the knight; ...Nc6, ...Qe7 and ...Bb4+ add more attackers. Black normally **wins the pawn back**.",
    "**...Bb4+** develops with check and pins White's pieces. Combined with **...Qe7** it sets the famous trap ...Nd3# (the e2 pawn is pinned).",
@@ -3265,7 +3301,7 @@
   "side": "b",
   "level": "Advanced",
   "eco": "C40",
-  "tagline": "1.e4 e5 2.Nf3 f5?! – the wildest answer to 2.Nf3. Honestly: risky and objectively bad (about +1 for White). Fun in blitz if you like chaos, but only with the lines below memorised.",
+  "tagline": "1.e4 e5 2.Nf3 f5?! – the wildest answer to 2.Nf3. Honestly: risky and objectively bad (engine about +1.5 for White). Fun in blitz if you like chaos, but only with the lines below memorised.",
   "ideas": [
    "**2...f5** attacks e4 and opens the f-file – but it also weakens your own king on the e8-h5 diagonal.",
    "Against **3.Nxe5** the main move is **3...Qf6**: the queen attacks the knight and supports ...fxe4.",
@@ -3294,7 +3330,7 @@
      },
      {
       "san": "f5",
-      "text": "**The Latvian Gambit.** You ignore the attack and hit e4 – the most aggressive reply possible."
+      "text": "**The Latvian Gambit.** You ignore the attack and hit e4 – the most aggressive reply possible. Objectively bad: the engine gives White about +1.5."
      },
      {
       "san": "Nxe5",
@@ -3379,7 +3415,7 @@
      },
      {
       "san": "f5",
-      "text": "The Latvian Gambit."
+      "text": "The Latvian Gambit – objectively bad (engine about +1.5 for White; 2...Nc6 is the normal move)."
      },
      {
       "san": "Nxe5",
@@ -3410,25 +3446,33 @@
       "text": "White blocks."
      },
      {
-      "san": "Nf6",
-      "text": "Develop and protect the king."
-     },
-     {
-      "san": "O-O",
-      "text": "White castles."
-     },
-     {
       "san": "Nc6",
-      "text": "Develop and attack the d4 pawn. You are a full piece up (engine about −2.3)."
+      "text": "Develop with tempo: the knight attacks the d4 pawn. This is faster than ...Nf6."
+     },
+     {
+      "san": "d5",
+      "text": "White pushes the pawn to kick the knight."
+     },
+     {
+      "san": "Nd4",
+      "text": "The knight jumps to d4, a great square. It eyes c2 and e2."
+     },
+     {
+      "san": "Nc3",
+      "text": "White develops and attacks your queen."
+     },
+     {
+      "san": "Bb4",
+      "text": "Pin the c3 knight and keep your queen in the centre. You are a full piece up (engine about −5.5)."
      }
     ],
-    "summary": "Next: ...Be7 and ...O-O. Keep your queen safe from Re1 and Bd3 tricks and you win with the extra piece."
+    "summary": "Next: ...Nf6, ...O-O and ...Nxe2+ when it helps. Keep your queen safe from Re1 and Bd3 tricks and you win with the extra piece."
    },
    {
     "id": "latvian-exf5",
-    "name": "3.exf5 e4 – the knight chase",
+    "name": "3.exf5 e4 4.Ne5 Nf6 5.Be2 Be7!",
     "type": "variation",
-    "intro": "White takes on f5 and Black pushes ...e4. White can grab the rook on h8 with a knight, but the knight gets trapped there.",
+    "intro": "White takes on f5 and Black pushes ...e4. After 5.Be2 the only good move is 5...Be7, which stops Bh5+. Then you trade into an endgame.",
     "moves": [
      {
       "san": "e4",
@@ -3444,7 +3488,7 @@
      },
      {
       "san": "f5",
-      "text": "The Latvian Gambit."
+      "text": "The Latvian Gambit – objectively bad (engine about +1.5 for White; 2...Nc6 is the normal move)."
      },
      {
       "san": "exf5",
@@ -3467,35 +3511,43 @@
       "text": "White prepares Bh5+."
      },
      {
-      "san": "d6",
-      "text": "Kick the knight away from e5."
+      "san": "Be7",
+      "text": "Develop and get ready to castle. (5...d6? 6.Bh5+ lets White's pieces in and is much worse for you.)"
      },
      {
-      "san": "Bh5+",
-      "text": "White gives check with the bishop."
+      "san": "d3",
+      "text": "White attacks your e4 pawn."
      },
      {
-      "san": "Ke7",
-      "text": "Step aside. (Your king is safe enough on e7 for now.)"
+      "san": "Nc6",
+      "text": "Develop and challenge the e5 knight."
      },
      {
-      "san": "Nf7",
-      "text": "White's knight forks your queen and the rook on h8."
+      "san": "Nxc6",
+      "text": "White trades knights."
      },
      {
-      "san": "Qe8",
-      "text": "Move the queen and attack the knight."
+      "san": "dxc6",
+      "text": "Recapture towards the centre and open your c8 bishop."
      },
      {
-      "san": "Nxh8",
-      "text": "White grabs the rook."
+      "san": "dxe4",
+      "text": "White takes the e4 pawn."
      },
      {
-      "san": "Qxh5",
-      "text": "Take the bishop. The knight on h8 is trapped – you will win it later with ...g6 and ...Kf8 or ...Bg7."
+      "san": "Qxd1+",
+      "text": "Trade queens. Your king is safer in an endgame."
+     },
+     {
+      "san": "Bxd1",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Win back the pawn. Material is equal again."
      }
     ],
-    "summary": "You will end up with two minor pieces for a rook. The engine still says White is slightly better (about +0.8), but the game is very messy."
+    "summary": "Material is equal, but White is better developed and your c-pawns are doubled (engine about +0.9). This is the Latvian's honest result: you survive, but you do not get an advantage."
    }
   ]
  },
@@ -3724,7 +3776,7 @@
   "side": "b",
   "level": "Advanced",
   "eco": "C57",
-  "tagline": "1.e4 e5 2.Nf3 Nc6 3.Bc4 Nf6 4.Ng5 Bc5!? – instead of defending f7, you counter-attack f2. Objectively dubious (about +0.5 for White), but extremely sharp and full of mating traps.",
+  "tagline": "1.e4 e5 2.Nf3 Nc6 3.Bc4 Nf6 4.Ng5 Bc5!? – instead of defending f7, you counter-attack f2. Objectively dubious (engine about +1 to +1.5 for White), but extremely sharp and full of mating traps.",
   "ideas": [
    "Against 4.Ng5 you normally play 4...d5 (see the Two Knights lines in your Openings course). **4...Bc5!?** is the aggressive alternative: let White take f7, and hit **f2** back.",
    "After **5.Nxf7 Bxf2+!** the White king must move. **6.Kxf2? Nxe4+** with ...Qh4 is a direct attack; 6.Kf1 is White's best.",
@@ -3769,7 +3821,7 @@
      },
      {
       "san": "Bc5",
-      "text": "**The Traxler!** You don't defend f7 – you counter-attack f2."
+      "text": "**The Traxler!** You don't defend f7 – you counter-attack f2. Objectively dubious: the engine prefers 4...d5 and says White is better by about +1 to +1.5 after 4...Bc5. You play it for the traps, not the evaluation."
      },
      {
       "san": "Bxf7+",
@@ -3842,7 +3894,7 @@
      },
      {
       "san": "Bc5",
-      "text": "The Traxler."
+      "text": "The Traxler. Objectively dubious: the engine prefers 4...d5 and says White is better by about +1 to +1.5 after 4...Bc5. You play it for the traps, not the evaluation."
      },
      {
       "san": "Nxf7",
@@ -3915,7 +3967,7 @@
      },
      {
       "san": "Bc5",
-      "text": "The Traxler."
+      "text": "The Traxler. Objectively dubious: the engine prefers 4...d5 and says White is better by about +1 to +1.5 after 4...Bc5. You play it for the traps, not the evaluation."
      },
      {
       "san": "Nxf7",
@@ -3968,7 +4020,7 @@
   "side": "b",
   "level": "Advanced",
   "eco": "A57–A59",
-  "tagline": "1.d4 Nf6 2.c4 c5 3.d5 b5!? – a positional gambit: you give a pawn for open a- and b-files and long-term pressure on White's queenside. Respected by grandmasters; the engine says about +0.8 for White.",
+  "tagline": "1.d4 Nf6 2.c4 c5 3.d5 b5!? – a positional gambit: you give a pawn for open a- and b-files and long-term pressure on White's queenside. Respected by grandmasters; the engine says about +0.5 for White.",
   "ideas": [
    "After **4.cxb5 a6 5.bxa6 Bxa6** your rooks get the **open a- and b-files** and your bishop sits on a6.",
    "Fianchetto with **...g6 and ...Bg7**: the bishop on the long diagonal hits b2 and a1.",

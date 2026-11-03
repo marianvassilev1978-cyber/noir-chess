@@ -7,7 +7,7 @@ import { moveSound, play as sfx } from "../sound.js";
 import { videoList } from "../ui.js";
 import { moveSan } from "../analysis.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 
 export async function loadOpenings() {
   const [o, g, x] = await Promise.all([loadJSON("openings"), loadJSON("gambits"), loadJSONOpt("openings-extra", [])]);
@@ -27,7 +27,7 @@ export function renderList(root, [kind = "openings"]) {
     <div class="seg mb kinds" style="max-width:420px"><button data-k="openings">Openings</button><button data-k="gambits">Gambits</button></div>
     <div class="chips mb sides"><button class="chip" data-s="all">All</button><button class="chip" data-s="w">As White</button><button class="chip" data-s="b">As Black</button><button class="chip" data-s="rep">⭐ My repertoire</button></div>
     <div class="due-box"></div><div class="grid auto list"><div class="empty">Loading…</div></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   $$(".kinds button", root).forEach((b) => { b.classList.toggle("on", b.dataset.k === kind); b.onclick = () => go("openings/" + b.dataset.k); });
   let side = "all";
   Promise.all([loadOpenings(), loadJSONOpt("repertoire", null)]).then(([D, rep]) => {
@@ -73,7 +73,7 @@ export function renderOpening(root, [id]) {
       ${o.lines.map((l) => { const st = s.openings[l.id] || {}; return `<div class="lesson-row" data-l="${l.id}"><div class="dot" style="${l.type === "trap" ? "background:#ca343133;border-color:#ca3431" : ""}">${l.type === "trap" ? "!" : l.type === "main" ? "★" : "·"}</div><div class="grow"><div class="bold small">${esc(l.name)}</div><div class="tiny muted">${esc(l.type)} · ${l.moves.length} moves</div></div>${stars(st.stars)}</div>`; }).join("")}
       ${videoList(o.videos || [], o.links || [])}
       </div></div>`;
-    $(".back", root).onclick = () => history.back();
+    $(".back", root).onclick = () => back();
     new Board($("#ob", root), { fen: lineFen(o.lines[0], 10), orientation: o.side, interactive: false });
     $$(".lesson-row", root).forEach((r) => (r.onclick = () => {
       const l = o.lines.find((x) => x.id === r.dataset.l);
@@ -176,7 +176,7 @@ function renderReview(root) {
   loadOpenings().then((D) => {
     const all = [...D.openings, ...D.gambits];
     const queue = dueLines().map((id) => { for (const o of all) { const l = o.lines.find((x) => x.id === id); if (l) return { o, l }; } return null; }).filter(Boolean);
-    if (!queue.length) { root.innerHTML = '<div class="topbar"><button class="back">‹</button><h2>Review</h2></div><div class="empty">All caught up. 🎉</div>'; $(".back", root).onclick = () => history.back(); return; }
+    if (!queue.length) { root.innerHTML = '<div class="topbar"><button class="back">‹</button><h2>Review</h2></div><div class="empty">All caught up. 🎉</div>'; $(".back", root).onclick = () => back(); return; }
     const next = () => { const q = queue.shift(); if (!q) return go("openings/openings"); lineTrainer(root, q.o, q.l, "drill", { onFinish: next, queue }); };
     next();
   });

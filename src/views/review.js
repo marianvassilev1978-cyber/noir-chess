@@ -10,7 +10,7 @@ import { playerBar, moveStrip, EvalBar, evalGraph, lineViewer, userPlayer, avata
 import { ANA } from "../engine.js";
 import { openingOf, loadEco } from "../eco.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 
 const ORDER = ["brilliant", "great", "best", "excellent", "good", "book", "inaccuracy", "mistake", "miss", "blunder"];
 
@@ -51,7 +51,7 @@ export function render(root, [id]) {
     root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Game Review</h2></div>
       <div class="card tc"><div class="coachbox" style="justify-content:center"><div class="face">♞</div><div class="bubble small" style="flex:none">Reviewing your game move by move…</div></div>
       <div class="progress mt"><i style="width:0%"></i></div><div class="small muted mt-s pct">Starting engine…</div></div>`;
-    $(".back", root).onclick = () => history.back();
+    $(".back", root).onclick = () => back();
     const t0 = Date.now();
     reviewGame(rec.moves, rec.startFen, {
       depth: 14, signal: abort.signal,
@@ -101,7 +101,7 @@ export function render(root, [id]) {
       <button class="btn primary big go-moves">Start review ${I.next}</button>
       <div class="row gap"><button class="btn grow an">${I.analysis} Analysis</button><button class="btn grow pgn">${I.copy} Copy PGN</button></div>
       </div>`;
-    $(".back", root).onclick = () => history.back();
+    $(".back", root).onclick = () => back();
     $(".graph-holder", root).appendChild(evalGraph(R.evals, null, (i) => explore(R, i), marks));
     $(".go-moves", root).onclick = () => explore(R, firstKey(R, you));
     $(".an", root).onclick = () => go("analysis/" + encodeURIComponent(JSON.stringify({ moves: rec.moves, startFen: rec.startFen || null, ply: rec.moves.length - 1 })));

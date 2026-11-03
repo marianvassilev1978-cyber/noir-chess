@@ -6,7 +6,7 @@ import { ratingChart, avatar, userPlayer } from "../ui.js";
 import { Board, pieceURL } from "../board.js";
 import { play as sfx } from "../sound.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 import { engineName } from "../engine.js";
 
 export function render(root) {
@@ -86,10 +86,10 @@ export function renderSettings(root) {
       ${tog("evalBar", "Eval bar", "Show the engine evaluation while playing")}
     </div>
     <div class="card"><h3>Backup</h3><p class="small muted">Progress is saved ${storageMode() === "cloud" ? "to your Claude account and to this device" : "on this device"}. The installed app and the Claude version keep separate progress — use a backup to move it.</p>
-      <div class="row gap wrap"><button class="btn sm cpb">${I.copy} Copy backup</button><button class="btn sm dlb">Download</button><button class="btn sm imb">Import backup</button><button class="btn sm danger rst">Reset all</button></div></div>
+      <div class="row gap wrap"><button class="btn sm cpb">${I.copy} Copy backup</button><button class="btn sm dlb hide-in-claude">Download</button><button class="btn sm imb">Import backup</button><button class="btn sm danger rst">Reset all</button></div></div>
     <div class="card small muted"><h3>About</h3>Noir Chess 2 · ${esc(engineName())}<br>Engine: Stockfish 18 (GPLv3) via stockfish.js · Rules: chess.js (BSD-2) · Puzzles & opening names: Lichess databases (CC0) · Pieces: see credits above · Sounds: Lichess sets by Enigmahack (AGPLv3+) and synthesized wood.</div>
     </div></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   const pv = new Board($("#pv", root), { fen: "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5", interactive: false });
   pv.setFen("r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5", { lastMove: ["g8", "f6"], animate: false });
   const refresh = () => { applyTheme(); pv.refreshPieces(); pv.drawCoords(); save(); };

@@ -7,7 +7,7 @@ import { playStep, loadCourse } from "./learn.js";
 import { loadOpenings, dueLines } from "./openings.js";
 import { videoList, ratingChart } from "../ui.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 
 // ---------- Endgame Gym ----------
 export function renderGym(root, [id]) {
@@ -31,13 +31,13 @@ export function renderGym(root, [id]) {
       $(".nx", root).onclick = () => go("drill/" + (drills[idx + 1] || drills[0]).id);
       return;
     }
-    if (!drills.length) { root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Endgame Gym</h2></div><div class="empty">The endgame drills are still being built — check back after the next update.</div>`; $(".back", root).onclick = () => history.back(); return; }
+    if (!drills.length) { root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Endgame Gym</h2></div><div class="empty">The endgame drills are still being built — check back after the next update.</div>`; $(".back", root).onclick = () => back(); return; }
     const groups = [...new Set(drills.map((d) => d.group))];
     const done = drills.filter((d) => s.drills[d.id] && s.drills[d.id].done).length;
     root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Endgame Gym</h2><span class="badge-pill acc">${done}/${drills.length}</span></div>
       <p class="muted small" style="max-width:720px">Real technique against full-strength Stockfish. "Win it" means checkmate (or promote with a won position) within the move limit. "Hold the draw" means survive. Strong players know every one of these by heart.</p>
       <div style="max-width:720px">${groups.map((g) => `<div class="sec-title">${esc(g)}</div>${drills.filter((d) => d.group === g).map((d) => { const r = s.drills[d.id]; return `<div class="lesson-row ${r && r.done ? "done" : ""}" data-id="${d.id}"><div class="dot">${r && r.done ? "✓" : d.goal === "win" ? "W" : "½"}</div><div class="grow"><div class="bold small">${esc(d.title)}</div><div class="tiny muted">${d.goal === "win" ? "Win" : "Draw"} in ${d.maxMoves} · ${esc(d.band || "")}${r && r.best ? " · best " + r.best + " moves" : ""}</div></div><span class="chev">›</span></div>`; }).join("")}`).join("")}</div>`;
-    $(".back", root).onclick = () => history.back();
+    $(".back", root).onclick = () => back();
     $$(".lesson-row", root).forEach((r) => (r.onclick = () => go("drill/" + r.dataset.id)));
   });
   return () => cleanup && cleanup();
@@ -54,7 +54,7 @@ export function renderVision(root) {
       <div class="seg cs mb"><button data-c="w">As White</button><button data-c="b">As Black</button></div>
       <div class="row between"><div><div class="tiny muted bold">SCORE</div><div class="big-num sc" style="font-size:36px;font-weight:900">0</div></div><div class="tc"><div class="tiny muted bold">TIME</div><div class="big-timer tm">30</div></div><div class="tc"><div class="tiny muted bold">BEST</div><div class="bold bs" style="font-size:22px">${s.vision.best[color] || 0}</div></div></div>
       <button class="btn primary big mt go">Start</button></div></div></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   board = new Board($("#vb", root), { orientation: color, interactive: false });
   board.setFen("8/8/8/8/8/8/8/8 w - - 0 1", { animate: false });
   const segs = () => $$(".cs button", root).forEach((b) => b.classList.toggle("on", b.dataset.c === color));
@@ -127,7 +127,7 @@ export function renderPlan(root) {
 **Two years:** 2000 is achievable for a hard worker who keeps reviewing. The players who stall are the ones who only play and never review.`)}</div></div>
       <div class="rep"></div>
     </div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   $$("[data-go]", root).forEach((el) => (el.onclick = () => go(el.dataset.go)));
   Promise.all([loadJSONOpt("repertoire", null), loadOpenings()]).then(([rep, D]) => {
     if (!rep) return;
@@ -179,7 +179,7 @@ export function renderLibrary(root) {
       <div class="sec-title">Open-source knowledge wired into this app</div>
       <div class="card">${REPOS.map(([n, d]) => `<a class="list-row" style="color:inherit;text-decoration:none" target="_blank" rel="noopener" href="https://github.com/${n}"><span class="cls-badge lg" style="background:#333">⌥</span><div class="grow"><div class="bold small">${esc(n)}</div><div class="tiny muted">${esc(d)}</div></div></a>`).join("")}</div>
     </div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   Promise.all([loadCourse(), loadOpenings()]).then(([C, D]) => {
     let html = "";
     for (const lv of C) {

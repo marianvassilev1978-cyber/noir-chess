@@ -4,7 +4,7 @@ import { load, initCloud, onSync } from "./store.js";
 import { applyTheme } from "./themes.js";
 import { initEngines } from "./engine.js";
 import { initClaude } from "./coach.js";
-import { register, renderRoute, go } from "./router.js";
+import { register, start, go, rerender, currentRoute, inClaude } from "./router.js";
 import { I } from "./icons.js";
 import * as Home from "./views/home.js";
 import * as Play from "./views/play.js";
@@ -51,14 +51,15 @@ register("library", X.renderLibrary);
 register("profile", Profile.render);
 register("settings", Profile.renderSettings);
 
-renderRoute();
+document.body.classList.toggle("in-claude", inClaude);
+start();
 const sp = document.getElementById("splash");
 if (sp) { sp.style.opacity = "0"; setTimeout(() => sp.remove(), 300); }
 
-initEngines().then(() => { if (location.hash === "" || location.hash === "#/home") renderRoute(); });
+initEngines().then(() => { if (currentRoute() === "home") rerender(); });
 initClaude();
 initCloud();
-onSync(() => { applyTheme(); if (!["game", "lesson"].includes((location.hash.slice(2) || "home").split("/")[0])) renderRoute(); });
+onSync(() => { applyTheme(); if (!["game", "lesson", "review", "puzzle", "rush", "drill", "opening"].includes(currentRoute())) rerender(); });
 
 // register service worker only on the standalone site (not inside Claude)
 try {

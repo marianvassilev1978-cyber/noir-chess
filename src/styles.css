@@ -367,3 +367,4 @@ body[data-theme="light"] .clock { background: #d7d3cb; color: #77746f; }
   .settings-prev { max-width: 62%; margin: 0 auto; }
 }
 .cls-badge svg { display: block; }
+body.in-claude .hide-in-claude { display: none !important; }

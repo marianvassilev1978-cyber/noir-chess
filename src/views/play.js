@@ -5,7 +5,7 @@ import { BOT_GROUPS, ALL_BOTS, botById, customBot } from "../bots.js";
 import { newGame, startPlacement, resumeLive, nextPlacement } from "./game.js";
 import { avatar } from "../ui.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 import { Chess } from "chess.js";
 
 export const TCS = [
@@ -128,7 +128,7 @@ export function renderHistory(root) {
   root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Game history</h2></div>
     <div class="chips mb hf">${["all", "won", "lost", "drawn", "rated"].map((f) => `<button class="chip" data-f="${f}">${f[0].toUpperCase() + f.slice(1)}</button>`).join("")}</div>
     <div class="card list"></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   let f = "all";
   const draw = () => {
     $$(".hf .chip", root).forEach((c) => c.classList.toggle("on", c.dataset.f === f));

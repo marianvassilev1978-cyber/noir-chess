@@ -8,6 +8,7 @@ import { moveSound } from "../sound.js";
 import { moveStrip, EvalBar } from "../ui.js";
 import { openingOf, loadEco } from "../eco.js";
 import { I } from "../icons.js";
+import { back } from "../router.js";
 
 export function render(root, [arg]) {
   let init = {};
@@ -98,7 +99,7 @@ export function render(root, [arg]) {
     sync(true);
   }
 
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   $("#a-first", root).onclick = () => { cur = -1; sync(false); };
   $("#a-prev", root).onclick = () => { cur = Math.max(-1, cur - 1); sync(false); };
   $("#a-next", root).onclick = () => { if (cur < moves.length - 1) { cur++; const { last } = pos(); last && moveSound(last); sync(true); } };

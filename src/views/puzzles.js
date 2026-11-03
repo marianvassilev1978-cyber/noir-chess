@@ -8,7 +8,7 @@ import { lineViewer } from "../ui.js";
 import { ANA } from "../engine.js";
 import { winFor, evalPosition, uciOf } from "../analysis.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 
 export const THEMES = {
   mateIn1: "Mate in 1", mateIn2: "Mate in 2", mateIn3: "Mate in 3", mateIn4: "Mate in 4+", fork: "Fork", pin: "Pin", skewer: "Skewer",
@@ -159,7 +159,7 @@ export function renderTrainer(root, [mode, arg]) {
       <div class="row gap mt"><button class="btn grow hint">${I.bulb} Hint</button><button class="btn grow sol">Solution</button><button class="btn primary grow next hide">Next ›</button></div>
       <div class="row gap mt"><button class="btn sm ghost an">Analyze</button><button class="btn sm ghost rt hide">Retry</button></div>
     </div></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
 
   async function next() {
     const list = await db();
@@ -226,7 +226,7 @@ export function renderRush(root) {
       <p class="muted">Solve as many as you can. Puzzles start easy and get harder with every one you solve.</p>
       ${[["r3", "3 minutes", "Fast. 3 strikes and you're out.", I.timer], ["r5", "5 minutes", "More time to think.", I.timer], ["survival", "Survival", "No clock. 3 strikes.", I.fire]].map(([k, t, d, ic]) => `<button class="tile" data-k="${k}"><div class="ic" style="background:#d6453d">${ic}</div><div><div class="t">${t}</div><div class="s">${d} · Best ${s.rush.best[k] || 0}</div></div><span class="chev">›</span></button>`).join("")}
     </div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   $$("[data-k]", root).forEach((b) => (b.onclick = () => rush(b.dataset.k)));
   return () => killRun();
 
@@ -240,7 +240,7 @@ export function renderRush(root) {
       <div class="lesson-layout"><div class="lb"><div id="rb"></div></div><div class="lt">
       <div class="row between"><div class="hero" style="padding:10px 16px"><div class="tiny muted bold">SCORE</div><div class="big-num sc">0</div></div><div class="strikes" style="font-size:28px;letter-spacing:4px">○○○</div></div>
       <div class="rush-strip mt strip"></div><button class="btn ghost mt quit">End run</button></div></div>`;
-    $(".back", root).onclick = () => { end(); history.back(); };
+    $(".back", root).onclick = () => { end(); back(); };
     $(".quit", root).onclick = () => end();
     const strip = $(".strip", root);
     function nextP() {
@@ -288,7 +288,7 @@ export function renderMistakes(root) {
     <p class="muted small">Every mistake and blunder from your reviewed games lands here. Find the move you missed — twice — to clear it.</p>
     <div class="lesson-layout"><div class="lb"><div id="mb"></div></div><div class="lt"><div class="pz-status"><span class="sw"></span><span class="msg"></span></div><div class="small muted mt-s meta"></div>
     <div class="row gap mt"><button class="btn grow sol">Show answer</button><button class="btn primary grow next">Next ›</button></div></div></div>`;
-  $(".back", root).onclick = () => history.back();
+  $(".back", root).onclick = () => back();
   if (!list.length) { $(".lesson-layout", root).innerHTML = '<div class="empty">Nothing here yet. Play games and run Game Review — your mistakes will turn into puzzles.</div>'; return; }
   let player = null, i = 0;
   const order = shuffle(list);
