@@ -28,7 +28,7 @@ function copyDir(src, dst) {
   copyDir(path.join(ROOT, "public"), OUT);
   copyDir(path.join(ROOT, "content"), path.join(OUT, "content"));
   // content files the app does not need at runtime
-  fs.writeFileSync(path.join(OUT, "index.html"), fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8").replace(/__V__/g, V));
+  fs.writeFileSync(path.join(OUT, "index.html"), fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8").replace(/__V__/g, V).replace("<title>", `<script>window.NOIR_BUILD="${V}"</script><title>`));
   fs.writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify({
     name: "Noir Chess", short_name: "Noir Chess", description: "Personal chess trainer — zero to 2000.",
     start_url: "./", scope: "./", display: "standalone", orientation: "portrait",

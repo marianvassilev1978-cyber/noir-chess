@@ -67,7 +67,6 @@ export function renderSettings(root) {
       ${tog("sound", "Sounds", "Move, capture and check sounds")}
       <div class="setting"><div class="l"><b>Sound set</b></div><select class="ss"><option value="wood">Wood (default)</option><option value="sfx">Lichess SFX</option><option value="piano">Piano</option></select></div>
       <div class="setting"><div class="l"><b>Volume</b></div><input type="range" class="vol" min="0" max="1" step="0.05" value="${st.volume ?? 0.8}" style="max-width:160px"></div>
-      ${tog("soundOnSilent", "Play even on silent mode", "iPhone: sounds play with the side switch on silent. Turn off if it pauses your music.")}
       ${tog("haptics", "Vibration", "Short buzz on captures and checks (Android)")}
       <div class="setting"><div class="l"><b>Test sound</b><small class="ast"></small></div><button class="btn sm tsnd">🔊 Play</button></div>
     </div>
@@ -89,7 +88,7 @@ export function renderSettings(root) {
     </div>
     <div class="card"><h3>Backup</h3><p class="small muted">Progress is saved ${storageMode() === "cloud" ? "to your Claude account and to this device" : "on this device"}. The installed app and the Claude version keep separate progress — use a backup to move it.</p>
       <div class="row gap wrap"><button class="btn sm cpb">${I.copy} Copy backup</button><button class="btn sm dlb hide-in-claude">Download</button><button class="btn sm imb">Import backup</button><button class="btn sm danger rst">Reset all</button></div></div>
-    <div class="card small muted"><h3>About</h3>Noir Chess 2 · ${esc(engineName())}<br>Engine: Stockfish 18 (GPLv3) via stockfish.js · Rules: chess.js (BSD-2) · Puzzles & opening names: Lichess databases (CC0) · Pieces: see credits above · Sounds: Lichess sets by Enigmahack (AGPLv3+) and synthesized wood.</div>
+    <div class="card small muted"><h3>About</h3>Noir Chess 2 · build ${esc(window.NOIR_BUILD || "dev")} · ${esc(engineName())}<br>Engine: Stockfish 18 (GPLv3) via stockfish.js · Rules: chess.js (BSD-2) · Puzzles & opening names: Lichess databases (CC0) · Pieces: see credits above · Sounds: Lichess sets by Enigmahack (AGPLv3+) and synthesized wood.</div>
     </div></div>`;
   $(".back", root).onclick = () => back();
   const pv = new Board($("#pv", root), { fen: "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5", interactive: false });

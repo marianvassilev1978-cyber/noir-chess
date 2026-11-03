@@ -24,7 +24,7 @@ const CHROME = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 (async () => {
   await new Promise((r) => server.listen(8787, r));
   const prof = path.join(require("os").tmpdir(), "noir-cdp-" + Date.now());
-  const ch = spawn(CHROME, ["--headless=new", "--remote-debugging-port=9333", "--no-first-run", "--disable-gpu", "--user-data-dir=" + prof, "--window-size=390,844", "about:blank"], { stdio: "ignore" });
+  const ch = spawn(CHROME, ["--headless=new", "--remote-debugging-port=9333", "--no-first-run", "--disable-gpu", "--user-data-dir=" + prof, "--window-size=390,844", "--autoplay-policy=user-gesture-required", "about:blank"], { stdio: "ignore" });
   let ver;
   for (let i = 0; i < 50; i++) { try { ver = await (await fetch("http://127.0.0.1:9333/json/list")).json(); if (ver.length) break; } catch {} await new Promise((r) => setTimeout(r, 200)); }
   const page = ver.find((t) => t.type === "page");
