@@ -4,7 +4,7 @@ import { state, save, exportBackup, importBackup, resetAll, storageMode, TC_CATS
 import { BOARDS, PIECE_SETS, APP_THEMES, applyTheme, miniBoardStyle } from "../themes.js";
 import { ratingChart, avatar, userPlayer } from "../ui.js";
 import { Board, pieceURL } from "../board.js";
-import { play as sfx } from "../sound.js";
+import { play as sfx, testSound, audioState } from "../sound.js";
 import { I } from "../icons.js";
 import { go, back } from "../router.js";
 import { engineName } from "../engine.js";
@@ -67,7 +67,9 @@ export function renderSettings(root) {
       ${tog("sound", "Sounds", "Move, capture and check sounds")}
       <div class="setting"><div class="l"><b>Sound set</b></div><select class="ss"><option value="wood">Wood (default)</option><option value="sfx">Lichess SFX</option><option value="piano">Piano</option></select></div>
       <div class="setting"><div class="l"><b>Volume</b></div><input type="range" class="vol" min="0" max="1" step="0.05" value="${st.volume ?? 0.8}" style="max-width:160px"></div>
+      ${tog("soundOnSilent", "Play even on silent mode", "iPhone: sounds play with the side switch on silent. Turn off if it pauses your music.")}
       ${tog("haptics", "Vibration", "Short buzz on captures and checks (Android)")}
+      <div class="setting"><div class="l"><b>Test sound</b><small class="ast"></small></div><button class="btn sm tsnd">🔊 Play</button></div>
     </div>
     <div class="card"><h3>Gameplay</h3>
       ${tog("legal", "Show legal moves", "Dots on squares you can move to")}
@@ -105,6 +107,7 @@ export function renderSettings(root) {
   const sel = (cls, key, num) => { const e = $(cls, root); e.value = String(st[key]); e.onchange = () => { st[key] = num ? +e.value : e.value; refresh(); if (key === "soundSet") sfx("capture"); }; };
   sel(".ss", "soundSet"); sel(".am", "animMs", true); sel(".co", "coords");
   $(".vol", root).oninput = (e) => { st.volume = +e.target.value; };
+  $(".tsnd", root).onclick = () => { if (!st.sound) { st.sound = true; save(); const t = $('.tg[data-k="sound"]', root); if (t) t.checked = true; } testSound(); setTimeout(() => ($(".ast", root).textContent = "Audio: " + audioState()), 600); };
   $(".vol", root).onchange = () => { save(); sfx("move"); };
   $(".cpb", root).onclick = () => copyText(exportBackup());
   $(".dlb", root).onclick = () => download("noir-chess-backup-" + new Date().toISOString().slice(0, 10) + ".json", exportBackup(), "application/json");

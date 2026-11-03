@@ -29,7 +29,7 @@ export function defaults() {
     xp: 0,
     achievements: {},
     settings: {
-      sound: true, soundSet: "wood", volume: 0.8,
+      sound: true, soundSet: "wood", volume: 0.8, soundOnSilent: true,
       board: "green", pieces: "cburnett", theme: "dark",
       coords: "inside", legal: true, anim: true, animMs: 160,
       autoQueen: false, premove: true, confirmResign: true,

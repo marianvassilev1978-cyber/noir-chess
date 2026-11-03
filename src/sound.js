@@ -5,13 +5,37 @@ let ctx = null;
 const buffers = {};
 const FILES = { move: "Move", capture: "Capture", check: "Check", castle: "Move", promote: "Check", start: "GenericNotify", notify: "GenericNotify", lowtime: "LowTime", win: "Victory", lose: "Defeat", draw: "Draw", correct: "GenericNotify", wrong: "Capture", select: null };
 
+// iOS: let sounds play even when the ring/silent switch is on (Safari 16.4+). Without this,
+// Web Audio is muted by the silent switch.
+function setSession() {
+  try { if (navigator.audioSession) navigator.audioSession.type = state().settings.soundOnSilent === false ? "ambient" : "playback"; } catch {}
+}
+
 function ac() {
   if (!ctx) { try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch { return null; } }
-  if (ctx.state === "suspended") ctx.resume().catch(() => {});
+  if (ctx.state !== "running") ctx.resume().catch(() => {});
   return ctx;
 }
-// iOS needs a gesture to unlock audio
-["pointerdown", "touchstart", "keydown"].forEach((ev) => window.addEventListener(ev, () => ac(), { once: true, passive: true }));
+
+// iOS only unlocks audio inside a real user activation (touchend / click / keydown — NOT touchstart or a
+// touch pointerdown), and older iOS also needs a sound started inside that event. Retry on every tap until running.
+let unlocked = false;
+function unlock() {
+  setSession();
+  const c = ac();
+  if (!c) return;
+  try {
+    const b = c.createBuffer(1, 1, 22050);
+    const s = c.createBufferSource();
+    s.buffer = b; s.connect(c.destination); s.start(0);
+  } catch {}
+  if (c.state === "running") unlocked = true;
+}
+["touchend", "click", "pointerup", "keydown"].forEach((ev) => window.addEventListener(ev, () => { if (!unlocked || (ctx && ctx.state !== "running")) unlock(); }, { passive: true, capture: true }));
+// iOS suspends ("interrupts") the context when the app goes to the background
+document.addEventListener("visibilitychange", () => { if (!document.hidden && ctx && ctx.state !== "running") { unlocked = false; ctx.resume().catch(() => {}); } });
+export const audioState = () => (ctx ? ctx.state : "not started");
+export function testSound() { unlock(); setTimeout(() => play("move"), 40); setTimeout(() => play("capture"), 400); setTimeout(() => play("check"), 800); }
 
 async function buf(set, name) {
   const k = set + "/" + name;

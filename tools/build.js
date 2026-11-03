@@ -46,7 +46,12 @@ self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) =
 self.addEventListener("fetch", (e) => {
   const u = new URL(e.request.url);
   if (e.request.method !== "GET" || u.origin !== location.origin) return;
-  // stale-while-revalidate for everything same-origin
+  // the page and app code: network first, so updates arrive on the next open; offline falls back to cache
+  if (e.request.mode === "navigate" || /\\/(index\\.html|app\\.js|app\\.css|sw\\.js)?$/.test(u.pathname) || u.pathname.includes("/content/")) {
+    e.respondWith(fetch(e.request).then((res) => { if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(e.request, copy)); } return res; }).catch(() => caches.match(e.request, { ignoreSearch: true }).then((r) => r || caches.match("index.html"))));
+    return;
+  }
+  // stale-while-revalidate for the big static files (engine, pieces, sounds)
   e.respondWith(caches.open(VERSION).then((c) => c.match(e.request, { ignoreSearch: true }).then((hit) => {
     const net = fetch(e.request).then((res) => { if (res.ok) c.put(e.request, res.clone()); return res; }).catch(() => hit || c.match("index.html"));
     return hit || net;
