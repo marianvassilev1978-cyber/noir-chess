@@ -4,7 +4,7 @@ import { state, save, exportBackup, importBackup, resetAll, storageMode, TC_CATS
 import { BOARDS, PIECE_SETS, APP_THEMES, applyTheme, miniBoardStyle } from "../themes.js";
 import { ratingChart, avatar, userPlayer } from "../ui.js";
 import { Board, pieceURL } from "../board.js";
-import { play as sfx, testSound, audioState } from "../sound.js";
+import { play as sfx, testSound, audioState, preloadCurrent } from "../sound.js";
 import { I } from "../icons.js";
 import { go, back } from "../router.js";
 import { engineName } from "../engine.js";
@@ -65,8 +65,9 @@ export function renderSettings(root) {
     <div class="card"><h3>App theme</h3><div class="chips ths">${APP_THEMES.map((t) => `<button class="chip" data-t="${t.id}"><span style="width:14px;height:14px;border-radius:50%;background:${t.bg};border:2px solid ${t.acc}"></span>${t.name}</button>`).join("")}</div></div>
     <div class="card"><h3>Sound</h3>
       ${tog("sound", "Sounds", "Move, capture and check sounds")}
-      <div class="setting"><div class="l"><b>Sound set</b></div><select class="ss"><option value="wood">Wood (default)</option><option value="sfx">Lichess SFX</option><option value="piano">Piano</option></select></div>
+      <div class="setting"><div class="l"><b>Sound set</b></div><select class="ss"><option value="wood">Wood — real recordings (default)</option><option value="sfx">Lichess SFX</option><option value="piano">Piano</option></select></div>
       <div class="setting"><div class="l"><b>Volume</b></div><input type="range" class="vol" min="0" max="1" step="0.05" value="${st.volume ?? 0.8}" style="max-width:160px"></div>
+      ${tog("soundOnSilent", "Play when iPhone is on silent", "On: sounds play even with the side switch on silent (may pause your music). Off: mixes with your music, silent switch mutes it.")}
       ${tog("haptics", "Vibration", "Short buzz on captures and checks (Android)")}
       <div class="setting"><div class="l"><b>Test sound</b><small class="ast"></small></div><button class="btn sm tsnd">🔊 Play</button></div>
     </div>
@@ -103,7 +104,7 @@ export function renderSettings(root) {
   bds(); pcs();
   $$(".ths .chip", root).forEach((c) => { c.classList.toggle("on", c.dataset.t === st.theme); c.onclick = () => { st.theme = c.dataset.t; $$(".ths .chip", root).forEach((x) => x.classList.toggle("on", x === c)); refresh(); }; });
   $$(".tg", root).forEach((el) => (el.onchange = () => { st[el.dataset.k] = el.checked; refresh(); if (el.dataset.k === "sound" && el.checked) sfx("move"); }));
-  const sel = (cls, key, num) => { const e = $(cls, root); e.value = String(st[key]); e.onchange = () => { st[key] = num ? +e.value : e.value; refresh(); if (key === "soundSet") sfx("capture"); }; };
+  const sel = (cls, key, num) => { const e = $(cls, root); e.value = String(st[key]); e.onchange = () => { st[key] = num ? +e.value : e.value; refresh(); if (key === "soundSet") { preloadCurrent(); testSound(); } }; };
   sel(".ss", "soundSet"); sel(".am", "animMs", true); sel(".co", "coords");
   $(".vol", root).oninput = (e) => { st.volume = +e.target.value; };
   $(".tsnd", root).onclick = () => { if (!st.sound) { st.sound = true; save(); const t = $('.tg[data-k="sound"]', root); if (t) t.checked = true; } testSound(); setTimeout(() => ($(".ast", root).textContent = "Audio: " + audioState()), 600); };

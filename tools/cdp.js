@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
 
-const ROOT = path.join(__dirname, "..", "docs");
+const ROOT = path.resolve(process.env.ROOT || path.join(__dirname, "..", "docs"));
 const SHOTS = process.env.SHOTS || path.join(__dirname, "..", "..", "noir-shots");
 fs.mkdirSync(SHOTS, { recursive: true });
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".wasm": "application/wasm", ".svg": "image/svg+xml", ".png": "image/png", ".mp3": "audio/mpeg" };
