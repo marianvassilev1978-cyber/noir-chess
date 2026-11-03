@@ -1,0 +1,4444 @@
+[
+ {
+  "id": "alien-gambit",
+  "name": "Alien Gambit (vs Caro-Kann)",
+  "side": "w",
+  "level": "Intermediate",
+  "eco": "B15",
+  "tagline": "1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Nf6 5.Ng5 h6 6.Nxf7!? – a knight sacrifice on f7, made famous by the Bulgarian streamer CM Volen Dyulgerov (Witty_Alien). Objectively unsound (about −1.5), but very dangerous in blitz and rapid.",
+  "ideas": [
+   "The gambit was popularised by **CM Volen Dyulgerov – 'Witty_Alien' – a Bulgarian chess streamer**. It is a weapon against the Caro-Kann, the same opening you play as Black.",
+   "**Be honest with yourself:** after 6.Nxf7 Kxf7 the engine says Black is better by about 1.5 pawns. You play it because Black must find many precise moves in a row, and in fast games most players don't.",
+   "Black's king stands on **f7** and can never castle. Your whole plan is to **open lines toward it**: Bc4+, Nf3-e5+, Qe2, castle long, then g4-g5 and the rooks on the e- and f-files.",
+   "**e5 and h4 are magic squares** for your f3 knight: from there it gives check to a king on f7 or g6 and often forks something at the same time (a bishop on g4 or f5).",
+   "The **e6 pawn is pinned** by your bishop on c4 when Black's king is on f7. Pile up on it with Qe2 and Re1.",
+   "If Black does not play 5...h6 (for example 5...Bf5 or 5...Bg4), **don't sacrifice** – the engine says those moves are fine for Black, so just play normal chess."
+  ],
+  "lines": [
+   {
+    "id": "alien-main",
+    "name": "Main line: 7.Bc4+ e6 8.Nf3 c5 9.Qe2",
+    "type": "main",
+    "intro": "The main line against Black's best defence. You will be a piece down, but Black's king is stuck on f7 and you castle long and throw your pawns at it. Learn the ideas, not only the moves.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "Start with the king's pawn. The Alien Gambit only appears after 1.e4 c6."
+     },
+     {
+      "san": "c6",
+      "text": "Black chooses the **Caro-Kann** – your own Black opening. Now you see it from the other side of the board."
+     },
+     {
+      "san": "d4",
+      "text": "Take the full center with two pawns."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks your e4 pawn with a pawn that is protected by c6."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight. This is the main line, and it leads to the Alien."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black releases the tension and takes on e4."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture. Your knight now stands in the center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black challenges your knight. Normally White trades on f6 or retreats to g3."
+     },
+     {
+      "san": "Ng5",
+      "text": "Witty_Alien's idea: the knight jumps toward **f7**, the weakest square in Black's camp – only the king protects it. The knight also avoids being traded."
+     },
+     {
+      "san": "h6",
+      "text": "The most natural reply: Black kicks the knight away. Most players expect Nf3 or Nh3 now."
+     },
+     {
+      "san": "Nxf7",
+      "text": "**The Alien Gambit!** You give a whole knight for one pawn. In return the black king is dragged to f7, it loses the right to castle and lines toward it will open. The engine says it is objectively wrong (about −1.5) – the point is how hard it is for Black to defend in practice."
+     },
+     {
+      "san": "Kxf7",
+      "text": "Black takes. Black is a piece up, but the king stands on f7 in the middle of the action."
+     },
+     {
+      "san": "Bc4+",
+      "text": "Check with tempo. The bishop aims straight at the king along the c4-d5-e6-f7 diagonal."
+     },
+     {
+      "san": "e6",
+      "text": "Black blocks with a pawn. This pawn is now **pinned**: it cannot move because the king stands behind it on the diagonal."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop the last knight. It eyes **e5**, from where it gives check to the king on f7. This square is the heart of every Alien attack."
+     },
+     {
+      "san": "c5",
+      "text": "Black's best: strike at your center to open lines for Black's pieces. Defenders who sit and wait usually get mated."
+     },
+     {
+      "san": "Qe2",
+      "text": "The queen comes behind the pinned e6 pawn. Ideas: Ne5+ and then Qxe6 or Bxe6. You also prepare to castle long."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black develops and adds pressure on your d4 pawn."
+     },
+     {
+      "san": "Be3",
+      "text": "Develop the last minor piece. You want to castle long as fast as possible – the bishop must leave c1 first."
+     },
+     {
+      "san": "cxd4",
+      "text": "Black takes the pawn, and the pawn on d4 now attacks your bishop on e3."
+     },
+     {
+      "san": "O-O-O",
+      "text": "Castle long and ignore the bishop! If 11...dxe3, the d-file opens and **Rxd8** wins Black's queen. Your king is safe on c1 and your rook is on the d-file."
+     },
+     {
+      "san": "Bc5",
+      "text": "Black defends the d4 pawn with the bishop and develops. Black's king is still on f7 and needs several moves to get safe."
+     },
+     {
+      "san": "g4",
+      "text": "Pawn storm! The plan is **g4-g5** to chase the **f6 knight**, the only piece defending Black's king. If Black ever takes on g4, the g-file opens for your rooks."
+     },
+     {
+      "san": "Qe7",
+      "text": "Black brings the queen next to the king. But careful: the queen has left d8, so now ...dxe3 really threatens to win your bishop."
+     },
+     {
+      "san": "Bd2",
+      "text": "Step the bishop back. In a gambit you keep your attacking pieces – losing them for nothing kills the attack."
+     },
+     {
+      "san": "Bd7",
+      "text": "Black develops the last minor piece and hopes to connect the rooks."
+     },
+     {
+      "san": "Rde1",
+      "text": "The rook goes to the **e-file**, where the e6 pawn and Black's queen stand. Next ideas: g5 to remove the f6 knight, Ne5+ and Rhf1 to load the f-file too."
+     }
+    ],
+    "summary": "Objectively Black is better (engine about −1.7): you are a piece down for a pawn. But Black's king is stuck on f7, and your plan is simple – g5, Ne5+, rooks on the e- and f-files. In blitz this is very hard to defend. Keep the queens on and keep pieces for the attack."
+   },
+   {
+    "id": "alien-trap-bg4",
+    "name": "Trap: 7.Nf3 Bg4? 8.Ne5+ fork",
+    "type": "trap",
+    "intro": "After 7.Nf3 the most natural move for Black is to pin your knight with ...Bg4. It is a big mistake: the knight jumps out of the pin WITH CHECK and forks the bishop.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "c6",
+      "text": "The Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "Build the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture in the center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black challenges your knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "The Alien knight jumps toward f7."
+     },
+     {
+      "san": "h6",
+      "text": "Black kicks it."
+     },
+     {
+      "san": "Nxf7",
+      "text": "**The Alien Gambit**: knight for pawn, the king is dragged out."
+     },
+     {
+      "san": "Kxf7",
+      "text": "Black takes and is a piece up."
+     },
+     {
+      "san": "Nf3",
+      "text": "This time you develop the knight first. It prepares **Ne5+**, and the bishop can still come to c4 or d3 later."
+     },
+     {
+      "san": "Bg4",
+      "text": "**A mistake.** It looks like a good move: the bishop develops and pins your knight to your queen. But a pinned piece is allowed to move if it gives **check** – then Black never has time to take your queen."
+     },
+     {
+      "san": "Ne5+",
+      "text": "**Fork!** The knight gives check to the king on f7 AND attacks the bishop on g4. Black must deal with the check first."
+     },
+     {
+      "san": "Ke8",
+      "text": "The king goes back. It cannot take the knight, and the bishop on g4 is still attacked."
+     },
+     {
+      "san": "Nxg4",
+      "text": "Take the bishop."
+     },
+     {
+      "san": "Nxg4",
+      "text": "Black's knight takes your knight back..."
+     },
+     {
+      "san": "Qxg4",
+      "text": "...and your queen recaptures (the diagonal d1-e2-f3-g4 is open). Count the material: both sides lost two minor pieces, but you also have the f7 pawn. You are a **pawn up** and Black can never castle."
+     },
+     {
+      "san": "Qd7",
+      "text": "Black offers to trade queens. Without queens, the king in the center would be much safer."
+     },
+     {
+      "san": "Qg6+",
+      "text": "Keep the queens on! Check from g6 along the g6-f7-e8 diagonal. The black king is still in the open."
+     },
+     {
+      "san": "Kd8",
+      "text": "The king runs to d8. It is still stuck in the middle of the board."
+     },
+     {
+      "san": "Bf4",
+      "text": "Develop with tempo-like pressure: the bishop eyes c7 and controls the important b8-h2 diagonal."
+     },
+     {
+      "san": "e6",
+      "text": "Black opens a path for the dark-squared bishop."
+     },
+     {
+      "san": "O-O-O",
+      "text": "Castle long! Your rook lands on the **d-file**, the same file as Black's king and queen. You are a healthy pawn up, your king is safe and Black's king is not."
+     }
+    ],
+    "summary": "The pattern to remember: a pinned knight on f3 can jump to e5 WITH CHECK when the king is on f7 – the pin does not matter. Engine: White is winning (about +3.9)."
+   },
+   {
+    "id": "alien-trap-kg6",
+    "name": "Trap: 7.Bc4+ Kg6? and the Nh4+ fork",
+    "type": "trap",
+    "intro": "Some players answer 7.Bc4+ by walking the king to g6. The engine says this throws away almost all of Black's advantage. Then one more natural developing move loses a piece to a knight fork.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "c6",
+      "text": "The Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "Build the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture in the center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black challenges your knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "The Alien knight jumps toward f7."
+     },
+     {
+      "san": "h6",
+      "text": "Black kicks it."
+     },
+     {
+      "san": "Nxf7",
+      "text": "**The Alien Gambit**: knight for pawn."
+     },
+     {
+      "san": "Kxf7",
+      "text": "Black takes the knight."
+     },
+     {
+      "san": "Bc4+",
+      "text": "Check along the c4-f7 diagonal."
+     },
+     {
+      "san": "Kg6",
+      "text": "**Inaccurate.** Instead of blocking with ...e6 or ...Be6, the king walks forward. The engine says the position is now about equal – Black has given back almost all of the extra piece's value."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop, and look at what the knight attacks next: from **e5** or **h4** it gives check to a king on g6."
+     },
+     {
+      "san": "Bf5",
+      "text": "**A mistake.** The bishop develops to a nice-looking square – but f5 and g6 can both be hit by a knight on h4."
+     },
+     {
+      "san": "Nh4+",
+      "text": "**Fork!** The knight checks the king on g6 and attacks the bishop on f5 at the same time."
+     },
+     {
+      "san": "Kh7",
+      "text": "The king must move. It cannot go to h5 (your queen on d1 covers it) or f7 (your bishop on c4 covers it)."
+     },
+     {
+      "san": "Nxf5",
+      "text": "Take the bishop. Count: you gave a knight for the f7 pawn and now won a bishop. You are a **pawn up**, you have the two bishops, and Black's king is stuck on h7."
+     },
+     {
+      "san": "e5",
+      "text": "Black grabs space and opens the dark-squared bishop."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle and bring the rook toward the f-file. With your knight on f5 and bishop on c4, all of Black's light squares around the king are weak."
+     },
+     {
+      "san": "Nbd7",
+      "text": "Black develops the last knight."
+     },
+     {
+      "san": "Qe2",
+      "text": "Connect your rooks and bring the queen closer. Engine: White is clearly better (about +2.8)."
+     }
+    ],
+    "summary": "Two lessons: (1) a king on g6 is a target for knight checks from e5 and h4; (2) before every move, ask 'can a knight check my king and hit something else?'. Black's correct answer to 7.Bc4+ was 7...e6 or 7...Be6."
+   },
+   {
+    "id": "alien-declined-bf5",
+    "name": "Black declines: 5...Bf5 (no sacrifice!)",
+    "type": "variation",
+    "intro": "Not every Black player kicks the knight with 5...h6. Many play 5...Bf5 or 5...Bg4. The engine checks show that BOTH moves are completely fine for Black – they are not blunders. Here you learn to switch to normal chess instead of sacrificing.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "c6",
+      "text": "The Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "Build the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture in the center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black challenges your knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "Your Alien setup. Now you wait to see if Black plays ...h6."
+     },
+     {
+      "san": "Bf5",
+      "text": "Black develops instead of chasing the knight. This is a **good move** (engine about 0.0). Without ...h6 the sacrifice on f7 makes no sense: Black would just be a piece up with no weaknesses."
+     },
+     {
+      "san": "Bd3",
+      "text": "Offer to trade bishops. Black's light-squared bishop is Black's best piece in the Caro-Kann, and after the trade your queen comes to an active square."
+     },
+     {
+      "san": "Bxd3",
+      "text": "Black takes."
+     },
+     {
+      "san": "Qxd3",
+      "text": "Recapture. Your queen points at h7 together with the knight on g5."
+     },
+     {
+      "san": "h6",
+      "text": "Now Black kicks the knight."
+     },
+     {
+      "san": "N5f3",
+      "text": "Retreat to a good central square. No sacrifice: the f7 square is no longer weak enough."
+     },
+     {
+      "san": "e6",
+      "text": "Black builds the solid Caro-Kann pawn chain."
+     },
+     {
+      "san": "Ne2",
+      "text": "Develop the last knight and get ready to castle. The position is equal – normal, healthy chess."
+     }
+    ],
+    "summary": "A gambit is a tool, not a religion. If Black doesn't give you the right position (5...h6), just develop, castle and play a normal game. Against 5...Bg4 the same idea works: Be2 or N5f3, with equal chances."
+   }
+  ]
+ },
+ {
+  "id": "martian-gambit",
+  "name": "Martian Gambit (vs Caro-Kann)",
+  "side": "w",
+  "level": "Intermediate",
+  "eco": "B18",
+  "tagline": "1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Bf5 5.Ng5 Bg6 6.N1f3 h6 7.Ne6!? fxe6 8.Ne5 – Witty_Alien's second Caro-Kann weapon (2024). Unsound (about −1.3 to −1.5), but full of traps on the light squares.",
+  "ideas": [
+   "Like the Alien, the Martian Gambit comes from the Bulgarian streamer **Witty_Alien (CM Volen Dyulgerov)**, who introduced it in 2024. It hits the Classical Caro-Kann (4...Bf5).",
+   "You sacrifice a knight on **e6** to wreck Black's pawns: after ...fxe6 the squares **e6, f7 and g6** are weak and Black's king has no pawn shelter on the f-file.",
+   "After 8.Ne5 the knight **attacks the bishop on g6**. Black has no pawn on f7 or h7 to protect it any more, so any slow developing move (8...Nf6? or 8...Nd7?) loses the bishop and then the rook on h8.",
+   "Your attacking pieces: **Bd3** (trade Black's light-squared defender), **Ng6** (cramps the rook on h8), **Qh5+** or **Qg4** (hit e6 and g6), and later **Re1** against the e6 pawn.",
+   "**Be honest:** with 8...Bf5! or 8...Bh7! Black keeps the extra piece and the engine says Black is clearly better. Use the Martian as a surprise weapon in fast games."
+  ],
+  "lines": [
+   {
+    "id": "martian-main",
+    "name": "Main line: 8...Bh7 9.Bd3 Nf6 10.Ng6",
+    "type": "main",
+    "intro": "Black saves the bishop with 8...Bh7, a good move. You trade or block Black's light-squared bishop, plant a knight on g6 and play against the weak e6 pawn.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "c6",
+      "text": "The Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "Build the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture in the center."
+     },
+     {
+      "san": "Bf5",
+      "text": "The **Classical Caro-Kann**: Black develops the bishop with tempo on your knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "Instead of the usual Ng3, the knight jumps to g5. It eyes **e6, f7 and h7** – the squares around Black's king."
+     },
+     {
+      "san": "Bg6",
+      "text": "Black keeps the bishop on the b1-h7 diagonal. It looks safe, but it is slightly inaccurate: the engine prefers 5...e6 or 5...h6."
+     },
+     {
+      "san": "N1f3",
+      "text": "Develop the other knight. It supports the jump to **e5** later."
+     },
+     {
+      "san": "h6",
+      "text": "The natural move: Black kicks the g5 knight."
+     },
+     {
+      "san": "Ne6",
+      "text": "**The Martian Gambit!** The knight lands on e6 and attacks the queen on d8 and the bishop on f8. Black has to take it."
+     },
+     {
+      "san": "fxe6",
+      "text": "Black takes. Now Black is a piece up, but the f-pawn has left f7 – the e8-h5 diagonal and the squares f7 and g6 are weak."
+     },
+     {
+      "san": "Ne5",
+      "text": "The point: the knight attacks the **bishop on g6**, which has lost its pawn protection. Black must move it or lose it."
+     },
+     {
+      "san": "Bh7",
+      "text": "A good answer: the bishop hides on h7, where nothing can attack it right now."
+     },
+     {
+      "san": "Bd3",
+      "text": "Offer a bishop trade. Black's light-squared bishop is the main defender of the weak light squares (e6, f7, g6)."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops instead of trading."
+     },
+     {
+      "san": "Ng6",
+      "text": "The knight lands on **g6**: it attacks the rook on h8, blocks the bishop on h7 and cramps Black's whole kingside."
+     },
+     {
+      "san": "Rg8",
+      "text": "The rook steps aside."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle and get your last pieces into the game. Your rook can come to e1 to hit e6."
+     },
+     {
+      "san": "Qxd4",
+      "text": "Black grabs a central pawn – the d4 pawn was no longer protected because your bishop on d3 blocks the queen."
+     },
+     {
+      "san": "c3",
+      "text": "Kick the queen with tempo. Every tempo counts when you are a piece down."
+     },
+     {
+      "san": "Qd8",
+      "text": "The queen goes home."
+     },
+     {
+      "san": "Re1",
+      "text": "The rook goes to the e-file and attacks the weak **e6 pawn**."
+     },
+     {
+      "san": "e5",
+      "text": "Black gets the pawn out of the attack and tries to free the position."
+     },
+     {
+      "san": "Nxe5",
+      "text": "Take it. Now your bishop on d3 and Black's bishop on h7 face each other, and your queen can come to b3 to look at the light squares (g8, e6) next."
+     }
+    ],
+    "summary": "Black is objectively better (engine about −2): you are a piece down for pawns. Your practical chances come from Black's weak light squares and the king that can't easily castle. Typical continuation: ...Bxd3 Qb3 hitting g8 and e6. Play fast and keep pieces on."
+   },
+   {
+    "id": "martian-trap-nd7",
+    "name": "Trap: 8...Nd7? 9.Nxg6",
+    "type": "trap",
+    "intro": "After 8.Ne5 the bishop on g6 is attacked. Many players don't notice and just develop. Then the bishop falls and the rook on h8 follows.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "c6",
+      "text": "The Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "Build the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture in the center."
+     },
+     {
+      "san": "Bf5",
+      "text": "The Classical Caro-Kann."
+     },
+     {
+      "san": "Ng5",
+      "text": "The knight jumps toward e6 and f7."
+     },
+     {
+      "san": "Bg6",
+      "text": "Black keeps the bishop on the diagonal."
+     },
+     {
+      "san": "N1f3",
+      "text": "Develop and prepare Ne5."
+     },
+     {
+      "san": "h6",
+      "text": "Black kicks the knight."
+     },
+     {
+      "san": "Ne6",
+      "text": "**The Martian Gambit**: the knight attacks the queen and the f8 bishop."
+     },
+     {
+      "san": "fxe6",
+      "text": "Black takes the knight."
+     },
+     {
+      "san": "Ne5",
+      "text": "Now the bishop on g6 is attacked and has no pawn defending it."
+     },
+     {
+      "san": "Nd7",
+      "text": "**A mistake.** A natural developing move that challenges your knight – but it ignores the attack on g6."
+     },
+     {
+      "san": "Nxg6",
+      "text": "Take the bishop. Black can't recapture: there is no pawn on f7 or h7. And the knight now attacks the **rook on h8**."
+     },
+     {
+      "san": "Qa5+",
+      "text": "Black tries to make some noise with a check."
+     },
+     {
+      "san": "Bd2",
+      "text": "Block calmly and develop at the same time."
+     },
+     {
+      "san": "Qd5",
+      "text": "The queen centralises and attacks d4 and g2, hoping for counterplay."
+     },
+     {
+      "san": "Nxh8",
+      "text": "Take the rook. You are now a whole rook up. Even if the knight on h8 gets trapped later, you will still be the exchange ahead."
+     },
+     {
+      "san": "Ngf6",
+      "text": "Black develops the last knight."
+     },
+     {
+      "san": "Qf3",
+      "text": "Offer a queen trade. **When you are ahead in material, trade queens** – Black's counterplay disappears and your extra material decides."
+     }
+    ],
+    "summary": "The key square is g6: after ...fxe6 nothing protects it. Black must move the bishop at once (8...Bf5 or 8...Bh7). Engine: White is winning (about +4.6)."
+   },
+   {
+    "id": "martian-trap-qxd4",
+    "name": "Trap: 8...Qxd4?? 9.Qxd4",
+    "type": "trap",
+    "intro": "A greedy Black player sees the d4 pawn and takes it with the queen, maybe hoping to also hit your knight on e5. But d4 is protected by your queen.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "c6",
+      "text": "The Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "Build the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Recapture in the center."
+     },
+     {
+      "san": "Bf5",
+      "text": "The Classical Caro-Kann."
+     },
+     {
+      "san": "Ng5",
+      "text": "The knight jumps toward e6 and f7."
+     },
+     {
+      "san": "Bg6",
+      "text": "Black keeps the bishop on the diagonal."
+     },
+     {
+      "san": "N1f3",
+      "text": "Develop and prepare Ne5."
+     },
+     {
+      "san": "h6",
+      "text": "Black kicks the knight."
+     },
+     {
+      "san": "Ne6",
+      "text": "**The Martian Gambit.**"
+     },
+     {
+      "san": "fxe6",
+      "text": "Black takes the knight."
+     },
+     {
+      "san": "Ne5",
+      "text": "Attack the bishop on g6."
+     },
+     {
+      "san": "Qxd4",
+      "text": "**A blunder.** The queen grabs the pawn and attacks your knight – but your queen on d1 protects d4 along the open d-file."
+     },
+     {
+      "san": "Qxd4",
+      "text": "Take the queen. Black has no way to recapture."
+     },
+     {
+      "san": "Bf5",
+      "text": "Black at least saves the bishop from your e5 knight."
+     },
+     {
+      "san": "Qb4",
+      "text": "Your queen becomes active and attacks b7 and e7."
+     },
+     {
+      "san": "b6",
+      "text": "Black protects the b-pawn."
+     },
+     {
+      "san": "g4",
+      "text": "Chase the bishop with a pawn. With a queen against a knight you can be aggressive."
+     },
+     {
+      "san": "Bh7",
+      "text": "The bishop retreats. White is completely winning (engine about +6)."
+     }
+    ],
+    "summary": "Before you capture, always ask: 'is this piece protected?' Here the d4 pawn was protected by the queen on d1. Simple, but it happens a lot in fast games."
+   }
+  ]
+ },
+ {
+  "id": "vs-alien-gambit",
+  "name": "Defending the Alien Gambit (as Black)",
+  "side": "b",
+  "level": "Intermediate",
+  "eco": "B15",
+  "tagline": "You play the Caro-Kann, so you WILL meet 5.Ng5 and 6.Nxf7 online. Take the knight, then follow three rules: hit the center with ...c5, block checks with ...e6 or ...Be6, and never put your bishop on g4 while Ne5+ is possible.",
+  "ideas": [
+   "**Take the knight (6...Kxf7).** The engine says the sacrifice is unsound: after accepting you are about 1.5 pawns better. Refusing just leaves you a pawn down.",
+   "**Counter-attack in the center with ...c5.** Opening lines for YOUR pieces is the best defence; trading White's center pawns takes away squares from the attackers.",
+   "**Against Bc4+: block with ...e6 or ...Be6.** Never walk the king to g6 – a king on g6 is hit by knight checks from e5 and h4 (see the Alien trap lines).",
+   "**No ...Bg4 while the knight can jump to e5 with check!** A pinned knight on f3 can still move if it gives check: Ne5+ forks the king and the g4 bishop.",
+   "**Trade White's attackers**, especially the light-squared bishop (…Be6). Every trade makes your extra piece count more. Your king can later walk to g8 (…Kg8) by itself – that is your 'manual castle'."
+  ],
+  "lines": [
+   {
+    "id": "vs-alien-main",
+    "name": "Main defence: 7.Nf3 c5! 8.Bc4+ e6",
+    "type": "main",
+    "intro": "The most common way White plays: Nf3, Bc4+, Qe2, castle long. You hit the center with ...c5, block the check with ...e6 and develop fast.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White opens with the king's pawn."
+     },
+     {
+      "san": "c6",
+      "text": "Your **Caro-Kann**: prepare ...d5 with a protected pawn."
+     },
+     {
+      "san": "d4",
+      "text": "White builds the two-pawn center."
+     },
+     {
+      "san": "d5",
+      "text": "Challenge e4 right away."
+     },
+     {
+      "san": "Nc3",
+      "text": "White defends e4 with the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Take on e4 – the main line."
+     },
+     {
+      "san": "Nxe4",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Nf6",
+      "text": "Challenge the knight. (4...Bf5 is your Classical line – then White can try the Martian Gambit instead.)"
+     },
+     {
+      "san": "Ng5",
+      "text": "The Alien setup. The knight eyes f7 and h7 and avoids being traded."
+     },
+     {
+      "san": "h6",
+      "text": "Kick the knight. This is a fine move – but now you must be ready for the sacrifice."
+     },
+     {
+      "san": "Nxf7",
+      "text": "**The Alien Gambit**: White sacrifices a knight for a pawn."
+     },
+     {
+      "san": "Kxf7",
+      "text": "**Take it!** The engine says you are now about 1.5 pawns better. Your job is to survive the next ten moves without mistakes."
+     },
+     {
+      "san": "Nf3",
+      "text": "White develops and prepares Ne5+ (and Bc4+)."
+     },
+     {
+      "san": "c5",
+      "text": "**The best move.** Hit the center: you open lines for your queen and pieces and fight for the e5 square. Do NOT play ...Bg4? here because of **Ne5+** forking king and bishop."
+     },
+     {
+      "san": "Bc4+",
+      "text": "White checks along the c4-f7 diagonal."
+     },
+     {
+      "san": "e6",
+      "text": "Block with the pawn. It is pinned to your king for now, but it is solid and it opens the way for your f8 bishop."
+     },
+     {
+      "san": "Qe2",
+      "text": "White puts the queen behind the e6 pawn and prepares castling long."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop and add pressure on d4. Every piece you bring out is a new defender."
+     },
+     {
+      "san": "Be3",
+      "text": "White develops the bishop to castle long."
+     },
+     {
+      "san": "cxd4",
+      "text": "Take the pawn and attack White's bishop. Now you are a piece AND a pawn up."
+     },
+     {
+      "san": "O-O-O",
+      "text": "White castles long and leaves the bishop: if ...dxe3, then Rxd8 wins your queen on the open d-file."
+     },
+     {
+      "san": "Bc5",
+      "text": "Defend d4 with the bishop and develop. Do NOT take on e3 – check what is behind on the d-file first."
+     },
+     {
+      "san": "Rhe1",
+      "text": "White brings the rook to the e-file, against e6 and your king."
+     },
+     {
+      "san": "Qc7",
+      "text": "The queen leaves the d-file (no more Rxd8 tricks), connects with the pieces and watches e5 – the square White's knight wants."
+     }
+    ],
+    "summary": "You are a piece up and the engine says about −1.6. Next steps: ...Bd7, ...Rae8 or ...Rhf8, and walk the king to g8 when it is safe. Trade pieces whenever you can – the endgame is easily winning for you."
+   },
+   {
+    "id": "vs-alien-be6",
+    "name": "Simple defence: 7.Bc4+ Be6! – trade the attacker",
+    "type": "variation",
+    "intro": "If White checks with the bishop at once, you can block with your bishop and offer a trade. It is the cleanest way to kill White's attack: White's best attacking piece disappears.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White opens with the king's pawn."
+     },
+     {
+      "san": "c6",
+      "text": "Your Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Challenge e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "White defends e4."
+     },
+     {
+      "san": "dxe4",
+      "text": "Take on e4."
+     },
+     {
+      "san": "Nxe4",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Nf6",
+      "text": "Challenge the knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "The Alien setup."
+     },
+     {
+      "san": "h6",
+      "text": "Kick the knight."
+     },
+     {
+      "san": "Nxf7",
+      "text": "The Alien Gambit."
+     },
+     {
+      "san": "Kxf7",
+      "text": "Take it – you are a piece up."
+     },
+     {
+      "san": "Bc4+",
+      "text": "White checks immediately."
+     },
+     {
+      "san": "Be6",
+      "text": "**Block with the bishop and offer a trade.** If White takes, your king recaptures and White's most dangerous piece is gone."
+     },
+     {
+      "san": "Bxe6+",
+      "text": "White trades."
+     },
+     {
+      "san": "Kxe6",
+      "text": "The king takes back. It looks scary on e6, but White has very few pieces left to attack it – and the king will walk back to f7 next move."
+     },
+     {
+      "san": "Nf3",
+      "text": "White develops and hopes for Ne5 or Qe2+ ideas."
+     },
+     {
+      "san": "Kf7",
+      "text": "Bring the king back to safety. With the light-squared bishops off, White's attack is much weaker."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles and prepares Re1."
+     },
+     {
+      "san": "Nbd7",
+      "text": "Develop and cover e5 so White's knight can't jump there."
+     },
+     {
+      "san": "Re1",
+      "text": "White's rook goes to the open e-file."
+     },
+     {
+      "san": "e6",
+      "text": "Close the e-file with a pawn and open the diagonal for your f8 bishop. Next: ...Bd6, ...Qc7 and ...Kg8."
+     }
+    ],
+    "summary": "A piece up with a safe position (engine about −1.6). Simple plan: ...Bd6, ...Qc7, ...Rhf8 and ...Kg8. When the attack is gone, an extra piece wins the game."
+   },
+   {
+    "id": "vs-alien-bd3",
+    "name": "Against 7.Bd3: 7...Bg4! wins more material",
+    "type": "variation",
+    "intro": "Some White players aim the bishop at g6 with 7.Bd3. Here ...Bg4 is GOOD because your king is not exposed to Ne5+ yet: you trade the f3 knight and grab the d4 pawn.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White opens with the king's pawn."
+     },
+     {
+      "san": "c6",
+      "text": "Your Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Challenge e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "White defends e4."
+     },
+     {
+      "san": "dxe4",
+      "text": "Take on e4."
+     },
+     {
+      "san": "Nxe4",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Nf6",
+      "text": "Challenge the knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "The Alien setup."
+     },
+     {
+      "san": "h6",
+      "text": "Kick the knight."
+     },
+     {
+      "san": "Nxf7",
+      "text": "The Alien Gambit."
+     },
+     {
+      "san": "Kxf7",
+      "text": "Take it – you are a piece up."
+     },
+     {
+      "san": "Bd3",
+      "text": "White aims the bishop at g6 and h7 and wants Nf3, Qe2, Ne5+."
+     },
+     {
+      "san": "Bg4",
+      "text": "**Strong.** The bishop attacks White's queen and stops Nf3 from being a free developing move. There is no knight on f3 yet, so there is no Ne5+ trick."
+     },
+     {
+      "san": "Nf3",
+      "text": "White blocks with the knight."
+     },
+     {
+      "san": "Bxf3",
+      "text": "Trade the knight right away – it was the piece that wanted to jump to e5 with check."
+     },
+     {
+      "san": "Qxf3",
+      "text": "White recaptures with the queen."
+     },
+     {
+      "san": "Qxd4",
+      "text": "Grab the d4 pawn. Your queen is now in the center and White's d4 pawn – the support for any attack – is gone."
+     },
+     {
+      "san": "Qe2",
+      "text": "White's queen goes to e2, eyeing e6 and the e-file."
+     },
+     {
+      "san": "e6",
+      "text": "Block the e-file with a pawn and open the f8 bishop. You are a piece and a pawn up with a solid position."
+     }
+    ],
+    "summary": "Engine: about −2 for Black. Next: ...Bb4+ or ...Bd6, ...Nbd7 and ...Kg8. The rule: ...Bg4 is bad when a knight on f3 can jump to e5 WITH CHECK, but good when you can simply trade that knight off first."
+   }
+  ]
+ },
+ {
+  "id": "vs-martian-gambit",
+  "name": "Defending the Martian Gambit (as Black)",
+  "side": "b",
+  "level": "Intermediate",
+  "eco": "B18",
+  "tagline": "In your Classical Caro-Kann, 5.Ng5 Bg6 6.N1f3 h6 7.Ne6!? fxe6 8.Ne5 attacks your bishop on g6. Move it at once – 8...Bf5! (best) or 8...Bh7 – and you stay a piece up. Or avoid the whole thing with 5...e6.",
+  "ideas": [
+   "**After 8.Ne5 your bishop on g6 is attacked and has no pawn protecting it.** Any 'normal' developing move (…Nf6?, …Nd7?) loses the bishop and then the rook on h8. Move the bishop first!",
+   "**8...Bf5!** is the engine's top move: the bishop is protected by the e6 pawn and controls d3 and e4. After 9.g4 go to h7 and answer Bd3 with ...g5 and ...Qd5.",
+   "**Don't grab with the queen while d4 is protected.** 8...Qxd4?? just loses the queen to Qxd4. Only take d4 when White's bishop on d3 has blocked the d-file (then ...Qxd4 is strong!).",
+   "**Simplest of all: avoid the gambit.** After 5.Ng5 play **5...e6** (or 5...h6) instead of 5...Bg6. The e6 pawn takes away the Ne6 jump and you get a normal, comfortable Caro-Kann.",
+   "Your king will often stay in the center for a while. That's OK – put pawns on e6/g5, keep pieces near the king and trade White's attackers."
+  ],
+  "lines": [
+   {
+    "id": "vs-martian-bf5",
+    "name": "Best defence: 8...Bf5! 9.g4 Bh7 10.Bd3 g5",
+    "type": "main",
+    "intro": "The engine's recommended answer to the Martian Gambit. The bishop goes back to f5 where the e6 pawn protects it, and you meet White's kingside pawns with ...g5 and a centralised queen.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White opens with the king's pawn."
+     },
+     {
+      "san": "c6",
+      "text": "Your Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Challenge e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "White defends e4."
+     },
+     {
+      "san": "dxe4",
+      "text": "Take on e4."
+     },
+     {
+      "san": "Nxe4",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Bf5",
+      "text": "The **Classical Caro-Kann**: develop the bishop with tempo on the knight."
+     },
+     {
+      "san": "Ng5",
+      "text": "Instead of Ng3, the knight jumps to g5 – eyeing e6, f7 and h7."
+     },
+     {
+      "san": "Bg6",
+      "text": "Keep the bishop on the diagonal. (5...e6 is more precise – see the next line – but 5...Bg6 is very common.)"
+     },
+     {
+      "san": "N1f3",
+      "text": "White develops the other knight."
+     },
+     {
+      "san": "h6",
+      "text": "Kick the g5 knight."
+     },
+     {
+      "san": "Ne6",
+      "text": "**The Martian Gambit**: the knight attacks your queen and the f8 bishop."
+     },
+     {
+      "san": "fxe6",
+      "text": "Take it – there is no good alternative, and you are now a piece up."
+     },
+     {
+      "san": "Ne5",
+      "text": "The point of the gambit: the knight attacks your bishop on g6, which has no pawn defending it."
+     },
+     {
+      "san": "Bf5",
+      "text": "**The best move.** On f5 the bishop is protected by the e6 pawn, controls e4 and d3 and stays active. Don't play a developing move first – the bishop would be lost."
+     },
+     {
+      "san": "g4",
+      "text": "White kicks the bishop with a pawn."
+     },
+     {
+      "san": "Bh7",
+      "text": "Retreat to h7. The bishop is safe and still controls the b1-h7 diagonal."
+     },
+     {
+      "san": "Bd3",
+      "text": "White wants to trade the bishops to weaken your light squares."
+     },
+     {
+      "san": "g5",
+      "text": "Fix White's kingside pawns and take the f4 and h4 squares. Your bishop on h7 will happily trade on d3 later."
+     },
+     {
+      "san": "h4",
+      "text": "White attacks your g5 pawn and tries to open the h-file."
+     },
+     {
+      "san": "Qd5",
+      "text": "**Centralise the queen.** It attacks the rook on h1 (through e4, f3 and g2) and the d4 pawn. Defending by counter-attacking!"
+     },
+     {
+      "san": "f3",
+      "text": "White blocks the long diagonal."
+     },
+     {
+      "san": "Nd7",
+      "text": "Develop and challenge White's strong knight on e5."
+     },
+     {
+      "san": "Bg6+",
+      "text": "White gives check to trade bishops."
+     },
+     {
+      "san": "Bxg6",
+      "text": "Take – trading pieces is good for the side that is a piece up."
+     },
+     {
+      "san": "Nxg6",
+      "text": "White's knight takes back and attacks your rook on h8."
+     },
+     {
+      "san": "Rh7",
+      "text": "Move the rook. On h7 it also protects your 7th rank. You are a piece up (engine about −1.6)."
+     }
+    ],
+    "summary": "Black is clearly better: a piece for two pawns, with White's attack running out of pieces. Next: ...Ngf6, ...O-O-O or ...Kf7, and trade the g6 knight with ...Nf6-h5 or ...Bd6 ideas when possible."
+   },
+   {
+    "id": "vs-martian-bd3",
+    "name": "Punish 9.Bd3?: 9...Qxd4!",
+    "type": "variation",
+    "intro": "After 8...Bf5 White sometimes plays 9.Bd3 to trade bishops. But the bishop now blocks the d-file, so the d4 pawn is no longer protected by White's queen.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White opens with the king's pawn."
+     },
+     {
+      "san": "c6",
+      "text": "Your Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Challenge e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "White defends e4."
+     },
+     {
+      "san": "dxe4",
+      "text": "Take on e4."
+     },
+     {
+      "san": "Nxe4",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Bf5",
+      "text": "The Classical Caro-Kann."
+     },
+     {
+      "san": "Ng5",
+      "text": "The Martian setup."
+     },
+     {
+      "san": "Bg6",
+      "text": "Keep the bishop on the diagonal."
+     },
+     {
+      "san": "N1f3",
+      "text": "White develops."
+     },
+     {
+      "san": "h6",
+      "text": "Kick the knight."
+     },
+     {
+      "san": "Ne6",
+      "text": "The Martian Gambit."
+     },
+     {
+      "san": "fxe6",
+      "text": "Take the knight."
+     },
+     {
+      "san": "Ne5",
+      "text": "White attacks the g6 bishop."
+     },
+     {
+      "san": "Bf5",
+      "text": "The best retreat: protected by e6."
+     },
+     {
+      "san": "Bd3",
+      "text": "**A mistake.** White wants to trade bishops, but now the bishop stands between White's queen and the d4 pawn."
+     },
+     {
+      "san": "Qxd4",
+      "text": "**Take it!** The pawn is free, and your queen attacks the knight on e5 too."
+     },
+     {
+      "san": "Ng6",
+      "text": "White saves the knight and attacks your rook on h8."
+     },
+     {
+      "san": "Rh7",
+      "text": "Move the rook to h7, where it also guards your second rank."
+     },
+     {
+      "san": "Be3",
+      "text": "White develops with tempo on your queen."
+     },
+     {
+      "san": "Qf6",
+      "text": "Keep the queen active: from f6 it watches the long diagonal and the knight on g6 can't stay forever."
+     },
+     {
+      "san": "Nxf8",
+      "text": "White trades the knight for your bishop."
+     },
+     {
+      "san": "Qxf8",
+      "text": "Recapture. You are a piece and pawns up with no danger left (engine about −2.5)."
+     }
+    ],
+    "summary": "The same rule as in the trap lines: before taking on d4, check what protects it. Here White's own bishop blocked the d-file, so ...Qxd4 was a free pawn with tempo."
+   },
+   {
+    "id": "vs-martian-avoid",
+    "name": "Avoid it: 5...e6 (solid and simple)",
+    "type": "variation",
+    "intro": "The easiest way to beat a gambit is to not allow it. After 5.Ng5, the quiet 5...e6 puts a pawn on e6 – now there is no Ne6 sacrifice – and you get a normal Caro-Kann.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White opens with the king's pawn."
+     },
+     {
+      "san": "c6",
+      "text": "Your Caro-Kann."
+     },
+     {
+      "san": "d4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Challenge e4."
+     },
+     {
+      "san": "Nc3",
+      "text": "White defends e4."
+     },
+     {
+      "san": "dxe4",
+      "text": "Take on e4."
+     },
+     {
+      "san": "Nxe4",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Bf5",
+      "text": "The Classical Caro-Kann."
+     },
+     {
+      "san": "Ng5",
+      "text": "The Martian setup."
+     },
+     {
+      "san": "e6",
+      "text": "**The engine's top move.** The pawn covers e6 and f5 (no Ne6 jump), protects your bishop and opens the f8 bishop. The knight on g5 suddenly has nothing to do."
+     },
+     {
+      "san": "N5f3",
+      "text": "White's knight goes back – the g5 trip was a waste of time."
+     },
+     {
+      "san": "Nf6",
+      "text": "Develop toward the kingside and prepare to castle."
+     },
+     {
+      "san": "Bd3",
+      "text": "White offers to trade light-squared bishops."
+     },
+     {
+      "san": "Bxd3",
+      "text": "Take. Trading is fine: your pawns on c6 and e6 already cover the light squares."
+     },
+     {
+      "san": "Qxd3",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Be7",
+      "text": "Develop the bishop and get ready to castle."
+     },
+     {
+      "san": "Ne2",
+      "text": "White develops the last knight."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle. Your king is safe – the Martian ideas are gone."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles too."
+     },
+     {
+      "san": "c5",
+      "text": "The typical Caro-Kann break: hit White's d4 pawn and free your position. Equal and comfortable."
+     }
+    ],
+    "summary": "A solid, equal position where you know the plans: ...c5, ...Nc6, ...Qb6 or ...Qc7. Use this if you don't want to remember the Martian lines. 5...h6 6.N5f3 e6 also works."
+   }
+  ]
+ },
+ {
+  "id": "kings-gambit",
+  "name": "King's Gambit",
+  "side": "w",
+  "level": "Intermediate",
+  "eco": "C30–C39",
+  "tagline": "1.e4 e5 2.f4 – the most famous gambit in chess history. You offer the f-pawn to open the f-file and build a big center. Objectively slightly worse for White (about −0.5), but playable at every level.",
+  "ideas": [
+   "**2.f4** attacks e5. If Black takes (2...exf4), you play **d4** and **Bxf4** and get the ideal two-pawn center plus an open f-file for your rook.",
+   "**Play 3.Nf3 first.** The knight stops the annoying **...Qh4+** check, which is only possible because the f-pawn has moved.",
+   "Against **...g5** (Black protecting the f4 pawn), hit the pawn chain with **h4** before Black can play ...Bg7 and ...h6.",
+   "If Black declines with **2...Bc5**, don't take on e5 too early: **3.fxe5?? Qh4+ 4.g3 Qxe4+** wins your rook on h1. First Nf3, then c3 and d4.",
+   "**Honest evaluation:** the engine says Black is a bit better after the gambit, but the positions are open and sharp. Your king can be weak on the e1-h4 diagonal – always check for ...Qh4+ and ...Bc5 ideas."
+  ],
+  "lines": [
+   {
+    "id": "kg-kieseritzky",
+    "name": "Accepted: 3.Nf3 g5 4.h4 g4 5.Ne5 (Kieseritzky)",
+    "type": "main",
+    "intro": "The classical answer to 3...g5. You attack the pawn chain with h4 and jump into e5 with the knight. White wins the gambit pawn back with Bxf4.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "f4",
+      "text": "**The King's Gambit!** You offer the f-pawn. If Black takes, your e-pawn has no rival and the f-file opens for your rook."
+     },
+     {
+      "san": "exf4",
+      "text": "Black accepts the gambit – the most testing reply."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and, most importantly, **stop ...Qh4+**. With the f-pawn gone, that check would be very annoying."
+     },
+     {
+      "san": "g5",
+      "text": "Black protects the f4 pawn with another pawn. It also gives Black's bishop the g7 square."
+     },
+     {
+      "san": "h4",
+      "text": "Attack the chain at once, before Black plays ...h6 or ...Bg7 to support it."
+     },
+     {
+      "san": "g4",
+      "text": "Black pushes forward and attacks your knight."
+     },
+     {
+      "san": "Ne5",
+      "text": "**The Kieseritzky Gambit.** The knight jumps to the center, attacking the g4 pawn and the weak f7 square."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops with a counter-attack on your e4 pawn."
+     },
+     {
+      "san": "d4",
+      "text": "Support the e5 knight and open the c1 bishop's diagonal toward f4."
+     },
+     {
+      "san": "d6",
+      "text": "Black kicks your knight."
+     },
+     {
+      "san": "Nd3",
+      "text": "The knight retreats to a square where it attacks the f4 pawn."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Black grabs the e4 pawn."
+     },
+     {
+      "san": "Bxf4",
+      "text": "Take back the gambit pawn with a developing move. Your bishop is very active on f4."
+     },
+     {
+      "san": "Qe7",
+      "text": "Black puts the queen on the open e-file. Threat: a knight move from e4 with **discovered check** (for example ...Nc3+), winning your queen."
+     },
+     {
+      "san": "Qe2",
+      "text": "Block the e-file. Now no discovered check is possible."
+     },
+     {
+      "san": "Bg7",
+      "text": "Black develops and aims the bishop at your d4 pawn."
+     },
+     {
+      "san": "c3",
+      "text": "Protect d4 with a pawn. Next: Nd2 to challenge the e4 knight, and castle long."
+     }
+    ],
+    "summary": "Black is a pawn up but you have active pieces and Black's g4/h-side pawns are loose. The engine says about −0.6: a fair fight. Plan: Nd2, O-O-O, and attack the e4 knight and the g4 pawn."
+   },
+   {
+    "id": "kg-modern-d5",
+    "name": "Accepted: 3...d5 (Modern Defence)",
+    "type": "variation",
+    "intro": "Many strong players answer the King's Gambit with ...d5: give back a pawn to open the center and develop fast. You keep a healthy game.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "f4",
+      "text": "The King's Gambit."
+     },
+     {
+      "san": "exf4",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and stop ...Qh4+."
+     },
+     {
+      "san": "d5",
+      "text": "Black strikes back in the center to open lines, instead of holding the f4 pawn with ...g5."
+     },
+     {
+      "san": "exd5",
+      "text": "Take the pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and wants to win d5 back."
+     },
+     {
+      "san": "Bb5+",
+      "text": "Develop with check. You prepare to castle short quickly."
+     },
+     {
+      "san": "c6",
+      "text": "Black blocks and attacks your d5 pawn a second time."
+     },
+     {
+      "san": "dxc6",
+      "text": "Take on c6."
+     },
+     {
+      "san": "Nxc6",
+      "text": "Black recaptures and develops. Material is equal again."
+     },
+     {
+      "san": "d4",
+      "text": "Take the center and open your c1 bishop."
+     },
+     {
+      "san": "Bd6",
+      "text": "Black protects the f4 pawn with the bishop."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle. Your rook now stands on the f-file, opposite the f4 pawn."
+     },
+     {
+      "san": "O-O",
+      "text": "Black castles too."
+     }
+    ],
+    "summary": "Equal material, open position (engine about −0.6). Plans: c3 and Nbd2 to complete development, then Bxc6 to damage Black's pawns or Nc4/Ne5 to fight for the f4 pawn."
+   },
+   {
+    "id": "kg-declined-bc5",
+    "name": "Declined: 2...Bc5 (and the ...Qh4+ trap)",
+    "type": "variation",
+    "intro": "Black doesn't take and puts the bishop on the g1-a7 diagonal, so you can't castle short. Here you learn why 3.fxe5?? is a blunder and how to build a big center instead.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "f4",
+      "text": "The King's Gambit."
+     },
+     {
+      "san": "Bc5",
+      "text": "**Declined.** The bishop controls g1, so you can't castle short. And it sets a trap: if 3.fxe5?? then **3...Qh4+ 4.g3 Qxe4+** forks your king and rook on h1."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and control h4 – no more ...Qh4+ tricks. Now fxe5 becomes a real threat."
+     },
+     {
+      "san": "d6",
+      "text": "Black supports the e5 pawn."
+     },
+     {
+      "san": "c3",
+      "text": "Prepare d4 to kick the bishop from the dangerous diagonal and build a big center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and pressures e4."
+     },
+     {
+      "san": "d4",
+      "text": "Take the center with tempo on the bishop."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "cxd4",
+      "text": "Recapture. You have three central pawns: d4, e4 and f4."
+     },
+     {
+      "san": "Bb4+",
+      "text": "Black gives a check to trade pieces."
+     },
+     {
+      "san": "Bd2",
+      "text": "Block with the bishop – a trade helps you develop."
+     },
+     {
+      "san": "Bxd2+",
+      "text": "Black trades."
+     },
+     {
+      "san": "Nbxd2",
+      "text": "Recapture and develop. Your center is huge (engine about +0.8)."
+     }
+    ],
+    "summary": "White is better: big center, easy development (Bd3, O-O, then e5 or f5). Remember the trap: in the King's Gambit never play fxe5 while ...Qh4+ (with ...Qxe4+) is possible."
+   }
+  ]
+ },
+ {
+  "id": "danish-gambit",
+  "name": "Danish Gambit",
+  "side": "w",
+  "level": "Intermediate",
+  "eco": "C21",
+  "tagline": "1.e4 e5 2.d4 exd4 3.c3 dxc3 4.Bc4 cxb2 5.Bxb2 – two pawns for two monster bishops aimed at f7 and g7. Sound enough for club play; with best defence (5...d5!) Black reaches equality.",
+  "ideas": [
+   "You give **two pawns** (c- and b-pawns) to open the diagonals: the **c4 bishop hits f7** and the **b2 bishop hits g7**. Black's kingside becomes a target.",
+   "Develop fast: **Nc3, Ne2 (or Nf3), O-O**, then Qg4/Qb3, Re1 and e4-e5 ideas.",
+   "**Black's best defence is 5...d5!** – giving one pawn back to block the c4 bishop. Then the game simplifies into an equal endgame. Know this so you aren't surprised.",
+   "If Black is greedy and grabs your **e4 pawn** too, the e-file and both long diagonals open and Black's king often gets mated before it can hide.",
+   "The safe way for Black to decline is **3...d5**. Then you get a normal, equal position with an isolated d-pawn."
+  ],
+  "lines": [
+   {
+    "id": "danish-main-d5",
+    "name": "Accepted: 5...d5! (Black's best)",
+    "type": "main",
+    "intro": "The engine's recommended defence. Black gives one pawn back with ...d5 to block your bishop. You use a trick to trade queens; the endgame is playable but Black keeps an extra pawn.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "d4",
+      "text": "Challenge e5 right away."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "c3",
+      "text": "**The Danish Gambit.** Instead of taking back with the queen, you offer a second pawn to speed up development."
+     },
+     {
+      "san": "dxc3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Bc4",
+      "text": "And a third pawn! Development matters more: your bishop already hits **f7**."
+     },
+     {
+      "san": "cxb2",
+      "text": "Black takes the b-pawn too and attacks your c1 bishop."
+     },
+     {
+      "san": "Bxb2",
+      "text": "Recapture. Your two bishops aim at **f7 and g7** – Black's whole kingside is in their sights."
+     },
+     {
+      "san": "d5",
+      "text": "**Black's best.** Black returns a pawn to block the c4 bishop and open lines for Black's own pieces."
+     },
+     {
+      "san": "Bxd5",
+      "text": "Take it. The bishop is back on the f7 diagonal."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and attacks the d5 bishop."
+     },
+     {
+      "san": "Bxf7+",
+      "text": "A clever trick: give the bishop for f7 with check, because the d-file is open..."
+     },
+     {
+      "san": "Kxf7",
+      "text": "Black takes."
+     },
+     {
+      "san": "Qxd8",
+      "text": "...and now your queen takes Black's queen on d8!"
+     },
+     {
+      "san": "Bb4+",
+      "text": "Black wins the queen back with a check: the bishop attacks your king, and you must block."
+     },
+     {
+      "san": "Qd2",
+      "text": "Block with the queen."
+     },
+     {
+      "san": "Bxd2+",
+      "text": "Black takes the queen."
+     },
+     {
+      "san": "Nxd2",
+      "text": "Recapture. Queens and two pairs of minor pieces are gone. Count it: Black is **one pawn up**, but your bishop on b2 and faster development give some compensation."
+     }
+    ],
+    "summary": "Be honest about this one: after Black's best defence you reach an endgame a pawn down (engine about -1.3). Your bishop on b2 is strong and Black's king is a bit exposed, so it is playable at club level — but the engine prefers 7.Nc3 (instead of Bxf7+) to keep pieces on. Good to know: the Danish is fun and wins many fast games, but against best defence it does not give White an advantage."
+   },
+   {
+    "id": "danish-nf6",
+    "name": "Accepted: 5...Nf6 6.Nc3 Bb4 7.Ne2 – Black castles",
+    "type": "variation",
+    "intro": "A normal, careful defence. Black develops and castles instead of grabbing more pawns. You use your lead in development and the d5 square.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "d4",
+      "text": "Challenge e5."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "c3",
+      "text": "The Danish Gambit."
+     },
+     {
+      "san": "dxc3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Bc4",
+      "text": "Offer the next pawn – development first."
+     },
+     {
+      "san": "cxb2",
+      "text": "Black takes."
+     },
+     {
+      "san": "Bxb2",
+      "text": "Two bishops aim at Black's kingside."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and attacks your e4 pawn."
+     },
+     {
+      "san": "Nc3",
+      "text": "Defend e4 and develop."
+     },
+     {
+      "san": "Bb4",
+      "text": "Black pins the c3 knight, so it no longer really defends e4."
+     },
+     {
+      "san": "Ne2",
+      "text": "Support the c3 knight. If Black takes on e4 now, you castle and open the e-file – see the trap line."
+     },
+     {
+      "san": "O-O",
+      "text": "Black wisely castles instead of grabbing e4."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle too. Your rooks will come to the center files."
+     },
+     {
+      "san": "d6",
+      "text": "Black protects the e5 square and opens the c8 bishop."
+     },
+     {
+      "san": "Nd5",
+      "text": "Jump to **d5**: the knight hits the b4 bishop and the f6 knight – the main defender of Black's king."
+     },
+     {
+      "san": "Nxd5",
+      "text": "Black trades the attacker."
+     },
+     {
+      "san": "Bxd5",
+      "text": "Recapture. The bishop is a monster on d5, hitting f7 and b7."
+     }
+    ],
+    "summary": "Black is two pawns up and the engine says about −0.8, but White has very active pieces. Plans: Qd2/Qc2, Rad1, f4-f5 or Ng3-f5 against Black's king."
+   },
+   {
+    "id": "danish-trap-nxe4",
+    "name": "Trap: 7...Nxe4? and mate on g7",
+    "type": "trap",
+    "intro": "The greedy defence. Black grabs a third pawn on e4, trades pieces, and castles – right into your two bishops. This is the dream of every Danish player.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "d4",
+      "text": "Challenge e5."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "c3",
+      "text": "The Danish Gambit."
+     },
+     {
+      "san": "dxc3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Bc4",
+      "text": "Offer the next pawn."
+     },
+     {
+      "san": "cxb2",
+      "text": "Black takes."
+     },
+     {
+      "san": "Bxb2",
+      "text": "Two bishops aim at f7 and g7."
+     },
+     {
+      "san": "Bb4+",
+      "text": "Black develops with check."
+     },
+     {
+      "san": "Nc3",
+      "text": "Block with the knight."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and attacks e4."
+     },
+     {
+      "san": "Ne2",
+      "text": "Support the c3 knight."
+     },
+     {
+      "san": "Nxe4",
+      "text": "**The mistake.** Black grabs a third pawn, but the e-file opens and Black's king is still in the middle."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle and ignore the attack on c3. Your rook is ready for Re1+."
+     },
+     {
+      "san": "Nxc3",
+      "text": "Black takes the knight."
+     },
+     {
+      "san": "Nxc3",
+      "text": "Recapture."
+     },
+     {
+      "san": "Bxc3",
+      "text": "Black trades again."
+     },
+     {
+      "san": "Bxc3",
+      "text": "Recapture. Your bishop on c3 now rules the long diagonal toward **g7**."
+     },
+     {
+      "san": "O-O",
+      "text": "**The decisive mistake.** Black castles into your bishops. (10...d5 was necessary, though you are still much better.)"
+     },
+     {
+      "san": "Qg4",
+      "text": "**Threat: Qxg7#.** The queen and the c3 bishop both hit g7."
+     },
+     {
+      "san": "g6",
+      "text": "Black blocks the queen's path."
+     },
+     {
+      "san": "Qd4",
+      "text": "Now the queen goes in front of the c3 bishop on the long diagonal: **Qg7# or Qh8#** is coming."
+     },
+     {
+      "san": "Qf6",
+      "text": "Black blocks the diagonal with the queen."
+     },
+     {
+      "san": "Qxf6",
+      "text": "Take the queen. The threat of Qg7# is still there, and the rook on f8 can't recapture – its own f7 pawn is in the way."
+     },
+     {
+      "san": "d6",
+      "text": "Black has no defence."
+     },
+     {
+      "san": "Qg7#",
+      "text": "**Checkmate!** The queen is protected by the c3 bishop; f7 is covered by your c4 bishop."
+     }
+    ],
+    "summary": "Two bishops on c4 and b2/c3 plus a queen = deadly against a castled king. When you play the Danish, always look for Qg4 and Qd4 batteries on the long diagonal."
+   },
+   {
+    "id": "danish-declined-d5",
+    "name": "Declined: 3...d5",
+    "type": "variation",
+    "intro": "The simplest way for Black to avoid the gambit: hit back in the center. The position becomes normal and equal.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "d4",
+      "text": "Challenge e5."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "c3",
+      "text": "Offer the Danish Gambit."
+     },
+     {
+      "san": "d5",
+      "text": "Black declines and strikes in the center."
+     },
+     {
+      "san": "exd5",
+      "text": "Take the pawn."
+     },
+     {
+      "san": "Qxd5",
+      "text": "Black recaptures with the queen."
+     },
+     {
+      "san": "cxd4",
+      "text": "Win your pawn back. Your d4 pawn is isolated (no pawns on c or e files), but it gives you space."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black develops with pressure on d4."
+     },
+     {
+      "san": "Nf3",
+      "text": "Defend d4 and develop."
+     },
+     {
+      "san": "Bg4",
+      "text": "Black pins the defender of d4."
+     },
+     {
+      "san": "Be2",
+      "text": "Break the pin and prepare to castle."
+     },
+     {
+      "san": "Bb4+",
+      "text": "Black develops with check."
+     },
+     {
+      "san": "Nc3",
+      "text": "Block with tempo – the knight attacks Black's queen."
+     }
+    ],
+    "summary": "An equal position with an isolated d-pawn (engine about 0.0). Castle, put rooks on d1 and e1, and use the open lines – the isolated pawn gives you active pieces."
+   }
+  ]
+ },
+ {
+  "id": "scotch-gambit",
+  "name": "Scotch Gambit (and Göring Gambit)",
+  "side": "w",
+  "level": "Intermediate",
+  "eco": "C44",
+  "tagline": "1.e4 e5 2.Nf3 Nc6 3.d4 exd4 4.Bc4 – instead of taking back on d4, you develop and aim at f7. Sound: you usually win the pawn back with an active game. 4.c3 is the related Göring Gambit.",
+  "ideas": [
+   "**4.Bc4** develops with an eye on **f7**. The d4 pawn can usually be won back later with Nxd4 or c3.",
+   "Against **4...Nf6** the push **5.e5!** kicks the knight. Black must answer with **...d5** – other moves lose material.",
+   "Against **4...Bc5** play **5.c3**: if Black takes, you get a lead in development; if Black plays ...Nf6, push e5.",
+   "**Göring Gambit (4.c3):** offer a pawn so your knight recaptures on c3. You get fast development, the c4 bishop and Qb3 against f7 and b7.",
+   "Always watch the **e-file**: after Black's e-pawn has left, **Qe2+ or Re1+** often wins time or material."
+  ],
+  "lines": [
+   {
+    "id": "sg-main-nf6",
+    "name": "4...Nf6 5.e5 d5 6.Bb5",
+    "type": "main",
+    "intro": "The main line. You kick the knight, Black hits back with ...d5, and you win the pawn back with a comfortable game.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and attack e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black defends e5."
+     },
+     {
+      "san": "d4",
+      "text": "Open the center."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Bc4",
+      "text": "**The Scotch Gambit.** Develop first instead of taking back. The bishop eyes f7."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and attacks your e4 pawn."
+     },
+     {
+      "san": "e5",
+      "text": "Kick the knight with tempo."
+     },
+     {
+      "san": "d5",
+      "text": "Black's best: hit your bishop and open a central square (e4) for the knight."
+     },
+     {
+      "san": "Bb5",
+      "text": "Step aside with a pin on the c6 knight, which protects d4."
+     },
+     {
+      "san": "Ne4",
+      "text": "The knight lands on a strong central square."
+     },
+     {
+      "san": "Nxd4",
+      "text": "Win back your pawn. Material is equal."
+     },
+     {
+      "san": "Bd7",
+      "text": "Black breaks the pin."
+     },
+     {
+      "san": "Bxc6",
+      "text": "Trade on c6 to damage Black's pawn structure."
+     },
+     {
+      "san": "bxc6",
+      "text": "Black recaptures; the c-pawns are doubled."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle your king into safety."
+     },
+     {
+      "san": "Bc5",
+      "text": "Black develops with pressure on your d4 knight."
+     },
+     {
+      "san": "f3",
+      "text": "Kick the e4 knight. Your pawn on e5 gives you space on the kingside."
+     }
+    ],
+    "summary": "An equal, healthy position (engine about 0.0): Black has the bishops, you have the better pawns. Plans: Be3, Nc3/Nd2, f4-f5 with your space."
+   },
+   {
+    "id": "sg-bc5-c3",
+    "name": "4...Bc5 5.c3",
+    "type": "variation",
+    "intro": "Black develops the bishop and protects d4. You attack d4 with c3 and push e5 when Black's knight comes to f6.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and attack e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black defends e5."
+     },
+     {
+      "san": "d4",
+      "text": "Open the center."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Bc4",
+      "text": "The Scotch Gambit."
+     },
+     {
+      "san": "Bc5",
+      "text": "Black develops and protects d4."
+     },
+     {
+      "san": "c3",
+      "text": "Attack the d4 pawn. If Black takes on c3, your knight recaptures with a big lead in development."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops and hits e4."
+     },
+     {
+      "san": "e5",
+      "text": "Kick the knight – the same idea as in the main line."
+     },
+     {
+      "san": "d5",
+      "text": "Black's best counter: attack the bishop and give the knight the e4 square."
+     },
+     {
+      "san": "Bb5",
+      "text": "Step aside with a pin."
+     },
+     {
+      "san": "Ne4",
+      "text": "The knight jumps to e4."
+     },
+     {
+      "san": "cxd4",
+      "text": "Win back the pawn and attack the c5 bishop. Now you have pawns on d4 and e5."
+     },
+     {
+      "san": "Bb4+",
+      "text": "Black gives a check."
+     },
+     {
+      "san": "Bd2",
+      "text": "Block with the bishop."
+     },
+     {
+      "san": "Nxd2",
+      "text": "Black takes the bishop."
+     },
+     {
+      "san": "Nbxd2",
+      "text": "Recapture and develop. You have a strong center and a small edge (engine about +0.4)."
+     }
+    ],
+    "summary": "Plans: O-O, Rc1, Qa4 or Qb3 against the c6 knight and the b7 pawn. Your space with d4-e5 gives you a pleasant game."
+   },
+   {
+    "id": "sg-goring",
+    "name": "Göring Gambit: 4.c3 dxc3 5.Nxc3",
+    "type": "variation",
+    "intro": "A close cousin of the Danish. Instead of 4.Bc4 you offer the c-pawn, so the knight develops to c3 with a capture.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and attack e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black defends e5."
+     },
+     {
+      "san": "d4",
+      "text": "Open the center."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "c3",
+      "text": "**The Göring Gambit.** Offer the c-pawn to develop quickly."
+     },
+     {
+      "san": "dxc3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Nxc3",
+      "text": "Recapture with development. You have two knights out and your bishop is ready for c4."
+     },
+     {
+      "san": "Bb4",
+      "text": "Black pins the knight, which protects e4."
+     },
+     {
+      "san": "Bc4",
+      "text": "Develop with an eye on f7."
+     },
+     {
+      "san": "d6",
+      "text": "Black plays solidly and controls e5."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle and offer more: if Black takes on c3, you get the bishop pair and the open b-file."
+     },
+     {
+      "san": "Bxc3",
+      "text": "Black takes the knight."
+     },
+     {
+      "san": "bxc3",
+      "text": "Recapture toward the center. Your bishops and the open b-file give full compensation for the pawn (engine about +0.2)."
+     }
+    ],
+    "summary": "Plans: Qb3 (hitting f7 and b7), Ba3, e4-e5 and Ng5. A good surprise weapon if you like the Danish but want a slightly safer version."
+   },
+   {
+    "id": "sg-trap-bc5",
+    "name": "Trap: 4...Nf6 5.e5 Bc5? 6.exf6",
+    "type": "trap",
+    "intro": "After 5.e5 the f6 knight is attacked. Black just develops a bishop – and loses the knight.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and attack e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black defends e5."
+     },
+     {
+      "san": "d4",
+      "text": "Open the center."
+     },
+     {
+      "san": "exd4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Bc4",
+      "text": "The Scotch Gambit."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops."
+     },
+     {
+      "san": "e5",
+      "text": "Attack the knight."
+     },
+     {
+      "san": "Bc5",
+      "text": "**A mistake.** Black develops but forgets the knight on f6 is attacked."
+     },
+     {
+      "san": "exf6",
+      "text": "Take the knight."
+     },
+     {
+      "san": "d5",
+      "text": "Black attacks your bishop, hoping for some play."
+     },
+     {
+      "san": "fxg7",
+      "text": "Take another pawn and attack the rook on h8."
+     },
+     {
+      "san": "Rg8",
+      "text": "The rook takes refuge on g8."
+     },
+     {
+      "san": "Qe2+",
+      "text": "Check on the open e-file! The queen also protects your c4 bishop."
+     },
+     {
+      "san": "Be6",
+      "text": "Black blocks."
+     },
+     {
+      "san": "Bg5",
+      "text": "Develop with an attack on the d8 queen."
+     },
+     {
+      "san": "Be7",
+      "text": "Black blocks with the other bishop."
+     },
+     {
+      "san": "Bxe7",
+      "text": "Trade off the defender."
+     },
+     {
+      "san": "Qxe7",
+      "text": "Black recaptures."
+     },
+     {
+      "san": "Bb5",
+      "text": "Move the attacked bishop with a pin on c6. You are a full piece up (engine about +3.8)."
+     }
+    ],
+    "summary": "Lesson: after e4-e5, the f6 knight must move or Black must counter-attack with ...d5. Next: Nbd2, O-O, Nb3 to win the d4 pawn."
+   }
+  ]
+ },
+ {
+  "id": "blackmar-diemer",
+  "name": "Blackmar-Diemer Gambit",
+  "side": "w",
+  "level": "Intermediate",
+  "eco": "D00",
+  "tagline": "1.d4 d5 2.e4 dxe4 3.Nc3 Nf6 4.f3 – a pawn for a lead in development and the open f-file. Dubious (about −0.5 to −0.8), but a favourite of attacking club players.",
+  "ideas": [
+   "The gambit is **4.f3**: after ...exf3 Nxf3 you have all pieces ready (Nc3, Nf3, Bd3/Bc4, Bg5) and an **open f-file** for your rook after castling.",
+   "Typical attack: **O-O, Qe1-h4**, Bg5 or Bh6, and Ng5. Black's king on the kingside is the target.",
+   "Against **...Bg4** (Teichmann): **h3** and Qxf3 – your queen on f3 hits b7 and f7.",
+   "Against **...Bf5**: **Ne5** and the pawn storm **g4, h4** chase the bishop.",
+   "**Be honest:** with careful play Black keeps the extra pawn. The BDG is a practical weapon for fast games, not a refutation of 1...d5."
+  ],
+  "lines": [
+   {
+    "id": "bdg-teichmann",
+    "name": "5...Bg4 (Teichmann Defence)",
+    "type": "main",
+    "intro": "The most popular defence. Black pins the knight and trades it. You get the bishop pair and a strong queen on f3.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "The queen's pawn takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "e4",
+      "text": "**The Blackmar-Diemer.** You offer the e-pawn right away."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nc3",
+      "text": "Develop and attack the e4 pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black protects e4."
+     },
+     {
+      "san": "f3",
+      "text": "**The real gambit move.** You offer a second pawn to open the f-file."
+     },
+     {
+      "san": "exf3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Nxf3",
+      "text": "Recapture with development. You are a pawn down but well ahead in development."
+     },
+     {
+      "san": "Bg4",
+      "text": "The Teichmann: Black pins your knight."
+     },
+     {
+      "san": "h3",
+      "text": "Ask the bishop: take or retreat?"
+     },
+     {
+      "san": "Bxf3",
+      "text": "Black gives the bishop for the knight."
+     },
+     {
+      "san": "Qxf3",
+      "text": "Recapture with the queen. It hits **b7** and stands on the f-file."
+     },
+     {
+      "san": "c6",
+      "text": "Black protects b7 and the d5 square."
+     },
+     {
+      "san": "Be3",
+      "text": "Develop and protect d4. You may castle long later."
+     },
+     {
+      "san": "e6",
+      "text": "Black builds a solid pawn wall."
+     },
+     {
+      "san": "Bd3",
+      "text": "Develop with an eye on h7."
+     },
+     {
+      "san": "Nbd7",
+      "text": "Black develops."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle. Your rook joins the open f-file. Next: Rf2/Raf1, Qg3 or Ne4."
+     }
+    ],
+    "summary": "Black is a pawn up and solid (engine about −0.4), but you have the bishop pair and an open f-file. Look for Ne4 to trade Black's defender on f6, and Rxf6 sacrifices when Black's king is short of defenders."
+   },
+   {
+    "id": "bdg-bogoljubov",
+    "name": "5...g6 (Bogoljubov Defence)",
+    "type": "variation",
+    "intro": "Black fianchettoes and castles. You build the classic BDG attack with Qe1-h4 and Bh6.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "The queen's pawn takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "e4",
+      "text": "The Blackmar-Diemer."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nc3",
+      "text": "Attack e4."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black protects e4."
+     },
+     {
+      "san": "f3",
+      "text": "The gambit."
+     },
+     {
+      "san": "exf3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Nxf3",
+      "text": "Recapture with development."
+     },
+     {
+      "san": "g6",
+      "text": "Black prepares ...Bg7 and castling."
+     },
+     {
+      "san": "Bc4",
+      "text": "Aim the bishop at f7."
+     },
+     {
+      "san": "Bg7",
+      "text": "Black fianchettoes."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle. Your rook is on the f-file behind the f3 knight."
+     },
+     {
+      "san": "O-O",
+      "text": "Black castles too."
+     },
+     {
+      "san": "Qe1",
+      "text": "**The typical BDG manoeuvre:** the queen heads for h4."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black develops and attacks d4."
+     },
+     {
+      "san": "Qh4",
+      "text": "The queen is on h4. Next: **Bh6** to trade Black's best defender on g7, then Ng5 with mating ideas on h7."
+     }
+    ],
+    "summary": "The engine says about −0.8 – Black is better if accurate – but the attack Bh6, Ng5, Rxf6 is easy to play and hard to defend. Watch your d4 pawn: ...Nxd4 is Black's main counterplay."
+   },
+   {
+    "id": "bdg-bf5",
+    "name": "5...Bf5 – Ne5 and the g4/h4 storm",
+    "type": "variation",
+    "intro": "Black develops the bishop actively. You chase it with your kingside pawns.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "The queen's pawn takes the center."
+     },
+     {
+      "san": "d5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "e4",
+      "text": "The Blackmar-Diemer."
+     },
+     {
+      "san": "dxe4",
+      "text": "Black takes."
+     },
+     {
+      "san": "Nc3",
+      "text": "Attack e4."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black protects e4."
+     },
+     {
+      "san": "f3",
+      "text": "The gambit."
+     },
+     {
+      "san": "exf3",
+      "text": "Black accepts."
+     },
+     {
+      "san": "Nxf3",
+      "text": "Recapture with development."
+     },
+     {
+      "san": "Bf5",
+      "text": "Black develops the bishop to an active square."
+     },
+     {
+      "san": "Ne5",
+      "text": "Centralise the knight. It prepares **g4** without the bishop being able to take on f3."
+     },
+     {
+      "san": "e6",
+      "text": "Black opens the f8 bishop."
+     },
+     {
+      "san": "g4",
+      "text": "Kick the bishop."
+     },
+     {
+      "san": "Bg6",
+      "text": "The bishop retreats."
+     },
+     {
+      "san": "h4",
+      "text": "Threat: **h5**, chasing the bishop again. Black must find a good square for it or trade it for your e5 knight."
+     }
+    ],
+    "summary": "Black is a pawn up (engine about −0.5), but you have huge space on the kingside. Continue with Bg2 or Bc4, Qf3 and O-O-O."
+   }
+  ]
+ },
+ {
+  "id": "halloween-gambit",
+  "name": "Halloween Gambit",
+  "side": "w",
+  "level": "Beginner",
+  "eco": "C47",
+  "tagline": "1.e4 e5 2.Nf3 Nc6 3.Nc3 Nf6 4.Nxe5!? – a crazy knight sacrifice for a big pawn center. Honestly: it is unsound (about −1.2). Play it for fun in blitz, not in serious games.",
+  "ideas": [
+   "You give a **knight for a pawn** in the Four Knights Game. In return: **d4 and e5** kick Black's knights around and you gain lots of space.",
+   "Typical follow-up: **e5, Bc4, Qf3/Qh5**, and h4-h5 to chase the knight from g6.",
+   "**Be honest:** after **5...Nc6! 6.d5 Bb4!** Black gives back a little material and is clearly better. Learn that line so you aren't shocked.",
+   "Why play it at all? It's a fun way to learn attacking with pawns and space – and many opponents in blitz react badly."
+  ],
+  "lines": [
+   {
+    "id": "halloween-main",
+    "name": "5...Ng6 6.e5 Ng8 7.Bc4",
+    "type": "main",
+    "intro": "The dream line: Black's knights go back home and you get a huge center and attacking chances.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and attack e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black defends e5."
+     },
+     {
+      "san": "Nc3",
+      "text": "Develop the second knight."
+     },
+     {
+      "san": "Nf6",
+      "text": "Black develops too: the **Four Knights Game**."
+     },
+     {
+      "san": "Nxe5",
+      "text": "**The Halloween Gambit!** You give a knight for a pawn to start chasing Black's knights."
+     },
+     {
+      "san": "Nxe5",
+      "text": "Black takes."
+     },
+     {
+      "san": "d4",
+      "text": "Attack the e5 knight with a pawn."
+     },
+     {
+      "san": "Ng6",
+      "text": "The knight retreats."
+     },
+     {
+      "san": "e5",
+      "text": "Now kick the other knight."
+     },
+     {
+      "san": "Ng8",
+      "text": "Back home! Black is a piece up but has no developed pieces."
+     },
+     {
+      "san": "Bc4",
+      "text": "Develop and aim at **f7**. Qf3 or Qh5 can come next."
+     },
+     {
+      "san": "d5",
+      "text": "Black gives back a pawn to free the position."
+     },
+     {
+      "san": "Bxd5",
+      "text": "Take it. Your bishop is very active in the center."
+     },
+     {
+      "san": "c6",
+      "text": "Black kicks the bishop."
+     },
+     {
+      "san": "Bb3",
+      "text": "Keep the bishop on the a2-g8 diagonal, still pointing at f7."
+     }
+    ],
+    "summary": "You have two pawns for the piece and space; the engine says about −1.1. Plans: Qf3, h4-h5 to chase the g6 knight, Bg5 and O-O-O. Play fast and keep attacking."
+   },
+   {
+    "id": "halloween-refutation",
+    "name": "The refutation: 5...Nc6! 6.d5 Bb4!",
+    "type": "variation",
+    "intro": "Know the danger. If Black retreats the knight to c6 and counter-attacks with ...Bb4, your center collapses. Here is the best you can do.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "The king's pawn takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "Black copies you."
+     },
+     {
+      "san": "Nf3",
+      "text": "Develop and attack e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Black defends e5."
+     },
+     {
+      "san": "Nc3",
+      "text": "Develop."
+     },
+     {
+      "san": "Nf6",
+      "text": "The Four Knights."
+     },
+     {
+      "san": "Nxe5",
+      "text": "The Halloween Gambit."
+     },
+     {
+      "san": "Nxe5",
+      "text": "Black takes."
+     },
+     {
+      "san": "d4",
+      "text": "Attack the knight."
+     },
+     {
+      "san": "Nc6",
+      "text": "**Black's best retreat.** The knight goes to c6 instead of g6."
+     },
+     {
+      "san": "d5",
+      "text": "Kick the knight again."
+     },
+     {
+      "san": "Bb4",
+      "text": "**The key counter-attack.** Black ignores the knight and pins your c3 knight, so your e4 pawn is defenceless."
+     },
+     {
+      "san": "dxc6",
+      "text": "Take the knight. Material is now almost equal."
+     },
+     {
+      "san": "Nxe4",
+      "text": "Black takes e4 and threatens ...Nxc3 and ...Qh4 or ...Qf6."
+     },
+     {
+      "san": "Qd4",
+      "text": "The best defence: the queen protects c3, attacks the e4 knight, the b4 bishop and g7."
+     },
+     {
+      "san": "Qe7",
+      "text": "Black protects the e4 knight and lines the queen up against your king."
+     },
+     {
+      "san": "Qxg7",
+      "text": "Grab the g7 pawn and attack the rook on h8."
+     },
+     {
+      "san": "Nxc3+",
+      "text": "**Discovered check** from the e7 queen."
+     },
+     {
+      "san": "Be3",
+      "text": "Block with the bishop. Black is better (engine about −0.8), but there is still a fight."
+     }
+    ],
+    "summary": "This is why the Halloween is unsound: 5...Nc6! and 6...Bb4! hit back hard. In blitz you can still survive – but don't expect an advantage."
+   }
+  ]
+ },
+ {
+  "id": "englund-gambit",
+  "name": "Englund Gambit (vs 1.d4)",
+  "side": "b",
+  "level": "Beginner",
+  "eco": "A40",
+  "tagline": "1.d4 e5?! – a cheeky pawn sacrifice with one famous trap: ...Qe7, ...Qb4+ and ...Qxb2 ending in ...Qc1#. Honestly: unsound (about +1 for White). A blitz surprise only.",
+  "ideas": [
+   "After **1...e5 2.dxe5 Nc6 3.Nf3 Qe7** Black attacks e5 and prepares **...Qb4+**, which hits the king and the b2 pawn at the same time.",
+   "**The famous trap:** 4.Bf4? Qb4+ 5.Bd2 Qxb2 6.Bc3? Bb4! 7.Qd2 Bxc3 8.Qxc3 **Qc1#**. The c3 bishop is pinned to the king, so it cannot take your queen.",
+   "**Be honest:** a careful opponent plays **6.Nc3!** (or simply avoids 4.Bf4) and Black is just worse. The engine gives White about +1 to +1.5.",
+   "Use it as a rare surprise in bullet/blitz. In serious games against 1.d4 stick to your normal openings (Slav, QGD)."
+  ],
+  "lines": [
+   {
+    "id": "englund-trap",
+    "name": "The trap: 4.Bf4? Qb4+ 5.Bd2 Qxb2 6.Bc3? Bb4! … Qc1#",
+    "type": "trap",
+    "intro": "The reason people play the Englund. White makes three natural-looking moves – and gets mated on c1.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "e5",
+      "text": "**The Englund Gambit.** You offer the e-pawn right away. It's objectively bad (engine about +1), but it sets up a famous trap."
+     },
+     {
+      "san": "dxe5",
+      "text": "White takes the pawn."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop and attack the e5 pawn."
+     },
+     {
+      "san": "Nf3",
+      "text": "White defends e5."
+     },
+     {
+      "san": "Qe7",
+      "text": "The key move: a third attack on e5, and the queen prepares **...Qb4+**."
+     },
+     {
+      "san": "Bf4",
+      "text": "**Natural, but already a mistake.** White defends e5 again – but the bishop has left c1, so b2 is weak."
+     },
+     {
+      "san": "Qb4+",
+      "text": "Check! The queen attacks the king AND the b2 pawn."
+     },
+     {
+      "san": "Bd2",
+      "text": "White blocks and attacks your queen."
+     },
+     {
+      "san": "Qxb2",
+      "text": "Grab b2. Now your queen attacks the rook on a1."
+     },
+     {
+      "san": "Bc3",
+      "text": "**The losing mistake.** White attacks the queen and wants to trap it."
+     },
+     {
+      "san": "Bb4",
+      "text": "**The trick!** Your bishop pins the c3 bishop to White's king – it is not allowed to take your queen. And c3 is now attacked twice."
+     },
+     {
+      "san": "Qd2",
+      "text": "White defends c3 with the queen. It looks safe..."
+     },
+     {
+      "san": "Bxc3",
+      "text": "Take the bishop anyway."
+     },
+     {
+      "san": "Qxc3",
+      "text": "White recaptures – but now the queen has left d1 and d2."
+     },
+     {
+      "san": "Qc1#",
+      "text": "**Checkmate!** The king can't go to d2 or d1 (your queen covers both), and nothing can block or capture on c1."
+     }
+    ],
+    "summary": "A beautiful trap to know, but only a trap: a calm White player avoids it. Remember the pattern – a pin against the king means the pinned piece can't capture."
+   },
+   {
+    "id": "englund-nc3",
+    "name": "White's correct defence: 6.Nc3!",
+    "type": "variation",
+    "intro": "What happens when White knows the theory. Instead of 6.Bc3? White develops the knight and Black's queen gets chased around. Learn this so you know the Englund's limits.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "e5",
+      "text": "The Englund Gambit."
+     },
+     {
+      "san": "dxe5",
+      "text": "White takes."
+     },
+     {
+      "san": "Nc6",
+      "text": "Attack the e5 pawn."
+     },
+     {
+      "san": "Nf3",
+      "text": "White defends."
+     },
+     {
+      "san": "Qe7",
+      "text": "Pressure on e5 and the idea ...Qb4+."
+     },
+     {
+      "san": "Bf4",
+      "text": "White defends e5 again."
+     },
+     {
+      "san": "Qb4+",
+      "text": "Check and attack on b2."
+     },
+     {
+      "san": "Bd2",
+      "text": "White blocks."
+     },
+     {
+      "san": "Qxb2",
+      "text": "Grab the pawn: material is equal again."
+     },
+     {
+      "san": "Nc3",
+      "text": "**White's strong move.** The a1 rook is protected by White's queen (b1 and c1 are empty now), the knight is protected by the d2 bishop – and your queen on b2 is in danger: Rb1 and Nb5 threaten to trap it."
+     },
+     {
+      "san": "Bb4",
+      "text": "Pin the c3 knight. This is the best try."
+     },
+     {
+      "san": "Rb1",
+      "text": "White attacks your queen with the rook."
+     },
+     {
+      "san": "Qa3",
+      "text": "The queen escapes and keeps an eye on the c3 knight."
+     },
+     {
+      "san": "Rb3",
+      "text": "White chases the queen again."
+     },
+     {
+      "san": "Qa5",
+      "text": "The queen retreats to a5, still pinning the c3 knight together with the b4 bishop."
+     },
+     {
+      "san": "e4",
+      "text": "White builds the center. White's pieces are active and Black's queen is far away (engine about +1.2)."
+     }
+    ],
+    "summary": "Black has the pawn back, but White leads in development. If your opponent finds 6.Nc3, play solid: ...Nge7, ...O-O and hope for a long game."
+   },
+   {
+    "id": "englund-qd5",
+    "name": "4.Qd5 – Black gambits more with ...f6",
+    "type": "variation",
+    "intro": "Some White players protect e5 with the queen. Black can open lines with a second pawn sacrifice and gets quick development.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "e5",
+      "text": "The Englund Gambit."
+     },
+     {
+      "san": "dxe5",
+      "text": "White takes."
+     },
+     {
+      "san": "Nc6",
+      "text": "Attack e5."
+     },
+     {
+      "san": "Nf3",
+      "text": "White defends."
+     },
+     {
+      "san": "Qe7",
+      "text": "A third attacker on e5."
+     },
+     {
+      "san": "Qd5",
+      "text": "White's queen protects e5 – and blocks any ...Qb4+ ideas."
+     },
+     {
+      "san": "f6",
+      "text": "Offer another pawn to open the f-file and the diagonals for your pieces."
+     },
+     {
+      "san": "exf6",
+      "text": "White takes."
+     },
+     {
+      "san": "Nxf6",
+      "text": "Recapture with development – and the knight attacks White's queen."
+     },
+     {
+      "san": "Qb5",
+      "text": "The queen escapes to b5."
+     },
+     {
+      "san": "d5",
+      "text": "Take the center and open your c8 bishop. You are a pawn down but well developed."
+     },
+     {
+      "san": "Bg5",
+      "text": "White develops and pins your f6 knight. The position is about equal (engine about +0.1)."
+     }
+    ],
+    "summary": "Black has fast development for the pawn: plan ...Bd7, ...O-O-O and ...h6. A good practical position."
+   }
+  ]
+ },
+ {
+  "id": "budapest-gambit",
+  "name": "Budapest Gambit (vs 1.d4 2.c4)",
+  "side": "b",
+  "level": "Intermediate",
+  "eco": "A51–A52",
+  "tagline": "1.d4 Nf6 2.c4 e5 – Black offers the e-pawn and usually wins it back with ...Ng4. Respectable: White is only a little better (about +0.4 to +0.7), and there's a famous ...Nd3# trap.",
+  "ideas": [
+   "After **2...e5 3.dxe5 Ng4** the e5 pawn is attacked by the knight; ...Nc6, ...Qe7 and ...Bb4+ add more attackers. Black normally **wins the pawn back**.",
+   "**...Bb4+** develops with check and pins White's pieces. Combined with **...Qe7** it sets the famous trap ...Nd3# (the e2 pawn is pinned).",
+   "If White plays **4.Nf3**, the bishop goes to **c5** and hits f2 together with the g4 knight.",
+   "Black's typical plan after regaining the pawn: **...O-O, ...d6, ...a5** (keeping the b4 bishop), and a rook lift **...Ra6-h6** toward White's king."
+  ],
+  "lines": [
+   {
+    "id": "budapest-main",
+    "name": "4.Bf4 Nc6 5.Nf3 Bb4+ 6.Nbd2 Qe7",
+    "type": "main",
+    "intro": "The main line. White tries to hold the e5 pawn with Bf4 and Nf3, but Black brings three attackers and wins it back.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "A flexible developing move."
+     },
+     {
+      "san": "c4",
+      "text": "White takes more space on the queenside."
+     },
+     {
+      "san": "e5",
+      "text": "**The Budapest Gambit.** You offer the e-pawn to open lines and develop fast."
+     },
+     {
+      "san": "dxe5",
+      "text": "White accepts."
+     },
+     {
+      "san": "Ng4",
+      "text": "The knight attacks the e5 pawn. This is why the gambit works: the pawn is hard to keep."
+     },
+     {
+      "san": "Bf4",
+      "text": "White defends e5 with the bishop."
+     },
+     {
+      "san": "Nc6",
+      "text": "A second attacker on e5."
+     },
+     {
+      "san": "Nf3",
+      "text": "White defends a second time."
+     },
+     {
+      "san": "Bb4+",
+      "text": "Develop with check. White must block, and every block has a drawback."
+     },
+     {
+      "san": "Nbd2",
+      "text": "White blocks with the knight."
+     },
+     {
+      "san": "Qe7",
+      "text": "**A third attacker on e5.** The queen also stands on the e-file, opposite White's king – keep that in mind for the trap line."
+     },
+     {
+      "san": "e3",
+      "text": "White prepares Be2 and castling."
+     },
+     {
+      "san": "Ngxe5",
+      "text": "Win the pawn back. Material is equal."
+     },
+     {
+      "san": "Nxe5",
+      "text": "White trades knights."
+     },
+     {
+      "san": "Nxe5",
+      "text": "Recapture. Your knight is strong on e5."
+     },
+     {
+      "san": "Be2",
+      "text": "White develops."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle your king into safety."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles too. The position is about equal (engine about +0.4)."
+     }
+    ],
+    "summary": "Normal, equal-ish middlegame. Plans: ...d6, ...a5 to keep the b4 bishop, ...Re8 and the rook lift ...Ra6-h6 against White's king."
+   },
+   {
+    "id": "budapest-trap-nd3",
+    "name": "Trap: 7.a3? Ngxe5 8.axb4?? Nd3#",
+    "type": "trap",
+    "intro": "One of the most famous opening traps. White kicks your bishop with a3 and then takes it – walking into a smothered knight mate.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "A flexible developing move."
+     },
+     {
+      "san": "c4",
+      "text": "White takes space."
+     },
+     {
+      "san": "e5",
+      "text": "The Budapest Gambit."
+     },
+     {
+      "san": "dxe5",
+      "text": "White accepts."
+     },
+     {
+      "san": "Ng4",
+      "text": "Attack the e5 pawn."
+     },
+     {
+      "san": "Bf4",
+      "text": "White defends."
+     },
+     {
+      "san": "Nc6",
+      "text": "Second attacker."
+     },
+     {
+      "san": "Nf3",
+      "text": "White defends again."
+     },
+     {
+      "san": "Bb4+",
+      "text": "Develop with check."
+     },
+     {
+      "san": "Nbd2",
+      "text": "White blocks with the knight."
+     },
+     {
+      "san": "Qe7",
+      "text": "Third attacker – and the queen lines up on the e-file against White's king."
+     },
+     {
+      "san": "a3",
+      "text": "White attacks your bishop. (Better was 7.e3.)"
+     },
+     {
+      "san": "Ngxe5",
+      "text": "**Ignore the attack on b4!** Win back the pawn. Now your knight on e5 stands between your queen and White's e2 pawn."
+     },
+     {
+      "san": "axb4",
+      "text": "**The blunder.** White takes the free bishop."
+     },
+     {
+      "san": "Nd3#",
+      "text": "**Checkmate!** The knight checks from d3. White's e2 pawn can't take it because it is pinned by your queen on e7, the queen on d1 and the knight on d2 block the king's other squares, and f2 is covered by the knight."
+     }
+    ],
+    "summary": "Beautiful pattern: queen on the e-file + knight jump with check = the e2 pawn is pinned. White should play 8.Nxe5 Nxe5 9.e3 instead, and Black is fine."
+   },
+   {
+    "id": "budapest-nf3",
+    "name": "4.Nf3 Bc5 – hit f2",
+    "type": "variation",
+    "intro": "If White develops the knight first, your bishop goes to c5 and together with the g4 knight it pressures f2.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "A flexible developing move."
+     },
+     {
+      "san": "c4",
+      "text": "White takes space."
+     },
+     {
+      "san": "e5",
+      "text": "The Budapest Gambit."
+     },
+     {
+      "san": "dxe5",
+      "text": "White accepts."
+     },
+     {
+      "san": "Ng4",
+      "text": "Attack the e5 pawn."
+     },
+     {
+      "san": "Nf3",
+      "text": "White defends e5 with the knight."
+     },
+     {
+      "san": "Bc5",
+      "text": "Develop with a threat: the bishop and knight both aim at **f2**. (...Nxf2 or ...Bxf2+ tricks are in the air.)"
+     },
+     {
+      "san": "e3",
+      "text": "White blocks the bishop's diagonal and covers f2."
+     },
+     {
+      "san": "Nc6",
+      "text": "A second attacker on e5."
+     },
+     {
+      "san": "Be2",
+      "text": "White develops and prepares castling."
+     },
+     {
+      "san": "Ngxe5",
+      "text": "Win back the pawn. Material is equal."
+     },
+     {
+      "san": "Nxe5",
+      "text": "White trades."
+     },
+     {
+      "san": "Nxe5",
+      "text": "Recapture – the knight is beautiful on e5."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles."
+     },
+     {
+      "san": "O-O",
+      "text": "You castle too. A normal game with equal material (engine about +0.6)."
+     }
+    ],
+    "summary": "Plans: ...d6, ...a5, ...Bf5 or ...Re8. Your pieces are active and White's c4 pawn can become a target with ...Bb6/...Qh4 ideas."
+   }
+  ]
+ },
+ {
+  "id": "latvian-gambit",
+  "name": "Latvian Gambit",
+  "side": "b",
+  "level": "Advanced",
+  "eco": "C40",
+  "tagline": "1.e4 e5 2.Nf3 f5?! – the wildest answer to 2.Nf3. Honestly: risky and objectively bad (about +1 for White). Fun in blitz if you like chaos, but only with the lines below memorised.",
+  "ideas": [
+   "**2...f5** attacks e4 and opens the f-file – but it also weakens your own king on the e8-h5 diagonal.",
+   "Against **3.Nxe5** the main move is **3...Qf6**: the queen attacks the knight and supports ...fxe4.",
+   "After **4.d4 d6 5.Nc4 fxe4** Black has a big pawn on e4 and the queen goes to **g6** to hit g2 and e4.",
+   "If White plays **4.Bc4?!** (looking for Nf7 tricks), simply take the knight: **4...Qxe5!**.",
+   "**Be honest:** a strong opponent will keep the advantage. Use the Latvian only as a rare surprise."
+  ],
+  "lines": [
+   {
+    "id": "latvian-main",
+    "name": "3.Nxe5 Qf6 4.d4 d6 5.Nc4 fxe4",
+    "type": "main",
+    "intro": "The main line. White wins a pawn, but Black gets a strong e4 pawn and active pieces.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "f5",
+      "text": "**The Latvian Gambit.** You ignore the attack and hit e4 – the most aggressive reply possible."
+     },
+     {
+      "san": "Nxe5",
+      "text": "White takes the e5 pawn, the best answer."
+     },
+     {
+      "san": "Qf6",
+      "text": "Attack the knight and support ...fxe4."
+     },
+     {
+      "san": "d4",
+      "text": "White defends the knight with a pawn."
+     },
+     {
+      "san": "d6",
+      "text": "Kick the knight."
+     },
+     {
+      "san": "Nc4",
+      "text": "The knight retreats to c4."
+     },
+     {
+      "san": "fxe4",
+      "text": "Take the e4 pawn. Your pawn on e4 takes away d3 and f3 from White."
+     },
+     {
+      "san": "Nc3",
+      "text": "White develops and attacks e4."
+     },
+     {
+      "san": "Qg6",
+      "text": "The queen defends e4 and attacks g2."
+     },
+     {
+      "san": "f3",
+      "text": "White attacks e4 again to break your center."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop and hit d4."
+     },
+     {
+      "san": "fxe4",
+      "text": "White takes. White is a pawn up."
+     },
+     {
+      "san": "Bg4",
+      "text": "Develop with tempo on White's queen."
+     },
+     {
+      "san": "Be2",
+      "text": "White blocks."
+     },
+     {
+      "san": "Bxe2",
+      "text": "Trade bishops – White's king loses a defender."
+     },
+     {
+      "san": "Qxe2",
+      "text": "White recaptures. Next you play **...Nxd4**: the d4 pawn is no longer protected, so you win your pawn back."
+     }
+    ],
+    "summary": "After ...Nxd4 material is equal and the engine says about +0.3 for White. Plans: ...O-O-O, ...Nf6 and pressure on e4 and g2."
+   },
+   {
+    "id": "latvian-bc4",
+    "name": "Punish 4.Bc4?!: 4...Qxe5!",
+    "type": "trap",
+    "intro": "White develops the bishop to c4 and forgets that the e5 knight is undefended. Just take it.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "f5",
+      "text": "The Latvian Gambit."
+     },
+     {
+      "san": "Nxe5",
+      "text": "White takes the pawn."
+     },
+     {
+      "san": "Qf6",
+      "text": "Attack the knight."
+     },
+     {
+      "san": "Bc4",
+      "text": "**A mistake.** White develops and dreams of Nf7 or Bxg8, but the knight on e5 is not protected."
+     },
+     {
+      "san": "Qxe5",
+      "text": "**Take the knight!** White has no good follow-up."
+     },
+     {
+      "san": "d4",
+      "text": "White attacks your queen with a pawn."
+     },
+     {
+      "san": "Qxe4+",
+      "text": "Take another pawn – with check."
+     },
+     {
+      "san": "Be2",
+      "text": "White blocks."
+     },
+     {
+      "san": "Nf6",
+      "text": "Develop and protect the king."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop and attack the d4 pawn. You are a full piece up (engine about −2.3)."
+     }
+    ],
+    "summary": "Next: ...Be7 and ...O-O. Keep your queen safe from Re1 and Bd3 tricks and you win with the extra piece."
+   },
+   {
+    "id": "latvian-exf5",
+    "name": "3.exf5 e4 – the knight chase",
+    "type": "variation",
+    "intro": "White takes on f5 and Black pushes ...e4. White can grab the rook on h8 with a knight, but the knight gets trapped there.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "f5",
+      "text": "The Latvian Gambit."
+     },
+     {
+      "san": "exf5",
+      "text": "White takes on f5."
+     },
+     {
+      "san": "e4",
+      "text": "Kick the knight with tempo."
+     },
+     {
+      "san": "Ne5",
+      "text": "The knight goes to the center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Develop and protect h5 against Qh5+."
+     },
+     {
+      "san": "Be2",
+      "text": "White prepares Bh5+."
+     },
+     {
+      "san": "d6",
+      "text": "Kick the knight away from e5."
+     },
+     {
+      "san": "Bh5+",
+      "text": "White gives check with the bishop."
+     },
+     {
+      "san": "Ke7",
+      "text": "Step aside. (Your king is safe enough on e7 for now.)"
+     },
+     {
+      "san": "Nf7",
+      "text": "White's knight forks your queen and the rook on h8."
+     },
+     {
+      "san": "Qe8",
+      "text": "Move the queen and attack the knight."
+     },
+     {
+      "san": "Nxh8",
+      "text": "White grabs the rook."
+     },
+     {
+      "san": "Qxh5",
+      "text": "Take the bishop. The knight on h8 is trapped – you will win it later with ...g6 and ...Kf8 or ...Bg7."
+     }
+    ],
+    "summary": "You will end up with two minor pieces for a rook. The engine still says White is slightly better (about +0.8), but the game is very messy."
+   }
+  ]
+ },
+ {
+  "id": "elephant-gambit",
+  "name": "Elephant Gambit",
+  "side": "b",
+  "level": "Intermediate",
+  "eco": "C40",
+  "tagline": "1.e4 e5 2.Nf3 d5!? – Black strikes in the center at once. Dubious (about +0.8 to +1 for White) but simple to play, with a nice trap against 4.Qh5?.",
+  "ideas": [
+   "**2...d5** opens the center immediately. After 3.exd5, play **3...Bd6** (not 3...e4?!): develop and protect e5.",
+   "After **3.Nxe5** play **3...Bd6**: challenge the knight and win the e4 pawn back with ...dxe4.",
+   "Watch for **Qh5** ideas against f7 – often **...g6** or **...Qe7** solves the problem, and sometimes White's queen gets trapped.",
+   "**Be honest:** White keeps a small edge with correct play. The Elephant is a surprise weapon, not a main defence."
+  ],
+  "lines": [
+   {
+    "id": "elephant-exd5",
+    "name": "3.exd5 Bd6 4.d4 e4",
+    "type": "main",
+    "intro": "Black gives the d-pawn and gains time with ...e4 to kick the knight. Black develops very quickly.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "d5",
+      "text": "**The Elephant Gambit.** Counter-attack in the center."
+     },
+     {
+      "san": "exd5",
+      "text": "White takes."
+     },
+     {
+      "san": "Bd6",
+      "text": "Develop and protect e5. You give up the d5 pawn for fast development."
+     },
+     {
+      "san": "d4",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "e4",
+      "text": "Push past with tempo on the knight."
+     },
+     {
+      "san": "Ne5",
+      "text": "The knight jumps to the center."
+     },
+     {
+      "san": "Nf6",
+      "text": "Develop and prepare castling."
+     },
+     {
+      "san": "Bc4",
+      "text": "White develops and protects d5."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle your king to safety."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles too."
+     },
+     {
+      "san": "Nbd7",
+      "text": "Challenge the strong e5 knight."
+     },
+     {
+      "san": "Nxd7",
+      "text": "White trades."
+     },
+     {
+      "san": "Bxd7",
+      "text": "Recapture and develop. You are a pawn down but very active (engine about 0.0)."
+     }
+    ],
+    "summary": "Plans: ...Bf5, ...Qe7, ...Rae8 and ...Ng4 or ...Qh4 kingside play. Your e4 pawn gives you space."
+   },
+   {
+    "id": "elephant-nxe5",
+    "name": "3.Nxe5 Bd6 4.d4 dxe4",
+    "type": "variation",
+    "intro": "White takes e5 instead. You challenge the knight with the bishop and win the e4 pawn back.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "d5",
+      "text": "The Elephant Gambit."
+     },
+     {
+      "san": "Nxe5",
+      "text": "White takes the e5 pawn."
+     },
+     {
+      "san": "Bd6",
+      "text": "Challenge the knight."
+     },
+     {
+      "san": "d4",
+      "text": "White supports the knight."
+     },
+     {
+      "san": "dxe4",
+      "text": "Win your pawn back. Material is equal."
+     },
+     {
+      "san": "Bc4",
+      "text": "White aims at f7."
+     },
+     {
+      "san": "Bxe5",
+      "text": "Take the knight to remove the f7 attacker."
+     },
+     {
+      "san": "Qh5",
+      "text": "White attacks e5 and f7 at the same time."
+     },
+     {
+      "san": "Qe7",
+      "text": "One move defends both: the queen protects e5 and f7."
+     },
+     {
+      "san": "dxe5",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop and attack the e5 pawn. The engine says White is slightly better (about +0.9), but you have a normal game."
+     }
+    ],
+    "summary": "Plans: ...Be6, ...Nxe5 and ...O-O-O. Watch the f7 square until your king is safe."
+   },
+   {
+    "id": "elephant-trap-qh5",
+    "name": "Trap: 3.Nxe5 Bd6 4.Qh5? g6!",
+    "type": "trap",
+    "intro": "White threatens mate on f7 – but your answer attacks the queen, and White's knight fork doesn't work.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "d5",
+      "text": "The Elephant Gambit."
+     },
+     {
+      "san": "Nxe5",
+      "text": "White takes e5."
+     },
+     {
+      "san": "Bd6",
+      "text": "Challenge the knight."
+     },
+     {
+      "san": "Qh5",
+      "text": "**A mistake.** White threatens **Qxf7#** with the knight's help."
+     },
+     {
+      "san": "g6",
+      "text": "Block the threat AND attack the queen."
+     },
+     {
+      "san": "Nxf7",
+      "text": "White goes for a fork of your queen, rook and bishop – but forgets the queen on h5 is attacked."
+     },
+     {
+      "san": "gxh5",
+      "text": "Take the queen!"
+     },
+     {
+      "san": "Nxd8",
+      "text": "White takes your queen back."
+     },
+     {
+      "san": "dxe4",
+      "text": "Win a pawn. The knight on d8 is trapped – every square it can go to is covered."
+     },
+     {
+      "san": "Nc3",
+      "text": "White develops."
+     },
+     {
+      "san": "Kxd8",
+      "text": "Take the knight. You are a piece up for two pawns (engine about −1.6)."
+     }
+    ],
+    "summary": "Lesson: before you calculate your opponent's fork, check whether their queen is hanging. Next: ...Nf6, ...Bf5 and ...Nc6."
+   }
+  ]
+ },
+ {
+  "id": "traxler",
+  "name": "Traxler (Wilkes-Barre) Counter-Gambit",
+  "side": "b",
+  "level": "Advanced",
+  "eco": "C57",
+  "tagline": "1.e4 e5 2.Nf3 Nc6 3.Bc4 Nf6 4.Ng5 Bc5!? – instead of defending f7, you counter-attack f2. Objectively dubious (about +0.5 for White), but extremely sharp and full of mating traps.",
+  "ideas": [
+   "Against 4.Ng5 you normally play 4...d5 (see the Two Knights lines in your Openings course). **4...Bc5!?** is the aggressive alternative: let White take f7, and hit **f2** back.",
+   "After **5.Nxf7 Bxf2+!** the White king must move. **6.Kxf2? Nxe4+** with ...Qh4 is a direct attack; 6.Kf1 is White's best.",
+   "After **5.Bxf7+ Ke7** your king stands in the center, but your rook comes to **f8** and your pieces are very active.",
+   "Key patterns: **...Qh4 and ...Qf2#** (protected by the e4 knight), **...Nd4** and **...Bg4** against White's king.",
+   "**Be honest:** with exact play White keeps an edge. Learn the main lines before you use it."
+  ],
+  "lines": [
+   {
+    "id": "traxler-bxf7",
+    "name": "5.Bxf7+ Ke7 6.Bd5",
+    "type": "main",
+    "intro": "White's safest choice. You lose castling but get the f-file and active pieces.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Defend e5."
+     },
+     {
+      "san": "Bc4",
+      "text": "The Italian bishop aims at f7."
+     },
+     {
+      "san": "Nf6",
+      "text": "The **Two Knights Defence**: develop and attack e4."
+     },
+     {
+      "san": "Ng5",
+      "text": "White attacks f7 twice (knight and bishop)."
+     },
+     {
+      "san": "Bc5",
+      "text": "**The Traxler!** You don't defend f7 – you counter-attack f2."
+     },
+     {
+      "san": "Bxf7+",
+      "text": "White takes with check."
+     },
+     {
+      "san": "Ke7",
+      "text": "The king steps up. On e7 it protects the f-file and lets your rook come to f8."
+     },
+     {
+      "san": "Bd5",
+      "text": "White centralises the bishop, keeping it away from ...Nxd5 tricks and blocking your d-pawn."
+     },
+     {
+      "san": "Rf8",
+      "text": "The rook comes to the open f-file, aiming at f2."
+     },
+     {
+      "san": "O-O",
+      "text": "White castles."
+     },
+     {
+      "san": "d6",
+      "text": "Open the c8 bishop and protect e5."
+     },
+     {
+      "san": "c3",
+      "text": "White prepares d4."
+     },
+     {
+      "san": "Bg4",
+      "text": "Develop with tempo on the queen. Your pieces are very active (engine about +0.5)."
+     }
+    ],
+    "summary": "Black is a pawn down, but the f-file and active pieces give real compensation. Plans: ...Qe8-h5, ...Nh5-f4 and ...Kd7/...Kd8 to hide the king later."
+   },
+   {
+    "id": "traxler-kf1",
+    "name": "5.Nxf7 Bxf2+ 6.Kf1 – the wild main line",
+    "type": "variation",
+    "intro": "White takes on f7 with the knight and forks your queen and rook. You answer with ...Bxf2+ and play for the attack.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Defend e5."
+     },
+     {
+      "san": "Bc4",
+      "text": "White aims at f7."
+     },
+     {
+      "san": "Nf6",
+      "text": "The Two Knights Defence."
+     },
+     {
+      "san": "Ng5",
+      "text": "White attacks f7."
+     },
+     {
+      "san": "Bc5",
+      "text": "The Traxler."
+     },
+     {
+      "san": "Nxf7",
+      "text": "White's knight forks your queen and rook."
+     },
+     {
+      "san": "Bxf2+",
+      "text": "**Check!** The bishop takes f2 and drags White's king."
+     },
+     {
+      "san": "Kf1",
+      "text": "White's best: the king avoids ...Nxe4+ with check."
+     },
+     {
+      "san": "Qe7",
+      "text": "Save the queen and put it on the e-file, where it supports ...d5 and attacks along the e-file."
+     },
+     {
+      "san": "Nxh8",
+      "text": "White takes the rook."
+     },
+     {
+      "san": "d5",
+      "text": "Open the c8 bishop and attack the c4 bishop."
+     },
+     {
+      "san": "exd5",
+      "text": "White takes."
+     },
+     {
+      "san": "Nd4",
+      "text": "The knight jumps toward f3 and e2, close to White's king. Threats like ...Bg4 and ...Nf5 are in the air."
+     }
+    ],
+    "summary": "A rook down but the h8 knight is out of the game, and White's king is exposed. Objectively White is better (engine about +0.7), but both sides must find many accurate moves."
+   },
+   {
+    "id": "traxler-trap-kxf2",
+    "name": "Trap: 6.Kxf2? Nxe4+ 7.Kg1 Qh4 8.Qe1?? Qxe1+ 9.Bf1 Qf2#",
+    "type": "trap",
+    "intro": "Taking the bishop on f2 is natural – and a mistake. After ...Nxe4+ and ...Qh4, Black threatens ...Qf2# and many defences fail.",
+    "moves": [
+     {
+      "san": "e4",
+      "text": "White takes the center."
+     },
+     {
+      "san": "e5",
+      "text": "You answer symmetrically."
+     },
+     {
+      "san": "Nf3",
+      "text": "White attacks e5."
+     },
+     {
+      "san": "Nc6",
+      "text": "Defend e5."
+     },
+     {
+      "san": "Bc4",
+      "text": "White aims at f7."
+     },
+     {
+      "san": "Nf6",
+      "text": "The Two Knights Defence."
+     },
+     {
+      "san": "Ng5",
+      "text": "White attacks f7."
+     },
+     {
+      "san": "Bc5",
+      "text": "The Traxler."
+     },
+     {
+      "san": "Nxf7",
+      "text": "White forks queen and rook."
+     },
+     {
+      "san": "Bxf2+",
+      "text": "Check on f2."
+     },
+     {
+      "san": "Kxf2",
+      "text": "**A mistake.** White takes the bishop – but now the king can be checked by your knight."
+     },
+     {
+      "san": "Nxe4+",
+      "text": "**Check!** The knight takes e4 and comes closer to White's king."
+     },
+     {
+      "san": "Kg1",
+      "text": "White's best square for the king."
+     },
+     {
+      "san": "Qh4",
+      "text": "**Threat: ...Qf2#** (the e4 knight protects f2). White must find g3 or Qf1."
+     },
+     {
+      "san": "Qe1",
+      "text": "**The blunder.** White wants to protect f2 and trade queens – but your queen is already looking at e1."
+     },
+     {
+      "san": "Qxe1+",
+      "text": "Take the queen with check."
+     },
+     {
+      "san": "Bf1",
+      "text": "White blocks with the bishop."
+     },
+     {
+      "san": "Qf2#",
+      "text": "**Checkmate!** The queen is protected by the e4 knight; the king is boxed in by its own rook and bishop."
+     }
+    ],
+    "summary": "Even with the correct 8.g3 or 8.Qf1 the game is about equal – much better for Black than the normal Traxler. Remember the mating pattern: knight on e4 + queen on f2."
+   }
+  ]
+ },
+ {
+  "id": "benko-gambit",
+  "name": "Benko Gambit (vs 1.d4)",
+  "side": "b",
+  "level": "Advanced",
+  "eco": "A57–A59",
+  "tagline": "1.d4 Nf6 2.c4 c5 3.d5 b5!? – a positional gambit: you give a pawn for open a- and b-files and long-term pressure on White's queenside. Respected by grandmasters; the engine says about +0.8 for White.",
+  "ideas": [
+   "After **4.cxb5 a6 5.bxa6 Bxa6** your rooks get the **open a- and b-files** and your bishop sits on a6.",
+   "Fianchetto with **...g6 and ...Bg7**: the bishop on the long diagonal hits b2 and a1.",
+   "Typical setup: **...O-O, ...d6, ...Nbd7, ...Qa5, ...Rfb8** – all your pieces pressure a2 and b2.",
+   "It's a **long-term** gambit: no quick mates. Black is happy to reach an endgame where the a- and b-pawns are weak.",
+   "If White trades the light-squared bishops with **e4** and **Kxf1**, White's king can't castle – it walks to g2 instead."
+  ],
+  "lines": [
+   {
+    "id": "benko-accepted",
+    "name": "Fully accepted: 5.bxa6 Bxa6 6.Nc3 d6 7.e4",
+    "type": "main",
+    "intro": "The main line. White takes everything and builds a center; you get open files and a lasting initiative.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "A flexible developing move."
+     },
+     {
+      "san": "c4",
+      "text": "White takes space."
+     },
+     {
+      "san": "c5",
+      "text": "Challenge d4 with the c-pawn."
+     },
+     {
+      "san": "d5",
+      "text": "White advances and gains space."
+     },
+     {
+      "san": "b5",
+      "text": "**The Benko Gambit.** You offer a pawn to open the queenside files."
+     },
+     {
+      "san": "cxb5",
+      "text": "White accepts."
+     },
+     {
+      "san": "a6",
+      "text": "Offer a second pawn to open the a-file too."
+     },
+     {
+      "san": "bxa6",
+      "text": "White takes again."
+     },
+     {
+      "san": "Bxa6",
+      "text": "Recapture. Your bishop is active and the a- and b-files are open for your rooks."
+     },
+     {
+      "san": "Nc3",
+      "text": "White develops."
+     },
+     {
+      "san": "d6",
+      "text": "Solid: control e5 and c5."
+     },
+     {
+      "san": "e4",
+      "text": "White builds the center and offers to trade bishops."
+     },
+     {
+      "san": "Bxf1",
+      "text": "Trade – now White's king can't castle."
+     },
+     {
+      "san": "Kxf1",
+      "text": "White recaptures with the king."
+     },
+     {
+      "san": "g6",
+      "text": "Prepare the fianchetto."
+     },
+     {
+      "san": "g3",
+      "text": "White prepares Kg2 – 'castling by hand'."
+     },
+     {
+      "san": "Bg7",
+      "text": "The bishop on the long diagonal hits the queenside."
+     },
+     {
+      "san": "Kg2",
+      "text": "White's king is safe on g2."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle your king to safety."
+     },
+     {
+      "san": "Nf3",
+      "text": "White develops."
+     },
+     {
+      "san": "Nbd7",
+      "text": "Develop; the knight can go to b6 or e5 later. Next: ...Qa5 and ...Rfb8."
+     }
+    ],
+    "summary": "A pawn down but with great piece play. The engine says about +0.8 for White, but in practice Black's pressure on the a- and b-files is very hard to meet."
+   },
+   {
+    "id": "benko-b6",
+    "name": "5.b6 – White gives the pawn back",
+    "type": "variation",
+    "intro": "White refuses to open the a-file: the b5 pawn goes to b6 and you capture it.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "A flexible developing move."
+     },
+     {
+      "san": "c4",
+      "text": "White takes space."
+     },
+     {
+      "san": "c5",
+      "text": "Challenge d4."
+     },
+     {
+      "san": "d5",
+      "text": "White advances."
+     },
+     {
+      "san": "b5",
+      "text": "The Benko Gambit."
+     },
+     {
+      "san": "cxb5",
+      "text": "White takes."
+     },
+     {
+      "san": "a6",
+      "text": "Offer the second pawn."
+     },
+     {
+      "san": "b6",
+      "text": "White gives the pawn back to keep the queenside closed."
+     },
+     {
+      "san": "Qxb6",
+      "text": "Take back – material is equal, and your queen is active on b6."
+     },
+     {
+      "san": "Nc3",
+      "text": "White develops."
+     },
+     {
+      "san": "d6",
+      "text": "Control the center."
+     },
+     {
+      "san": "e4",
+      "text": "White builds the center."
+     },
+     {
+      "san": "g6",
+      "text": "Prepare the fianchetto."
+     },
+     {
+      "san": "Nf3",
+      "text": "White develops."
+     },
+     {
+      "san": "Bg7",
+      "text": "Your bishop aims at the queenside. A normal Benoni-type game (engine about +0.5)."
+     }
+    ],
+    "summary": "Material is equal. Plans: ...O-O, ...Nbd7, ...Rb8 and ...e6 to open the center."
+   },
+   {
+    "id": "benko-e3",
+    "name": "5.e3 – White keeps the b5 pawn",
+    "type": "variation",
+    "intro": "White doesn't take on a6 and develops calmly. You develop and open the queenside later.",
+    "moves": [
+     {
+      "san": "d4",
+      "text": "White opens with the queen's pawn."
+     },
+     {
+      "san": "Nf6",
+      "text": "A flexible developing move."
+     },
+     {
+      "san": "c4",
+      "text": "White takes space."
+     },
+     {
+      "san": "c5",
+      "text": "Challenge d4."
+     },
+     {
+      "san": "d5",
+      "text": "White advances."
+     },
+     {
+      "san": "b5",
+      "text": "The Benko Gambit."
+     },
+     {
+      "san": "cxb5",
+      "text": "White takes."
+     },
+     {
+      "san": "a6",
+      "text": "Offer the second pawn."
+     },
+     {
+      "san": "e3",
+      "text": "White develops calmly and keeps the b5 pawn."
+     },
+     {
+      "san": "g6",
+      "text": "Prepare the fianchetto."
+     },
+     {
+      "san": "Nc3",
+      "text": "White develops."
+     },
+     {
+      "san": "Bg7",
+      "text": "The long diagonal is yours."
+     },
+     {
+      "san": "a4",
+      "text": "White supports the b5 pawn."
+     },
+     {
+      "san": "O-O",
+      "text": "Castle. Next ...e6 or ...axb5 to open lines (engine about +0.8)."
+     }
+    ],
+    "summary": "Plans: ...e6 to break up White's d5 pawn, or ...axb5 and ...Qb6 against White's queenside."
+   }
+  ]
+ },
+ {
+  "id": "froms-gambit",
+  "name": "From's Gambit (vs Bird's 1.f4)",
+  "side": "b",
+  "level": "Intermediate",
+  "eco": "A02",
+  "tagline": "1.f4 e5!? – punish the Bird Opening's weakened king. Roughly balanced (engine about +0.4), with a famous mate trap: 4.Nc3?? Qh4+ 5.g3 Qxg3+! 6.hxg3 Bxg3#.",
+  "ideas": [
+   "After **1.f4 e5 2.fxe5 d6 3.exd6 Bxd6** your bishop and queen aim at **g3 and h2** – White's king has no f-pawn shield.",
+   "The big threat is **...Qh4+**, and after g3, **...Qxg3+ and ...Bxg3#**. White must play **4.Nf3** to stop it.",
+   "Against 4.Nf3, play **4...g5!**: the pawn kicks the knight with ...g4 and reopens the h4 square.",
+   "If White plays **2.e4**, it's a King's Gambit with colours reversed – just play 2...exf4 or develop normally."
+  ],
+  "lines": [
+   {
+    "id": "froms-main",
+    "name": "4.Nf3 g5 5.d4 g4 6.Ne5",
+    "type": "main",
+    "intro": "The main line. White defends correctly; you get the pawn back in an equal endgame where White can't castle.",
+    "moves": [
+     {
+      "san": "f4",
+      "text": "**Bird's Opening.** White controls e5 but weakens the e1-h4 diagonal."
+     },
+     {
+      "san": "e5",
+      "text": "**From's Gambit!** Offer a pawn to open lines toward White's king."
+     },
+     {
+      "san": "fxe5",
+      "text": "White accepts."
+     },
+     {
+      "san": "d6",
+      "text": "Offer another pawn to open your bishop's diagonal."
+     },
+     {
+      "san": "exd6",
+      "text": "White takes again."
+     },
+     {
+      "san": "Bxd6",
+      "text": "Recapture. The bishop eyes **g3 and h2**, and ...Qh4+ is a threat."
+     },
+     {
+      "san": "Nf3",
+      "text": "The only good move: the knight covers h4 and stops ...Qh4+."
+     },
+     {
+      "san": "g5",
+      "text": "Threat: **...g4**, chasing away the knight that guards h4."
+     },
+     {
+      "san": "d4",
+      "text": "White takes the center and gives the knight the e5 square."
+     },
+     {
+      "san": "g4",
+      "text": "Kick the knight."
+     },
+     {
+      "san": "Ne5",
+      "text": "The knight jumps to the center, the best square."
+     },
+     {
+      "san": "Bxe5",
+      "text": "Trade off the strong knight."
+     },
+     {
+      "san": "dxe5",
+      "text": "White recaptures."
+     },
+     {
+      "san": "Qxd1+",
+      "text": "Trade queens with check – White's king loses castling."
+     },
+     {
+      "san": "Kxd1",
+      "text": "White recaptures with the king."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop and attack e5. You will win the pawn back with ...Nxe5."
+     }
+    ],
+    "summary": "After ...Nxe5 material is equal. White has the bishop pair, you have the better king (engine about +0.5). Plans: ...Be6, ...O-O-O+ and ...Nxe5."
+   },
+   {
+    "id": "froms-trap-nc3",
+    "name": "Trap: 4.Nc3?? Qh4+ 5.g3 Qxg3+! 6.hxg3 Bxg3#",
+    "type": "trap",
+    "intro": "White develops a knight – the wrong one. Without Nf3 guarding h4, you mate in three moves with a queen sacrifice.",
+    "moves": [
+     {
+      "san": "f4",
+      "text": "Bird's Opening."
+     },
+     {
+      "san": "e5",
+      "text": "From's Gambit."
+     },
+     {
+      "san": "fxe5",
+      "text": "White accepts."
+     },
+     {
+      "san": "d6",
+      "text": "Offer another pawn."
+     },
+     {
+      "san": "exd6",
+      "text": "White takes."
+     },
+     {
+      "san": "Bxd6",
+      "text": "Recapture: the bishop aims at g3."
+     },
+     {
+      "san": "Nc3",
+      "text": "**The blunder.** A natural developing move, but it doesn't guard h4."
+     },
+     {
+      "san": "Qh4+",
+      "text": "Check on the weakened diagonal."
+     },
+     {
+      "san": "g3",
+      "text": "White's only move: block with the g-pawn."
+     },
+     {
+      "san": "Qxg3+",
+      "text": "**Sacrifice the queen!** Check from g3 – the f2 square is empty, so the queen sees the king."
+     },
+     {
+      "san": "hxg3",
+      "text": "White must take."
+     },
+     {
+      "san": "Bxg3#",
+      "text": "**Checkmate!** The bishop checks along g3-f2-e1, and the king has no escape square."
+     }
+    ],
+    "summary": "The lesson for both sides: when the f-pawn is gone, the e1-h4 diagonal is a highway to the king. A knight on f3 is the guard."
+   },
+   {
+    "id": "froms-g3",
+    "name": "4.Nf3 g5 5.g3 – the h-pawn attack",
+    "type": "variation",
+    "intro": "White protects h2/g3 with a pawn instead of playing d4. You chase the knight and attack with the h-pawn.",
+    "moves": [
+     {
+      "san": "f4",
+      "text": "Bird's Opening."
+     },
+     {
+      "san": "e5",
+      "text": "From's Gambit."
+     },
+     {
+      "san": "fxe5",
+      "text": "White accepts."
+     },
+     {
+      "san": "d6",
+      "text": "Offer another pawn."
+     },
+     {
+      "san": "exd6",
+      "text": "White takes."
+     },
+     {
+      "san": "Bxd6",
+      "text": "Recapture."
+     },
+     {
+      "san": "Nf3",
+      "text": "White guards h4."
+     },
+     {
+      "san": "g5",
+      "text": "Threaten ...g4."
+     },
+     {
+      "san": "g3",
+      "text": "White protects the h4 square and the g3 square with a pawn."
+     },
+     {
+      "san": "g4",
+      "text": "Kick the knight anyway."
+     },
+     {
+      "san": "Nh4",
+      "text": "The knight goes to the edge."
+     },
+     {
+      "san": "Be7",
+      "text": "Attack the h4 knight, which has no good retreat."
+     },
+     {
+      "san": "Ng2",
+      "text": "The knight retreats to g2 – a very passive square."
+     },
+     {
+      "san": "Nc6",
+      "text": "Develop."
+     },
+     {
+      "san": "c3",
+      "text": "White takes away d4 and b4 from your knight."
+     },
+     {
+      "san": "h5",
+      "text": "Start the h-pawn attack."
+     },
+     {
+      "san": "d4",
+      "text": "White builds the center."
+     },
+     {
+      "san": "h4",
+      "text": "Hit g3 to open the h-file for your rook (engine about +0.4: a fight)."
+     }
+    ],
+    "summary": "White is a pawn up, but your h-file attack and White's passive knight give good compensation. Next: ...hxg3 and ...Rh2 or ...Qd5 ideas."
+   }
+  ]
+ }
+]

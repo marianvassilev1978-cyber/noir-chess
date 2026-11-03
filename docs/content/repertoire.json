@@ -1,0 +1,102 @@
+{
+  "intro": "One repertoire that grows with you from 0 to 2000. The idea: **1.e4 with the Italian** as White, **the Caro-Kann** against 1.e4 and **the Queen's Gambit Declined** against 1.d4 as Black. Each stage adds only what you will really meet at that rating – the rest is in the library for later.\n\nBe honest with yourself about time: **below 1500, games are decided by tactics and blunders, not by move 15 of theory.** At 0–1400 spend at most 20% of your training on openings; the other 80% goes to tactics, endgames and playing slow games. Learn the **first 6–10 moves and the plan** of each line, not 20 moves of memory.\n\nThe choices fit together: the Caro-Kann and the Slav share ideas (...c6, bishop out before ...e6); the QGD as Black teaches you the same structures you get as White in the Queen's Gambit; the King's Indian Attack is one set-up against the French, the Caro-Kann and the Sicilian ...e6. Gambits are **surprise weapons for blitz**, never your main lines.",
+  "stages": [
+    {
+      "band": "0–1000",
+      "white": ["italian", "petrov-stafford-white"],
+      "black_vs_e4": ["caro-kann"],
+      "black_vs_d4": ["qgd-black"],
+      "black_vs_other": [],
+      "surprise_weapons": [],
+      "why": "At this level the opening has one job: get your pieces out, castle, and do not fall into traps. The **Italian** teaches the open-game basics (centre, development, f7) with a slow, safe plan. The **Caro-Kann** and the **QGD** are the two most solid defences in chess – you get healthy pawns and no early danger. Against 1...e5 2.Nf3 Nf6 you need the Petrov/Stafford file because the Stafford Gambit is everywhere online. Against rare first moves (1.c4, 1.Nf3, 1.b3, 1.f4) do not study anything yet: play ...d5, ...Nf6, ...e6 and develop, as in the QGD. Overkill here: everything else in the library.",
+      "goals": [
+        "Learn the first 8 moves of the Italian Giuoco Pianissimo (line italian-pianissimo) and its plan: c3, d3, O-O, Re1, Nbd2-f1-g3.",
+        "Know how to meet 3...Nf6 4.Ng5 ideas from both sides: play the Fried Liver line once, so you understand why f7 is weak.",
+        "Learn the Caro-Kann Classical to move 8 (…dxe4, …Bf5, …Bg6, …h6!) and the Advance plan …Bf5, …e6, …c5.",
+        "Learn the QGD Orthodox to move 6 (…e6, …Nf6, …Be7, …O-O, …h6).",
+        "Drill the four trap lines until they are automatic: Legal's Mate (italian-legal-mate), 6.Bg5?? in the Stafford (stafford-trap-bg5), …Ngf6?? Nd6# (ck-nd6-mate) and the Elephant Trap (qgd-elephant-trap).",
+        "Rule for every game: centre pawn, develop knights before bishops, castle before move 10, do not move the same piece twice without a reason."
+      ]
+    },
+    {
+      "band": "1000–1400",
+      "white": ["italian", "petrov-stafford-white", "alapin", "kia"],
+      "black_vs_e4": ["caro-kann", "vs-alien-gambit", "vs-martian-gambit"],
+      "black_vs_d4": ["qgd-black", "vs-london-black"],
+      "black_vs_other": [],
+      "surprise_weapons": ["scotch-gambit"],
+      "why": "Now your opponents stop playing 1...e5 every game. As White you will meet the Sicilian, the French and the Caro-Kann often. The **Alapin (2.c3)** gives you a clear centre plan against the Sicilian with very little theory, and the **King's Indian Attack** is one set-up (d3, Nd2, g3, Bg2, O-O, e5) against the French, the Caro-Kann and the Sicilian ...e6 – plans instead of memory. As Black, the **London System** is the most common 1.d4 line online: learn the ...c5 and ...Qb6 recipe. Online Caro-Kann players at this level also meet the **Alien and Martian gambits** (Witty_Alien's weapons, popular in Bulgaria) – know the defence once and they become free points. The **Scotch Gambit** is a sound blitz surprise that fits your Italian (same f7 ideas). Overkill here: the Ruy Lopez, the Najdorf, the Grünfeld, any 20-move line.",
+      "goals": [
+        "Alapin: learn 2...d5 and 2...Nf6 to move 10 (alapin-d5, alapin-nf6) and the IQP plan (Nc3, Be3, Qb3, Rfd1, d4-d5 break).",
+        "KIA: learn the set-up against the French (kia-vs-french) to move 12 and the e5 + Nf1-h2-g4 attack plan.",
+        "vs London: learn vs-london-qb6 to move 10 and the trick against 4.Nc3 (…a6).",
+        "Caro-Kann: deepen the Advance and Exchange lines of the basic course to move 12.",
+        "Know the defence to the Alien Gambit (7.Nf3 c5!) and the Martian Gambit (8...Bf5!) – one line each.",
+        "Scotch Gambit: learn sg-main-nf6 for blitz only; keep the Italian for slow games.",
+        "After every game, check where you left your preparation and write down the first move you did not know."
+      ]
+    },
+    {
+      "band": "1400–1700",
+      "white": ["italian", "petrov-stafford-white", "alapin", "kia"],
+      "black_vs_e4": ["caro-kann", "caro-kann-deep", "vs-alien-gambit", "vs-martian-gambit"],
+      "black_vs_d4": ["qgd-black", "vs-london-black"],
+      "black_vs_other": ["vs-english-reti"],
+      "surprise_weapons": ["scotch-gambit", "alien-gambit", "budapest-gambit", "froms-gambit"],
+      "why": "Your opponents now know their own lines, so you need a second layer: the sharp Advance tries (4.Nc3 with g4, 4.h4, 6.Be3) and the slow Exchange with Bd3 and c3 in the **Caro-Kann**, and an answer to **1.c4 and 1.Nf3** (…e5 against the English, a Slav set-up against the Réti). As White, stay with the Italian – it is played by world champions and you do not need the Ruy Lopez yet. Surprise weapons for blitz: the **Alien Gambit** against other Caro-Kann players (unsound, about −1.5, but very hard to meet in blitz), the **Budapest Gambit** against 1.d4 2.c4 (respectable) and **From's Gambit** against the Bird (1.f4). Overkill here: the Najdorf, the Grünfeld and long Nimzo theory.",
+      "goals": [
+        "Caro-Kann deeper: learn ck2-advance-g4, ck2-advance-h4 and ck2-exchange-qc7 to move 10–12; drill the two trap lines (ck2-trap-d4, ck2-trap-hxg4).",
+        "vs English and Réti: learn vs-english-4n-bb4 and vs-reti-slav to move 10; know the …Nd4/…Qe7/…Nf3# trap.",
+        "Italian: add the c3-d4 Giuoco Piano (italian-piano-d4) and the Evans Gambit (italian-evans) from White's side.",
+        "QGD: learn the Exchange Variation plan for Black (qgd-exchange) and the minority attack from both sides.",
+        "Blitz only: Alien Gambit main line and its two traps; Budapest main line and the …Nd3# trap.",
+        "Start a simple opening file: one line per opponent reply, with the plan written in one sentence."
+      ]
+    },
+    {
+      "band": "1700–2000",
+      "white": ["italian", "petrov-stafford-white", "alapin", "kia", "queens-gambit"],
+      "black_vs_e4": ["caro-kann", "caro-kann-deep", "vs-alien-gambit", "vs-martian-gambit"],
+      "black_vs_d4": ["qgd-black", "nimzo-indian", "vs-london-black"],
+      "black_vs_other": ["vs-english-reti"],
+      "surprise_weapons": ["scotch-gambit", "alien-gambit", "martian-gambit", "budapest-gambit", "benko-gambit", "froms-gambit"],
+      "why": "At 1700+ opponents prepare against you, so you need **a second weapon** and deeper understanding. As White add the **Queen's Gambit**: you already know these structures from the QGD as Black, so it costs little and lets you change opening when someone has prepared against 1.e4. As Black switch the move order to **1.d4 Nf6 2.c4 e6**: against 3.Nc3 play the **Nimzo-Indian**, against 3.Nf3 play 3...d5 and you are back in your QGD. That pair (Nimzo + QGD) has been a world-class repertoire for 80 years. The **Benko Gambit** is a positional surprise that grandmasters play. Not in your repertoire (library only): the Najdorf and Accelerated Dragon, the Grünfeld, the Dutch, the Pirc/Modern, the English and Jobava London as White – all good openings, but each one is a new world of theory. If at 1900+ you want a sharper defence to 1.e4 for must-win games, the **Accelerated Dragon** is the cheapest Sicilian to add; the **Najdorf** is a 2000+ project.",
+      "goals": [
+        "Queen's Gambit: learn qg-qgd, qg-exchange and qg-slav to move 10–12, and the minority attack plan with Rb1, b4-b5.",
+        "Nimzo-Indian: learn nimzo-rubinstein, nimzo-qc2 and nimzo-samisch to move 10–12; know the doubled c-pawn plans (…c5, …b6, …Ba6, …Na5) and the 4.e4? trap.",
+        "Check your move order: 1.d4 Nf6 2.c4 e6 3.Nf3 d5 = QGD; 3.g3 – play …d5 and …Be7 (Catalan-style, keep it simple).",
+        "Caro-Kann: know every line of caro-kann and caro-kann-deep to move 12, and one sideline each against 2.Nc3 and 2.d3 (two-knights, KIA set-ups).",
+        "Play through 10 master games in each of your main lines (Italian, Caro-Kann, QGD, Nimzo) – plans matter more than moves now.",
+        "Keep a short list of the 5 positions where you most often leave theory, and fix one per week."
+      ]
+    }
+  ],
+  "alternatives": [
+    {"id": "vienna", "note": "Alternative to the Italian against 1...e5 if you prefer f2-f4 attacks. Do not play both."},
+    {"id": "scotch", "note": "A sound alternative to the Italian with an early d4. Good second weapon at 1600+."},
+    {"id": "ruy-lopez", "note": "The deepest 1.e4 e5 opening. Only worth the time at 1900+; the Italian does the same job."},
+    {"id": "london", "note": "A one-system 1.d4 for White. If you ever switch to 1.d4, the Queen's Gambit gives you more."},
+    {"id": "jobava-london", "note": "An aggressive London (Nc3 + Bf4). Fun blitz weapon; many traps on c7."},
+    {"id": "english", "note": "A positional second White system for 1800+. Only if the Queen's Gambit feels too familiar to opponents."},
+    {"id": "e4-e5-black", "note": "1...e5 as Black: good for learning open games, but it conflicts with the Caro-Kann plan. Library only."},
+    {"id": "scandinavian", "note": "A simple surprise defence to 1.e4 (1...d5). Useful in blitz if opponents prepare for your Caro-Kann."},
+    {"id": "french", "note": "A solid alternative to the Caro-Kann with the same ...c5 ideas but a worse light-squared bishop."},
+    {"id": "sicilian", "note": "The basic Sicilian course (Najdorf 6.Be2/6.Be3, Alapin, Accelerated Dragon, Morra). For a later switch to sharper play."},
+    {"id": "najdorf-deep", "note": "Deep Najdorf theory. A 2000+ project – very high reward, very high cost."},
+    {"id": "accelerated-dragon", "note": "The cheapest Sicilian to learn. Best choice if you add a sharp second defence to 1.e4 at 1900+."},
+    {"id": "pirc-modern", "note": "Flexible surprise defence to 1.e4. Fine in blitz; risky against well-prepared attackers."},
+    {"id": "slav-black", "note": "The Caro-Kann's brother against 1.d4. A good replacement for the QGD if you prefer ...c6 structures."},
+    {"id": "kings-indian", "note": "Sharp, theory-heavy defence to 1.d4. Only for players who love kingside attacks; 2000+."},
+    {"id": "grunfeld", "note": "Top-level dynamic defence to 1.d4. Too much theory below 1900."},
+    {"id": "dutch", "note": "A fighting surprise against 1.d4 (Leningrad or Stonewall). Good for must-win games; know the Qh5# trap."},
+    {"id": "qid-bogo", "note": "Partner of the Nimzo-Indian against 3.Nf3 if you do not want the QGD there."},
+    {"id": "kings-gambit", "note": "Playable fun gambit (about −0.5). Blitz only."},
+    {"id": "danish-gambit", "note": "Sound enough club gambit against 1...e5 players. Blitz only."},
+    {"id": "blackmar-diemer", "note": "Dubious 1.d4 gambit (about −0.7). Only if you switch to 1.d4 and want chaos."},
+    {"id": "halloween-gambit", "note": "Unsound (about −1.5). For fun games only."},
+    {"id": "englund-gambit", "note": "Unsound (about +1 to +2 for White). One trap; avoid in serious games."},
+    {"id": "latvian-gambit", "note": "Objectively bad. Avoid."},
+    {"id": "elephant-gambit", "note": "Dubious (about +1 for White). Avoid in serious games."},
+    {"id": "traxler", "note": "Very sharp and objectively dubious. Only for 1...e5 players; not in your repertoire."}
+  ]
+}

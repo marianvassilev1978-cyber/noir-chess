@@ -1,0 +1,59 @@
+// Build: bundle src -> docs/ (served by GitHub Pages and published as the Claude artifact).
+const fs = require("fs");
+const path = require("path");
+const esbuild = require("esbuild");
+
+const ROOT = path.join(__dirname, "..");
+const OUT = path.join(ROOT, "docs");
+const V = Date.now().toString(36);
+
+function copyDir(src, dst) {
+  fs.mkdirSync(dst, { recursive: true });
+  for (const f of fs.readdirSync(src)) {
+    const a = path.join(src, f), b = path.join(dst, f);
+    if (fs.statSync(a).isDirectory()) copyDir(a, b); else fs.copyFileSync(a, b);
+  }
+}
+
+(async () => {
+  fs.rmSync(OUT, { recursive: true, force: true });
+  fs.mkdirSync(OUT, { recursive: true });
+  await esbuild.build({
+    entryPoints: [path.join(ROOT, "src/main.js")],
+    bundle: true, minify: true, format: "iife", target: ["safari15", "chrome100"],
+    outfile: path.join(OUT, "app.js"), sourcemap: false, legalComments: "none",
+    loader: { ".css": "css" },
+  });
+  // esbuild emits app.css next to app.js because main.js imports styles.css
+  copyDir(path.join(ROOT, "public"), OUT);
+  copyDir(path.join(ROOT, "content"), path.join(OUT, "content"));
+  // content files the app does not need at runtime
+  fs.writeFileSync(path.join(OUT, "index.html"), fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8").replace(/__V__/g, V));
+  fs.writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify({
+    name: "Noir Chess", short_name: "Noir Chess", description: "Personal chess trainer — zero to 2000.",
+    start_url: "./", scope: "./", display: "standalone", orientation: "portrait",
+    background_color: "#302e2b", theme_color: "#302e2b",
+    icons: [{ src: "icon-192.png", sizes: "192x192", type: "image/png" }, { src: "icon-512.png", sizes: "512x512", type: "image/png" }, { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }],
+  }, null, 1));
+  const list = [];
+  (function walk(d, rel) { for (const f of fs.readdirSync(d)) { const a = path.join(d, f), r = rel ? rel + "/" + f : f; if (fs.statSync(a).isDirectory()) walk(a, r); else list.push(r); } })(OUT, "");
+  const precache = list.filter((f) => !/sf-asm\.js$|^sound\/piano|^sound\/sfx|\.md$/.test(f) && !/^pieces\/(?!cburnett|staunty|maestro)/.test(f));
+  fs.writeFileSync(path.join(OUT, "sw.js"), `// Offline cache. Version ${V}.
+const VERSION = "noir-${V}";
+const CORE = ${JSON.stringify(["./", ...precache.filter((f) => f !== "sw.js")])};
+self.addEventListener("install", (e) => { e.waitUntil(caches.open(VERSION).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
+self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== VERSION).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
+self.addEventListener("fetch", (e) => {
+  const u = new URL(e.request.url);
+  if (e.request.method !== "GET" || u.origin !== location.origin) return;
+  // stale-while-revalidate for everything same-origin
+  e.respondWith(caches.open(VERSION).then((c) => c.match(e.request, { ignoreSearch: true }).then((hit) => {
+    const net = fetch(e.request).then((res) => { if (res.ok) c.put(e.request, res.clone()); return res; }).catch(() => hit || c.match("index.html"));
+    return hit || net;
+  })));
+});
+`);
+  fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
+  const size = (f) => (fs.statSync(path.join(OUT, f)).size / 1024).toFixed(0) + "KB";
+  console.log("built", V, "app.js", size("app.js"), "app.css", size("app.css"), "files", list.length + 2);
+})().catch((e) => { console.error(e); process.exit(1); });

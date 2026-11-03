@@ -1,0 +1,233 @@
+[
+  {
+    "id": "eg-kqk-1", "title": "Queen mate I", "group": "Basic mates", "band": "600–1000",
+    "fen": "8/8/8/4k3/8/8/8/1Q2K3 w - - 0 1", "goal": "win", "maxMoves": 20,
+    "text": "White to move. Checkmate with king and queen.",
+    "hint": "Box the king with knight-move distance (queen a knight's jump from the king), shrink the box, then bring your king.",
+    "explain": "Put the queen a knight's move away from the enemy king and follow it — the box gets smaller every move. When the king is on the edge, stop, and bring your own king closer. Mate comes with the queen on the edge supported by the king. Before every quiet queen move, check that Black still has a legal move: stalemate is the only way to spoil this."
+  },
+  {
+    "id": "eg-kqk-2", "title": "Queen mate II", "group": "Basic mates", "band": "600–1000",
+    "fen": "8/8/8/8/3k4/8/8/6KQ w - - 0 1", "goal": "win", "maxMoves": 20,
+    "text": "White to move. The black king sits in the centre. Mate it.",
+    "hint": "Cut the board with the queen first; your king is far away and must walk in.",
+    "explain": "The queen cuts the king off on a rank or file, then keeps shrinking its area with knight-distance moves. Your king walks toward the enemy king — the queen alone cannot mate. Once the king is on the edge, the mate is queen next to the king (protected) or queen on the edge in front of your king."
+  },
+  {
+    "id": "eg-kqk-3", "title": "Queen mate III (as Black)", "group": "Basic mates", "band": "600–1000",
+    "fen": "7k/8/8/8/3q4/8/8/4K3 b - - 0 1", "goal": "win", "maxMoves": 20,
+    "text": "Black to move. Same technique with the black pieces — mate the white king.",
+    "hint": "Push the white king to the 1st rank, then bring your king from h8.",
+    "explain": "The method does not change with colour: queen at a knight's distance, shrink the box, drive the king to an edge, then walk your king over. Watch the stalemate trap when the white king is in a corner."
+  },
+  {
+    "id": "eg-krk-1", "title": "Rook mate I", "group": "Basic mates", "band": "600–1000",
+    "fen": "8/8/8/4k3/8/8/8/R3K3 w - - 0 1", "goal": "win", "maxMoves": 30,
+    "text": "White to move. Checkmate with king and rook.",
+    "hint": "The rook cuts off a rank; your king takes the opposition; then the rook checks and the box shrinks.",
+    "explain": "Use the rook to cut the king off along a rank, then bring your king up. When the kings stand in opposition, a rook check pushes the enemy king back one rank. When they are not in opposition, make a waiting rook move along the rank (far from the enemy king). Repeat until mate on the edge. Keep the rook away from the enemy king so it cannot be attacked."
+  },
+  {
+    "id": "eg-krk-2", "title": "Rook mate II", "group": "Basic mates", "band": "600–1000",
+    "fen": "8/8/8/8/8/2k5/8/5KR1 w - - 0 1", "goal": "win", "maxMoves": 30,
+    "text": "White to move. The black king is close to your king. Mate it.",
+    "hint": "First cut the king off: the rook goes to the 2nd rank or a file, far from the black king.",
+    "explain": "Cut off the king (for example along the 2nd rank or a file) so that it is pushed toward an edge, then use the opposition-and-check method. When the rook is attacked, move it to the other end of the same line — never give up the cut."
+  },
+  {
+    "id": "eg-krk-3", "title": "Rook mate III (as Black)", "group": "Basic mates", "band": "600–1000",
+    "fen": "8/8/3K4/8/8/8/8/r3k3 b - - 0 1", "goal": "win", "maxMoves": 30,
+    "text": "Black to move. Mate the white king with king and rook.",
+    "hint": "Cut the white king off on a rank, then walk your king up the board.",
+    "explain": "The same box method from the other side. The white king starts active on d6 — cut it off along a rank first, then bring the king, then check when the kings are in opposition and make waiting moves when they are not."
+  },
+  {
+    "id": "eg-kbbk-1", "title": "Two bishops mate I", "group": "Basic mates", "band": "1000–1400",
+    "fen": "8/8/8/4k3/8/8/8/2B1KB2 w - - 0 1", "goal": "win", "maxMoves": 40,
+    "text": "White to move. Checkmate with two bishops.",
+    "hint": "Bishops side by side form a wall the king cannot cross. Bring your king up, then push the enemy king to a corner.",
+    "explain": "Place the two bishops on neighbouring squares (for example d4 and e4) — side by side they form a wall of diagonals the king cannot cross. The king does the pushing: it takes squares in front of the enemy king while the bishops shrink the area. The mate happens in a corner; watch out for stalemate when the enemy king has only one or two squares left."
+  },
+  {
+    "id": "eg-kbbk-2", "title": "Two bishops mate II", "group": "Basic mates", "band": "1000–1400",
+    "fen": "8/8/3k4/8/8/2B5/3KB3/8 w - - 0 1", "goal": "win", "maxMoves": 40,
+    "text": "White to move. Mate with the bishops from a different start.",
+    "hint": "King forward first. The bishops work best close to each other and close to your king.",
+    "explain": "Bring the king up to support the bishops, keep the bishops together as a barrier, and drive the black king to the edge and then into any corner. Every few moves, count the enemy king's squares — when it has none and is not in check, it is stalemate."
+  },
+  {
+    "id": "eg-kbnk-1", "title": "Bishop and knight mate", "group": "Basic mates", "band": "1400–1800",
+    "fen": "8/8/3k4/8/8/8/8/2BNK3 w - - 0 1", "goal": "win", "maxMoves": 60,
+    "text": "White to move. The hardest basic mate: bishop and knight. You have 60 moves.",
+    "hint": "The mate is only possible in a corner of the bishop's colour (dark: a1 or h8). Drive the king there.",
+    "explain": "First push the king to the edge with all three pieces together. Then drive it to a corner of your **bishop's colour** (here a1 or h8, because your bishop is dark-squared). If it runs to a wrong corner, use the **W-manoeuvre**: the knight hops along the edge in a W shape, together with bishop checks, to chase it along the edge into the right corner. Final mate: bishop checks on the diagonal, knight and king cover the rest."
+  },
+  {
+    "id": "eg-kbnk-2", "title": "Bishop and knight: wrong corner", "group": "Basic mates", "band": "1400–1800",
+    "fen": "k7/8/2K5/8/8/8/8/2B1N3 w - - 0 1", "goal": "win", "maxMoves": 50,
+    "text": "White to move. The black king is in the a8 corner — the wrong colour for your dark bishop. Chase it to a1 or h8 and mate.",
+    "hint": "Mate is impossible in a8. Bring the knight closer and drive the king along the 8th rank toward h8 or down the a-file toward a1.",
+    "explain": "In the wrong corner, the defender tries to stay there. The knight, king and bishop together push it along the edge toward the right corner: the knight covers the light squares the bishop cannot, the king blocks the escape toward the centre. Once the king is near the dark corner, finish with a bishop check supported by the knight and king."
+  },
+  {
+    "id": "eg-kpk-1", "title": "Pawn on the 2nd rank", "group": "Pawn endings", "band": "1000–1400",
+    "fen": "4k3/8/8/8/8/8/4P3/4K3 w - - 0 1", "goal": "win", "maxMoves": 25,
+    "text": "White to move. King and pawn against king. Win — the king goes first.",
+    "hint": "Do not push the pawn yet. Walk the king up in front of it; the pawn's spare moves can win the opposition later.",
+    "explain": "Kings first: walk your king in front of the pawn toward the key squares (d4, e4, f4 for the e2-pawn, and later two squares in front of wherever the pawn is). The pawn still has spare tempo moves (e3 or e4), so you can always win the opposition when you need it. Pushing the pawn early lets the black king take the opposition and draw."
+  },
+  {
+    "id": "eg-kpk-2", "title": "Reach the key square", "group": "Pawn endings", "band": "1000–1400",
+    "fen": "8/8/3k4/8/2K5/4P3/8/8 w - - 0 1", "goal": "win", "maxMoves": 25,
+    "text": "White to move. The key squares of the e3-pawn are d5, e5, f5. Get there and win.",
+    "hint": "Only one move wins: take the opposition.",
+    "explain": "Kd4! takes the opposition. When Black gives way, step forward to a key square (or take the opposition again) and only then push the pawn. Once your king is on a key square, the pawn queens no matter who is to move."
+  },
+  {
+    "id": "eg-kpk-3", "title": "King on the 6th rank", "group": "Pawn endings", "band": "1000–1400",
+    "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1", "goal": "win", "maxMoves": 15,
+    "text": "White to move. Your king is on the 6th rank in front of the pawn. Win — but careful, two king moves draw.",
+    "hint": "Do not step back. Step to the side.",
+    "explain": "With the king on the 6th rank in front of the pawn, the position is won with either side to move — but only if you keep the king there. Kd6 or Kf6 (to the side) keeps all the key squares; Kd5? or Kf5? gives Black the opposition and draws. Then push the pawn when the black king has given way."
+  },
+  {
+    "id": "eg-kpk-4", "title": "Defend: opposition", "group": "Pawn endings", "band": "1000–1400",
+    "fen": "8/8/8/4k3/8/4PK2/8/8 b - - 0 1", "goal": "draw", "maxMoves": 30,
+    "text": "Black to move. Hold the draw against king and pawn.",
+    "hint": "Take the opposition now. When pushed back, go straight back, not to the side.",
+    "explain": "...Kf5! takes the opposition. Stay in front of the pawn; when the white king comes forward, keep the opposition; when the pawn checks you, step back directly in front of it. At the end, either the pawn is stuck on the 7th with your king on the queening square (stalemate) or you take it."
+  },
+  {
+    "id": "eg-kpk-5", "title": "Defend: the back rank", "group": "Pawn endings", "band": "1000–1400",
+    "fen": "4k3/8/8/8/8/8/4P3/4K3 b - - 0 1", "goal": "draw", "maxMoves": 30,
+    "text": "Black to move. The pawn is far back. Hold the draw — two of your five king moves lose.",
+    "hint": "Move forward, toward the pawn, not to the side on the back rank.",
+    "explain": "...Kd7, ...Ke7 or ...Kf7 — go forward so you can meet the white king in opposition on the 6th or 5th rank. ...Kd8? or ...Kf8? is too passive: the white king gets in front of its pawn with the opposition. Later remember the rule: when the pawn checks you, go straight back."
+  },
+  {
+    "id": "eg-kpk-6", "title": "Rook pawn: lock the king in", "group": "Pawn endings", "band": "1200–1600",
+    "fen": "8/7K/5k2/7P/8/8/8/8 b - - 0 1", "goal": "draw", "maxMoves": 20,
+    "text": "Black to move. White's king is already in front of its h-pawn. Draw it.",
+    "hint": "The only key squares of a rook pawn are g7 and g8. Take both away.",
+    "explain": "...Kf7! keeps g7 and g8 covered and locks the white king in the corner. Then just move between f7 and f8 (keeping control of g7/g8). White can push h6–h7, but the king never gets out, and it ends in stalemate or a draw by repetition."
+  },
+  {
+    "id": "eg-kpk-7", "title": "Defend the f-pawn", "group": "Pawn endings", "band": "1000–1400",
+    "fen": "4k3/8/8/4K3/5P2/8/8/8 b - - 0 1", "goal": "draw", "maxMoves": 30,
+    "text": "Black to move. Only one move draws. Find it and hold.",
+    "hint": "The key squares of the f4-pawn are e6, f6 and g6. Keep the white king out with the opposition.",
+    "explain": "...Ke7! takes the opposition against the king on e5. After Kf5 Kf7, or f5 Kf7, Black stays in front of the pawn and keeps the opposition. ...Kf7? at once lets Kd6 or Kf5 reach a key square."
+  },
+  {
+    "id": "eg-outside-1", "title": "Outside passed pawn", "group": "Pawn endings", "band": "1200–1600",
+    "fen": "8/8/3k4/6p1/P2K2P1/8/8/8 w - - 0 1", "goal": "win", "maxMoves": 30,
+    "text": "White to move. Your a-pawn is an outside passer. Use it to win.",
+    "hint": "The a-pawn pulls the black king away; your king then eats g5.",
+    "explain": "Push the a-pawn so the black king must go after it. While it does, your king walks to f5 and takes g5 (or it can wait in the centre and reach g5 after the deflection). Then the g-pawn queens, or your king comes back and wins the race. The outside passer is a decoy."
+  },
+  {
+    "id": "eg-break-1", "title": "Breakthrough", "group": "Pawn endings", "band": "1200–1600",
+    "fen": "1k6/5ppp/8/5PPP/8/8/8/1K6 w - - 0 1", "goal": "win", "maxMoves": 15,
+    "text": "White to move. Three pawns against three, kings far away. Create a passed pawn by force.",
+    "hint": "The middle pawn goes first.",
+    "explain": "g6! — if ...hxg6 f6! gxf6 h6, the h-pawn queens; if ...fxg6 h6! gxh6 f6, the f-pawn queens. The kings are too far away to stop the new passed pawn. After promotion, finish the game with the queen."
+  },
+  {
+    "id": "eg-lucena-1", "title": "Lucena: build the bridge", "group": "Rook endings", "band": "1200–1600",
+    "fen": "4K3/4P1k1/8/8/8/8/3r4/5R2 w - - 0 1", "goal": "win", "maxMoves": 40,
+    "text": "White to move. The Lucena position. Promote the pawn.",
+    "hint": "Rook to the 4th rank first (Rf4), then the king walks out and the rook blocks the checks.",
+    "explain": "Rf4! (the bridge), then Kd7/Ke7 out of the corner. Black checks from the side or behind; the king walks down toward the rook (for example Kd6–e6–e5) and at the right moment the rook steps in front (Re4 or Rd4) to block the check. Then e8=Q. Also possible: first check the black king one file further away. Never let the black king come back in front of the pawn."
+  },
+  {
+    "id": "eg-lucena-2", "title": "Lucena with a knight pawn", "group": "Rook endings", "band": "1400–1800",
+    "fen": "6K1/6P1/4k3/8/8/8/7r/5R2 w - - 0 1", "goal": "win", "maxMoves": 40,
+    "text": "White to move. A g-pawn Lucena: your king on g8 in front of the pawn, Black's rook on the h-file. Win.",
+    "hint": "The h-file is blocked by Black's rook. Step out on the other side: Kf8 is the most direct, or build the bridge with Rf4.",
+    "explain": "The king wants to leave g8 via f7 or f8, while your rook on f1 keeps the black king away. When Black checks, walk the king toward your rook and block with the rook on the 4th rank (the bridge). The key: the black king is cut off by the rook, so once the checks run out, g8=Q comes."
+  },
+  {
+    "id": "eg-philidor-1", "title": "Philidor: the 3rd-rank defence", "group": "Rook endings", "band": "1200–1600",
+    "fen": "4k3/7R/8/3KP3/8/8/8/r7 b - - 0 1", "goal": "draw", "maxMoves": 40,
+    "text": "Black to move. You are a pawn down. Set up the Philidor defence and hold.",
+    "hint": "Rook to the 6th rank (...Ra6) and wait there. When the pawn reaches e6, the rook goes to the 1st rank and checks from behind.",
+    "explain": "...Ra6! keeps the white king off the 6th rank. Shuffle the rook along the 6th rank. When White plays e6, the white king loses its shelter: go ...Ra1 at once and check from behind (from the 1st and 2nd ranks) — the king cannot hide. Keep your king on e8/d8/f8 in front of the pawn."
+  },
+  {
+    "id": "eg-philidor-2", "title": "Philidor: checks from behind", "group": "Rook endings", "band": "1200–1600",
+    "fen": "4k3/7R/r3P3/4K3/8/8/8/8 b - - 0 1", "goal": "draw", "maxMoves": 40,
+    "text": "Black to move. White has just pushed e6. Find the moment of the Philidor and hold.",
+    "hint": "Now the rook leaves the 6th rank — to the far end of the board.",
+    "explain": "...Ra1! (or ...Ra2/a3/a4) and start checking from behind. Because the pawn is on e6, the white king cannot go forward to hide on e6, and it cannot escape the checks from far away. Keep the king on e8/f8/d8. ...Kf8? or ...Rb6? loses — after e7 or Kd6 Black is too late."
+  },
+  {
+    "id": "eg-vancura-1", "title": "Vancura position", "group": "Rook endings", "band": "1400–1800",
+    "fen": "R7/6k1/P7/8/8/8/5r2/4K3 b - - 0 1", "goal": "draw", "maxMoves": 40,
+    "text": "Black to move. White's rook is in front of the a6-pawn. Build the Vancura setup and hold the draw.",
+    "hint": "...Rf6: attack the pawn from the side. King stays on g7/h7.",
+    "explain": "...Rf6! attacks the a6-pawn from the side, so the white rook is tied to a8. If the white king walks over to the pawn, check it from the side along the ranks. If White plays a7, put your rook behind the pawn on the a-file; the king on g7/h7 stops the Rh8 skewer trick. Never put the king on f7 or the rook on f8."
+  },
+  {
+    "id": "eg-behind-1", "title": "Rook behind the passed pawn", "group": "Rook endings", "band": "1400–1800",
+    "fen": "R7/8/P5k1/8/8/8/1r6/6K1 b - - 0 1", "goal": "draw", "maxMoves": 40,
+    "text": "Black to move. Rook in front of the pawn for White, your king on g6. Hold the draw.",
+    "hint": "Rook behind the pawn (...Ra2) and king to g7 or h7 — not f7.",
+    "explain": "The defending rook belongs behind the passed pawn (on the a-file below it), and the king on g7 or h7, where White's Rh8 trick does not work. If the white king walks toward the pawn, check it from behind or from the side. ...Kf7? and ...Kf6? lose to a7! and the skewer along the 7th rank."
+  },
+  {
+    "id": "eg-shortside-1", "title": "Short-side defence", "group": "Rook endings", "band": "1400–1800",
+    "fen": "3k4/7R/3K4/3P4/8/8/8/r7 b - - 0 1", "goal": "draw", "maxMoves": 40,
+    "text": "Black to move. White threatens Rh8 mate. Your rook is on the long side. Hold the draw.",
+    "hint": "King to the short side (...Ke8), or check from the side right away (...Ra6+).",
+    "explain": "For a d-pawn the short side is the e–h side. ...Ke8! (or ...Ra6+ first) — the king goes to the short side, and the rook stays on the long side (a-file) to check the white king from the side from far away. ...Kc8? goes to the long side and loses: the rook has no room to check."
+  },
+  {
+    "id": "eg-longside-1", "title": "Punish the wrong side", "group": "Rook endings", "band": "1400–1800",
+    "fen": "5k2/R7/4K3/4P3/8/8/8/7r w - - 0 1", "goal": "win", "maxMoves": 45,
+    "text": "White to move. Black's king and rook are both on the short side. Win.",
+    "hint": "Ra8+ pushes the king further away; then your king hides from checks near the pawn.",
+    "explain": "Ra8+! Kg7 and then, for example, Ke7 — the black rook on the h-file is too close to check from the side, so the white king escapes and the pawn advances (e6, then Rd8/Re8 ideas or the Lucena). Defending king and rook on the same short side leave no space for checks."
+  },
+  {
+    "id": "eg-qp-1", "title": "Queen against the d-pawn", "group": "Queen endings", "band": "1200–1600",
+    "fen": "K7/8/8/8/7Q/8/3pk3/8 w - - 0 1", "goal": "win", "maxMoves": 40,
+    "text": "White to move. A queen against a centre pawn on the 7th. Your king is far away. Win.",
+    "hint": "Checks and pins until the black king stands on d1 in front of its pawn — then bring your king one step.",
+    "explain": "Check or pin the pawn so it cannot queen. Force the black king onto d1 (in front of the pawn): now the pawn is blocked for a moment and your king takes one step closer. Repeat until the king arrives, then win the pawn and mate with the queen."
+  },
+  {
+    "id": "eg-qp-2", "title": "c-pawn draw: the stalemate trick", "group": "Queen endings", "band": "1200–1600",
+    "fen": "K7/8/8/8/1Q6/8/1kp5/8 b - - 0 1", "goal": "draw", "maxMoves": 30,
+    "text": "Black to move. You have only a c-pawn against a queen, and White's king is far away. Hold the draw.",
+    "hint": "When the queen blocks or pins, go to the corner (a1): if the queen takes the pawn, it is stalemate.",
+    "explain": "With a bishop pawn the defender has a stalemate trick: when the white queen forces you in front of the pawn or pins it, put the king on a1 instead of c1. Then Qxc2 is stalemate, so White cannot gain the tempo to bring the king closer. Keep threatening ...c1=Q."
+  },
+  {
+    "id": "eg-qp-3", "title": "f-pawn draw: the stalemate trick", "group": "Queen endings", "band": "1200–1600",
+    "fen": "K7/8/8/8/6Q1/8/5pk1/8 b - - 0 1", "goal": "draw", "maxMoves": 30,
+    "text": "Black to move. f-pawn against a queen, White's king far away. Draw it.",
+    "hint": "The h1 corner is your friend.",
+    "explain": "The same trick as with the c-pawn on the other side: when the queen checks, go to h1 or h2, toward the corner. With the king on h1, Qxf2 is stalemate. If White does not, you threaten ...f1=Q again. White's king is too far away to help."
+  },
+  {
+    "id": "eg-wrongbishop-1", "title": "Wrong bishop draw", "group": "Minor pieces", "band": "1200–1600",
+    "fen": "8/8/8/3k3P/8/8/8/2K2B2 b - - 0 1", "goal": "draw", "maxMoves": 25,
+    "text": "Black to move. White has a bishop and an h-pawn, but the bishop is light-squared and h8 is dark. Run to the corner and draw.",
+    "hint": "Only two moves draw: toward g7/h8 at once (...Ke5 or ...Ke6).",
+    "explain": "Head for h8 the fastest way (...Ke6–f7–g8 or ...Ke5–f6–g7). Once the black king is in the corner, the light-squared bishop can never drive it out, and White's king can only stalemate it. Any slower route lets the pawn queen first."
+  },
+  {
+    "id": "eg-ocb-1", "title": "Opposite-coloured bishops: blockade", "group": "Minor pieces", "band": "1400–1800",
+    "fen": "8/4k3/7b/4PP2/2B1K3/8/8/8 b - - 0 1", "goal": "draw", "maxMoves": 40,
+    "text": "Black to move. Two pawns down with opposite-coloured bishops. Blockade and draw.",
+    "hint": "...Bg7: control f6 twice. Your king blockades on the light squares in front of the pawns.",
+    "explain": "...Bg7! — the king on e7 and the bishop together control f6, so the pawns cannot advance as a pair. If e6, keep the king in front (e7/e8) and the bishop on the long diagonal; f6 then just gives a pawn away. Never trade your bishop and never leave the blockade."
+  },
+  {
+    "id": "eg-knight-1", "title": "Knight stops the pawn", "group": "Minor pieces", "band": "1200–1600",
+    "fen": "8/8/5K2/8/8/1p3k2/N7/8 w - - 0 1", "goal": "draw", "maxMoves": 20,
+    "text": "White to move. A knight against a b-pawn, the black king is far. Do not lose.",
+    "hint": "Control the queening square b1.",
+    "explain": "Nc3! controls b1. After ...b2, Nb1 blocks the pawn, or the knight takes it if it promotes. The black king needs several moves to come and help, and by then your king or knight has the pawn. A knight stops a pawn by controlling the squares in front of it."
+  }
+]

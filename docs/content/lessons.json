@@ -1,0 +1,2027 @@
+[
+ {
+  "id": "l1",
+  "title": "Level 1 — The Basics",
+  "subtitle": "The board, the pieces, the rules and how to read chess moves",
+  "lessons": [
+   {
+    "id": "l1-board",
+    "title": "The board and chess notation",
+    "minutes": 8,
+    "steps": [
+     {
+      "type": "text",
+      "text": "The chessboard has 64 squares in 8 rows and 8 columns. Set it up so that each player has a **light square in the right-hand corner**.\n\nThe columns are called **files** and are named with letters **a** to **h**, from White's left to White's right. The rows are called **ranks** and are numbered **1** to **8**, starting from White's side. White's pieces start on ranks 1 and 2, Black's on ranks 7 and 8.\n\nEvery square therefore has a unique name: file letter + rank number. The square where White's king starts is **e1**; Black's king starts on **e8**."
+     },
+     {
+      "type": "board",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "text": "The starting position. The four highlighted squares — **d4, e4, d5, e5** — are the **center**. Whoever controls the center usually has more space and more active pieces. You will hear about these squares again and again.",
+      "highlights": [
+       "d4",
+       "e4",
+       "d5",
+       "e5"
+      ]
+     },
+     {
+      "type": "text",
+      "text": "**Writing moves (algebraic notation).** Each piece has a capital letter: **K** = king, **Q** = queen, **R** = rook, **B** = bishop, **N** = knight (K is already taken by the king). Pawns have no letter.\n\nA move is written as *piece letter + destination square*:\n- **Nf3** — a knight moves to f3.\n- **e4** — a pawn moves to e4.\n- **Bb5** — a bishop moves to b5.\n\nSymbols you must know:\n- **x** = captures. **Bxc6** = bishop takes on c6. For pawn captures we write the file the pawn came from: **exd5** = the e-pawn takes on d5.\n- **+** = check. **#** = checkmate.\n- **O-O** = castling kingside, **O-O-O** = castling queenside.\n- **e8=Q** = a pawn reaches e8 and becomes a queen.\n- If two identical pieces can reach the same square, add the starting file or rank: **Nbd2** (the knight from b1), **R1e2** (the rook from the first rank).\n\nIn books you will also see **!** (good move), **?** (mistake), **??** (blunder) and **!?** (interesting move)."
+     },
+     {
+      "type": "board",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "text": "Games are written as numbered pairs: **1.e4 e5 2.Nf3 Nc6** means White played e2-e4, Black e7-e5, then White's knight went g1-f3 and Black's knight b8-c6. The arrows show 1.e4 and 2.Nf3. Every exercise in this app uses this notation, so take a minute to say the moves out loud.",
+      "arrows": [
+       "e2e4",
+       "g1f3"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b1kb1r/pppp1ppp/2n2n2/3q4/4P3/5N2/PPP2PPP/RNBQKB1R w KQkq - 0 5",
+      "text": "White to move. Black's queen stands on **d5**. Capture it with your pawn — in notation, the move is **exd5**.",
+      "solution": [
+       "exd5"
+      ],
+      "hint": "A pawn captures one square diagonally forward. Which of your pawns touches d5?",
+      "explain": "**exd5** — the e-pawn (from e4) captures (x) on d5. Notice that your queen could also take (Qxd5), but the knight on f6 would recapture and you would only trade queens. Taking with the pawn wins a queen for a pawn: **capture with your cheapest piece**."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+      "text": "After **1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6??** it is White's move. Play **Qxf7#**: the queen captures on f7 with checkmate.",
+      "solution": [
+       "Qxf7#"
+      ],
+      "hint": "Your queen on h5 and your bishop on c4 both aim at f7.",
+      "explain": "**Qxf7#** reads: Queen captures (x) on f7, checkmate (#). The bishop on c4 protects the queen, so the king cannot take it, and every escape square is covered. This is **Scholar's Mate** — in Level 3 you will learn how to stop it as Black. Black's 3...Nf6?? attacked the queen but ignored White's threat.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l1-pieces",
+    "title": "How the pieces move",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**King** — one square in any direction. It may never move onto a square attacked by an enemy piece.\n\n**Queen** — any number of squares in a straight line or diagonal. The strongest piece.\n\n**Rook** — any number of squares along a file or rank.\n\n**Bishop** — any number of squares diagonally. A bishop stays on its starting colour forever, so you have one **light-squared** and one **dark-squared** bishop.\n\n**Knight** — jumps in an **L**: two squares in one direction, then one square to the side. It is the only piece that can jump over others, and it always lands on a square of the opposite colour.\n\n**Pawn** — moves straight forward one square (two squares on its very first move), but **captures diagonally** one square forward. Pawns never move backwards.\n\nNo piece except the knight can jump over another. You capture by moving onto the square of an enemy piece and removing it."
+     },
+     {
+      "type": "board",
+      "fen": "6k1/8/8/8/3Q4/8/8/1K6 w - - 0 1",
+      "text": "The queen combines rook and bishop: from the center she controls up to 27 squares. This is why the center matters — **pieces in the center reach more squares**.",
+      "arrows": [
+       "d4d8",
+       "d4d1",
+       "d4a4",
+       "d4h4",
+       "d4a7",
+       "d4g1",
+       "d4a1",
+       "d4h8"
+      ]
+     },
+     {
+      "type": "board",
+      "fen": "7k/8/8/8/3N4/8/8/K7 w - - 0 1",
+      "text": "A knight on d4 attacks the eight highlighted squares. Count how many a knight on a1 would have: only two. **\"A knight on the rim is dim.\"**",
+      "highlights": [
+       "b3",
+       "b5",
+       "c2",
+       "c6",
+       "e2",
+       "e6",
+       "f3",
+       "f5"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/5ppp/8/q7/8/8/5PPP/R5K1 w - - 0 1",
+      "text": "White to move. Use your **rook** to capture the black queen.",
+      "solution": [
+       "Rxa5"
+      ],
+      "hint": "The rook slides along files and ranks. Look straight up the a-file.",
+      "explain": "**Rxa5** — the rook moves up the a-file. Nothing stands between a1 and a5, and nothing defends the queen, so you win her for free."
+     },
+     {
+      "type": "exercise",
+      "fen": "r5k1/5ppp/8/8/8/6P1/5PBP/6K1 w - - 0 1",
+      "text": "White to move. Use your **bishop** to win the rook.",
+      "solution": [
+       "Bxa8"
+      ],
+      "hint": "A bishop moves diagonally. Follow the long diagonal from g2 toward the far corner.",
+      "explain": "**Bxa8** — the bishop travels along the long diagonal g2–f3–e4–d5–c6–b7–a8. Long diagonals are highways for bishops; a piece left on the end of one is often lost."
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/ppp2ppp/8/8/4q3/2N5/PPP2PPP/6K1 w - - 0 1",
+      "text": "White to move. The black queen attacks your c2-pawn. Use your **knight** to punish her.",
+      "solution": [
+       "Nxe4"
+      ],
+      "hint": "From c3 the knight can jump to a2, a4, b1, b5, d1, d5, e2 and e4.",
+      "explain": "**Nxe4** — two squares across and one up. Beginners often forget the knight because it moves in such an unusual way. Before every move, check where enemy knights can jump."
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/5pp1/7p/7r/8/8/5PPP/3Q2K1 w - - 0 1",
+      "text": "White to move. Your **queen** can win a rook.",
+      "solution": [
+       "Qxh5"
+      ],
+      "hint": "The queen also moves like a bishop. Follow the diagonal d1–e2–f3–g4–h5.",
+      "explain": "**Qxh5** — the queen uses the diagonal. (Black has wisely played ...h6 earlier; otherwise Qd8 would even be checkmate on the back rank — you will learn that pattern in Level 2.)"
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/6pp/8/8/8/8/P4nPP/6K1 w - - 0 1",
+      "text": "White to move. Even the **king** can capture — when the piece is not protected.",
+      "solution": [
+       "Kxf2"
+      ],
+      "hint": "Is anything defending the knight on f2?",
+      "explain": "**Kxf2** — the king may capture any undefended piece next to it. In the endgame the king becomes a strong fighting piece; here it wins a knight and you are left with an extra pawn."
+     }
+    ]
+   },
+   {
+    "id": "l1-check",
+    "title": "Check, checkmate and stalemate",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Check** means the king is attacked. You must get out of check immediately, in one of three ways:\n1. **Move** the king to a safe square.\n2. **Capture** the piece that gives check.\n3. **Block** the check by putting a piece in between (impossible against a knight or a pawn).\n\n**Checkmate** means the king is in check and none of these three works. The game ends — the side that delivered mate wins. The king is never actually captured.\n\n**Stalemate** means the player to move is **not** in check but has **no legal move**. Stalemate is a **draw**, even if one side has a huge material advantage."
+     },
+     {
+      "type": "board",
+      "fen": "4R1k1/5ppp/8/8/8/8/5PPP/6K1 b - - 0 1",
+      "text": "Checkmate. The rook on e8 checks along the 8th rank. The king cannot go to f8 or h8 (the rook covers them), and f7, g7, h7 are blocked by its own pawns. Nothing can capture the rook or block. Game over.",
+      "highlights": [
+       "e8",
+       "g8"
+      ]
+     },
+     {
+      "type": "board",
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+      "text": "Stalemate. Black to move is **not** in check, but g8, g7 and h7 are all attacked. Black has no legal move, so the game is a **draw**. When you are winning, always make sure the enemy king has a move after your move.",
+      "highlights": [
+       "h8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+      "text": "White to move. Find **checkmate in one**.",
+      "solution": [
+       "Rd8#"
+      ],
+      "hint": "Black's king is locked behind its own pawns.",
+      "explain": "**Rd8#** — the rook checks along the 8th rank and the pawns on f7, g7, h7 take away every escape. This is the **back-rank mate**, one of the most common ways games end.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/Q7/5K2/8/8/8/8/8 w - - 0 1",
+      "text": "White to move. Find **checkmate in one**.",
+      "solution": [
+       "Qg7#"
+      ],
+      "hint": "Put the queen right next to the black king where your own king protects her.",
+      "explain": "**Qg7#** — the queen checks and covers f8, h8, h7 and f7, and the king on f6 protects her so Black cannot capture. Queen supported by king is the basic mating picture you will use again and again.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r4rk1/pp3ppp/8/6NQ/8/8/P4PPP/6K1 w - - 0 1",
+      "text": "White to move. Find **checkmate in one**.",
+      "solution": [
+       "Qxh7#"
+      ],
+      "hint": "Your knight on g5 supports a square next to the king.",
+      "explain": "**Qxh7#** — the knight on g5 protects the queen, so the king cannot take her, and f8 is blocked by Black's own rook. Queen + knight against h7 is one of the most common attacking patterns.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r4rk1/ppp1qppp/8/8/8/5n2/PPPQ1PPP/R4RK1 w - - 0 1",
+      "text": "White to move. You are in **check** from the knight on f3, which also attacks your queen. Which way out of check is best?",
+      "solution": [
+       "gxf3"
+      ],
+      "hint": "Moving the king is legal, but what would the knight do next?",
+      "explain": "**gxf3** — capturing the checking piece removes the check and wins a knight. Kh1 would also escape, but then ...Nxd2 wins your queen. A knight check can never be blocked: you must move the king or capture the knight."
+     }
+    ]
+   },
+   {
+    "id": "l1-special",
+    "title": "Castling, en passant and promotion",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Castling** is the only move with two pieces. The king moves **two squares** toward a rook, and that rook jumps to the square the king passed over. Kingside: **O-O** (king to g1, rook to f1). Queenside: **O-O-O** (king to c1, rook to d1).\n\nYou may castle only if:\n- neither the king nor that rook has moved before;\n- all squares between them are empty;\n- your king is **not in check**, does not **pass through** an attacked square, and does not **land on** an attacked square.\n\nWhy castle? It tucks the king behind pawns and brings the rook toward the center. In almost every game you should castle within the first ten moves."
+     },
+     {
+      "type": "board",
+      "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "text": "White has cleared the squares between king and rook and can play **O-O**: the king goes e1→g1 and the rook h1→f1.",
+      "arrows": [
+       "e1g1",
+       "h1f1"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "8/p7/4B3/8/8/2N2k2/P2P3P/4K2R w K - 0 1",
+      "text": "White to move. Castling is a legal move here — and it is **checkmate**.",
+      "solution": [
+       "O-O#"
+      ],
+      "hint": "After kingside castling, which file does your rook control?",
+      "explain": "**O-O#** — the rook lands on f1 and checks along the f-file. The king on g1 covers f2 and g2, the knight covers e2 and e4, the d2-pawn covers e3, the h2-pawn covers g3, and the bishop covers g4. Rare, but a good reminder that castling also activates the rook.",
+      "goal": "mate"
+     },
+     {
+      "type": "text",
+      "text": "**En passant** (\"in passing\"). When a pawn moves two squares from its starting rank and lands **right beside** one of your pawns standing on your 5th rank, you may capture it as if it had moved only one square. You must do it **immediately** on the next move, or the right is lost.\n\nIn notation it looks like a normal pawn capture: **exd6** (sometimes with \"e.p.\")."
+     },
+     {
+      "type": "board",
+      "fen": "6k1/8/8/3pP3/8/8/8/6K1 w - d6 0 1",
+      "text": "Black has just played ...d7-d5, passing the square d6. White's e5-pawn may capture **en passant**: it moves to d6 and the black pawn on d5 is removed.",
+      "arrows": [
+       "e5d6"
+      ],
+      "highlights": [
+       "d6",
+       "d5"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/p1r1qpp1/7p/3pP3/Q7/8/P4PPP/3R2K1 w - d6 0 1",
+      "text": "Black has just played **...d7-d5**. White to move: capture en passant!",
+      "solution": [
+       "exd6"
+      ],
+      "hint": "After the capture, which squares does a pawn on d6 attack?",
+      "explain": "**exd6** removes the d5-pawn and places a pawn on d6 that attacks **both** the queen on e7 and the rook on c7 — a fork. If the queen takes the pawn, Rxd6 wins her, because your rook now looks straight up the open d-file."
+     },
+     {
+      "type": "text",
+      "text": "**Promotion.** A pawn that reaches the last rank must immediately turn into a queen, rook, bishop or knight (not a king). Almost always you choose a **queen**, but sometimes a knight is better — for example when the knight gives a fork with check, or when a new queen would cause stalemate. Choosing anything other than a queen is called **underpromotion**."
+     },
+     {
+      "type": "exercise",
+      "fen": "7k/4P1pp/8/8/8/8/6PP/6K1 w - - 0 1",
+      "text": "White to move. Promote with **checkmate**.",
+      "solution": [
+       "e8=Q#"
+      ],
+      "hint": "The black king is trapped on the back rank by its own pawns.",
+      "explain": "**e8=Q#** — the new queen checks along the 8th rank and the king has no square. (A new rook, e8=R#, would also mate.)",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "8/3q1P1k/6p1/8/8/7P/6P1/6K1 w - - 0 1",
+      "text": "White to move. Promoting to a queen is a mistake here. Find the **underpromotion** that wins.",
+      "solution": [
+       "f8=N+"
+      ],
+      "hint": "Which piece on f8 would attack both h7 and d7?",
+      "explain": "**f8=N+!** — the new knight checks the king on h7 and attacks the queen on d7 at the same time. After the king moves, Nxd7 wins the queen. A new queen on f8 would give no check, and Black's queen would start checking your exposed king."
+     }
+    ]
+   },
+   {
+    "id": "l1-draws",
+    "title": "Draws and piece values",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A game is drawn by:\n- **Stalemate** — the player to move has no legal move and is not in check.\n- **Threefold repetition** — the same position appears three times with the same player to move. **Perpetual check** (checking forever) usually ends this way.\n- **The 50-move rule** — 50 moves by each side without a capture or a pawn move.\n- **Insufficient material** — nobody can possibly mate: king vs king, king + bishop vs king, king + knight vs king, or king + bishop vs king + bishop with bishops on the same colour.\n- **Agreement** between the players.\n\nThe practical lesson: when you are losing, look for stalemate and perpetual check. When you are winning, make sure you do not allow them."
+     },
+     {
+      "type": "text",
+      "text": "**Piece values** help you judge trades:\n- Pawn = **1**\n- Knight = **3**\n- Bishop = **3** (often slightly more than a knight, especially in pairs)\n- Rook = **5**\n- Queen = **9**\n- King = priceless\n\nGiving a rook for a knight or bishop is called **losing the exchange**. These numbers are a guide, not a law: an active knight can be worth more than a passive rook. But for now, use them every time you decide whether to capture."
+     },
+     {
+      "type": "exercise",
+      "fen": "7k/1q5p/4Q2P/8/8/1P6/5PP1/R5K1 b - - 0 1",
+      "text": "Black to move. You are lost on material and White threatens **Qe8#**. Find the move that saves the game.",
+      "solution": [
+       "Qxg2+",
+       "Kxg2"
+      ],
+      "hint": "If your queen disappeared, would your king or pawn have any legal move?",
+      "explain": "**...Qxg2+!** — the king must take, because the queen covers f1 and h1. After Kxg2 Black has **no legal move**: g8 is covered by the queen on e6, g7 by the pawn on h6, and the h7-pawn is blocked. Black is not in check, so it is **stalemate** — a draw."
+     },
+     {
+      "type": "exercise",
+      "fen": "8/5P2/4N1k1/8/8/8/8/1K6 b - - 0 1",
+      "text": "Black to move. White threatens to make a new queen. Find the move that draws at once.",
+      "solution": [
+       "Kxf7"
+      ],
+      "hint": "What material would White have left?",
+      "explain": "**...Kxf7** — White is left with king and knight against king. A lone knight cannot force checkmate, so the game is drawn immediately by **insufficient material**. Any other move allows f8=Q."
+     },
+     {
+      "type": "exercise",
+      "fen": "r6k/5npp/8/3B4/8/8/5PPP/6K1 w - - 0 1",
+      "text": "White to move. Your bishop can capture a rook or a knight. Use the piece values.",
+      "solution": [
+       "Bxa8"
+      ],
+      "hint": "A rook is worth 5, a knight 3.",
+      "explain": "**Bxa8** wins 5 points instead of 3. When you have a choice of captures, count before you take."
+     },
+     {
+      "type": "exercise",
+      "fen": "5rk1/pp3ppp/4p3/3q4/8/8/PP2QPPP/3R2K1 w - - 0 1",
+      "text": "White to move. Black's queen stands on the open d-file, protected by a pawn. Is it worth giving your rook for her?",
+      "solution": [
+       "Rxd5",
+       "exd5"
+      ],
+      "hint": "Compare: you give 5, you get 9.",
+      "explain": "**Rxd5 exd5** — you give a rook (5) for the queen (9) and come out 4 points ahead. A capture does not need to be \"free\" to be good; it needs to **win more than it costs**."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "title": "Level 2 — Stop Losing Pieces",
+  "subtitle": "The fastest way to win more games: keep your pieces, take theirs, and learn the basic mates",
+  "lessons": [
+   {
+    "id": "l2-hanging",
+    "title": "Hanging pieces: count attackers and defenders",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A piece is **hanging** when it can be captured for free. At your level, **most games are decided by hanging pieces**, not by deep strategy. If you stop hanging pieces and start taking the ones your opponents hang, your rating will climb fast.\n\nTo decide whether a capture wins, **count**:\n1. How many of your pieces **attack** the square?\n2. How many enemy pieces **defend** it?\n3. In what order would the pieces capture?\n\nRules of thumb:\n- More attackers than defenders → the capture usually wins material.\n- Equal numbers → the defender makes the last capture; usually nothing is won.\n- Always **start with your cheapest attacker**, and compare values: taking a defended knight with your queen loses the queen."
+     },
+     {
+      "type": "board",
+      "fen": "3r2k1/pp3ppp/5n2/3p4/8/2N5/PP3PPP/3R2K1 w - - 0 1",
+      "text": "The d5-pawn is attacked twice (knight c3, rook d1) and defended twice (knight f6, rook d8). If White starts with Nxd5 Nxd5 Rxd5 Rxd5, White wins a pawn and a knight but loses a knight and a rook: **−4**. With equal numbers, starting the exchange is a mistake.",
+      "arrows": [
+       "c3d5",
+       "d1d5",
+       "f6d5",
+       "d8d5"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bq1rk1/pppp1ppp/5n2/2b1n3/2B1P3/2N2N2/PPP2PPP/R1BQ1RK1 w - - 0 1",
+      "text": "White to move. Black's knight on e5 attacks your bishop on c4. Count: does anything defend that knight?",
+      "solution": [
+       "Nxe5"
+      ],
+      "hint": "Check every black piece: can any of them reach e5?",
+      "explain": "**Nxe5** — nothing defends e5, so the knight is simply hanging. You win a piece and remove the attacker of your bishop at the same time. Before worrying about your own piece, always ask: **can I capture the attacker?**"
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b2rk1/pppqbppp/2np4/8/2BnP3/2N2N2/PPP2PPP/R1BQ1RK1 w - - 0 1",
+      "text": "White to move. The knight on d4 is attacked twice (knight f3, queen d1) and defended once (knight c6). Win it — in the right order.",
+      "solution": [
+       "Nxd4",
+       "Nxd4",
+       "Qxd4"
+      ],
+      "hint": "Capture first with your cheapest attacker.",
+      "explain": "**Nxd4 Nxd4 Qxd4** — you win a knight. The wrong order, Qxd4?? Nxd4 Nxd4, gives your queen (9) for two knights (6). Always capture first with the **lowest-value** piece."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bq1rk1/ppp1bppp/3p1n2/8/2n1P3/2PB1N2/PP1Q1PPP/R1B2RK1 w - - 0 1",
+      "text": "White to move. Black's knight jumped to c4 and attacks your queen and the b2-pawn. Before moving the queen away — look for a better move.",
+      "solution": [
+       "Bxc4"
+      ],
+      "hint": "Can one of your pieces capture the knight?",
+      "explain": "**Bxc4** — the knight is undefended, so the bishop simply takes it and the attack on your queen disappears. Many beginners panic when their queen is attacked and only look at queen moves. First ask: **can I take the attacker?**"
+     }
+    ]
+   },
+   {
+    "id": "l2-blundercheck",
+    "title": "The blunder check: before every move",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Strong players are not magicians; they have a **routine**. Use this one on every single move until it becomes automatic:\n\n**1. What did my opponent's last move do?** What does the moved piece attack now? What did it stop defending? Is there a threat?\n\n**2. Checks, Captures, Threats — for me.** Can I give check, capture something, or make a big threat? Look at these forcing moves first, because they limit the opponent's answers.\n\n**3. Choose a candidate move.**\n\n**4. Blunder check before you touch the piece.** Imagine the move is played. Now list your opponent's **checks, captures and threats** in that new position. Is the piece I moved safe? Did I leave something undefended? Did I open a line to my king?\n\nOnly then play the move. It takes ten seconds and saves most games."
+     },
+     {
+      "type": "text",
+      "text": "The two most common blunders:\n- **Not seeing the opponent's threat** (step 1 skipped): their last move attacked something and you ignored it.\n- **Grabbing material without checking the reply** (step 4 skipped): the \"free\" piece was bait.\n\nThe exercises below show both — first from the side that punishes, so you remember the feeling."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b1k2r/ppppqppp/2n5/4n3/1PP2B2/5N2/1P1NPPPP/R2QKB1R b KQkq - 0 8",
+      "text": "White has just captured the bishop on b4, thinking it was a free piece. White forgot to check Black's **checks**. Black to move.",
+      "solution": [
+       "Nd3#"
+      ],
+      "hint": "Look for a knight check. Which white pieces block their own king?",
+      "explain": "**...Nd3#** — the knight checks the king on e1. The e2-pawn cannot capture because it is **pinned** by the queen on e7 (the e-file opened when the knight left e5), and the king is boxed in by its own queen, bishop and knight. White's step 4 — \"what are Black's checks after my move?\" — would have found this instantly.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkbnr/pppp1ppp/8/4N3/2BnP3/8/PPPP1PPP/RNBQK2R b KQkq - 0 4",
+      "text": "White has just grabbed the e5-pawn with the knight. Blunder-check for White: what did that capture leave loose? Black to move.",
+      "solution": [
+       "Qg5"
+      ],
+      "hint": "Find a queen move that attacks two things at once.",
+      "explain": "**...Qg5!** attacks the knight on e5 **and** the g2-pawn. If White greedily plays Nxf7, then ...Qxg2 Rf1 Qxe4+ Be2? Nf3# — a famous trap. White should have asked before 4.Nxe5: \"after this, what can Black attack?\""
+     },
+     {
+      "type": "exercise",
+      "fen": "3rkb2/pbpp1ppp/1p6/6qQ/2B5/3P4/PPP2PPP/6K1 w - - 0 1",
+      "text": "White to move. Black threatens **...Qxg2#**. Before you defend, follow the routine: look at **your own checks** first.",
+      "solution": [
+       "Qxf7#"
+      ],
+      "hint": "Which black pawn is defended only by the king?",
+      "explain": "**Qxf7#** — checks first! The bishop on c4 supports the queen, and the black king is surrounded by its own pieces on d7, d8 and f8. If you only look at defending moves, you miss that you can end the game first.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r2q1rk1/ppp1nppp/2np4/2b1p3/2B1P1bN/2NP4/PPP2PPP/R1BQ1RK1 w - - 0 1",
+      "text": "White to move. Black's bishop just came to g4, attacking your queen. Step 1 of the routine: what does this move attack — and is the attacker safe?",
+      "solution": [
+       "Qxg4"
+      ],
+      "hint": "Count the defenders of g4.",
+      "explain": "**Qxg4** — nothing protects the bishop, so the \"attack\" on your queen simply loses a piece. The blunder check works in both directions: check your opponent's moves for **mistakes**, not just for threats."
+     }
+    ]
+   },
+   {
+    "id": "l2-trades",
+    "title": "Safe trades: when to exchange",
+    "minutes": 8,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A **trade** (exchange) is giving a piece for an equal piece. Trades are neither good nor bad by themselves — they are good or bad **for someone**.\n\n- **When you are ahead in material, trade pieces** (not pawns). Every trade makes your extra material count more. A queen up with all pieces on the board is winning; a queen up with nothing else is a trivial win.\n- **When you are behind, avoid trades.** Keep pieces on the board and look for counter-chances.\n- **Trade your worst piece for their best piece**, and trade off the pieces that attack your king.\n- **Recapture toward the center** when you have a choice of pawns.\n- Before trading, **count to the end of the sequence** (Level 2, lesson 1) and look for in-between moves."
+     },
+     {
+      "type": "board",
+      "fen": "3r4/4kp1p/6p1/8/P7/4K1P1/5P1P/3R4 w - - 0 1",
+      "text": "White is a pawn up. With rooks on the board, Black's rook can harass the pawns and many such endings are drawn. Without rooks, the extra a-pawn becomes decisive. How do you get rid of the rooks?",
+      "arrows": [
+       "d1d8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "3r4/4kp1p/6p1/8/P7/4K1P1/5P1P/3R4 w - - 0 1",
+      "text": "White to move. You are a pawn up. Simplify into a winning ending.",
+      "solution": [
+       "Rxd8",
+       "Kxd8"
+      ],
+      "hint": "Which trade removes Black's only active piece?",
+      "explain": "**Rxd8 Kxd8** — now it is a king-and-pawn ending in which your a-pawn is an **outside passed pawn**. Black's king must run to the a-file to stop it, and then your king eats the kingside pawns. When ahead, **trade pieces**."
+     }
+    ]
+   },
+   {
+    "id": "l2-mate-queen",
+    "title": "Checkmate with king and queen",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "King and queen against a lone king is a must-know win. The method:\n1. **Box the king** with the queen. Place the queen a knight's move away from the enemy king: this cuts off the most squares while staying safe. Do not give random checks — they often let the king escape.\n2. **Shrink the box** step by step until the king is on the edge.\n3. **Bring your king** up. The queen alone cannot mate; she needs the king's help.\n4. **Mate** on the edge, with the queen protected by your king or checking from a distance.\n\nThe big danger is **stalemate**: when the enemy king has only one or two squares left, check after every move that it still has a legal move."
+     },
+     {
+      "type": "board",
+      "fen": "8/8/4k3/2Q5/8/8/8/1K6 w - - 0 1",
+      "text": "The queen on c5 keeps the black king out of the c-file and the 5th rank. The king is boxed into the upper-right area. Next, the white king walks up while the queen keeps the box closed.",
+      "highlights": [
+       "c5",
+       "e6"
+      ]
+     },
+     {
+      "type": "board",
+      "fen": "k7/2Q5/1K6/8/8/8/8/8 b - - 0 1",
+      "text": "Careful! Black to move has no legal move and is not in check: **stalemate**. With the king boxed into one corner, always leave it a square or give check.",
+      "highlights": [
+       "a8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "1k6/7Q/1K6/8/8/8/8/8 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Qb7#"
+      ],
+      "hint": "Your king can protect the queen right in front of the black king.",
+      "explain": "**Qb7#** — the queen is protected by your king, so the black king cannot take her. (Qh8# and Qg8# also work: checks along the back rank while your king covers the 7th rank.)",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "3k4/8/3K4/7Q/8/8/8/8 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Qh8#"
+      ],
+      "hint": "Your king already covers c7, d7 and e7. Check along the back rank from far away.",
+      "explain": "**Qh8#** — the queen checks along the 8th rank from a distance, and your king covers the 7th rank. Checking from far away keeps the queen safe from the king.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "5k2/8/3K4/7Q/8/8/8/8 w - - 0 1",
+      "text": "White to move. Mate in two. (Do not check yet!)",
+      "solution": [
+       "Qh7",
+       "Ke8",
+       "Qe7#"
+      ],
+      "hint": "First take away squares so the king has only one move.",
+      "explain": "**Qh7!** — a quiet move. The king on f8 can only go to e8. Then **Qe7#** (protected by your king) or Qg8# ends it. A quiet squeezing move is often stronger than a check.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "8/5Q2/8/8/1K6/8/8/k7 w - - 0 1",
+      "text": "White to move. Mate in two — and beware of stalemate.",
+      "solution": [
+       "Kb3",
+       "Kb1",
+       "Qf1#"
+      ],
+      "hint": "Bring your king closer, but leave the black king a square.",
+      "explain": "**Kb3!** — the black king still has b1, so it is not stalemate. After ...Kb1, **Qf1#**. Note that a careless move like Qb3?? would be stalemate at once.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "8/8/6Q1/k7/8/3K4/8/8 w - - 0 1",
+      "text": "White to move. Mate in two.",
+      "solution": [
+       "Kc4",
+       "Ka4",
+       "Qa6#"
+      ],
+      "hint": "The queen already keeps the king on the edge. Which king move takes away b4 and b5?",
+      "explain": "**Kc4!** — now the black king has only a4. Then **Qa6#**. This is the typical finish: queen holds the edge, king comes close, queen mates.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l2-mate-rooks",
+    "title": "Checkmate with rooks",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Two rooks (the ladder).** The rooks take turns: one cuts off a rank, the other gives check on the next rank, and the king is pushed back one rank at a time until it reaches the edge. If the king walks toward a rook, move that rook to the far side of the board on the same rank — it keeps cutting off the king from there.\n\n**King and one rook.** The rook alone cannot do it. Use the **box**: cut the king off with the rook, bring your king up so the two kings face each other (opposition, with one square between them), then check along the edge. When the kings are not facing each other, make a **waiting move** with the rook that keeps the box closed."
+     },
+     {
+      "type": "board",
+      "fen": "8/8/3k4/R7/1R6/8/8/7K w - - 0 1",
+      "text": "The ladder: the rook on a5 stops the king coming down. Next comes **Rb6+**, pushing the king to the 7th rank, then **Ra7+**, and so on until mate on the 8th rank. If the king attacks one of the rooks on the way, first move that rook to the far side of the board.",
+      "arrows": [
+       "b4b6",
+       "a5a7"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "5k2/R7/1R6/8/8/8/2K5/8 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Rb8#"
+      ],
+      "hint": "One rook already controls the 7th rank.",
+      "explain": "**Rb8#** — the rook on a7 holds the 7th rank, the other checks on the 8th. The final step of the ladder.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "3R4/7k/2R5/8/8/2K5/8/8 w - - 0 1",
+      "text": "White to move. Mate in two with the ladder.",
+      "solution": [
+       "Rd7+",
+       "Kg8",
+       "Rc8#"
+      ],
+      "hint": "Push the king to the last rank with a check on the 7th.",
+      "explain": "**Rd7+** forces the king to the 8th rank (the rook on c6 covers the 6th). Then **Rc8#** — the rooks have changed roles.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "K7/8/2R3R1/8/8/8/8/3k4 w - - 0 1",
+      "text": "White to move. Mate in two.",
+      "solution": [
+       "Rg2",
+       "Ke1",
+       "Rc1#"
+      ],
+      "hint": "First cut off the 2nd rank; the other rook is already holding the c-file.",
+      "explain": "**Rg2!** locks the king on the first rank, and the rook on c6 takes c1. The king can only shuffle to e1, and **Rc1#** finishes. Cutting off first, checking second.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "3k4/8/3K4/8/8/8/8/R7 w - - 0 1",
+      "text": "White to move. Mate in one with king and rook.",
+      "solution": [
+       "Ra8#"
+      ],
+      "hint": "The kings face each other. Check along the edge.",
+      "explain": "**Ra8#** — this is the basic picture: kings facing each other, the rook checks along the edge. Your king covers c7, d7 and e7.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "4k3/8/3K4/8/8/8/1R6/8 w - - 0 1",
+      "text": "White to move. Mate in two.",
+      "solution": [
+       "Rf2",
+       "Kd8",
+       "Rf8#"
+      ],
+      "hint": "Take away the f-file, so the king must step in front of your king.",
+      "explain": "**Rf2!** — the king on e8 can no longer go to f8 or f7, so it must go to d8, straight into opposition with your king. Then **Rf8#**. This kind of cutting move is the heart of the rook mate.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "k2K4/8/8/8/8/8/3R4/8 w - - 0 1",
+      "text": "White to move. Mate in two.",
+      "solution": [
+       "Kc7",
+       "Ka7",
+       "Ra2#"
+      ],
+      "hint": "Use your king to take away b7 and b8.",
+      "explain": "**Kc7!** — the black king has only a7 left. Then **Ra2#** along the a-file.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "8/8/8/R7/8/2K5/8/3k4 w - - 0 1",
+      "text": "White to move. Mate in two.",
+      "solution": [
+       "Re5",
+       "Kc1",
+       "Re1#"
+      ],
+      "hint": "Take the e-file away from the king.",
+      "explain": "**Re5!** — the king on d1 can only go to c1, in front of your king. Then **Re1#**.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l2-backrank",
+    "title": "The back-rank mate",
+    "minutes": 8,
+    "steps": [
+     {
+      "type": "text",
+      "text": "After castling, the king often sits behind three unmoved pawns (f2, g2, h2 or f7, g7, h7). That is safe against most attacks — but if an enemy rook or queen reaches your **back rank** and nothing can block or capture, it is **mate**.\n\n**Defend** by:\n- making a **luft** (\"air\"): a quiet pawn move like h3 or h6 that gives the king an escape square — do it at a calm moment, usually in the middlegame when rooks start to fight for open files;\n- keeping a rook or queen guarding the back rank.\n\n**Attack** by:\n- doubling rook and queen on an open file (a **battery**);\n- removing or distracting the pieces that guard the back rank."
+     },
+     {
+      "type": "board",
+      "fen": "4r1k1/p4ppp/8/8/8/7P/P4PP1/4R1K1 w - - 0 1",
+      "text": "White has played **h3** at a quiet moment. If a black rook ever reaches the first rank, the king escapes to h2. Black has no such square: Black's back rank is weak.",
+      "highlights": [
+       "h2",
+       "h3"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/p4ppp/1q6/8/8/8/P4PPP/4R1K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Re8#"
+      ],
+      "hint": "Nothing guards Black's back rank.",
+      "explain": "**Re8#** — the classic back-rank mate. Black's queen was busy attacking f2 and could not defend e8.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "4r1k1/pp3ppp/2q5/8/8/8/PP2QPPP/4R1K1 w - - 0 1",
+      "text": "White to move. You have a battery (queen and rook) on the e-file. Mate in two.",
+      "solution": [
+       "Qxe8+",
+       "Qxe8",
+       "Rxe8#"
+      ],
+      "hint": "Use the front piece of the battery to remove the defender.",
+      "explain": "**Qxe8+!** — a queen sacrifice. After ...Qxe8, **Rxe8#**. Black's back rank had only one real guard; two attackers beat one defender.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "4r1k1/R4ppp/8/8/8/8/5PPP/6K1 b - - 0 1",
+      "text": "Black to move. White's rook went hunting pawns on the 7th rank and left the back rank alone.",
+      "solution": [
+       "Re1#"
+      ],
+      "hint": "Look at White's king and the three pawns in front of it.",
+      "explain": "**...Re1#** — the same pattern from the other side. White never made luft (h3), and the rook on a7 cannot come back in time.",
+      "goal": "mate"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "title": "Level 3 — Opening Principles",
+  "subtitle": "Start every game with a healthy position — no memorising needed",
+  "lessons": [
+   {
+    "id": "l3-principles",
+    "title": "The three opening goals",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "You do not need to memorise long opening lines yet. Follow three goals and you will get a good position in almost every game:\n\n**1. Fight for the center.** Put one or two pawns on the center squares (e4, d4 / e5, d5) and aim your pieces at them. Pieces in the center control more squares and can switch quickly between both wings.\n\n**2. Develop your pieces.** Bring knights and bishops out from the back rank, usually **knights before bishops** (a knight has one or two good squares, like f3 and c3; a bishop has more options, so wait until you know where it belongs). Every move should bring a new piece into play.\n\n**3. Castle early and connect your rooks.** Castle within the first 8–10 moves. After that, move the queen off the back rank so your two rooks see each other (\"connected rooks\"), and bring them to open or central files."
+     },
+     {
+      "type": "board",
+      "fen": "r1bq1rk1/ppp2ppp/2np1n2/2b1p3/2B1P3/2PP1N2/PP3PPP/RNBQ1RK1 w - - 2 7",
+      "text": "A healthy opening for both sides (the Italian Game). Center pawns on e4 and e5, knights out, bishops out, both kings castled. Next both sides will move their queens and rooks to connect the rooks.",
+      "highlights": [
+       "e4",
+       "e5",
+       "d3",
+       "d6"
+      ]
+     },
+     {
+      "type": "text",
+      "text": "A simple checklist for moves 1 to 10:\n- Did I move a center pawn?\n- Is every move developing a new piece (or castling)?\n- Am I moving a piece that already moved? Only if there is a concrete reason (it is attacked, or it wins something).\n- Is my king castled, or can it castle next move?\n- And always the blunder check: after my move, what are my opponent's checks, captures and threats?"
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p1N1/2B1P3/8/PPPP1PPP/RNBQK2R b KQkq - 5 4",
+      "text": "After **1.e4 e5 2.Nf3 Nc6 3.Bc4 Nf6 4.Ng5** White attacks f7 twice (knight and bishop), and it is defended only by the king. Black to move: answer with a center move.",
+      "solution": [
+       "d5"
+      ],
+      "hint": "Block the bishop's line to f7 and hit the center at the same time.",
+      "explain": "**...d5!** blocks the bishop on c4 from f7 and opens lines for Black's pieces. After 5.exd5 Black continues 5...Na5, attacking the bishop. (5...Nxd5?! allows White a strong attack with 6.d4 or 6.Nxf7.) When attacked early, a **counter-strike in the center** is often the best defence."
+     }
+    ]
+   },
+   {
+    "id": "l3-mistakes",
+    "title": "Common opening mistakes",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Bringing the queen out early.** The queen is your most valuable piece, so every enemy knight, bishop or pawn can attack her with gain of time (\"tempo\"). While she runs, your opponent develops.\n\n**Moving the same piece twice.** Each extra move with one piece is a move not spent developing another.\n\n**Grabbing pawns.** Taking a pawn costs time. If the opponent gets several moves of development for it, the pawn is not worth it — especially if your king is still in the center.\n\n**Too many pawn moves.** Pawn moves are needed (center, freeing the bishops), but moves like a3, h3, a6, h6 in the opening are usually wasted time.\n\n**Leaving the king in the center.** If the center opens and your king has not castled, it becomes a target."
+     },
+     {
+      "type": "exercise",
+      "fen": "rnb1kbnr/pppp1ppp/8/4p3/4P2q/2N5/PPPP1PPP/R1BQKBNR w KQkq - 2 3",
+      "text": "After **1.e4 e5 2.Nc3 Qh4?!** Black's queen has come out on move 2. White to move: develop a piece **with tempo**.",
+      "solution": [
+       "Nf3"
+      ],
+      "hint": "Which developing move also attacks the queen?",
+      "explain": "**Nf3!** develops a knight toward the center **and** attacks the queen, so Black must waste another move with her. Gaining time by attacking an early queen is the standard way to punish it."
+     },
+     {
+      "type": "exercise",
+      "fen": "rnbqkbnr/p3pppp/8/1p6/2pP4/4P3/1P3PPP/RNBQKBNR w KQkq - 0 6",
+      "text": "In the Queen's Gambit, Black took the c4-pawn and tried to keep it with ...b5 and ...c6. White to move: punish the pawn grab.",
+      "solution": [
+       "Qf3"
+      ],
+      "hint": "Black has moved the c-pawn and the b-pawn. Look at the long diagonal toward a8.",
+      "explain": "**Qf3!** attacks the rook on a8 along the long diagonal, which Black opened by moving both queenside pawns. After 6...Nc6 7.Qxc6+ Bd7 White has won a piece. Black spent four pawn moves on one extra pawn and had no pieces developed to defend."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkbnr/2p2ppp/p2p4/1p6/3QP3/1B6/PPP2PPP/RNB1K2R b KQkq - 0 8",
+      "text": "White just recaptured on d4 with the queen, bringing her into the center. Notice that the white bishop on b3 has very few squares. Black to move.",
+      "solution": [
+       "c5"
+      ],
+      "hint": "Attack the queen with a pawn — and think about what the pawns can do next to the bishop.",
+      "explain": "**...c5!** chases the queen, and soon ...c4 will trap the bishop on b3 behind Black's pawns (for example 9.Qd5 Be6 10.Qc6+ Bd7 11.Qd5 c4). This is the **Noah's Ark trap**. An early queen in the center can be kicked around by pawns."
+     }
+    ]
+   },
+   {
+    "id": "l3-traps",
+    "title": "Traps and the weak f7-square",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "At the start of the game **f7** (for Black) and **f2** (for White) are the weakest squares: they are defended only by the king. Many quick attacks and traps target them.\n\n**How to stop Scholar's Mate.** After 1.e4 e5 2.Bc4 Nc6 3.Qh5, White threatens Qxf7#. Defend with **3...g6** (attacking the queen) or **3...Qe7**. If White continues 4.Qf3 (threatening f7 again), play **4...Nf6**, developing and blocking the queen. Afterwards Black often gains time by chasing the white queen with ...Nd4 or ...Bg7 and ...Nf6.\n\nNever answer 3.Qh5 with 3...Nf6?? — it attacks the queen but leaves f7 to die."
+     },
+     {
+      "type": "board",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+      "text": "White threatens **Qxf7#** — queen and bishop both aim at f7. Black must defend: 3...g6 or 3...Qe7.",
+      "arrows": [
+       "h5f7",
+       "c4f7"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkbnr/pppp1ppp/8/4p3/2BnP3/5Q2/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+      "text": "After **1.e4 e5 2.Bc4 Nc6 3.Qf3 Nd4??** Black attacked the queen but forgot about f7. White to move.",
+      "solution": [
+       "Qxf7#"
+      ],
+      "hint": "Queen and bishop on the same target.",
+      "explain": "**Qxf7#** — the same pattern as Scholar's Mate, this time from f3. Black's blunder check (\"what does White threaten?\") would have found the threat.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkb1r/pppp1pp1/2n5/1B2p3/4P1p1/8/PPPP1PP1/RNBQNRK1 b kq - 1 7",
+      "text": "The **Fishing Pole** trap: Black put a knight on g4, White took it with 6.hxg4?, and after ...hxg4 the h-file is open toward White's king. White just played 7.Ne1. Black to move.",
+      "solution": [
+       "Qh4"
+      ],
+      "hint": "Bring the queen to the open h-file.",
+      "explain": "**...Qh4!** threatens ...Qh1# and ...Qh2#, and White cannot stop both: 8.f3 g3 and mate on h1 follows; 8.f4 g3 9.Qh5 Rxh5 also ends in mate. The lesson for White: before capturing a \"free\" piece next to your king, ask what lines the capture opens."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b1kbnr/pppp1Npp/8/8/3nq3/8/PPPPBP1P/RNBQKR2 b Qkq - 1 7",
+      "text": "The **Blackburne Shilling** trap: 3...Nd4 4.Nxe5? Qg5! 5.Nxf7? Qxg2 6.Rf1 Qxe4+ 7.Be2? (7.Qe2 Nxe2 was forced, giving up the queen). Black to move: mate in one.",
+      "solution": [
+       "Nf3#"
+      ],
+      "hint": "Which white piece cannot move because of the queen on e4?",
+      "explain": "**...Nf3#** — a smothered mate. The bishop on e2 is **pinned** by the queen on e4, the g-pawn is gone, and the king is surrounded by its own queen, rook and pawns. It all started with White's pawn grab on move 4 — a perfect example of skipping the blunder check.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "rnbqk1nr/ppp2ppp/8/4P3/1BP5/8/PP2KpPP/RN1Q1BNR b kq - 1 7",
+      "text": "The **Lasker Trap** in the Albin Counter-Gambit: 1.d4 d5 2.c4 e5 3.dxe5 d4 4.e3? Bb4+ 5.Bd2 dxe3 6.Bxb4? exf2+ 7.Ke2. Black to move: promote — but to which piece?",
+      "solution": [
+       "fxg1=N+"
+      ],
+      "hint": "A queen would not come with check. Which new piece would?",
+      "explain": "**...fxg1=N+!** — the pawn captures the knight and becomes a **knight** with check. If 8.Rxg1, then 8...Bg4+ skewers the king and the queen on d1, and Black wins. A new queen (7...fxg1=Q?) would allow 8.Qxd8+ Kxd8 9.Rxg1, and White is fine. (On 7.Kxf2, Black simply takes the queen with ...Qxd1.)"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "title": "Level 4 — Tactics",
+  "subtitle": "The short combinations that win material and games",
+  "lessons": [
+   {
+    "id": "l4-forks",
+    "title": "Forks",
+    "minutes": 15,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A **fork** is one piece attacking two (or more) targets at once. The opponent can save only one of them.\n\n- The **knight** is the champion forker: it attacks without being attacked back by the pieces it hits (except another knight).\n- **Pawns** fork two pieces by stepping forward between them.\n- The **queen** forks in every direction, often with check.\n\nThe best forks include **check**, because the opponent must answer the check first. Look for **loose pieces** (undefended ones): forks against loose pieces work even when the forking piece can be attacked."
+     },
+     {
+      "type": "board",
+      "fen": "r3k2r/pp2bppp/8/3Np3/8/8/PPP2PPP/4R1K1 w - - 0 1",
+      "text": "A **royal fork**: Nc7+ would attack the king on e8 and the rook on a8. Knights jump to squares of the opposite colour — train your eye to spot the \"L\" from the knight to two targets.",
+      "arrows": [
+       "d5c7",
+       "c7e8",
+       "c7a8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b1k2r/pp2bppp/3p4/3N4/8/8/PPP2PPP/R1B2RK1 w - - 0 1",
+      "text": "White to move. Win material with a knight fork.",
+      "solution": [
+       "Nc7+"
+      ],
+      "hint": "Find a knight check that also attacks a rook.",
+      "explain": "**Nc7+** checks the king and attacks the rook on a8. After the king moves, Nxa8 wins a full rook."
+     },
+     {
+      "type": "exercise",
+      "fen": "2q2rk1/pp3ppp/8/3N4/8/8/PP3PPP/3R2K1 w - - 0 1",
+      "text": "White to move. Win the queen.",
+      "solution": [
+       "Ne7+"
+      ],
+      "hint": "Which knight check also hits c8?",
+      "explain": "**Ne7+** — the knight checks g8 and attacks the queen on c8. The queen is lost for a knight."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqr2k/ppp3pp/2n1p3/6N1/8/2NP4/PPP2PPP/R1B2RK1 w - - 0 1",
+      "text": "White to move. Black's f-pawn is gone and f7 is unguarded.",
+      "solution": [
+       "Nf7+"
+      ],
+      "hint": "A knight on f7 would attack h8 and d8.",
+      "explain": "**Nf7+** forks the king on h8 and the queen on d8. Missing pawns in front of the king create holes that knights love."
+     },
+     {
+      "type": "exercise",
+      "fen": "6k1/pb1r1p1p/1p4p1/8/4N3/8/PP3PPP/4R1K1 w - - 0 1",
+      "text": "White to move. Win material.",
+      "solution": [
+       "Nf6+"
+      ],
+      "hint": "Without a pawn on g7, the f6-square is open for your knight.",
+      "explain": "**Nf6+** checks the king and attacks the rook on d7. After the king moves, Nxd7 wins the rook for the knight — \"winning the exchange\" and more."
+     },
+     {
+      "type": "exercise",
+      "fen": "rnb1qrk1/ppp2ppp/3bpn2/8/3PP3/2NB1N2/PPP1QPPP/R1B2RK1 w - - 0 1",
+      "text": "White to move. Use a **pawn** to fork two pieces.",
+      "solution": [
+       "e5"
+      ],
+      "hint": "A pawn on e5 would attack d6 and f6.",
+      "explain": "**e5!** attacks the bishop on d6 and the knight on f6. The pawn is protected by d4 and the knight on f3, so Black loses a piece (for example ...Nd5 exd6)."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkb1r/pppp1ppp/2n5/4p3/2B1N3/5N2/PPPP1PPP/R1BQK2R b KQkq - 0 5",
+      "text": "After **4...Nxe4 5.Nxe4** Black seems to have lost a knight. Black to move: get it back with a pawn fork.",
+      "solution": [
+       "d5"
+      ],
+      "hint": "A pawn on d5 would attack two white pieces.",
+      "explain": "**...d5!** forks the bishop on c4 and the knight on e4, so Black wins the piece back. This \"fork trick\" is a standard idea in many openings."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b1k2r/ppp2ppp/3p4/8/7b/2P5/PP3PPP/3Q1RK1 w - - 0 1",
+      "text": "White to move. Black's bishop on h4 is undefended. Win it with a **queen fork**.",
+      "solution": [
+       "Qa4+"
+      ],
+      "hint": "Find a queen check that also attacks h4.",
+      "explain": "**Qa4+** checks the king along the diagonal and attacks the loose bishop along the 4th rank. Whether Black blocks (...c6 or ...Bd7) or moves the king, Qxh4 follows. **Loose pieces drop off** — always notice undefended pieces."
+     },
+     {
+      "type": "exercise",
+      "fen": "r5k1/p3q1pp/8/8/8/8/PPP3PP/2BQ2K1 w - - 0 1",
+      "text": "White to move. The rook on a8 is undefended. Win it.",
+      "solution": [
+       "Qd5+"
+      ],
+      "hint": "From d5 the queen would see both g8 and a8.",
+      "explain": "**Qd5+** forks the king and the rook on a8. Black can block with ...Qe6 or ...Qf7, or move the king, but then Qxa8 wins the rook."
+     }
+    ]
+   },
+   {
+    "id": "l4-pins",
+    "title": "Pins",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A **pin** happens when a piece cannot move (or should not move) because a more valuable piece stands behind it on the same line.\n\n- **Absolute pin**: the piece behind is the **king**. The pinned piece is not allowed to move off the line at all.\n- **Relative pin**: the piece behind is something valuable, like the queen. Moving is legal, but costs material.\n\nOnly bishops, rooks and queens can pin. How to use a pin: **attack the pinned piece again**, especially with a pawn. A pinned piece is also a bad defender — it cannot leave the line to recapture."
+     },
+     {
+      "type": "board",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+      "text": "The Ruy Lopez: the bishop on b5 attacks the knight on c6, which is in front of the d7-pawn and the king. If Black later moves the d-pawn, the knight becomes **pinned** to the king.",
+      "arrows": [
+       "b5e8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkbnr/ppp1pppp/2n5/1B6/3P4/2N1P3/PPP1NPPP/R1BQ1RK1 w - - 0 1",
+      "text": "White to move. The knight on c6 is pinned to the king. Attack it with a pawn.",
+      "solution": [
+       "d5"
+      ],
+      "hint": "The pinned knight cannot run away.",
+      "explain": "**d5!** attacks the pinned knight. It cannot move, and Black cannot save it: after ...Bd7 dxc6 White is a piece up. **Pinned pieces are targets — attack them with pawns.**"
+     },
+     {
+      "type": "exercise",
+      "fen": "r3k3/pppb2pp/3p4/3Pn3/8/3B4/PPP2PPP/4R1K1 w - - 0 1",
+      "text": "White to move. The knight on e5 is pinned to the king by your rook.",
+      "solution": [
+       "f4"
+      ],
+      "hint": "Bring a pawn to attack the pinned piece.",
+      "explain": "**f4!** — the knight cannot leave the e-file, so it falls: for example ...Kf7 fxe5 dxe5 Rxe5."
+     },
+     {
+      "type": "exercise",
+      "fen": "rn2k2r/pb2qppp/1pp5/3p3n/3P4/1PPB4/PB3PPP/2RQ1RK1 w - - 0 1",
+      "text": "White to move. The black queen and king stand on the open e-file. Pin and win the queen.",
+      "solution": [
+       "Rfe1"
+      ],
+      "hint": "Put a protected rook on the e-file.",
+      "explain": "**Rfe1!** pins the queen to the king. She cannot step off the e-file, and if she takes the rook, Qxe1 recaptures. Black has nothing to block with, so the queen is lost for a rook."
+     },
+     {
+      "type": "exercise",
+      "fen": "r5k1/pp3qpp/8/8/8/1P6/P4PPP/3R1BK1 w - - 0 1",
+      "text": "White to move. Win the queen with a pin.",
+      "solution": [
+       "Bc4"
+      ],
+      "hint": "The queen and king stand on the same diagonal.",
+      "explain": "**Bc4!** pins the queen to the king on the a2–g8 diagonal. The bishop is protected by the b3-pawn, so Black can only give the queen for the bishop."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkb1r/pppn1ppp/5n2/3N2B1/3P4/8/PP2PPPP/R2QKBNR b KQkq - 0 6",
+      "text": "White just took on d5, believing the knight on f6 is pinned to the queen. But that pin is only **relative**. Black to move.",
+      "solution": [
+       "Nxd5"
+      ],
+      "hint": "The knight on f6 may legally move. What happens if White takes the queen?",
+      "explain": "**...Nxd5!** — the \"Elephant Trap\". If 7.Bxd8 Bb4+! 8.Qd2 Bxd2+ 9.Kxd2 Kxd8, Black ends up a piece ahead. A relative pin is not a real pin when the opponent has a strong reply."
+     }
+    ]
+   },
+   {
+    "id": "l4-skewers",
+    "title": "Skewers",
+    "minutes": 8,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A **skewer** is a pin in reverse: you attack a valuable piece, it moves away, and you capture the piece behind it. Most skewers start with a **check**: the king must move and the piece behind it is lost.\n\nBishops, rooks and queens skewer along lines. Watch for a king and a loose rook or queen on the same rank, file or diagonal — especially in the endgame, when kings walk into the open."
+     },
+     {
+      "type": "board",
+      "fen": "r7/p4ppp/8/3k4/8/8/P3BPPP/6K1 w - - 0 1",
+      "text": "The black king on d5 and the rook on a8 stand on the same long diagonal. Bf3+ would attack the king, and after it moves the bishop takes the rook.",
+      "arrows": [
+       "e2f3",
+       "f3a8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "r7/p4ppp/8/3k4/8/8/P3BPPP/6K1 w - - 0 1",
+      "text": "White to move. Win the rook with a skewer.",
+      "solution": [
+       "Bf3+"
+      ],
+      "hint": "Check along the long diagonal.",
+      "explain": "**Bf3+** — the king must leave the diagonal, and Bxa8 follows."
+     },
+     {
+      "type": "exercise",
+      "fen": "8/2k4r/6p1/5p2/8/7P/5PP1/R5K1 w - - 0 1",
+      "text": "White to move. Black's king and rook are on the same rank.",
+      "solution": [
+       "Ra7+"
+      ],
+      "hint": "Check along the 7th rank.",
+      "explain": "**Ra7+** — the king must step off the 7th rank, and Rxh7 wins the rook. In rook endings, always check whether the enemy king and rook share a line."
+     },
+     {
+      "type": "exercise",
+      "fen": "6q1/pp4pp/4kp2/8/8/8/PP3PPP/R4BK1 w - - 0 1",
+      "text": "White to move. Win the queen.",
+      "solution": [
+       "Bc4+"
+      ],
+      "hint": "King and queen on the same diagonal…",
+      "explain": "**Bc4+** checks along the c4–g8 diagonal. The king must move and Bxg8 wins the queen."
+     },
+     {
+      "type": "exercise",
+      "fen": "2k4q/5pp1/1p6/8/8/8/1P3PPP/R4RK1 w - - 0 1",
+      "text": "White to move. Win the queen.",
+      "solution": [
+       "Ra8+"
+      ],
+      "hint": "King and queen are on the 8th rank.",
+      "explain": "**Ra8+** — the king must leave the 8th rank (the queen cannot block on b8 because the king stands in the way), and Rxh8 follows."
+     }
+    ]
+   },
+   {
+    "id": "l4-discovered",
+    "title": "Discovered attacks and double check",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A **discovered attack** happens when one piece moves out of the way and **uncovers** an attack by a piece behind it. The moving piece can make its own threat at the same time — two threats with one move.\n\n- If the uncovered attack is a check, it is a **discovered check**: the moving piece can go almost anywhere, even capture something, while the opponent must deal with the check.\n- If the moving piece **also** gives check, it is a **double check**. The only answer to a double check is to **move the king** — you cannot block or capture two checkers at once. Double checks often lead to mate."
+     },
+     {
+      "type": "exercise",
+      "fen": "rnb2rk1/pppnbppp/8/3q4/8/3B1N2/PPP1NPPP/R1BQ1RK1 w - - 0 1",
+      "text": "White to move. Your bishop on d3 blocks the d-file between your queen and Black's queen. Move it — with check.",
+      "solution": [
+       "Bxh7+"
+      ],
+      "hint": "The bishop must move with tempo, or Black simply takes your queen.",
+      "explain": "**Bxh7+!** — check. Black must answer the check, and then **Qxd5** wins the queen. If the bishop moved without check, Black would take your queen first. A discovered attack works best when the moving piece gives check or makes another big threat."
+     },
+     {
+      "type": "exercise",
+      "fen": "r3k3/p4ppp/q1p5/8/4B3/8/PP3PPP/4R1K1 w - - 0 1",
+      "text": "White to move. Your bishop on e4 is the only thing between your rook and the black king. Find the discovered check that wins the queen.",
+      "solution": [
+       "Bd3+"
+      ],
+      "hint": "Move the bishop with tempo to a square that attacks a6.",
+      "explain": "**Bd3+!** — the rook gives **discovered check**, and the bishop attacks the queen on a6. Black cannot block on the e-file (the c6-pawn stops ...Qe6), so the king must move and Bxa6 wins the queen."
+     },
+     {
+      "type": "exercise",
+      "fen": "rn2kb1r/pqp2ppp/1p6/3p4/3PN3/1P6/PBP2PPP/R2QR1K1 w - - 0 1",
+      "text": "White to move. Your knight on e4 shields the black king from your rook on e1. Mate in two.",
+      "solution": [
+       "Nf6+",
+       "Kd8",
+       "Re8#"
+      ],
+      "hint": "Find a knight move that gives check itself while uncovering the rook.",
+      "explain": "**Nf6+** is a **double check** (knight and rook). The g7-pawn cannot capture the knight, because the rook still gives check — only a king move helps, and d8 is the only square. Then **Re8#**.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bqkb1r/pp1npppp/2p2n2/8/3PN3/8/PPP1QPPP/R1B1KBNR w KQkq - 3 6",
+      "text": "After **1.e4 c6 2.d4 d5 3.Nc3 dxe4 4.Nxe4 Nd7 5.Qe2 Ngf6??** White to move. Mate in one!",
+      "solution": [
+       "Nd6#"
+      ],
+      "hint": "Your queen on the e-file pins something.",
+      "explain": "**Nd6#** — the e7-pawn cannot capture the knight because it is **pinned** by your queen on e2, and the king on e8 is surrounded by its own pieces. This trap has caught strong players.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "rnb1kb1r/pp3ppp/2p5/4q3/4n3/3Q4/PPPB1PPP/2KR1BNR w kq - 0 9",
+      "text": "Réti – Tartakower, Vienna 1910. Black has just taken the knight on e4. White to move: mate in three, starting with a queen sacrifice.",
+      "solution": [
+       "Qd8+",
+       "Kxd8",
+       "Bg5+",
+       "Kc7",
+       "Bd8#"
+      ],
+      "hint": "Lure the king to d8, then uncover the rook on d1 with a check from the bishop.",
+      "explain": "**Qd8+! Kxd8 Bg5+** — double check from the bishop and the rook on d1. After **...Kc7**, **Bd8#** (and after ...Ke8, Rd8#). One of the most famous combinations in chess history.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l4-defenders",
+    "title": "Removing the defender and overloading",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Many pieces and squares are protected by **one** defender. If you can capture, chase or distract that defender, what it protected falls.\n\n- **Removing the defender**: capture (or trade off) the piece that guards the target.\n- **Overloading**: one defender has two jobs. Attack one job, and it cannot do the other.\n\nHow to find these: when you see a target that is defended exactly once, ask \"what happens if that defender disappears?\""
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bq1rk1/pp2bppp/2n1pn2/3p2B1/3P4/2NQPN2/PPB2PPP/R4RK1 w - - 0 1",
+      "text": "White to move. Your queen and bishop aim at h7, but the knight on f6 guards it. Remove the defender.",
+      "solution": [
+       "Bxf6"
+      ],
+      "hint": "Capture the guard of h7.",
+      "explain": "**Bxf6!** — if ...Bxf6, then **Qxh7#**. Black has to block with ...g6, and after Bxe7 Qxe7 White has won a piece. The knight on f6 was the only guard of h7."
+     },
+     {
+      "type": "exercise",
+      "fen": "rn3rk1/ppp1bppp/1q3n2/3b4/3P4/2NQPN2/PPB2PPP/R1B2RK1 w - - 0 1",
+      "text": "White to move. The knight on f6 has two jobs: guarding h7 and guarding the bishop on d5.",
+      "solution": [
+       "Nxd5"
+      ],
+      "hint": "Take the piece it cannot afford to defend.",
+      "explain": "**Nxd5!** — if ...Nxd5, then **Qxh7#**. The knight is **overloaded**. On d5 your knight now also attacks the queen on b6 and the bishop on e7, so White wins even more."
+     }
+    ]
+   },
+   {
+    "id": "l4-deflection",
+    "title": "Deflection and decoy",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Deflection**: force a defender away from the square or line it guards — usually by offering it something it must take, or by attacking it.\n\n**Decoy**: force an enemy piece (very often the **king**) onto a bad square — usually with a sacrifice — where it can be forked, mated or skewered.\n\nBoth ideas usually involve a **sacrifice**. Do not fear giving material if you can calculate what you get back. The key question: \"Which enemy piece is doing an important job, and can I make it leave?\""
+     },
+     {
+      "type": "exercise",
+      "fen": "5nk1/pp3pp1/3q4/6N1/8/8/PP3PP1/6KR w - - 0 1",
+      "text": "White to move. You are behind in material. A knight on f7 would fork h8 and d6 — but the king is on g8. Use a decoy.",
+      "solution": [
+       "Rh8+",
+       "Kxh8",
+       "Nxf7+"
+      ],
+      "hint": "Force the king onto h8 first.",
+      "explain": "**Rh8+!** — the king must take (the knight blocks f8). Now **Nxf7+** forks the king on h8 and the queen on d6, and Nxd6 follows. You gave a rook to win a queen."
+     },
+     {
+      "type": "exercise",
+      "fen": "4r2k/pp4pp/3q3N/8/2Q5/8/PP3PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in two — the **smothered mate** idea.",
+      "solution": [
+       "Qg8+",
+       "Rxg8",
+       "Nf7#"
+      ],
+      "hint": "Decoy the rook onto g8 so the king is boxed in by its own pieces.",
+      "explain": "**Qg8+!** — the king cannot take (the knight on h6 guards g8), so ...Rxg8 is forced, and **Nf7#** mates a king smothered by its own rook and pawns. This pattern is called **Philidor's Legacy**.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "4kb1r/p2n1ppp/4q3/4p1B1/4P3/1Q6/PPP2PPP/2KR4 w k - 0 16",
+      "text": "Morphy's **Opera Game** (Paris 1858). The knight on d7 is the only guard of d8. White to move: mate in two.",
+      "solution": [
+       "Qb8+",
+       "Nxb8",
+       "Rd8#"
+      ],
+      "hint": "Deflect the knight with a queen sacrifice.",
+      "explain": "**Qb8+!!** — the knight must take, leaving d8. Then **Rd8#**: the bishop on g5 protects the rook and covers e7, while Black's own bishop and f-pawn block f8 and f7. A perfect deflection.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l4-zwischenzug",
+    "title": "In-between moves (zwischenzug)",
+    "minutes": 8,
+    "steps": [
+     {
+      "type": "text",
+      "text": "In a capture sequence, players expect the \"obvious\" recapture. A **zwischenzug** (German for \"in-between move\") is a stronger move inserted first — usually a **check** or a big threat — after which you still recapture.\n\nBefore automatically recapturing, ask: **do I have a check or a bigger threat first?** And when you calculate your own captures, ask the same question for your opponent. Many \"winning\" sequences fail because of one in-between move."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bBkb1r/pppn1ppp/8/3n4/3P4/8/PP2PPPP/R2QKBNR b KQkq - 0 7",
+      "text": "The Elephant Trap again: White has just taken the queen. Recapturing with ...Kxd8 leaves Black a queen for a knight and bishop down. Black to move: find the in-between move.",
+      "solution": [
+       "Bb4+"
+      ],
+      "hint": "A check first — and look at what White must put in the way.",
+      "explain": "**...Bb4+!** — White must block with **Qd2**, and after **...Bxd2+ Kxd2 Kxd8** Black has won the queen back and is a piece ahead. The check came *between* the capture and the recapture."
+     },
+     {
+      "type": "exercise",
+      "fen": "rnb1kbnr/ppp2ppp/4p3/1N6/5B2/3BP3/PPP2PPP/RN1q1RK1 w - - 0 1",
+      "text": "Black has just captured your queen on d1. The obvious move is Rxd1 — but first there is something stronger.",
+      "solution": [
+       "Nxc7+"
+      ],
+      "hint": "The black queen is not going anywhere. Is there a check?",
+      "explain": "**Nxc7+!** — check, and a fork of the king and the rook on a8 (the knight is protected by the bishop on f4). Black must move the king, then you play **Rxd1** and later Nxa8. Recapturing first would have given Black time to save the rook."
+     }
+    ]
+   },
+   {
+    "id": "l4-mates1",
+    "title": "Mating patterns I: smothered, Arabian, Anastasia",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Most checkmates follow a small number of **patterns**. Once you know them, you will spot mating chances in a second instead of calculating for minutes.\n\n- **Smothered mate**: a knight mates a king surrounded by its own pieces.\n- **Arabian mate**: rook and knight. The rook is next to the king on the edge, protected by the knight, which also covers the escape square.\n- **Anastasia's mate**: a knight on e7 (or e2) takes away g8 and g6, and a rook or queen mates on the h-file."
+     },
+     {
+      "type": "exercise",
+      "fen": "6rk/p5pp/8/6N1/8/8/P4PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Nf7#"
+      ],
+      "hint": "The king has no free squares at all.",
+      "explain": "**Nf7#** — smothered mate. The king's own rook and pawns block every escape.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r6k/pp1R3p/5N2/8/8/8/5PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Rxh7#"
+      ],
+      "hint": "Rook and knight work together.",
+      "explain": "**Rxh7#** — the **Arabian mate**. The knight on f6 protects the rook and covers g8; the rook covers the h-file and g7.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "rn3bk1/pp1R3p/2p1p3/8/4N3/8/PPP2PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in two with rook and knight.",
+      "solution": [
+       "Nf6+",
+       "Kh8",
+       "Rxh7#"
+      ],
+      "hint": "Drive the king into the corner first.",
+      "explain": "**Nf6+** forces **...Kh8** (g7 is covered by the rook on d7, f8 is blocked by the bishop). Then **Rxh7#** — the Arabian mate.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r7/pp2N1pk/8/8/8/3R4/P4PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Rh3#"
+      ],
+      "hint": "The knight on e7 already covers g8 and g6.",
+      "explain": "**Rh3#** — **Anastasia's mate**: the rook checks along the h-file and the knight takes away g6 and g8.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "r4r1k/ppq1Nppp/2p5/7Q/8/3R4/PPP2PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in two.",
+      "solution": [
+       "Qxh7+",
+       "Kxh7",
+       "Rh3#"
+      ],
+      "hint": "Sacrifice to open the h-file and drag the king to h7.",
+      "explain": "**Qxh7+!** — the king must take (the knight covers g8). Then **Rh3#**, Anastasia's mate. The queen sacrifice is a **decoy**.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l4-mates2",
+    "title": "Mating patterns II: Boden, Legal and friends",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "- **Boden's mate**: two bishops on crossing diagonals mate a king castled queenside, usually after a sacrifice on c3/c6.\n- **Legal's mate**: an opening trap where White sacrifices the queen and mates with the minor pieces.\n- **Greco's mate**: the bishop on c4 takes g8, the queen mates on the h-file.\n- **Epaulette mate**: the king is flanked by its own rooks (like shoulder pads) and mated by a queen in front.\n- **Queen + pawn**: a pawn on f6 supports a queen landing on g7."
+     },
+     {
+      "type": "exercise",
+      "fen": "2kr4/p2n1ppp/2p5/8/5B2/8/PP2BPPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in one with the bishops.",
+      "solution": [
+       "Ba6#"
+      ],
+      "hint": "One bishop already covers b8 and c7.",
+      "explain": "**Ba6#** — **Boden's mate**: the bishops cross on b7 and c7, and the rook and knight block the king's own escape.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "2k1rb1r/ppp3pp/2n2q2/3B1b2/5P2/2P1BQ2/PP1N1P1P/2KR3R b - - 0 14",
+      "text": "Schulder – Boden, London 1853. White castled queenside and just took on d5. Black to move: mate in two.",
+      "solution": [
+       "Qxc3+",
+       "bxc3",
+       "Ba3#"
+      ],
+      "hint": "A queen sacrifice opens the diagonal for the dark-squared bishop.",
+      "explain": "**...Qxc3+! bxc3 Ba3#** — the bishop on a3 gives check and covers b2, the bishop on f5 covers c2 and b1, and White's own rook and knight block d1 and d2. The game that gave the pattern its name.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "rn1qkbnr/ppp2p1p/3p2p1/4N3/2B1P3/2N5/PPPP1PPP/R1BbK2R w KQkq - 0 6",
+      "text": "This is **Legal's mate**. White played 5.Nxe5!? and Black greedily took the queen. White to move: mate in two.",
+      "solution": [
+       "Bxf7+",
+       "Ke7",
+       "Nd5#"
+      ],
+      "hint": "Check with the bishop, then let a knight finish.",
+      "explain": "**Bxf7+ Ke7 Nd5#** — three minor pieces mate the king. (Black should have played 5...dxe5 and only lost a pawn.)",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "5r1k/pp4p1/8/8/2B5/8/PP3PPP/3Q2K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Qh5#"
+      ],
+      "hint": "The bishop on c4 controls g8 and the h-file is open.",
+      "explain": "**Qh5#** — the queen checks along the h-file and the bishop takes g8. (Greco's mate.)",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "3rkr2/ppp3pp/8/8/8/1Q6/PP3PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Qe6#"
+      ],
+      "hint": "The king is flanked by its own rooks.",
+      "explain": "**Qe6#** — the **epaulette mate**. The queen covers d7, e7 and f7, and the rooks block d8 and f8.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "2r3k1/p4p1p/5PpQ/8/8/8/P5PP/6K1 w - - 0 1",
+      "text": "White to move. Mate in one.",
+      "solution": [
+       "Qg7#"
+      ],
+      "hint": "The f6-pawn supports a queen on g7.",
+      "explain": "**Qg7#** — queen and pawn. A pawn on f6 (or f3 for Black) near a castled king is a deadly attacking weapon.",
+      "goal": "mate"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "title": "Level 5 — Strategy",
+  "subtitle": "What to do when there is no tactic: pawns, squares, files, bishops, king safety and plans",
+  "lessons": [
+   {
+    "id": "l5-pawns",
+    "title": "Pawn structure",
+    "minutes": 15,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Pieces move around; pawns stay. That is why the **pawn structure** decides where your pieces belong and what your plan should be. Pawns cannot move backwards, so **every pawn move creates a permanent change** — think twice before pushing.\n\nThe four structures every player must know:\n- **Isolated pawn** — no friendly pawns on the neighbouring files. No pawn can ever defend it.\n- **Doubled pawns** — two pawns on the same file. They cannot protect each other.\n- **Backward pawn** — a pawn whose neighbours have advanced, so it cannot be protected by pawns, and the square in front of it is often a hole.\n- **Passed pawn** — no enemy pawn in front of it or on the neighbouring files can stop it. Passed pawns win endgames."
+     },
+     {
+      "type": "board",
+      "fen": "rnbq1rk1/pp2bppp/4pn2/8/3P4/2NB1N2/PP3PPP/R1BQ1RK1 w - - 0 1",
+      "text": "White has an **isolated queen's pawn** (IQP) on d4. Strength: space, open files and the strong squares e5 and c5 for the knights — White should **attack**, often on the kingside. Weakness: in the endgame the pawn is easy to attack, and the square **d5** in front of it is a perfect, permanent post for a black piece. Black's plan: **blockade** d5 (ideally with a knight) and trade pieces.",
+      "highlights": [
+       "d4",
+       "d5"
+      ]
+     },
+     {
+      "type": "board",
+      "fen": "rnbqkb1r/1p3ppp/p2p1n2/4p3/4P3/1NN5/PPP1BPPP/R1BQK2R b KQkq - 1 7",
+      "text": "In this Sicilian structure Black's **d6-pawn is backward**: the c- and e-pawns are gone or advanced, and no pawn can defend it. The square in front, **d5**, is a hole that White would love to occupy with a knight. Black fights for d5 with ...Be6, ...Nbd7 and ...Rc8, and tries to play ...d5 at the right moment to get rid of the weakness.",
+      "highlights": [
+       "d6",
+       "d5"
+      ]
+     },
+     {
+      "type": "text",
+      "text": "**Passed pawns must be pushed.** A passed pawn ties down enemy pieces, which must watch it all the time. The further it advances, the more dangerous it becomes.\n- A **protected** passed pawn (defended by another pawn) is very strong: the enemy king cannot take it.\n- An **outside** passed pawn (far from the other pawns) is a decoy in the endgame: the enemy king runs to stop it, and your king eats the pawns on the other side.\n- **Blockade** enemy passed pawns with a piece directly in front of them — a knight is the ideal blockader.\n\nSometimes you can **create** a passed pawn by force with a pawn breakthrough."
+     },
+     {
+      "type": "exercise",
+      "fen": "8/ppp5/6k1/PPP5/8/8/8/7K w - - 0 1",
+      "text": "White to move. Three pawns against three. Your king is far away, and the black king is coming to eat your pawns. Create a passed pawn that queens — now.",
+      "solution": [
+       "b6"
+      ],
+      "hint": "Sacrifice the middle pawn.",
+      "explain": "**b6!** — after 1...axb6 2.c6! bxc6 3.a6, or 1...cxb6 2.a6! bxa6 3.c6, one white pawn breaks through and the black king is too far away to catch it. Any slower move loses: the black king arrives and wins the pawns. This is the classic **pawn breakthrough**."
+     }
+    ]
+   },
+   {
+    "id": "l5-minors",
+    "title": "Weak squares, outposts and minor pieces",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A **weak square** (or hole) is a square that can no longer be attacked by an enemy pawn. Every pawn move leaves squares behind it that the pawn can never guard again.\n\nAn **outpost** is a weak square in the enemy camp, protected by your own pawn. A **knight on an outpost** — like d5, e5, d6 or f5 — can be stronger than a rook: it cannot be chased away by pawns, and from there it attacks deep into the enemy position.\n\n**Bishops**:\n- A **bad bishop** is blocked by its own pawns standing on its colour. A **good bishop** has its pawns on the other colour, so it can move freely.\n- Rule: put your pawns on the **opposite colour** of your remaining bishop.\n- The **bishop pair** (two bishops against bishop + knight or two knights) is an advantage in open positions — together they cover both colours. Open the position if you have the two bishops; keep it closed if you have the knights."
+     },
+     {
+      "type": "board",
+      "fen": "rn1q1rk1/1p2bppp/p2pbn2/3Np3/4P3/1N2B3/PPP1BPPP/R2Q1RK1 b - - 7 10",
+      "text": "White's knight has reached **d5**, the outpost in front of Black's backward d6-pawn. No black pawn can ever attack it. Black usually has to give up a piece for it (...Nxd5 or ...Bxd5), which changes the structure.",
+      "highlights": [
+       "d5"
+      ]
+     },
+     {
+      "type": "board",
+      "fen": "r1bqkbnr/pp3ppp/2n1p3/2ppP3/3P4/2P2N2/PP3PPP/RNBQKB1R b KQkq - 2 5",
+      "text": "A French Defence structure. Black's pawns on d5 and e6 stand on **light** squares, so Black's light-squared bishop on c8 is **bad**: it is locked behind its own pawns. A typical plan for Black is to trade it (...b6 and ...Ba6) or to open the position with ...f6.",
+      "highlights": [
+       "c8",
+       "d5",
+       "e6"
+      ]
+     },
+     {
+      "type": "text",
+      "text": "**How to use this in your games:**\n1. When you push a pawn, ask: which squares can this pawn never guard again?\n2. Look for holes in your opponent's camp, especially in front of backward or isolated pawns. Bring a knight there.\n3. Before trading, compare minor pieces: keep your good bishop, trade your bad one; trade the opponent's best knight.\n4. With the bishop pair, open lines (pawn breaks, exchanges of pawns). With knights, keep the pawns locked."
+     }
+    ]
+   },
+   {
+    "id": "l5-files",
+    "title": "Open files and the 7th rank",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Rooks need **open files** (no pawns at all) or **half-open files** (no pawns of your own). A rook behind its own pawns does nothing.\n\n1. **Take the open file first.** Put a rook on it, then double rooks (or rook and queen) so the opponent cannot challenge it.\n2. **Invade.** The goal of an open file is an entry square, usually on the **7th rank** (2nd for Black).\n3. **A rook on the 7th** attacks the pawns that are still on their starting squares and traps the enemy king on the back rank. Two rooks on the 7th (\"pigs on the seventh\") often give mate or perpetual check."
+     },
+     {
+      "type": "board",
+      "fen": "2r1r1k1/ppp2ppp/4p3/8/8/4P3/PPPR1PPP/3R2K1 w - - 0 1",
+      "text": "White has **doubled rooks on the only open file**. Black cannot contest it, because ...Rd8 would be met by Rxd8. Next comes **Rd7**, attacking the pawns on c7 and f7 and tying Black down.",
+      "arrows": [
+       "d2d7"
+      ],
+      "highlights": [
+       "d7"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "3r1rk1/1RR3pp/p7/8/8/8/P4PPP/6K1 w - - 0 1",
+      "text": "White to move. Both your rooks are on the 7th rank. Mate in three.",
+      "solution": [
+       "Rxg7+",
+       "Kh8",
+       "Rxh7+",
+       "Kg8",
+       "Rbg7#"
+      ],
+      "hint": "Take the g7-pawn with check, then the h7-pawn, and the rooks protect each other.",
+      "explain": "**Rxg7+ Kh8 Rxh7+ Kg8 Rbg7#** — the rooks sweep along the 7th rank and protect each other. The black rook on f8 even blocks its own king. This is why two rooks on the 7th are so feared.",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l5-king",
+    "title": "King safety and attacking the king",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Your own king.** After castling, keep the pawn shield (f2, g2, h2) mostly unmoved — every pawn move in front of the king creates weak squares. Keep at least one minor piece near the king (a knight on f3 is the best defender of h2 and h7). Do not let the enemy open files toward your king.\n\n**Attacking the enemy king.** Signs that an attack might work:\n- more of your pieces near the enemy king than defenders;\n- weaknesses in the pawn shield (a pawn on g6 or h6, a missing f-pawn);\n- the enemy king still in the center;\n- your pawn on e5 kicking away the knight from f6 (the best defender).\n\n**Same-side castling**: attack with pieces; pushing your own pawns weakens your king.\n**Opposite-side castling**: it is a race. Throw your pawns at the enemy king (a **pawn storm**) to open files — whoever opens lines first usually wins."
+     },
+     {
+      "type": "board",
+      "fen": "r1bq1rk1/pp2ppbp/2np1np1/8/3NP3/2N1BP2/PPPQ2PP/2KR1B1R b - - 4 9",
+      "text": "The Yugoslav Attack in the Sicilian Dragon: the kings have castled on **opposite sides**. White will play h4–h5 to open the h-file against Black's king; Black races on the queenside with ...Rc8, ...Ne5 and ...b5.",
+      "arrows": [
+       "h2h4",
+       "h4h5"
+      ]
+     },
+     {
+      "type": "text",
+      "text": "**The Greek Gift (Bxh7+).** A classic sacrifice against a castled king. It usually works when White has a bishop on d3, a knight that can reach g5, a queen that can reach h5, a pawn on e5 that keeps the black knight away from f6, and Black has no easy defender (no knight on f6, no bishop that can take on g5)."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1bq1rk1/pppn1ppp/2n1p3/3pP3/1b1P4/2NB1N2/PPP2PPP/R1BQ1RK1 w - - 0 1",
+      "text": "White to move. Check the Greek Gift conditions: bishop on d3, knight on f3, pawn on e5, no black knight on f6. Start the attack.",
+      "solution": [
+       "Bxh7+",
+       "Kxh7",
+       "Ng5+"
+      ],
+      "hint": "Sacrifice on h7, then bring the knight with check.",
+      "explain": "**Bxh7+! Kxh7 Ng5+** — if ...Kg8, then Qh5 threatens Qh7#, and Black must give up the queen with ...Qxg5 Bxg5. If ...Kg6, Qd3+ continues the hunt. Taking the knight at once with ...Qxg5 also loses the queen to Bxg5 — that is why the bishop on c1 matters."
+     }
+    ]
+   },
+   {
+    "id": "l5-plan",
+    "title": "Making a plan and prophylaxis",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "When there is no tactic, beginners often make random moves. Instead, use this short **assessment** and the plan will follow:\n\n1. **Material** — who is ahead? (If you are ahead: trade pieces. If behind: keep pieces, seek activity.)\n2. **King safety** — is either king in danger?\n3. **Piece activity** — which is **your worst piece**? Improving it is almost always a good plan.\n4. **Pawn structure** — which enemy pawns or squares are weak? That is your **target**.\n5. **Space** — who controls more of the board? Play where you are stronger.\n\nThen make a **plan in two or three steps**: \"bring the knight to d5, double rooks on the c-file, attack c7.\" A modest plan is far better than no plan."
+     },
+     {
+      "type": "text",
+      "text": "**The worst piece.** Look at each of your pieces and ask \"what is it doing?\" A bishop staring at its own pawns, a knight on the rim, a rook behind closed pawns — move that piece to a square where it works. Strong players spend many moves just improving their worst piece, and the position quietly becomes better and better.\n\n**The weakest point.** Find the enemy weakness (an isolated pawn, a backward pawn, a hole, a king without defenders) and **attack it with more pieces than can defend it** — counting again, like in Level 2."
+     },
+     {
+      "type": "text",
+      "text": "**Prophylaxis** means preventing your opponent's plan before it happens. Before every move ask: **\"What does my opponent want to do?\"** If they want to play ...Ng4, maybe h3 is useful. If they want ...b5 to attack your knight, maybe a4 stops it. If they want to bring a rook to the open file, take it first.\n\nThis is the same question as step 1 of your blunder check — just applied to the opponent's **plans**, not only their immediate threats. Great defenders like Petrosian and Karpov won many games simply by never allowing the opponent's ideas."
+     },
+     {
+      "type": "board",
+      "fen": "r1b2rk1/ppq2ppp/2n1pn2/2p5/2BP4/P1P1PN2/5PPP/R1BQ1RK1 w - - 1 11",
+      "text": "Assess this position (Nimzo-Indian). Material is equal. White has the **bishop pair** and a big pawn center (c3, d4, e3), but no b-pawn, so c3 and d4 can become targets. Black wants **...e5** to challenge the center and free his pieces. A good plan for White: play **e3–e4** first to grab space and open diagonals for the bishops, and keep the d4-pawn solid. A good plan for Black: ...e5, ...Bg4 and pressure on d4. Notice that both plans start from the same question: what does the opponent want?",
+      "highlights": [
+       "e5",
+       "c3"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "l6",
+  "title": "Level 6 — Endgames",
+  "subtitle": "The king becomes a fighter: the endings every strong player knows by heart",
+  "lessons": [
+   {
+    "id": "l6-king",
+    "title": "The active king and the square of the pawn",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "In the middlegame the king hides. In the endgame, with queens off, **the king is a strong attacking and defending piece** — worth about as much as a minor piece. Rule number one of endgames: **activate your king**, bring it toward the center or toward the pawns.\n\n**The square of the pawn.** Can a king catch a passed pawn without help? Draw an imaginary square from the pawn to its promotion rank (the pawn's distance to promotion is the side length). If the defending king can **step inside the square on its move**, it catches the pawn. If not, the pawn queens. This saves you from counting move by move."
+     },
+     {
+      "type": "board",
+      "fen": "8/8/8/5k2/P7/8/8/7K w - - 0 1",
+      "text": "The pawn on a4 needs four moves to queen. Its square runs a4–e4–e8–a8. The black king on f5 is just **outside**: if White pushes now (a5), the square shrinks to a5–d5–d8–a8 and the king can never get in. If it were Black's move, ...Ke5 would step into the square and catch the pawn.",
+      "highlights": [
+       "a4",
+       "e4",
+       "e8",
+       "a8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "8/8/8/5k2/P7/8/8/7K w - - 0 1",
+      "text": "White to move. Win the race.",
+      "solution": [
+       "a5"
+      ],
+      "hint": "Use the square rule: which move keeps the black king outside the square?",
+      "explain": "**a5!** — the black king is outside the square of the a5-pawn and cannot catch it: ...Ke6 a6 Kd7 a7 Kc7 a8=Q. Any king move by White would let Black play ...Ke5 (or ...Ke4) into the square."
+     },
+     {
+      "type": "exercise",
+      "fen": "7K/8/k1P5/7p/8/8/8/8 w - - 0 1",
+      "text": "The famous **Réti study** (1921). White's king seems hopelessly far from the h-pawn. White to move and draw!",
+      "solution": [
+       "Kg7"
+      ],
+      "hint": "A diagonal king walk can do two jobs at once: chase the h-pawn and support your own pawn.",
+      "explain": "**Kg7!** — the king walks diagonally toward the center, so it approaches the h-pawn **and** the c-pawn at the same time. After 1...h4 2.Kf6 h3 3.Ke7 h2 4.c7 Kb7 5.Kd7 both sides queen. After 1...Kb6 2.Kf6 h4 3.Ke5! — if 3...h3, then 4.Kd6 supports the c-pawn and both sides queen; if 3...Kxc6, then 4.Kf4 catches the h-pawn. A diagonal route is as short as a straight one — remember this when counting king races."
+     }
+    ]
+   },
+   {
+    "id": "l6-opposition",
+    "title": "Opposition and king + pawn vs king",
+    "minutes": 15,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Opposition**: the two kings stand on the same file (or rank) with **one square between them**. The side that is **not** to move \"has the opposition\": the opponent's king must step aside and give way.\n\n**King + pawn vs king** (with a pawn that is not on the a- or h-file):\n- The attacker should put his king **in front of the pawn**, not behind it.\n- **Key squares**: if the attacking king reaches the squares two ranks in front of the pawn (for a pawn on e4: d6, e6, f6), the pawn queens no matter who is to move.\n- If the attacking king stands on the **6th rank in front of the pawn**, it always wins.\n\n**Defender**: stand in front of the pawn, take the opposition, and when pushed back, retreat **straight back**. Then the game ends in stalemate or the pawn is lost."
+     },
+     {
+      "type": "board",
+      "fen": "4k3/8/4K3/4P3/8/8/8/8 b - - 0 1",
+      "text": "The kings stand in **opposition**: e6 and e8, one square between them. Black is to move and must step aside — after ...Kd8 White plays Kf7, after ...Kf8 White plays Kd7 — and the pawn walks to e8. The side **not** to move has the opposition.",
+      "highlights": [
+       "e6",
+       "e8"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "8/8/4k3/8/3K4/8/4P3/8 w - - 0 1",
+      "text": "White to move. Your pawn is still far behind. First win the battle of the kings.",
+      "solution": [
+       "Ke4"
+      ],
+      "hint": "Put your king opposite the black king with one square in between.",
+      "explain": "**Ke4!** takes the **opposition**: now Black must give way. After ...Kd6 Kf5! or ...Kf6 Kd5!, the white king goes forward and the e-pawn follows. The far-back pawn is useful: its spare moves (e3 or e4) can win the opposition later."
+     },
+     {
+      "type": "exercise",
+      "fen": "8/8/8/5k2/8/4K3/5P2/8 w - - 0 1",
+      "text": "White to move. Same idea, a different file.",
+      "solution": [
+       "Kf3"
+      ],
+      "hint": "Kings on the same file, one square between them.",
+      "explain": "**Kf3!** — opposition. Black must step aside and White's king advances in front of the pawn."
+     },
+     {
+      "type": "exercise",
+      "fen": "3k4/8/8/2K5/4P3/8/8/8 w - - 0 1",
+      "text": "White to move. The key squares for a pawn on e4 are d6, e6 and f6. Get there.",
+      "solution": [
+       "Kd6"
+      ],
+      "hint": "One of the key squares is right next to your king.",
+      "explain": "**Kd6!** — the king reaches a key square in front of the pawn, and the pawn will queen whatever Black does: e.g. ...Ke8 e5 Kd8 e6 Ke8 e7 Kf7 Kd7. Kings first, pawn second."
+     },
+     {
+      "type": "exercise",
+      "fen": "8/4k3/8/3KP3/8/8/8/8 b - - 0 1",
+      "text": "Black to move. Defend: draw the game.",
+      "solution": [
+       "Kd7"
+      ],
+      "hint": "Take the opposition against the white king.",
+      "explain": "**...Kd7!** — Black takes the opposition. If 2.e6+ Ke7 3.Ke5 Ke8! (straight back) 4.Kf6 Kf8 5.e7+ Ke8 6.Ke6 — stalemate. Every other first move lets the white king reach d6 or f6."
+     },
+     {
+      "type": "exercise",
+      "fen": "4k3/8/8/4K3/5P2/8/8/8 b - - 0 1",
+      "text": "Black to move. Draw the game. The key squares for the f4-pawn are e6, f6 and g6.",
+      "solution": [
+       "Ke7"
+      ],
+      "hint": "Keep the white king away from the key squares.",
+      "explain": "**...Ke7!** takes the opposition (kings on e5 and e7). If Kf5, then ...Kf7 keeps it; if f5, then ...Kf7 and Black stays in front of the pawn. Any other move (for example ...Kf7?) lets the white king reach e6 or f6 and the pawn queens."
+     }
+    ]
+   },
+   {
+    "id": "l6-lucena",
+    "title": "Rook endgames I: the Lucena position",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Rook endgames are the most common endings in chess. Two positions are the foundation of all of them: **Lucena** (how to win with an extra pawn) and **Philidor** (how to draw with a pawn less).\n\n**Lucena**: the attacking king stands **in front of its own pawn on the 7th rank**, the defending king is **cut off** from the pawn by at least one file, and the defending rook gives checks from the side or behind.\n\nThe problem: the white king wants to leave the queening square, but then it gets checked forever. The solution is to **build a bridge**: bring the rook to the **4th rank**, so it can later block the checks."
+     },
+     {
+      "type": "board",
+      "fen": "3K4/3P2k1/8/8/8/8/2r5/5R2 w - - 0 1",
+      "text": "The Lucena position. The rook on f1 cuts the black king off on the g-file; the black rook on c2 stops the white king from going to c7. Winning method: **1.Rf4!** (building the bridge) 1...Rc1 2.Ke7 Re1+ 3.Kd6 Rd1+ 4.Ke6 Re1+ 5.Kd5 Rd1+ 6.Rd4 — the rook blocks the checks and the pawn queens.",
+      "arrows": [
+       "f1f4"
+      ]
+     },
+     {
+      "type": "exercise",
+      "fen": "8/3P2k1/8/3K4/5R2/8/8/3r4 w - - 10 6",
+      "text": "The bridge is ready. Black checks again on the d-file. White to move: finish the Lucena.",
+      "solution": [
+       "Rd4"
+      ],
+      "hint": "Your rook on the 4th rank can step in.",
+      "explain": "**Rd4!** — the bridge. The checks are over and the pawn on d7 will queen. Without the rook on the 4th rank, the king could never escape the checks."
+     }
+    ]
+   },
+   {
+    "id": "l6-philidor",
+    "title": "Rook endgames II: Philidor and the rook behind the pawn",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Philidor position** (defending with a pawn less). The defending king stands in front of the pawn. The defending rook goes to the **3rd rank** from its own side (the 6th rank for Black) and **waits there**, so the attacking king cannot reach the 6th rank.\n\nWhen the attacker pushes the pawn to the 6th, the pawn no longer gives the king shelter — now the defending rook goes to the **far end** (the 1st rank) and checks from behind. The king has nowhere to hide and it is a draw.\n\nThe typical mistake is to keep the rook passively on the back rank. Then the white king comes to the 6th rank and the defence collapses."
+     },
+     {
+      "type": "board",
+      "fen": "4k3/R7/1r6/3KP3/8/8/8/8 w - - 0 1",
+      "text": "Philidor: Black's rook on the **6th rank** stops the white king from going to d6 or e6. Black just waits with the rook along the 6th rank. If White plays e6, then ...Rb1! and Black checks from behind.",
+      "highlights": [
+       "d6",
+       "e6"
+      ]
+     },
+     {
+      "type": "text",
+      "text": "**Rooks belong behind passed pawns** — your own and the enemy's (Tarrasch's rule). Behind your own passed pawn, the rook gets more active as the pawn advances. Behind an enemy passed pawn, it stops the pawn without getting passive.\n\nOne trick everyone must know: when your rook stands **in front** of your passed pawn on the 7th rank (a7-pawn, rook on a8), and the enemy king is on the 7th rank or near it, the rook can **leave with a skewer threat**. If the defender takes the pawn, a rook check along the 7th rank wins his rook."
+     },
+     {
+      "type": "exercise",
+      "fen": "R7/P4k2/8/8/8/6K1/r7/8 w - - 0 1",
+      "text": "White to move. Black's king stands on the 7th rank — the wrong square. Win.",
+      "solution": [
+       "Rh8"
+      ],
+      "hint": "If Black's rook takes on a7, where can your rook give check?",
+      "explain": "**Rh8!** — if ...Rxa7, then **Rh7+** skewers the king and the rook on a7. If Black does not take, a8=Q follows (after ...Rxa8 Rxa8). The correct defensive squares for Black's king were g7 and h7, where this trick does not work."
+     }
+    ]
+   },
+   {
+    "id": "l6-zugzwang",
+    "title": "Zugzwang and triangulation",
+    "minutes": 10,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Zugzwang** (German: \"compulsion to move\") is a position where any move makes things worse — the player would like to pass, but must move. Zugzwang is rare in the middlegame and very common in endgames, especially king-and-pawn endings.\n\nIf a position is zugzwang for your opponent **only if it is his move**, and it is your move instead, you need to **lose a move**. The standard technique is **triangulation**: your king walks around a small triangle of squares and comes back to the same position — but now with the opponent to move. This works when the enemy king has fewer good squares than yours."
+     },
+     {
+      "type": "exercise",
+      "fen": "4k3/2p5/2P5/3K4/8/8/8/8 w - - 0 1",
+      "text": "White to move. White wants to win the c7-pawn. Put Black in zugzwang.",
+      "solution": [
+       "Ke6"
+      ],
+      "hint": "Where can the black king go after your move?",
+      "explain": "**Ke6!** — Black is in zugzwang. After ...Kd8, Kf7 and the king reaches d7 via e7 (...Kc8 Ke7 Kb8 Kd7). After ...Kf8, Kd7 wins the pawn at once. With Black to move here, every king move loses the c7-pawn."
+     },
+     {
+      "type": "exercise",
+      "fen": "3k4/2p5/2P5/4K3/8/8/8/8 w - - 0 1",
+      "text": "White to move. The same position with the black king on d8 and your king on e5. The obvious Ke6? is met by ...Ke8 and now **you** are to move. Lose a move!",
+      "solution": [
+       "Kf6"
+      ],
+      "hint": "Go around: e5 – f6 – e6 is three squares, a triangle.",
+      "explain": "**Kf6!** — if ...Ke8, then **Ke6!**, and now it is Black to move in the zugzwang position (...Kf8 Kd7). If ...Kc8, then Ke7 Kb8 Kd7 wins. The black king cannot copy the triangle because it has too few squares. That is **triangulation**."
+     }
+    ]
+   },
+   {
+    "id": "l6-queen-pawn",
+    "title": "Queen against a pawn",
+    "minutes": 8,
+    "steps": [
+     {
+      "type": "text",
+      "text": "A queen against a pawn on the 7th rank, supported by its king, is usually a **win** — if the pawn is a **center or knight pawn** (b, d, e, g). The method:\n1. Check the king or **pin** the pawn so it cannot promote.\n2. Force the enemy king **in front of its own pawn** (onto the queening square). Then the pawn is blocked for one move.\n3. Use that move to bring your own king one step closer.\n4. Repeat until your king arrives, then win the pawn or mate.\n\n**Exceptions**: against a **rook pawn** (a/h) or a **bishop pawn** (c/f), the defender has stalemate tricks (the king hides in the corner or next to the pawn), and it is often a **draw** unless your king is already close."
+     },
+     {
+      "type": "exercise",
+      "fen": "4Q3/8/8/2K5/8/8/3p4/2k5 w - - 0 1",
+      "text": "White to move. Black threatens ...d1=Q. Stop the pawn.",
+      "solution": [
+       "Qe3"
+      ],
+      "hint": "The pawn and the black king are on the same diagonal.",
+      "explain": "**Qe3!** — the queen **pins** the d2-pawn to the king on c1: the pawn cannot move forward because that would leave the king in check. Now the white king comes closer, and the queen keeps checking or pinning until the pawn falls."
+     },
+     {
+      "type": "exercise",
+      "fen": "7K/8/8/8/8/1Q6/p7/1k6 b - - 0 1",
+      "text": "Black to move. You have only a rook pawn against a queen, and White's king is far away. Find the drawing move.",
+      "solution": [
+       "Ka1"
+      ],
+      "hint": "Hide in the corner in front of your pawn.",
+      "explain": "**...Ka1!** — now if the queen takes away the king's last squares, it is **stalemate**, and if she does not, Black threatens ...Kb1 and ...a1=Q. White's king is too far away to help, so it is a draw. After ...Kc1? there is no stalemate trick and White wins with checks."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "l7",
+  "title": "Level 7 — Thinking Like a Strong Player",
+  "subtitle": "Calculation, time, game review and a training plan for the next year",
+  "lessons": [
+   {
+    "id": "l7-calc",
+    "title": "Calculation: candidates, forcing moves, visualization",
+    "minutes": 20,
+    "steps": [
+     {
+      "type": "text",
+      "text": "Calculation is seeing the future position in your head. It is a skill you train, like a muscle.\n\n**1. Candidate moves.** Before calculating anything, list 2–4 serious moves. Do not fall in love with the first move you see.\n\n**2. Forcing moves first: Checks, Captures, Threats.** They limit the opponent's replies, so they are easiest to calculate and most often decisive. Look at **every** check, even the \"crazy\" ones like queen sacrifices.\n\n**3. Calculate one line at a time.** Move by move: \"I play this, then his best reply is…\". Stop when the position is quiet, then **evaluate** it (material, king safety, threats).\n\n**4. Look at the final position again — blunder check.** \"In the position at the end of my line, what are **his** checks, captures and threats?\" Most calculation errors are a missed reply at the very end.\n\n**5. Visualize.** Train by solving puzzles **without moving the pieces**, and by reading short annotated games in your head."
+     },
+     {
+      "type": "text",
+      "text": "The puzzles below are famous combinations. Each one is a sequence of forcing moves — checks and captures. Before touching anything, calculate the whole line in your head, then play it."
+     },
+     {
+      "type": "exercise",
+      "fen": "4r2k/pp4pp/3q4/6N1/2Q5/8/PP3PPP/6K1 w - - 0 1",
+      "text": "White to move. Mate in four. Every move is a check.",
+      "solution": [
+       "Nf7+",
+       "Kg8",
+       "Nh6+",
+       "Kh8",
+       "Qg8+",
+       "Rxg8",
+       "Nf7#"
+      ],
+      "hint": "Knight check, then a double check with knight and queen, then a sacrifice on g8.",
+      "explain": "**Nf7+ Kg8 Nh6+** (double check from knight and queen — ...Kf8 Qf7# also) **Kh8 Qg8+! Rxg8 Nf7#**. The complete smothered mate. Notice how each check leaves Black only one answer, which makes a 7-ply line easy to calculate.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "rn3rk1/pbppq1pp/1p2pb2/4N2Q/3PN3/3B4/PPP2PPP/R3K2R w KQ - 6 11",
+      "text": "Edward Lasker – Thomas, London 1912. White to move starts one of the most famous king hunts ever. Find the first three moves.",
+      "solution": [
+       "Qxh7+",
+       "Kxh7",
+       "Nxf6+",
+       "Kh6",
+       "Neg4+"
+      ],
+      "hint": "A queen sacrifice drags the king out; then double check and keep checking with the knights.",
+      "explain": "**Qxh7+! Kxh7 Nxf6+** (double check) **Kh6 Neg4+ Kg5 h4+ Kf4 g3+ Kf3 Be2+ Kg2 Rh2+ Kg1 Kd2#** — the black king is chased from g8 all the way to g1. The forcing checks make this possible to calculate."
+     },
+     {
+      "type": "exercise",
+      "fen": "r1b1k1nr/p2p1ppp/n2B4/1p1NPN1P/6P1/3P1Q2/P1P1K3/q5b1 w kq - 2 21",
+      "text": "The **Immortal Game**, Anderssen – Kieseritzky, London 1851. White has given away both rooks and a bishop. White to move: mate in three.",
+      "solution": [
+       "Nxg7+",
+       "Kd8",
+       "Qf6+",
+       "Nxf6",
+       "Be7#"
+      ],
+      "hint": "Knight check first, then a queen sacrifice.",
+      "explain": "**Nxg7+ Kd8 Qf6+!! Nxf6 Be7#** — three minor pieces mate the king. Material does not matter when the king is mated.",
+      "goal": "mate"
+     },
+     {
+      "type": "exercise",
+      "fen": "1r2k1r1/pbppnp1p/1b3P2/8/Q7/B1PB1q2/P4PPP/3R2K1 w - - 0 21",
+      "text": "The **Evergreen Game**, Anderssen – Dufresne, Berlin 1852. Black threatens mate on g2; Anderssen ignored it with 20.Rxe7+ Nxe7. White to move: mate in four.",
+      "solution": [
+       "Qxd7+",
+       "Kxd7",
+       "Bf5+",
+       "Ke8",
+       "Bd7+",
+       "Kf8",
+       "Bxe7#"
+      ],
+      "hint": "Sacrifice the queen on d7, then use the double check with the rook on d1.",
+      "explain": "**Qxd7+!! Kxd7 Bf5+** (double check: bishop and rook on d1) **Ke8 Bd7+ Kf8 Bxe7#**. Every white move is a check, so Black never gets time for his own mating threat. (Black could have resisted longer with 20...Kd8 instead of 20...Nxe7.)",
+      "goal": "mate"
+     }
+    ]
+   },
+   {
+    "id": "l7-time",
+    "title": "Time management and reviewing your games",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**Play slower games.** Bullet and 3-minute blitz train bad habits: no time for the blunder check. To improve, play mostly **15+10** or slower (30+0, 30+20), and some over-the-board club games with long time controls.\n\n**Where to spend your time:**\n- Little time in the opening if you know the moves; follow the principles quickly.\n- **Most time at critical moments**: when captures or checks are available, when the opponent's move changes the position (a sacrifice, a new threat), when you decide on a plan, and before entering an endgame (trades are permanent).\n- Never skip the 10-second blunder check, even when the move looks obvious.\n\n**Avoid time trouble**: a rough budget is to have at least one third of your time left at move 25. If one move takes more than 5 minutes, you are probably calculating the same lines in circles — pick the safest reasonable move.\n\nWhen you are short of time: play solid, simple moves, keep pieces protected, and use the increment."
+     },
+     {
+      "type": "text",
+      "text": "**Reviewing your games is where most improvement happens.** Review **every loss**, and the interesting wins.\n\n1. **Right after the game, without an engine**, go through it and write down what you were thinking at the key moments. Where did you feel unsure?\n2. Find the **turning point**: the move where the game changed. What did you miss? Classify it:\n   - hung a piece / missed opponent's threat (blunder check skipped),\n   - missed a tactic of your own,\n   - opening problem,\n   - wrong plan / passive piece,\n   - endgame technique,\n   - time trouble.\n3. **Only then** check with the engine, and try to understand *why* the engine move is better — do not just copy the number.\n4. Write the lesson in one sentence in a **mistake notebook**: \"I played ...Nf6 without checking Qxf7#.\" After a month, you will see which mistakes repeat — that tells you what to study."
+     }
+    ]
+   },
+   {
+    "id": "l7-plan",
+    "title": "How to study: your 2-week and 1-year plan",
+    "minutes": 12,
+    "steps": [
+     {
+      "type": "text",
+      "text": "**The principle**: at your level, **tactics and not blundering** are worth more than everything else combined. Strategy and openings matter later. Study daily — 45 minutes every day beats 5 hours on Sunday.\n\n**The first 2 weeks — stop losing material:**\n- **Every day, 20–30 minutes of puzzles** in this app. Accuracy first, speed second: solve each puzzle completely in your head before moving.\n- **Every move of every game: the blunder check** (opponent's last move → checks, captures, threats → candidate → their checks, captures, threats after it).\n- **1–2 games a day at 15+10.** No bullet.\n- **Review every loss** for 10 minutes: find the move where you lost material and why.\n- Finish Levels 1–3 of this course and drill the basic mates (queen, two rooks, rook) until you can do them without thinking.\n\nWhat you should notice after two weeks: far fewer games lost to one-move blunders, and more games won because opponents hang pieces and you take them."
+     },
+     {
+      "type": "text",
+      "text": "**The first year:**\n\n**Months 1–3 — tactics and safety.** Puzzles daily (30 min). Levels 1–4 of the course, repeating Level 4 until the patterns feel familiar. A **simple opening repertoire** based on principles: as White 1.e4 with the Italian Game; as Black 1...e5 against 1.e4 and 1...d5 against 1.d4. Learn ideas, not long lines.\n\n**Months 4–6 — understanding.** Keep daily puzzles (20–30 min). Level 5 and Level 6 of the course. **Play through annotated classic games** (Morphy, Capablanca, and modern collections of model games) — guess the next move before looking. Start playing 30-minute or longer games, and join a **local chess club** for over-the-board games.\n\n**Months 7–12 — depth.** Harder puzzles and calculation exercises (mates in 3–4, combinations; solve from the diagram without moving pieces). Rook endgames and king-and-pawn endings in depth. Expand the opening repertoire by studying the typical **middlegame plans** of your openings. Play rated tournament games.\n\n**Every week**: about 5 days of puzzles, 3–5 serious games, every loss reviewed, one session of endgames, one annotated master game.\n\n**Realistic expectations**: progress is not a straight line — expect plateaus and bad weeks. Players who work this way usually improve fastest in the first months (mostly from blundering less), then more slowly. Measure progress by your **mistake notebook**: when \"hung a piece\" stops appearing, you are a different player."
+     },
+     {
+      "type": "text",
+      "text": "**Your next target:** go back to Level 2, lesson 2 — \"The blunder check\" — and use it in every move of your next game. Then come back tomorrow for 20 minutes of puzzles. Strong players are built one honest day at a time."
+     }
+    ]
+   }
+  ]
+ }
+]

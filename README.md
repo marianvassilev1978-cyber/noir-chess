@@ -1,7 +1,18 @@
 # Noir Chess
 
-Personal chess trainer: bots from 100 to 3200 ELO, live coach with move classification, game review, openings and gambits courses, lessons, puzzles (Lichess CC0), Puzzle Rush, analysis board.
+A personal chess trainer, built to take one player from zero to 2000.
 
-Open on iPhone in Safari → Share → Add to Home Screen.
+**Open:** https://marianvassilev1978-cyber.github.io/noir-chess/ — on iPhone: Safari → Share → Add to Home Screen.
 
-Credits: Stockfish 18 (GPLv3), pieces by Colin M.L. Burnett (CC BY-SA), puzzles from the Lichess database (CC0).
+- Play 19 bots from 150 to full-strength Stockfish 18, in bullet, blitz, rapid, classical or unlimited, rated or practice, with premoves
+- Live coach that classifies every move (Brilliant → Blunder), Game Review with accuracy, game rating, eval graph, better lines and retry
+- Zero-to-2000 course: 12 levels, 77 lessons, 270 Stockfish-verified exercises, 94 linked videos
+- 45 openings and gambits (202 lines) with learn and drill modes and spaced repetition; a Road-to-2000 repertoire
+- Endgame Gym: 33 positions played against Stockfish and the Lichess tablebase
+- 5,178 Lichess puzzles: rated, by theme, Puzzle Rush, daily; your own mistakes become puzzles
+- Analysis board, vision trainer, 20 boards, 16 piece sets, 6 themes, works offline once installed
+
+Build: `npm install && npm run build` → `docs/`.
+
+## Credits
+Stockfish 18 (GPLv3) via [stockfish.js](https://github.com/nmrugg/stockfish.js) · [chess.js](https://github.com/jhlywa/chess.js) (BSD-2) · puzzles and opening names from the [Lichess databases](https://database.lichess.org/) and [lichess-org/chess-openings](https://github.com/lichess-org/chess-openings) (CC0) · piece sets from [lichess-org/lila](https://github.com/lichess-org/lila) (licences listed in the app: GPLv2+, CC BY-NC-SA 4.0, CC BY 4.0, MIT, Apache 2.0, AGPLv3+, freeware) · sounds "sfx" and "piano" by Enigmahack (AGPLv3+). Non-commercial personal project. Because it bundles GPL/AGPL components, the source is published here.

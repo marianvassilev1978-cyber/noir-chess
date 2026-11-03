@@ -1,0 +1,929 @@
+[
+  {
+    "id": "l9",
+    "title": "Level 9 — Endgames II",
+    "subtitle": "From knowing the theory positions to winning and saving real endgames",
+    "band": "1200–1800",
+    "lessons": [
+      {
+        "id": "l9-keysquares",
+        "title": "Key squares in depth and the outside passed pawn",
+        "minutes": 18,
+        "steps": [
+          {
+            "type": "text",
+            "text": "Level 6 gave you the opposition. This lesson gives you the deeper rule behind it: **key squares**. At 1200–1800 many games end in a king-and-pawn ending, and most of them are decided by one king move. If you know the key squares, you do not need to calculate long lines — you only need to know which squares your king must reach.\n\n**Key squares** are squares where your king wins **no matter who is to move**:\n- Pawn on the 2nd, 3rd or 4th rank: the **three squares two ranks in front** of it. For a pawn on e3: d5, e5, f5.\n- Pawn on the 5th or 6th rank: the three squares **one and two ranks** in front. For a pawn on e5: d6, e6, f6, d7, e7, f7.\n- **Rook pawn** (a or h): only **b7 and b8** (or g7 and g8). Everything else is a draw if the defending king reaches the corner.\n\nThe opposition is only a **tool** to reach a key square. If you can walk around the enemy king (this is called **outflanking**), that works too."
+          },
+          {
+            "type": "board",
+            "fen": "k7/8/8/8/8/4P3/8/4K3 w - - 0 1",
+            "text": "The key squares of the e3-pawn are **d5, e5 and f5**. If the white king stands on any of them, the pawn queens whatever Black does. The fight is not about the pawn — it is about these three squares.",
+            "highlights": [
+              "d5",
+              "e5",
+              "f5"
+            ]
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/3k4/8/2K5/4P3/8/8 w - - 0 1",
+            "text": "White to move. Your target is d5, e5 or f5. Which king move wins?",
+            "solution": [
+              "Kd4"
+            ],
+            "hint": "Face the black king with one square between you.",
+            "explain": "**Kd4!** takes the opposition, and Black must give way. After ...Ke6, Ke4! takes the opposition again; after ...Kd6, Kf5 or ...Kf6, Kd5 — the king is on a key square. After ...Kc6, Ke5 at once. Every other move (for example e4?) lets the black king take the opposition itself and the game is a draw."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/8/4k3/8/4PK2/8/8 b - - 0 1",
+            "text": "Black to move. Now you defend. The white king wants to reach d5, e5 or f5 later — but first it must get past your king. Find the only move that keeps the draw.",
+            "solution": [
+              "Kf5"
+            ],
+            "hint": "The white king must not get in front of its pawn. Use the opposition.",
+            "explain": "**...Kf5!** takes the opposition against the king on f3. If e4+, then ...Ke5 and the black king stays in front of the pawn. Every other move loses: after ...Kd5? Kf4! the white king reaches a key square (e5 or f5) next move."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/7K/5k2/7P/8/8/8/8 b - - 0 1",
+            "text": "Black to move. A rook pawn: the white king already stands in front of it. Draw the game.",
+            "solution": [
+              "Kf7"
+            ],
+            "hint": "The only key squares of an h-pawn are g7 and g8. Can you take both away?",
+            "explain": "**...Kf7!** — now g7 and g8 are covered and the white king is **locked in the corner**. White can push h6 and h7, but the king can never get out, and the game ends in a draw (often stalemate). Any other move lets the king out via g7 or g6 and the pawn queens. With a rook pawn, the defender does not even need the corner — locking the king in front of its own pawn is enough."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/5p2/5kp1/7p/7P/4K1P1/5P2/8 w - - 1 54",
+            "text": "White to move (real game). Equal pawns, but kings decide. Find the plan move by move.",
+            "solution": [
+              "Kf4",
+              "Ke6",
+              "Kg5"
+            ],
+            "hint": "The black pawn on h5 is weak. Which square attacks it?",
+            "explain": "**Kf4!** — the king goes forward. Black cannot hold the opposition: after ...Ke6, **Kg5!** walks around (outflanking), wins the g6- or h5-pawn and the ending. Kings in the endgame are attacking pieces: the side whose king gets in first usually wins."
+          },
+          {
+            "type": "text",
+            "text": "**The outside passed pawn.** A passed pawn far away from the other pawns (usually on the a- or h-file) is a huge advantage in pawn endings. The plan is always the same:\n1. Push the outside passer. The enemy king **must** go and stop it.\n2. While the enemy king is busy far away, your king walks to the other side and eats the pawns there.\n3. Even if you lose the outside pawn, you win on the other wing.\n\nThe outside passer works like a **decoy**: it pulls the enemy king out of play."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/4k3/1p2p3/4P2p/P3K2P/8/8/8 w - - 6 47",
+            "text": "White to move (real game). Black's kingside pawn on h5 is weak and the black king must also watch your a-pawn. Find the route.",
+            "solution": [
+              "Kf4",
+              "Kd7",
+              "Kg5"
+            ],
+            "hint": "Go for the h5-pawn.",
+            "explain": "**Kf4!** and **Kg5** — the king attacks the h5-pawn, and the black king is too far away to defend it. After Kxh5 White's h-pawn becomes a passed pawn, and the black king cannot stop it and watch White's queenside at the same time. Two weaknesses far apart are too much for one king."
+          },
+          {
+            "type": "exercise",
+            "fen": "5k2/7q/8/1p3Q2/6P1/8/6K1/8 b - - 2 62",
+            "text": "Black to move (real game). Your b-pawn is far from the white king. Turn that into a win.",
+            "solution": [
+              "Qxf5",
+              "gxf5",
+              "b4"
+            ],
+            "hint": "Who wins the pawn race after the queens come off?",
+            "explain": "**...Qxf5! gxf5 b4!** — the queen trade gives a pawn ending where the black b-pawn is an **outside passer**. The white king on g2 is outside its square and cannot catch it, while the black king on f8 easily stops the f-pawn. Before you trade into a pawn ending, count the race: here it is not even close."
+          },
+          {
+            "type": "play",
+            "fen": "8/5kpp/8/8/8/P5PP/5K2/8 w - - 0 1",
+            "text": "White to move. You have an outside passed a-pawn. Win against Stockfish.",
+            "goal": "win",
+            "maxMoves": 40,
+            "hint": "Push the a-pawn to pull the black king to the queenside, then run to the kingside with your king.",
+            "explain": "Push a4–a5–a6 so the black king must go to b7/a8. Then your king walks to g5 or h6 and eats the g- and h-pawns, and one of your kingside pawns queens. Do not rush the a-pawn so far that it is lost for nothing while your king is still on f2 — king and pawn must work together."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** in pawn endings, play for **squares, not pawns**. Know the key squares (two in front of the pawn; b7/b8 for a rook pawn), use opposition or outflanking to reach them, and use an outside passer to pull the enemy king away."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Key Squares in King and Pawn Endgames | Part 1 | Beginner Endgame Technique | IM Alex Astaneh",
+            "channel": "Chessfactor",
+            "url": "https://www.youtube.com/watch?v=fkFXB2V3SY8"
+          },
+          {
+            "title": "2 Simple Rules To WIN King & Pawn Endgames Easily",
+            "channel": "Remote Chess Academy",
+            "url": "https://www.youtube.com/watch?v=w3ig5za3c2M"
+          },
+          {
+            "title": "Understanding Passed Pawns | Principles of Chess Endgames | GM Naroditsky",
+            "channel": "Daniel Naroditsky",
+            "url": "https://www.youtube.com/watch?v=W0Lw4ox_n_M"
+          }
+        ]
+      },
+      {
+        "id": "l9-breakthrough",
+        "title": "Pawn breakthroughs and the protected passed pawn",
+        "minutes": 15,
+        "steps": [
+          {
+            "type": "text",
+            "text": "Sometimes pawns that look blocked can create a passed pawn by force. This is a **breakthrough**: you sacrifice one or two pawns to open a path for a third. It works when:\n- your pawns are **far advanced** (on the 5th rank, close to queening), and\n- the enemy king is **too far away** to catch the new passed pawn.\n\nAt club level, breakthroughs win games out of nowhere — and they lose games for the player who did not see them coming. Always check for one before you let pawns face each other."
+          },
+          {
+            "type": "board",
+            "fen": "6k1/ppp5/8/PPP5/8/8/8/6K1 w - - 0 1",
+            "text": "The classic breakthrough. **1.b6!** — if 1...axb6 2.c6! bxc6 3.a6 and the a-pawn queens; if 1...cxb6 2.a6! bxa6 3.c6 and the c-pawn queens. Three pawns against three, and one of White's gets through. The kings are both far away, so nobody can stop it.",
+            "arrows": [
+              "b5b6"
+            ]
+          },
+          {
+            "type": "exercise",
+            "fen": "6k1/ppp5/8/PPP5/8/8/8/6K1 w - - 0 1",
+            "text": "White to move. Play the breakthrough yourself.",
+            "solution": [
+              "b6",
+              "axb6",
+              "c6",
+              "bxc6",
+              "a6"
+            ],
+            "hint": "The middle pawn goes first.",
+            "explain": "**b6!** axb6 **c6!** bxc6 **a6** — the a-pawn has a free road to a8. The middle pawn always starts, because it attacks two pawns at once. If Black does nothing, b6 and bxa7 or bxc7 wins as well."
+          },
+          {
+            "type": "exercise",
+            "fen": "7k/8/8/8/ppp5/8/PPP5/6K1 b - - 0 1",
+            "text": "Black to move. The same idea from the other side — but the white king is coming. Act now.",
+            "solution": [
+              "b3",
+              "cxb3",
+              "a3",
+              "bxa3",
+              "c3"
+            ],
+            "hint": "If you wait one move, the white king arrives. Middle pawn first.",
+            "explain": "**...b3!** cxb3 **...a3!** bxa3 **...c3** and the c-pawn runs to c1; after axb3 instead, ...c3! bxc3 ...a3 queens on a1. Timing matters: one waiting move (for example ...Kg7?) and the white king reaches e3–d4 and stops everything."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/p7/4k3/PPp5/5p2/6p1/4K3/8 w - - 0 51",
+            "text": "White to move (real game). Black has dangerous pawns on f4 and g3. Can you be faster?",
+            "solution": [
+              "b6",
+              "axb6",
+              "a6"
+            ],
+            "hint": "Two pawns against two can also break through.",
+            "explain": "**b6! axb6 a6** — the a-pawn is free and the black king on e6 is outside its square. Black's c-pawn and kingside pawns are too slow. Two pawns against two break through when one of them can deflect the defender."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/5ppp/2p5/5PPP/2k5/4K3/8 w - - 3 50",
+            "text": "White to move (real game). The black king is far away on c3. Break through on the kingside.",
+            "solution": [
+              "g5",
+              "fxg5",
+              "h5"
+            ],
+            "hint": "Attack the pawn that defends the others.",
+            "explain": "**g5!** fxg5 **h5!** — and after ...gxh5 f5 the f-pawn runs (or ...gxf4 hxg6). Here the pawns stand on the 4th rank, but it works because the black king is four files away. Always ask: after the sacrifices, can the enemy king get inside the square of my new passed pawn?"
+          },
+          {
+            "type": "text",
+            "text": "**The protected passed pawn** is a passed pawn defended by another pawn (for example c5 defended by b4). The enemy king can never take it, so it **ties the enemy king down forever**: the king must stay in front of it. Meanwhile your own king is free to go anywhere.\n\nIn a pawn ending, this is often decisive: your king walks to the other wing and eats pawns, while the enemy king must stay at home. Do not rush to push the protected passer — its job is to keep the enemy king busy."
+          },
+          {
+            "type": "choice",
+            "fen": "8/8/2k5/2P5/1P1K3p/7P/8/8 w - - 0 1",
+            "text": "White to move. White has a protected passed pawn on c5. What is the winning plan?",
+            "options": [
+              "Push c6 at once and try to queen",
+              "Walk the king to the kingside and win the h4-pawn; the black king cannot leave the c-pawn",
+              "Play b5+ and trade the pawns on the queenside"
+            ],
+            "answer": 1,
+            "explain": "The black king must stay near c6, because if it leaves, c6–c7 queens. And it can never take c5, because b4 defends it. So White's king is free: Ke4–f4–g4 and Kxh4, then back to the queenside. Pushing c6 too early only gives the pawn away to the black king."
+          },
+          {
+            "type": "play",
+            "fen": "8/8/2k5/2P5/1P1K3p/7P/8/8 w - - 0 1",
+            "text": "White to move. Now win it against Stockfish.",
+            "goal": "win",
+            "maxMoves": 35,
+            "hint": "King to h4 first. The protected pawn waits.",
+            "explain": "The king goes Ke4–f4–g4, takes h4, then comes back toward the queenside. The black king can never touch c5 or b4 without letting the other pawn run. The protected passer did all the work just by standing still."
+          },
+          {
+            "type": "choice",
+            "text": "When does a breakthrough like b6! (three pawns against three) work?",
+            "options": [
+              "Always, as soon as the pawns face each other",
+              "When the attacking pawns are far advanced and the enemy king is too far away to catch the new passed pawn",
+              "Only when your king supports the pawns"
+            ],
+            "answer": 1,
+            "explain": "The breakthrough costs pawns, so it only pays if the new passed pawn cannot be caught. Check two things: how many moves the new pawn needs to queen, and whether the enemy king can get inside its square in time."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** before every pawn ending, look for **breakthroughs** (for both sides) and count the race. A **protected passed pawn** is a trump that ties down the enemy king — keep it and use your free king elsewhere."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Pawn Breakthroughs | Principles of Chess Endgames | GM Naroditsky",
+            "channel": "Daniel Naroditsky",
+            "url": "https://www.youtube.com/watch?v=iyl_vVXeFuI"
+          },
+          {
+            "title": "Chess Pawn Breakthrough Explained",
+            "channel": "Remote Chess Academy",
+            "url": "https://www.youtube.com/watch?v=EqkRXm3LQew"
+          }
+        ]
+      },
+      {
+        "id": "l9-active-rook",
+        "title": "Cutting off the king and the active rook",
+        "minutes": 16,
+        "steps": [
+          {
+            "type": "text",
+            "text": "In rook endings two ideas decide most games:\n\n**1. Cutting off the king.** The attacking rook stands on a file (or rank) and the enemy king cannot cross it. With a pawn on the 4th rank or lower, cutting the king off by **one** file is often not enough — you want **two files** between the king and the pawn. Then your king and pawn can advance without interruption.\n\n**2. The active rook.** A rook that attacks pawns or checks the king is worth much more than a rook that only defends. Very often it is right to **give up a pawn to activate the rook**. A passive rook tied to defence loses slowly.\n\nThe defender's version of activity is **checking from far away**: the rook needs distance, at least three squares from the king, so the king cannot come closer to escape the checks."
+          },
+          {
+            "type": "exercise",
+            "fen": "7r/8/6k1/8/3P4/3K4/8/R7 w - - 0 1",
+            "text": "White to move. The black king is on g6, far from your d-pawn. Cut it off the right way.",
+            "solution": [
+              "Rf1"
+            ],
+            "hint": "Re1 leaves the f-file for the black king. Which file is better?",
+            "explain": "**Rf1!** — the black king is cut off by **two** files (e and f) and can never reach the pawn. Now White's king and pawn walk forward. After Re1? the king comes to f5/f6 and the e-file cut is too close: it is a draw. With a pawn on the 4th rank, cut off by two files."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/8/8/1K6/p1r5/2k5/5R2 w - - 0 74",
+            "text": "White to move (real game). The black a-pawn is dangerous. Use your active rook.",
+            "solution": [
+              "Rf2+",
+              "Kd3",
+              "Rf3+",
+              "Kd4",
+              "Rxc3"
+            ],
+            "hint": "Check the king until it stands on the same rank as its rook.",
+            "explain": "**Rf2+ Kd3 Rf3+!** — a skewer: the black king and rook now stand on the same rank. After ...Kd4, **Rxc3** wins the rook, and Black cannot take back because the white king on b4 defends c3. Without the rook, the a-pawn is easily stopped. An active rook checks and skewers; a passive one waits to be beaten."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/1r6/p5P1/1k4K1/8/8/R7 w - - 0 66",
+            "text": "White to move (real game). Black's a-pawn and rook look strong. Find the trick with your rook.",
+            "solution": [
+              "Rb1+",
+              "Kc5",
+              "Rxb6"
+            ],
+            "hint": "A check on the b-file. What stands behind the king?",
+            "explain": "**Rb1+!** — a skewer along the b-file. After ...Kc5 (or any king move off the file — ...Ka3 Rxb6) White takes the rook on b6 and the g-pawn wins. Whenever the enemy king and rook stand on the same line, look for a rook check."
+          },
+          {
+            "type": "text",
+            "text": "**The Vancura position.** The attacker has an a-pawn on the 6th rank with the rook **in front** of it (a8). The defender's best setup:\n- the defending rook goes to the **side** of the pawn on the same rank — **Rf6** — attacking a6 from the side, and\n- the defending king waits on **g7/h7**.\n\nThe pawn is attacked, so the white rook is tied to a8. If White's king walks toward the pawn, the black rook checks it from the side. If White plays a7, the black rook goes behind the pawn (Ra6) and the king guards g7/h7 against the skewer trick. It is a draw."
+          },
+          {
+            "type": "board",
+            "fen": "R7/6k1/P4r2/8/8/8/1K6/8 w - - 0 1",
+            "text": "Vancura: the black rook on **f6** attacks the a6-pawn from the side and stays on the 6th rank. The black king stays on g7 or h7. White cannot make progress: when the white king approaches the pawn (b5, b6), it is checked from the side.",
+            "highlights": [
+              "f6",
+              "a6",
+              "g7"
+            ],
+            "arrows": [
+              "f6a6"
+            ]
+          },
+          {
+            "type": "exercise",
+            "fen": "R7/6k1/P7/1K6/8/8/5r2/8 b - - 0 1",
+            "text": "Black to move. The white king wants b6 to free its rook. Find the only drawing move.",
+            "solution": [
+              "Rf5+"
+            ],
+            "hint": "Check first, then the rook goes to the 6th rank.",
+            "explain": "**...Rf5+!** — the check gains time, and next the rook goes to **f6** into the Vancura setup (if Kb6, ...Rf6+ and the checks from the side continue). Every other move lets White play Kb6 and Kb7, after which the rook on a8 is free and the pawn queens."
+          },
+          {
+            "type": "choice",
+            "fen": "R7/6k1/P7/8/8/8/1K6/5r2 b - - 0 1",
+            "text": "Black to move. Where does the black rook belong?",
+            "options": [
+              "...Rf6 — attack the a-pawn from the side",
+              "...Rf8 — offer the trade of rooks",
+              "...Kf7 — bring the king to the pawn"
+            ],
+            "answer": 0,
+            "explain": "**...Rf6** builds the Vancura position and draws. ...Rf8? Rxf8 Kxf8 a7 and the pawn queens. ...Kf7? allows a7! and if ...Ra1, Rh8! Rxa7 Rh7+ wins the rook with a skewer — the king belongs on g7/h7."
+          },
+          {
+            "type": "choice",
+            "text": "You are a pawn down in a rook ending. Your rook can stay passive on the back rank, or go to the 7th rank and attack the enemy pawns, even if this costs another pawn. What is usually right?",
+            "options": [
+              "Stay passive: every pawn counts",
+              "Activate the rook: an active rook often saves the game even a pawn down",
+              "Trade rooks as soon as possible"
+            ],
+            "answer": 1,
+            "explain": "In rook endings **activity beats material** surprisingly often. A passive rook lets the enemy king and rook do whatever they want. Trading rooks a pawn down usually gives a lost pawn ending."
+          },
+          {
+            "type": "play",
+            "fen": "R7/6k1/P4r2/8/8/8/1K6/8 b - - 0 1",
+            "text": "Black to move. You are in the Vancura position. Hold the draw against Stockfish.",
+            "goal": "draw",
+            "maxMoves": 30,
+            "hint": "Rook stays on the 6th rank attacking the pawn; check the white king from the side when it comes close. Your king stays on g7/h7.",
+            "explain": "Keep the rook on the 6th rank (f6) and the king on g7/h7. When the white king comes to b5 or b6, check it from the side. If White plays a7, put the rook behind the pawn on the a-file and keep the king on g7/h7. Never let the white king reach b7 with the rook still in front of the pawn without checks."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** attacker — **cut the king off by two files**, then advance. Defender — keep your rook **active and far away**, and check from the side or from behind. A passive rook is half a rook."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Chess Endgame Fundamentals: Vancura Position",
+            "channel": "John Bartholomew",
+            "url": "https://www.youtube.com/watch?v=H2DZH4aFklw"
+          },
+          {
+            "title": "Vancura Position – Rook and Pawn Endgames",
+            "channel": "Hanging Pawns",
+            "url": "https://www.youtube.com/watch?v=r_NmG8wmcLo"
+          }
+        ]
+      },
+      {
+        "id": "l9-rook-pawn-rook",
+        "title": "Rook + pawn vs rook: the short side and the long side",
+        "minutes": 16,
+        "steps": [
+          {
+            "type": "text",
+            "text": "You know Lucena and Philidor. In real games the defender is often **not** in time for the Philidor setup: the attacking king is already on the 6th rank. Then one rule saves the game: **king to the short side, rook to the long side**.\n\n- The pawn divides the board into two sides. For an e-pawn, the **short side** is the f–h side (3 files), the **long side** is the a–d side (4 files).\n- The defending **king** goes to the **short side** (f8/g8).\n- The defending **rook** goes to the **long side** and checks the enemy king **from the side**, from far away. From the a-file the rook is 4 files away from the e-pawn — far enough that the king cannot come closer to stop the checks.\n\nIf the king goes to the long side, the rook must check from the short side, from too close, and the attacker escapes the checks. This is one of the most useful practical rules in all of chess."
+          },
+          {
+            "type": "choice",
+            "fen": "4k3/7R/4K3/4P3/8/8/8/r7 b - - 0 1",
+            "text": "Black to move. White threatens Rh8 mate. Where must the black king go?",
+            "options": [
+              "...Kd8 (toward the long side)",
+              "...Kf8 (toward the short side)",
+              "...Ra8 (defend the back rank with the rook)"
+            ],
+            "answer": 1,
+            "explain": "**...Kf8!** — king to the short side. Now the rook on a1 is on the **long side** and can check from a6 along the rank (for example Rh8+ Kg7, and the white king on e6 gets checks from a6). After ...Kd8? Rh8+ Kc7 the black rook is on the same side as its king and cannot check from far away: White wins with e6–e7. ...Ra8? is too passive."
+          },
+          {
+            "type": "exercise",
+            "fen": "5k2/R7/4K3/4P3/8/8/8/7r w - - 0 1",
+            "text": "White to move. Black's king went to the short side — but so did Black's rook. Punish it.",
+            "solution": [
+              "Ra8+"
+            ],
+            "hint": "Push the king even further away, so the black rook's checks come from too close.",
+            "explain": "**Ra8+!** Kg7 and now, for example, **Ke7**: the black rook on the h-file is too close to give useful checks from the side, so the white king hides near its pawn and the pawn advances. Every other move lets Black reorganise and draw. Rook and king of the defender on the same short side = no space for checks."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/1k3r1p/R7/1KP5/8/8/8/8 w - - 9 63",
+            "text": "White to move (real game). Use the check to bring your king forward.",
+            "solution": [
+              "c6+",
+              "Kb8",
+              "Kb6"
+            ],
+            "hint": "A pawn check pushes the black king to the back rank.",
+            "explain": "**c6+! Kb8 Kb6** — the pawn check drives the black king to the back rank, and the white king steps to b6, next to its pawn. Now c7+ and rook checks on the 8th rank are coming, and the lone black rook cannot cover everything. Pawn moves with check gain time; king and pawn on the 6th rank, enemy king on the back rank, is the winning setup."
+          },
+          {
+            "type": "exercise",
+            "fen": "7R/8/6k1/1PK5/8/6r1/7p/8 b - - 1 49",
+            "text": "Black to move (real game). Your h-pawn is on h2, but White's rook on h8 holds it. Get rid of that rook.",
+            "solution": [
+              "Rg5+",
+              "Kb6",
+              "Rh5"
+            ],
+            "hint": "A check first, then offer a rook trade on the h-file.",
+            "explain": "**...Rg5+!** gains a tempo, then **...Rh5!** — the rook trade cannot be refused, because the white rook must keep watching h1. After Rxh5 Kxh5 the h-pawn queens long before White's b-pawn. Offering a rook trade with a far-advanced passed pawn is a common winning trick."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/5R1p/8/8/p3KPk1/8/7r/8 w - - 0 52",
+            "text": "White to move (real game). Black has passed pawns on both sides. Find the forcing line.",
+            "solution": [
+              "Rg7+",
+              "Kh5",
+              "Rxh7+"
+            ],
+            "hint": "Check first — the h7-pawn is undefended.",
+            "explain": "**Rg7+!** — after ...Kh5 (or ...Kh4) **Rxh7+** takes the pawn with check, and next the rook goes after the h2-rook: on ...Kg6, Rxh2 wins it outright; on ...Kg4, Rh4+ and the rooks come off. After the trade the white king is inside the square of the a-pawn (Kd3–c2 catches it) and the f-pawn queens. Checks that win pawns with tempo, followed by a trade into a won pawn ending — that is rook-ending technique."
+          },
+          {
+            "type": "play",
+            "fen": "4k3/7R/4K3/4P3/8/8/8/r7 b - - 0 1",
+            "text": "Black to move. Hold the draw with the short-side defence.",
+            "goal": "draw",
+            "maxMoves": 30,
+            "hint": "King to f8/g8, rook checks from the a-file. If the white king hides on f7/d7, keep checking from far away or go behind the pawn.",
+            "explain": "...Kf8 puts the king on the short side. When White checks on h8, go to g7. Whenever the white king stands on the 6th rank, check it from the side from the a-file; when it comes closer to your rook, check from behind (along the files). Never let your rook be cut off on the short side."
+          },
+          {
+            "type": "play",
+            "fen": "1K6/1P2k3/8/8/8/8/r7/2R5 w - - 0 1",
+            "text": "White to move. A Lucena position with a b-pawn. Win it.",
+            "goal": "win",
+            "maxMoves": 30,
+            "hint": "The black king is cut off on the e-file. Can your king simply walk to c7?",
+            "explain": "The rook on c1 keeps the black king away from the c-file. Step out with the king (Kc7 or Kc8) and promote; when the black rook checks, bring the king toward your rook or build the bridge: rook to the 4th rank, king out, rook blocks the checks. Do not let the black rook get in front of the pawn on the b-file."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** when you defend R+P vs R and cannot reach Philidor, put your **king on the short side** and your **rook on the long side**, and check from far away. When you attack, push the defending king to the long side or catch the defending rook on the short side."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Chess Endgame Fundamentals: Short Side/Long Side Defense",
+            "channel": "John Bartholomew",
+            "url": "https://www.youtube.com/watch?v=-xk56Rt-7Rs"
+          },
+          {
+            "title": "EASY CHESS ENDGAMES: Rook & Pawn",
+            "channel": "GothamChess",
+            "url": "https://www.youtube.com/watch?v=JMZJ9P2Hnq0"
+          }
+        ]
+      },
+      {
+        "id": "l9-bishops",
+        "title": "Bishop endings: good and bad bishops, wrong bishop, opposite colours",
+        "minutes": 16,
+        "steps": [
+          {
+            "type": "text",
+            "text": "Three ideas cover most bishop endings at your level:\n\n**1. Good and bad bishop.** A bishop is **bad** when its own pawns stand on squares of its colour: they block it, and it can only defend them. It is **good** when its pawns stand on the other colour. In an ending with same-coloured bishops, the side with the good bishop often wins slowly: the bad bishop has no targets and becomes a pawn.\n\n**2. The wrong bishop.** With a **rook pawn** (a or h) and a bishop that does **not** control the queening corner, king + bishop + pawn vs king is a **draw**, if the defending king reaches the corner. A bishop up and still a draw!\n\n**3. Opposite-coloured bishops.** When the bishops run on different colours, the defender can **blockade** on his bishop's colour. Even two pawns up is often a draw. The attacker wins mainly with **two passed pawns far apart**."
+          },
+          {
+            "type": "choice",
+            "fen": "2b5/4k3/4p3/3pP3/3P4/3BK3/8/8 w - - 0 1",
+            "text": "Same-coloured bishops. Which bishop is better?",
+            "options": [
+              "White's: its pawns stand on dark squares, so the light-squared bishop is free",
+              "Black's: it defends its own pawns on d5 and e6",
+              "Neither: same colour, same value"
+            ],
+            "answer": 0,
+            "explain": "White's pawns on d4 and e5 are on **dark** squares, so White's light-squared bishop is **good** — it can attack. Black's pawns on d5 and e6 are on **light** squares, the colour of Black's bishop: it is **bad**, blocked by its own pawns and only able to defend. Rule: put your pawns on the opposite colour of your bishop."
+          },
+          {
+            "type": "exercise",
+            "fen": "5B1b/3k1K2/3p4/3P4/8/8/8/8 w - - 9 77",
+            "text": "White to move (real game). Trade into a winning pawn ending.",
+            "solution": [
+              "Bg7"
+            ],
+            "hint": "The black bishop on h8 is stuck. Offer a trade.",
+            "explain": "**Bg7!** — the black bishop on h8 has no safe square. If ...Bxg7 Kxg7, the pawn ending is winning: the white king walks toward e6 or c6, and Black, who only has king moves, runs into zugzwang and loses the d6-pawn. If Black does not take, Bxh8 simply wins the bishop. When the enemy bishop is passive, look for the trade that leaves a won pawn ending."
+          },
+          {
+            "type": "board",
+            "fen": "8/8/8/4k2P/8/8/8/2K2B2 b - - 0 1",
+            "text": "**Wrong bishop.** White's bishop runs on light squares, but h8 is a **dark** square. If the black king reaches h8 (or locks the white king out of g7), White can never drive it out without stalemate. Black to move: ...Kf6 and ...Kg7 heads for the corner. A bishop and a pawn up — and still a draw.",
+            "highlights": [
+              "h8"
+            ]
+          },
+          {
+            "type": "choice",
+            "fen": "8/8/8/4k2P/8/8/8/2K2B2 b - - 0 1",
+            "text": "Black to move. Which plan draws?",
+            "options": [
+              "...Kf4 — attack the bishop",
+              "...Kf6 and ...Kg7 — run to the h8 corner",
+              "...Kd4 — go after the white king"
+            ],
+            "answer": 1,
+            "explain": "**...Kf6!** (or ...Ke6/...Kf5) and the king reaches g7–h8 in time. Once there, the light-squared bishop cannot attack h8 and the white king cannot take h8 away without stalemating. ...Kf4? and ...Kd4? waste time: h6–h7–h8 queens."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/4k3/7b/4PP2/2B1K3/8/8/8 b - - 0 1",
+            "text": "Black to move. Opposite-coloured bishops, two pawns down. Find the only drawing move.",
+            "solution": [
+              "Bg7"
+            ],
+            "hint": "White wants to play f6+. Control f6 twice.",
+            "explain": "**...Bg7!** — f6 is now covered by the king and the bishop. The black king blockades e6, and the white pawns cannot advance: if e6, the bishop waits on the long diagonal and f6 just loses the pawn. Every other move lets f6+ and e6, and the connected pawns roll. The defender's plan with opposite bishops: **blockade on your bishop's colour, stop the pawns, never trade into a pawn ending**."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/3b4/1pp5/4Pk2/1P1K4/8/6B1 w - - 0 47",
+            "text": "White to move (real game). Bishops of the same colour — and a tactic.",
+            "solution": [
+              "Bh2+",
+              "Kg5",
+              "Bxd6"
+            ],
+            "hint": "Check the king — what stands behind it on the same diagonal?",
+            "explain": "**Bh2+!** — a skewer: the king must move off the h2–b8 diagonal, and **Bxd6** wins the bishop. Bishop endings are not only about slow plans: kings and bishops on the same line are targets."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/p7/4B2p/1P4p1/6b1/P3K1k1/8/8 w - - 0 43",
+            "text": "White to move (real game). Trade into a won pawn ending.",
+            "solution": [
+              "Bxg4",
+              "Kxg4",
+              "a4"
+            ],
+            "hint": "After the bishops come off, who has the outside passed pawn?",
+            "explain": "**Bxg4! Kxg4 a4!** — White has two pawns against one on the queenside and will create a passed pawn there, far away from the black king on g4. The white king on e3 is close enough to hold Black's kingside pawns. This is the outside-passer win again. Trade pieces when the pawn ending is winning."
+          },
+          {
+            "type": "choice",
+            "text": "You have opposite-coloured bishops and two extra pawns. Which pawns give you the best winning chances?",
+            "options": [
+              "Two connected pawns on the same wing",
+              "Two passed pawns far apart, on different wings",
+              "Doubled pawns on the same file"
+            ],
+            "answer": 1,
+            "explain": "Connected pawns can often be blockaded by the king and bishop together. **Pawns far apart** (for example a- and g-pawns) split the defence: the king stops one, the bishop must stop the other alone, and your king helps where the bishop is weak."
+          },
+          {
+            "type": "play",
+            "fen": "8/8/8/4k2P/8/8/8/2K2B2 b - - 0 1",
+            "text": "Black to move. A bishop and a pawn down — draw it against Stockfish.",
+            "goal": "draw",
+            "maxMoves": 25,
+            "hint": "Go to the h8 corner (or lock the white king in front of its pawn) and stay there.",
+            "explain": "Run to g7/h8 at once. In the corner, just move between h8 and g8 (or h7 if possible). The bishop cannot control h8, and if the white king takes away g8 and g7, it is stalemate."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** put your pawns on the **opposite colour** of your bishop. With a rook pawn, check if your bishop **controls the queening corner** before you trade into it. With opposite-coloured bishops, the defender **blockades on his bishop's colour** — and the attacker needs **pawns far apart**."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Bishop Endgames Crash Course - Bishop And Pawn Endings Fundamentals - Beginner and Intermediate Tips",
+            "channel": "Chess Vibes",
+            "url": "https://www.youtube.com/watch?v=JYM5IXK69i0"
+          },
+          {
+            "title": "Wrong Bishop Colour Rule Explained [Important Chess Endgame]",
+            "channel": "Remote Chess Academy",
+            "url": "https://www.youtube.com/watch?v=7UPkDBk4TP8"
+          },
+          {
+            "title": "Chess Endgame: Rook Pawn + Bishop of Wrong Color",
+            "channel": "ChessNetwork",
+            "url": "https://www.youtube.com/watch?v=VJ3eB6_Ol24"
+          }
+        ]
+      },
+      {
+        "id": "l9-knights",
+        "title": "Knight endings and knight against pawns",
+        "minutes": 14,
+        "steps": [
+          {
+            "type": "text",
+            "text": "**Knight endings are like pawn endings.** Knights are slow, so the same rules apply: an **active king** and an **outside passed pawn** are huge advantages. A knight needs several moves to cross the board; a passed pawn on the other wing can run away from it.\n\n**Knight against a pawn.** A knight can stop a pawn if it can reach a square **in front of the pawn** (or the queening square) in time. Useful tricks:\n- Aim at the queening square: if the pawn queens there, the knight takes the new queen.\n- **Checks** gain time to come closer.\n- A **rook pawn** is the knight's worst enemy: at the edge of the board the knight has only a few squares, and it often cannot stop an a- or h-pawn.\n\nOne more fact: a knight **cannot lose a move** (it cannot triangulate). In knight endings, zugzwang often decides."
+          },
+          {
+            "type": "exercise",
+            "fen": "5K2/8/8/8/8/8/5p2/1N5k w - - 0 1",
+            "text": "White to move. Black wants ...f1=Q. Stop the pawn.",
+            "solution": [
+              "Nd2"
+            ],
+            "hint": "Which square does the pawn need? Attack it.",
+            "explain": "**Nd2!** controls f1. If ...f1=Q, Nxf1 and the game is a draw. The knight does not need to block the pawn — it only needs to control the queening square."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/5K2/8/8/1p3k2/N7/8 w - - 0 1",
+            "text": "White to move. The b-pawn is two steps from b1. Where does the knight belong?",
+            "solution": [
+              "Nc3"
+            ],
+            "hint": "From which square does the knight watch b1 and keep coming back?",
+            "explain": "**Nc3!** controls b1. After ...b2 Nb1, the knight blocks the queening square, and the black king is too far to help. From a2 the knight does not control b1 — only Nc3 does."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/1K6/8/8/4k3/1N3p2/8/8 w - - 0 1",
+            "text": "White to move. The f-pawn is close to queening and the black king supports it. Save the game.",
+            "solution": [
+              "Nd2+"
+            ],
+            "hint": "A knight check that also covers the pawn's path.",
+            "explain": "**Nd2+!** — the check forces the king away, and the knight on d2 controls f1 and f3. Next move it takes the pawn (Nxf3) or blocks it. Checks are the knight's way to gain the moves it needs."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/2K5/8/4N3/8/8/6p1/1k6 w - - 0 1",
+            "text": "White to move. One step from g1. Find the knight square.",
+            "solution": [
+              "Nf3"
+            ],
+            "hint": "Which knight move controls g1?",
+            "explain": "**Nf3!** controls g1 (and h2). If ...g1=Q, Nxg1. Only one knight move reaches a square that guards g1 in time."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/7p/4n1pP/1P2P3/2k5/4K3/8/8 w - - 0 52",
+            "text": "White to move (real game). Two passed pawns against a knight. Run!",
+            "solution": [
+              "b6",
+              "Nd8",
+              "e6"
+            ],
+            "hint": "The knight cannot watch two pawns at once.",
+            "explain": "**b6!** — the knight must stop this pawn (...Nd8 to watch b7), and then **e6!** creates a second threat. One knight cannot stop two passed pawns that are far apart; the black king is too far to help. Passed pawns far apart beat a knight."
+          },
+          {
+            "type": "choice",
+            "text": "Which pawn is the hardest for a knight to stop?",
+            "options": [
+              "A centre pawn (d or e)",
+              "A knight pawn (b or g)",
+              "A rook pawn (a or h)"
+            ],
+            "answer": 2,
+            "explain": "At the edge of the board the knight has only half its squares, so it reaches the squares in front of a **rook pawn** slowly. Many knight endings are won by a passed a- or h-pawn."
+          },
+          {
+            "type": "choice",
+            "text": "Why is zugzwang so common in knight endings?",
+            "options": [
+              "Because a knight cannot lose a move — it cannot triangulate",
+              "Because knights cannot move backwards",
+              "Because knights are worth less than bishops"
+            ],
+            "answer": 0,
+            "explain": "Every knight move changes the colour of its square, so a knight can never come back to the same square in an odd number of moves. It cannot \"pass\". If the opponent's king or pawns create zugzwang, the knight has no waiting move."
+          },
+          {
+            "type": "play",
+            "fen": "8/8/1pk5/5K2/7P/1n6/8/8 w - - 0 58",
+            "text": "White to move (real game). Your h-pawn against a knight. Win.",
+            "goal": "win",
+            "maxMoves": 20,
+            "hint": "A rook pawn is the knight's worst enemy. Run with the pawn and use your king to keep the knight away.",
+            "explain": "**h5!** at once — the knight is far away and needs many moves to reach h8 or g6/h7 squares. Your king supports the pawn by controlling the knight's arrival squares (f6, g6, g7). Promote, and then the queen deals with the b-pawn."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** knights are slow and short-range. **Pawns far apart** — especially rook pawns — beat a knight; against a single pawn, the knight must reach the **queening square** or a square in front of the pawn in time, often with check."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Knight vs Pawns | Beginner to Master | Principles of Chess Endgames",
+            "channel": "Daniel Naroditsky",
+            "url": "https://www.youtube.com/watch?v=CCLlstRUbAc"
+          },
+          {
+            "title": "Knight vs Pawn Endgames",
+            "channel": "Hanging Pawns",
+            "url": "https://www.youtube.com/watch?v=jNdNIPGjyM8"
+          },
+          {
+            "title": "Knight Endgames Crash Course - Tips and Tricks For Using Knights - Basic Knight Ideas In Endings",
+            "channel": "Chess Vibes",
+            "url": "https://www.youtube.com/watch?v=Q0JWBcmVHsQ"
+          }
+        ]
+      },
+      {
+        "id": "l9-queens",
+        "title": "Queen endings and queen against rook",
+        "minutes": 14,
+        "steps": [
+          {
+            "type": "text",
+            "text": "**Queen endings** are about two things: the **passed pawn** and **checks**.\n- A passed pawn is worth more here than in any other ending — the queen escorts it.\n- The defender's main weapon is **perpetual check**. The attacker's king must find shelter, usually close to the enemy king or in front of its own pawn.\n- The **cross-check**: answer a check by blocking it **with a check of your own**. This often forces the queens off into a won pawn ending.\n- Centralise the queen: from the centre it checks and defends everything.\n\n**Queen against rook** (no pawns) is a win, but it needs technique. The rook wants to stay close to its king. The queen wins by **zugzwang**, and in the end by a **fork or skewer** of king and rook. In practice, look for checks that hit king and rook on the same line."
+          },
+          {
+            "type": "exercise",
+            "fen": "1K6/1P5k/8/8/2Q5/8/7q/8 w - - 0 1",
+            "text": "White to move. You are in check, and your b-pawn is one step from queening. Answer the check.",
+            "solution": [
+              "Qc7+"
+            ],
+            "hint": "Block the check — with a check.",
+            "explain": "**Qc7+!** — the cross-check. The white queen blocks the diagonal and checks the black king along the 7th rank. After ...Qxc7+ Kxc7, the b-pawn queens. King moves win too in the end, but they give Black many more checks. The cross-check is the attacker's main weapon in queen endings."
+          },
+          {
+            "type": "exercise",
+            "fen": "6k1/5pp1/2p1p3/8/7Q/P4q2/1PP5/2K5 w - - 1 37",
+            "text": "White to move (real game). Force the queens off into a better ending.",
+            "solution": [
+              "Qd8+",
+              "Kh7",
+              "Qd3+"
+            ],
+            "hint": "Check first, then offer the trade with check so Black cannot avoid it.",
+            "explain": "**Qd8+ Kh7 Qd3+!** — the second check offers a queen trade that Black cannot refuse (the king has no square that keeps the queens on without losing something). After ...Qxd3 cxd3 White has a pawn ending with a healthy queenside majority. Forcing trades with check is how you choose the ending you want."
+          },
+          {
+            "type": "exercise",
+            "fen": "3Q4/7k/pp6/2p5/2P1P1q1/PP1K4/5P2/8 b - - 6 43",
+            "text": "Black to move (real game). The white king and queen stand on the same file. Win the queen.",
+            "solution": [
+              "Qd1+",
+              "Ke3",
+              "Qxd8"
+            ],
+            "hint": "A check on the d-file.",
+            "explain": "**...Qd1+!** — the king must leave the d-file, and **...Qxd8** wins the queen standing behind it. This skewer is the same idea that wins in queen against rook: line up the king and the piece behind it, then check."
+          },
+          {
+            "type": "exercise",
+            "fen": "2q5/8/1p3K2/6pk/3QP3/8/PP6/8 b - - 12 55",
+            "text": "Black to move (real game). Both kings are exposed. Find the skewer.",
+            "solution": [
+              "Qh8+",
+              "Kf5",
+              "Qxd4"
+            ],
+            "hint": "A check along the long diagonal.",
+            "explain": "**...Qh8+!** — the white king must leave the h8–a1 diagonal, and **...Qxd4** wins the queen. In queen endings, always check what stands behind the enemy king."
+          },
+          {
+            "type": "choice",
+            "text": "In a queen ending, you have an extra passed pawn and your opponent starts checking your king. Where should your king go?",
+            "options": [
+              "Far away from everything, to the corner",
+              "Toward your passed pawn or toward the enemy king, where blocks and cross-checks are possible",
+              "Stay in the centre and wait"
+            ],
+            "answer": 1,
+            "explain": "A king in a far corner gets checked forever. Close to its own pawn (or even near the enemy king), it finds squares where the checks can be blocked — ideally with a cross-check that trades queens."
+          },
+          {
+            "type": "choice",
+            "text": "Queen against rook: what is the usual way the queen finally wins the rook?",
+            "options": [
+              "Zugzwang forces the rook away from its king, then a fork or skewer wins it",
+              "The queen simply attacks the rook until it has no squares",
+              "It cannot be won; queen against rook is a draw"
+            ],
+            "answer": 0,
+            "explain": "Next to its king, the rook is safe. The attacker pushes the king to the edge and creates **zugzwang** (Philidor's position), so the rook must step away — and then a queen check forks or skewers king and rook."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** in queen endings, **watch for checks** — perpetuals for the defender, **cross-checks** and **skewers** for the attacker. Before every queen move, ask what checks your opponent has next."
+          }
+        ],
+        "videos": [
+          {
+            "title": "Queen Endgames Crash Course - Tips On How To Use Queens In The Endgame",
+            "channel": "Chess Vibes",
+            "url": "https://www.youtube.com/watch?v=OoaqppYisGI"
+          },
+          {
+            "title": "How to Win Queen vs Rook",
+            "channel": "GMHikaru",
+            "url": "https://www.youtube.com/watch?v=w5ItZonf1T4"
+          },
+          {
+            "title": "Easy TRICK to Win Queen vs Rook Endgame",
+            "channel": "Remote Chess Academy",
+            "url": "https://www.youtube.com/watch?v=UvatUN017S8"
+          }
+        ]
+      },
+      {
+        "id": "l9-extra-pawn",
+        "title": "Converting an extra pawn",
+        "minutes": 15,
+        "steps": [
+          {
+            "type": "text",
+            "text": "Winning a pawn is half the job. Many players at 1200–1800 win a pawn and then draw or even lose. The general technique:\n\n1. **Trade pieces, not pawns.** Every piece trade makes your extra pawn bigger in relative terms. Every pawn trade gives the defender drawing chances (rook endings with all pawns on one side are often drawn).\n2. **Create a passed pawn** with your majority. The pawn with no opponent in front of it (the **candidate**) goes first.\n3. **Activate your king.** In the ending it is a strong piece; bring it toward the pawns.\n4. **Do not rush.** Take away the opponent's counterplay first (checks, active rook, passed pawns), then push.\n5. Before trading into a pawn ending, **calculate it** — then it is often the simplest win."
+          },
+          {
+            "type": "exercise",
+            "fen": "3r4/2k5/8/2K5/1P1R4/8/8/8 w - - 0 1",
+            "text": "White to move. Rook and pawn against rook may be a draw — but you can choose a different ending.",
+            "solution": [
+              "Rxd8"
+            ],
+            "hint": "After the trade, where can your king go?",
+            "explain": "**Rxd8! Kxd8 Kb6** (or Kc6) — the white king reaches a key square of the b4-pawn (a6, b6, c6) and the pawn ending is a win. Every other move keeps rooks on and the rook ending is a theoretical draw. Trade pieces when the pawn ending wins."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/7p/K1k1p1p1/P1r1R3/8/8/8/8 w - - 0 42",
+            "text": "White to move (real game). The rooks are face to face. Calculate the pawn ending.",
+            "solution": [
+              "Rxc5+",
+              "Kxc5",
+              "Kb7"
+            ],
+            "hint": "After the trade, can the black king catch the a-pawn?",
+            "explain": "**Rxc5+! Kxc5 Kb7!** — the white king supports the a-pawn, which queens, and Black's kingside pawns are too slow to race. Kb7 is important: it stops ...Kb5 and escorts the pawn. Count the race before you trade — here White queens first."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/3k4/2r3p1/4p3/2Rp2PP/3K4/8/8 w - - 13 53",
+            "text": "White to move (real game). Trade into a pawn ending you can win.",
+            "solution": [
+              "Rxc6",
+              "Kxc6",
+              "h5"
+            ],
+            "hint": "Your kingside majority can create a passed pawn quickly.",
+            "explain": "**Rxc6! Kxc6 h5!** — White creates a passed pawn on the kingside (h5xg6 or h6), far from the black king. Black's d- and e-pawns are blocked by the white king. Trading the last pieces turns a hard rook ending into an easy pawn ending."
+          },
+          {
+            "type": "exercise",
+            "fen": "8/8/8/1p2K3/1Qq5/P4k2/8/8 w - - 8 59",
+            "text": "White to move (real game). Queens face to face. Is the pawn ending good for you?",
+            "solution": [
+              "Qxc4"
+            ],
+            "hint": "After the trade, look at the c-pawn and your king.",
+            "explain": "**Qxc4!** — after ...bxc4 Kd4 the white king catches the c-pawn (Kxc4 next), and then the a-pawn queens with the king's help; the black king on f3 is far away. If Black does not recapture, White is simply a queen up. Queen endings are full of checks and risk; the pawn ending is simple. When you are ahead, simplify."
+          },
+          {
+            "type": "choice",
+            "text": "You are a pawn up in a rook ending: 4 pawns against 3 on the kingside, 1 against 1 on the queenside. What do you avoid?",
+            "options": [
+              "Trading the queenside pawns, so that all pawns are on one side",
+              "Activating your king",
+              "Keeping your rook active"
+            ],
+            "answer": 0,
+            "explain": "Rook endings with 4 vs 3 (or 3 vs 2) on **one side** are often drawn. Keep pawns on both wings to stretch the defence — trade pieces, not pawns."
+          },
+          {
+            "type": "choice",
+            "text": "You have three pawns against two on the queenside (a, b, c against a, b). Which pawn should usually advance first to create a passed pawn?",
+            "options": [
+              "The a-pawn",
+              "The c-pawn — the candidate, the one with no enemy pawn in front of it",
+              "The b-pawn — always the middle one"
+            ],
+            "answer": 1,
+            "explain": "The **candidate** passed pawn is the one with no opposing pawn on its file — here the c-pawn. Push it first, supported by the others, and it becomes a passed pawn after the exchanges. Pushing the other pawns first often creates weaknesses instead."
+          },
+          {
+            "type": "play",
+            "fen": "8/6k1/6pp/8/5PPP/6K1/8/8 w - - 0 1",
+            "text": "White to move. Three pawns against two on the same side, kings in front. Win it against Stockfish.",
+            "goal": "win",
+            "maxMoves": 40,
+            "hint": "Advance carefully with king support. Do not play g5 too early — it lets Black trade pawns.",
+            "explain": "Bring the king forward (Kf3–e4–e5 or Kg3–h3 ideas), push the pawns as a group (h5 or f5 at the right moment) and create a passed pawn on the f- or h-file. The king leads, the pawns follow. g5? at once trades pawns and gives a drawn king-and-pawn ending."
+          },
+          {
+            "type": "text",
+            "text": "**The one rule to remember:** a pawn up, **trade pieces, not pawns**, activate your king, and create a passed pawn with your candidate. Always calculate the pawn ending — it is often the cleanest win."
+          }
+        ],
+        "videos": [
+          {
+            "title": "How to convert an extra Pawn in the Endgame | Chess for Beginners",
+            "channel": "Chessfactor",
+            "url": "https://www.youtube.com/watch?v=sABw7tJehZg"
+          },
+          {
+            "title": "When to convert into a King & Pawn Endgame | Endgame Techniques",
+            "channel": "Chessfactor",
+            "url": "https://www.youtube.com/watch?v=UWVKBx3Sl1w"
+          },
+          {
+            "title": "Principles of Chess Endgames | King Activity",
+            "channel": "Daniel Naroditsky",
+            "url": "https://www.youtube.com/watch?v=mhUoe2JBxco"
+          }
+        ]
+      }
+    ]
+  }
+]
