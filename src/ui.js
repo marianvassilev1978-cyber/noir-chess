@@ -10,6 +10,7 @@ import { charSVG } from "./art/character.js";
 import { BOT_LOOKS, AVATAR_LOOKS } from "./art/cast.js";
 import { bring, typeInto } from "./art/motion.js";
 import { sectionArt, emptyArt } from "./art/scenes.js";
+import { playerById } from "./players.js";
 
 // Avatar: original SVG art when the player has a look (bots, coaches, you); emoji only as a last resort.
 export function lookOf(p) {
@@ -19,6 +20,7 @@ export function lookOf(p) {
   if (id && BOT_LOOKS[id]) return { ...BOT_LOOKS[id], id };
   if (id && AVATAR_LOOKS[id]) return { ...AVATAR_LOOKS[id], id };
   if (id === "stockfishmax") return { ...BOT_LOOKS.max, id: "max" };
+  if (id && /^p\d+$/.test(id)) { const pl = playerById(id); if (pl) return pl.look; }
   return null;
 }
 export function avatar(p, size = 38, extra = "", cls = "") {
@@ -58,11 +60,11 @@ export function capturedHTML(chess, color) {
   return html.replace('<span class="gap8"></span>', "");
 }
 
-export function playerBar(p, { rating, color, clock } = {}) {
+export function playerBar(p, { rating, color, clock, provisional } = {}) {
   return `<div class="pbar" data-color="${color}">
-    ${avatar(p)}
+    ${avatar(p, 42)}
     <div class="grow">
-      <div class="nm">${esc(p.name)} ${rating ? `<span class="rt">(${rating})</span>` : ""} <span class="tiny">${p.flag || ""}</span> <span class="think hide"><i></i><i></i><i></i></span></div>
+      <div class="nm">${p.title ? `<span class="title-b">${esc(p.title)}</span>` : ""}<span class="pname">${esc(p.name)}</span> ${rating ? `<span class="rt">${rating}${provisional ? "?" : ""}</span>` : ""} <span class="tiny">${p.flag || ""}</span> <span class="think hide"><i></i><i></i><i></i></span></div>
       <div class="caps"></div>
     </div>
     ${clock ? `<div class="clock" data-color="${color}"><span class="t"></span></div>` : ""}

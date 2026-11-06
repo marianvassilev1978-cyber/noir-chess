@@ -118,6 +118,7 @@ export function bringAll(root, opts) { const out = []; root.querySelectorAll(".c
 
 // Type HTML into an element, character by character, keeping tags intact. Returns a promise; ctl talks meanwhile.
 export function typeInto(el, html, { cps = 55, ctl = null } = {}) {
+  if (!el || !el.isConnected) return Promise.resolve();
   if (el.__typing) el.__typing.cancel();
   if (reduced() || !html) { el.innerHTML = html; return Promise.resolve(); }
   const tokens = String(html).split(/(<[^>]+>|&[a-z#0-9]+;)/i).filter(Boolean);
@@ -130,6 +131,7 @@ export function typeInto(el, html, { cps = 55, ctl = null } = {}) {
     const step = Math.max(1, Math.round(cps / 30));
     timer = setInterval(() => {
       if (done) return;
+      if (!el.isConnected) return finish();
       for (let k = 0; k < step && i < tokens.length; k++) {
         const t = tokens[i];
         if (t[0] === "<" || t[0] === "&") { out += t; i++; j = 0; k--; continue; }

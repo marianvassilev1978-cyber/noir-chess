@@ -1,16 +1,19 @@
 // Persistent state: localStorage always; Claude account db when running inside the Claude artifact.
 import { today } from "./util.js";
+import { update as glicko, preview as glickoPreview } from "./glicko.js";
 
 const KEY = "noirchess.v2";
 const OLD_KEY = "noirchess.v1";
 
 export const TC_CATS = ["bullet", "blitz", "rapid", "classical"];
 
-function rating0(r = null) { return { r, games: 0, hist: [], best: r || 0 }; }
+export const STATE_VERSION = 3;
+export const PROVISIONAL_GAMES = 20;
+function rating0(r = null, rd = 350) { return { r, rd, vol: 0.06, games: 0, hist: [], best: r || 0 }; }
 
 export function defaults() {
   return {
-    v: 2,
+    v: STATE_VERSION,
     updatedAt: 0,
     profile: { name: "You", avatar: "a-knight", country: "bg", joined: Date.now() },
     placement: null, // {rating, date}
@@ -28,13 +31,18 @@ export function defaults() {
     streak: { count: 0, last: null, best: 0 },
     xp: 0,
     achievements: {},
+    opponents: {}, // head-to-head: id -> {name, w, d, l, last}
+    recentOpps: [],
+    puzzleHist: [], // [t, id, rating, ok, ms, delta]
+    dailyPuzzle: {}, // date -> true
+    timePlayed: 0, // ms
     settings: {
       sound: true, soundSet: "wood", volume: 0.9, soundOnSilent: true,
       board: "noir", pieces: "cburnett", theme: "noir", coach: "amara",
       coords: "inside", legal: true, anim: true, animMs: 160,
       autoQueen: false, premove: true, confirmResign: true,
       evalBar: false, coachLive: true, guard: false,
-      classOnBoard: true, haptics: true, lastMove: true,
+      classOnBoard: true, haptics: true, lastMove: true, confirmMove: false, defaultTc: "10+0",
       name: "You",
     },
   };
@@ -79,13 +87,46 @@ function migrate(o) {
   return n;
 }
 
+// v2 -> v3: Elo ratings become Glicko-2 (rating, deviation, volatility) per category. Nothing is dropped.
+export function migrate2to3(o) {
+  const n = JSON.parse(JSON.stringify(o));
+  const now = Date.now();
+  const R = n.ratings || {};
+  const rdFor = (games) => (games >= 30 ? 70 : games >= 20 ? 90 : Math.max(110, 300 - games * 9));
+  for (const k of ["bullet", "blitz", "rapid", "classical", "puzzle"]) {
+    const x = R[k] || {};
+    R[k] = x.r ? { r: Math.round(x.r), rd: x.rd || rdFor(x.games || 0), vol: x.vol || 0.06, games: x.games || 0, hist: x.hist || [], best: x.best || x.r } : { r: null, rd: 350, vol: 0.06, games: 0, hist: [], best: 0 };
+  }
+  // seed empty game categories from Rapid (or the best known rating), provisional
+  const seed = (R.rapid && R.rapid.r) || ["blitz", "bullet", "classical"].map((k) => R[k].r).find(Boolean) || (n.placement && n.placement.rating) || null;
+  if (seed) for (const k of ["bullet", "blitz", "rapid", "classical"]) if (!R[k].r) R[k] = { r: seed, rd: 250, vol: 0.06, games: 0, hist: [[now, seed]], best: seed, seeded: true };
+  n.ratings = R;
+  n.settings = n.settings || {};
+  if (["dark", "oled"].includes(n.settings.theme)) n.settings.theme = "noir";
+  if (n.settings.theme === "light") n.settings.theme = "ivory";
+  if (n.profile && n.profile.avatar && !String(n.profile.avatar).startsWith("a-")) { n.profile.oldAvatar = n.profile.avatar; n.profile.avatar = "a-knight"; }
+  n.opponents = n.opponents || {};
+  for (const g of n.games || []) if (g.botId && g.mode !== "friend") { const r = n.opponents[g.botId] || (n.opponents[g.botId] = { name: g.bot && g.bot.name, w: 0, d: 0, l: 0, last: 0 }); if (g.score === 1) r.w++; else if (g.score === 0) r.l++; else if (g.score === 0.5) r.d++; r.last = Math.max(r.last, g.date || 0); }
+  n.v = 3;
+  n.migratedFrom = n.migratedFrom ? n.migratedFrom + ",2" : "2";
+  return n;
+}
+
 export function load() {
   try {
     const t = localStorage.getItem(KEY);
-    if (t) S = merge(defaults(), JSON.parse(t));
-    else {
-      const old = localStorage.getItem(OLD_KEY);
-      if (old) { S = merge(defaults(), migrate(JSON.parse(old))); persistLocal(); }
+    let o = null;
+    if (t) o = JSON.parse(t);
+    else { const old = localStorage.getItem(OLD_KEY); if (old) o = migrate(JSON.parse(old)); }
+    if (o) {
+      if ((o.v || 1) < STATE_VERSION) {
+        // keep an untouched copy of the old save before upgrading it
+        try { if (t && !localStorage.getItem("noirchess.backup.v" + (o.v || 2))) localStorage.setItem("noirchess.backup.v" + (o.v || 2), t); } catch {}
+        if (!o.v || o.v === 1) o = migrate(o);
+        if (o.v === 2) o = migrate2to3(o);
+      }
+      S = merge(defaults(), o);
+      persistLocal();
     }
   } catch (e) { console.warn("load failed", e); }
   rollDay();
@@ -158,6 +199,7 @@ export async function initCloud() {
       const old = await Promise.race([db.doc("data/users/" + id + "/progress").get(), timeout]).catch(() => null);
       if (old && old.exists) remote = migrate(JSON.parse(old.data().json || "{}"));
     }
+    if (remote && remote.v === 2) remote = migrate2to3(remote);
     if (remote && (remote.updatedAt || 0) > (S.updatedAt || 0)) { S = merge(defaults(), remote); rollDay(); persistLocal(); }
     else if (S.updatedAt) pushCloud();
     mode = "cloud";
@@ -168,32 +210,35 @@ export async function initCloud() {
 export function exportBackup() { return JSON.stringify(S); }
 export function importBackup(text) {
   let o = JSON.parse(text);
+  if (!o || typeof o !== "object" || !o.settings) throw new Error("not a Noir Chess backup");
   if (!o.v || o.v === 1) o = migrate(o);
+  if (o.v === 2) o = migrate2to3(o);
   S = merge(defaults(), o);
   rollDay();
   save();
 }
 export function resetAll() { S = defaults(); save(); }
 
-// ---------- ratings ----------
+// ---------- ratings (Glicko-2) ----------
 export function catOf(tc) {
   if (!tc || tc === "none") return "classical";
   const [m, inc] = tc.split("+").map(Number);
-  const est = m * 60 + (inc || 0) * 40; // chess.com style estimate
+  const est = m * 60 + (inc || 0) * 40; // estimated game length in seconds
   if (est < 180) return "bullet";
   if (est < 600) return "blitz";
-  if (est < 1800) return "rapid";
+  if (est <= 1800) return "rapid";
   return "classical";
 }
 
 export function currentRating(cat = "rapid") {
   const R = S.ratings;
   if (R[cat] && R[cat].r) return R[cat].r;
-  // fall back to any known rating
   for (const k of ["rapid", "blitz", "bullet", "classical"]) if (R[k] && R[k].r) return R[k].r;
   if (S.placement) return S.placement.rating;
   return null;
 }
+export const isProvisional = (cat) => !S.ratings[cat] || (S.ratings[cat].games || 0) < PROVISIONAL_GAMES;
+export const ratingLabel = (cat) => { const r = currentRating(cat); return r ? r + (isProvisional(cat) ? "?" : "") : "—"; };
 
 export function bestRating() {
   let b = 0;
@@ -201,29 +246,37 @@ export function bestRating() {
   return b || (S.placement ? S.placement.rating : 0);
 }
 
-// Elo update with a provisional (higher) K for the first 20 games.
-export function rateGame(cat, opp, score) {
+const BOT_RD = 40, PUZZLE_RD = 80;
+function ensure(cat) {
   const R = S.ratings[cat] || (S.ratings[cat] = rating0());
-  if (!R.r) R.r = currentRating(cat) || 800;
-  const k = R.games < 10 ? 60 : R.games < 25 ? 40 : 24;
-  const exp = 1 / (1 + Math.pow(10, (opp - R.r) / 400));
-  const delta = Math.round(k * (score - exp));
-  R.r = Math.max(100, R.r + delta);
+  if (!R.r) { R.r = currentRating(cat) || 800; R.rd = R.rd && R.rd < 350 ? R.rd : 300; }
+  if (!R.rd) R.rd = 300;
+  return R;
+}
+export function previewGame(cat, opp) { const R = ensure(cat); return glickoPreview({ r: R.r, rd: R.rd, vol: R.vol }, { r: opp, rd: BOT_RD }); }
+
+// a rated game against a fixed-rated opponent; returns the change
+export function rateGame(cat, opp, score) {
+  const R = ensure(cat);
+  const old = R.r;
+  const n = glicko({ r: R.r, rd: R.rd, vol: R.vol }, { r: opp, rd: BOT_RD }, score);
+  R.r = Math.max(100, Math.round(n.r)); R.rd = n.rd; R.vol = n.vol;
   R.games++;
+  R.seeded = false;
   R.best = Math.max(R.best || 0, R.r);
   R.hist.push([Date.now(), R.r]);
-  return delta;
+  return R.r - old;
 }
 
 export function ratePuzzle(prating, solved) {
   const R = S.ratings.puzzle;
-  if (!R.r) R.r = Math.max(400, (currentRating() || 800));
-  const k = R.games < 20 ? 50 : 22;
-  const exp = 1 / (1 + Math.pow(10, (prating - R.r) / 400));
-  const delta = Math.round(k * ((solved ? 1 : 0) - exp));
-  R.r = Math.max(100, R.r + delta);
+  if (!R.r) { R.r = Math.max(400, (currentRating() || 800)); R.rd = 300; }
+  const old = R.r;
+  const n = glicko({ r: R.r, rd: R.rd || 300, vol: R.vol || 0.06 }, { r: prating, rd: PUZZLE_RD }, solved ? 1 : 0);
+  R.r = Math.max(100, Math.round(n.r)); R.rd = n.rd; R.vol = n.vol;
   R.games++;
   R.best = Math.max(R.best || 0, R.r);
   R.hist.push([Date.now(), R.r]);
-  return delta;
+  return R.r - old;
 }
+export function previewPuzzle(prating) { const R = S.ratings.puzzle; return glickoPreview({ r: R.r || 800, rd: R.rd || 300, vol: R.vol || 0.06 }, { r: prating, rd: PUZZLE_RD }); }

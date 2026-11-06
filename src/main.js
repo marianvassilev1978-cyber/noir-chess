@@ -74,6 +74,10 @@ register("profile", Profile.render);
 register("settings", Profile.renderSettings);
 
 document.body.classList.toggle("in-claude", inClaude);
+// test hooks (only when localStorage["noir.test"] is set by the Playwright suite)
+if (localStorage.getItem("noir.test")) {
+  import("./store.js").then((st) => { window.__noir = Object.assign(window.__noir || {}, { go, state: st.state, save: st.save, previewGame: st.previewGame, newGame: Game.newGame, botQueue: (window.__noir && window.__noir.botQueue) || [] }); });
+}
 start();
 const sp = document.getElementById("splash");
 if (sp) setTimeout(() => { sp.style.opacity = "0"; setTimeout(() => sp.remove(), 460); }, 350);

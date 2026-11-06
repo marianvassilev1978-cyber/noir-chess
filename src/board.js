@@ -124,6 +124,7 @@ export class Board {
   }
 
   setFen(fen, { animate = true, lastMove, check } = {}) {
+    const same = this.fen === fen;
     this.fen = fen;
     const next = parseFen(fen);
     const anim = animate && state().settings.anim;
@@ -174,7 +175,8 @@ export class Board {
     this.noAnimSq = null;
     if (lastMove !== undefined) this.lastMove = lastMove;
     if (check !== undefined) this.check = check;
-    this.selected = null;
+    // a redraw of the same position (e.g. after a background analysis) keeps the player's selected piece
+    if (!same) this.selected = null;
     this.renderHL();
   }
 
