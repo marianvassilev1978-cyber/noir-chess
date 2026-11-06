@@ -55,3 +55,31 @@ export async function startGame(page, cfg) {
 }
 export const lastGame = (page) => page.evaluate(() => { const s = JSON.parse(localStorage.getItem("noirchess.v2")); return s.games[s.games.length - 1]; });
 export const fenOf = (page) => page.evaluate(() => window.__noir.game && window.__noir.game.moves.length);
+
+// play the real solution of the current puzzle (exposed by the test hook), board inside `sel`
+export async function solvePuzzle(page, sel) {
+  await page.waitForFunction(() => window.__noir && window.__noir.pz && window.__noir.pzReady);
+  const p = await page.evaluate(() => window.__noir.pz);
+  const orient = p.fen.split(" ")[1] === "w" ? "b" : "w";
+  await page.waitForTimeout(250); // the set-up move's animation
+  for (let i = 1; i < p.moves.length; i += 2) {
+    const u = p.moves[i];
+    await move(page, u.slice(0, 2), u.slice(2, 4), { orient, sel });
+    if (u[4]) { await page.waitForTimeout(150); if (await page.locator(".promo-opt").count()) await page.locator(`.promo-opt[data-p="${u[4]}"]`).click(); }
+    await page.waitForTimeout(650);
+  }
+  return p;
+}
+// play a legal move that is NOT the solution
+export async function failPuzzle(page, sel) {
+  await page.waitForFunction(() => window.__noir && window.__noir.pz && window.__noir.pzReady);
+  const p = await page.evaluate(() => window.__noir.pz);
+  const orient = p.fen.split(" ")[1] === "w" ? "b" : "w";
+  const { Chess } = await import("chess.js");
+  const c = new Chess(p.fen);
+  c.move({ from: p.moves[0].slice(0, 2), to: p.moves[0].slice(2, 4), promotion: p.moves[0][4] });
+  const bad = c.moves({ verbose: true }).find((m) => m.from + m.to + (m.promotion || "") !== p.moves[1] && !m.promotion && !new Chess(c.fen()).move(m.san).san.includes("#"));
+  await page.waitForTimeout(250);
+  await move(page, bad.from, bad.to, { orient, sel });
+  return p;
+}

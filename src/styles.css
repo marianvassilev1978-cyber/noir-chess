@@ -419,6 +419,28 @@ input[type="range"] { width: 100%; accent-color: var(--acc); }
 .rush-strip i.ok { background: var(--good); } .rush-strip i.bad { background: var(--bad); }
 .big-timer { font-size: 34px; font-weight: 750; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; }
 
+.strikes { display: flex; gap: 6px; }
+.strikes i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line2); }
+.strikes i.on { background: var(--bad); border-color: var(--bad); box-shadow: 0 0 10px color-mix(in srgb, var(--bad) 50%, transparent); }
+.big-timer.low { color: var(--bad); }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+.cal b { font-size: 11px; color: var(--dim); font-weight: 700; }
+.cal i { font-style: normal; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 13px; color: var(--mut); background: var(--glass); }
+.cal i:empty { background: none; }
+.cal i.ok { background: color-mix(in srgb, var(--good) 30%, transparent); color: var(--text); font-weight: 750; }
+.cal i.miss { background: color-mix(in srgb, var(--bad) 22%, transparent); color: var(--text); }
+.cal i.today { box-shadow: inset 0 0 0 2px var(--acc); }
+.duel-bar { display: grid; gap: 8px; margin-bottom: 12px; }
+.dl { display: flex; align-items: center; gap: 10px; }
+.dl b { font-family: var(--font-display); font-size: 30px; min-width: 34px; text-align: right; }
+.dtrack { height: 8px; border-radius: 9px; background: var(--glass2); overflow: hidden; margin-top: 4px; }
+.dfill { display: block; height: 100%; width: 0; border-radius: 9px; transition: width .5s var(--ease); }
+.me .dfill { background: linear-gradient(90deg, var(--acc-d), var(--acc2)); }
+.them .dfill { background: linear-gradient(90deg, #3a5ab8, #8fb2ff); }
+.tbar { display: grid; grid-template-columns: 1fr auto 90px 38px; align-items: center; gap: 8px; padding: 6px 0; cursor: pointer; }
+.tbar .bar { height: 7px; border-radius: 9px; background: var(--glass2); overflow: hidden; }
+.tbar .bar i { display: block; height: 100%; border-radius: 9px; }
+
 /* ---------- settings ---------- */
 .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(74px, 1fr)); gap: 10px; }
 .swatch { aspect-ratio: 1; border-radius: 14px; cursor: pointer; border: 2px solid transparent; overflow: hidden; position: relative; box-shadow: var(--sh-1); }
