@@ -35,7 +35,7 @@ export function render(root, [arg]) {
   const last = build(init.startFen, init.moves || []);
   cur = rootN;
   if (init.ply != null) { let n = rootN; for (let i = 0; i <= init.ply && n.children[0]; i++) n = n.children[0]; cur = n; } else cur = last;
-  let job = null, engineOn = true, tab = "moves";
+  let job = null, engineOn = true, tab = init.tab === "explorer" ? "explorer" : "moves";
 
   root.className = "view full";
   root.innerHTML = `<div class="game">
@@ -64,6 +64,7 @@ export function render(root, [arg]) {
   const board = new Board($("#abd", root), { orientation: init.orientation || "w", onMove, draw: true });
   const eb = new EvalBar($(".eb", root));
   loadEco().then(() => sync(false)).catch(() => {});
+  if (tab === "explorer") setTimeout(() => { const b = root.querySelector('.a-tabs button[data-t="explorer"]'); b && b.click(); }, 0);
 
   const pathTo = (n) => { const p = []; while (n.parent) { p.unshift(n); n = n.parent; } return p; };
   function sync(anim = true) {

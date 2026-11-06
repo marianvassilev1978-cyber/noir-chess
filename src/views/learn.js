@@ -1,12 +1,17 @@
 // Learn hub, the Zero-to-2000 course path, and the lesson player.
 import { Chess } from "chess.js";
-import { $, $$, esc, md, sheet, toast, loadJSON, loadJSONOpt } from "../util.js";
+import { $, $$, esc, md, sheet, toast, loadJSON, loadJSONOpt, pick } from "../util.js";
 import { Board, destsOf, checkSquare, badgeHTML } from "../board.js";
 import { state, save, touchStreak } from "../store.js";
 import { moveSound, play as sfx } from "../sound.js";
 import { evalPosition, winFor, uciOf, fmtEval, moveSan } from "../analysis.js";
 import { ANA, PLAY } from "../engine.js";
-import { videoList, lineViewer } from "../ui.js";
+import { videoList, lineViewer, sectionHead, ring, coachBubble, skeleton } from "../ui.js";
+import { coachById } from "../coaches.js";
+import { charSVG } from "../art/character.js";
+import { coverSVG } from "../art/badges.js";
+import { celebrate } from "../art/fx.js";
+import { checkAchievements } from "../achievements.js";
 import { probe, isWin, isLoss, isDrawish, pieceCount } from "../tb.js";
 import { I } from "../icons.js";
 import { go, back } from "../router.js";
@@ -22,79 +27,122 @@ export async function loadCourse() {
   return all;
 }
 
+// the coach who teaches each level
+export const LEVEL_COACH = { l1: "amara", l2: "amara", l3: "juno", l4: "niko", l5: "mira", l6: "anselm", l7: "amara", l8: "niko", l9: "anselm", l10: "mira", l11: "dante", l12: "mira" };
+export const coachOfLevel = (lv) => coachById(LEVEL_COACH[lv.id] || "amara");
+const levelDone = (s, lv) => lv.lessons.filter((l) => s.lessons[l.id] && s.lessons[l.id].done).length;
+
 export function renderHub(root) {
   const s = state();
-  root.innerHTML = `<div class="topbar"><h2>Learn</h2><span class="badge-pill gold">${s.xp} XP</span></div>
+  root.innerHTML = `${sectionHead("learn", "Learn", "", `<span class="badge-pill gold">${s.xp} XP</span>`)}
     <div class="grid" style="max-width:760px">
-      <button class="tile course" style="background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 35%,var(--panel)),var(--panel));padding:18px 16px"><div class="ic" style="background:var(--acc);width:56px;height:56px">${I.learn}</div><div class="grow"><div class="t" style="font-size:18px">Zero to 2000 course</div><div class="s cprog">Loading…</div><div class="progress mt-s"><i class="cbar" style="width:0%"></i></div></div><span class="chev">›</span></button>
+      <div class="continue"></div>
+      <div class="recs"></div>
+      <div class="sec-title">Courses</div>
+      <div class="course-grid"><div class="skel" style="height:180px"></div><div class="skel" style="height:180px"></div></div>
+      <div class="sec-title">Train</div>
       <div class="grid two">
-        <button class="tile op"><div class="ic" style="background:#3d7ea6">${I.book}</div><div><div class="t">Openings</div><div class="s">Learn & drill lines</div></div></button>
-        <button class="tile gb"><div class="ic" style="background:#c2603c">${I.swords}</div><div><div class="t">Gambits</div><div class="s">Alien, Martian & more</div></div></button>
-        <button class="tile eg"><div class="ic" style="background:#2f8f83">${I.king}</div><div><div class="t">Endgame Gym</div><div class="s">Win it vs Stockfish</div></div></button>
-        <button class="tile vi"><div class="ic" style="background:#8a5cc2">${I.eye}</div><div><div class="t">Vision</div><div class="s">Board coordinates</div></div></button>
-        <button class="tile pl"><div class="ic" style="background:#b5862a">${I.target}</div><div><div class="t">Road to 2000</div><div class="s">Your training plan</div></div></button>
-        <button class="tile lib"><div class="ic" style="background:#c23c6a">${I.video}</div><div><div class="t">Library</div><div class="s">Videos & resources</div></div></button>
+        <button class="tile op"><div class="ic" style="background:linear-gradient(135deg,#3cc97f,#1d7a4a)">${I.book}</div><div class="grow"><div class="t">Openings</div><div class="s">Learn, drill, explore</div></div></button>
+        <button class="tile gb"><div class="ic" style="background:linear-gradient(135deg,#ff8c4d,#a8401a)">${I.swords}</div><div class="grow"><div class="t">Gambits</div><div class="s">Alien, Martian & more</div></div></button>
+        <button class="tile rep"><div class="ic" style="background:linear-gradient(135deg,#f5c542,#b07d1e)">${I.star}</div><div class="grow"><div class="t">My repertoire</div><div class="s">Build it, drill it</div></div></button>
+        <button class="tile eg"><div class="ic" style="background:linear-gradient(135deg,#c38bff,#6c3fd0)">${I.king}</div><div class="grow"><div class="t">Endgame Gym</div><div class="s">Win it vs Stockfish</div></div></button>
+        <button class="tile vi"><div class="ic" style="background:linear-gradient(135deg,#5fa2ff,#2a4ab8)">${I.eye}</div><div class="grow"><div class="t">Vision</div><div class="s">Board coordinates</div></div></button>
+        <button class="tile pl"><div class="ic" style="background:linear-gradient(135deg,#2fd3c6,#127a72)">${I.target}</div><div class="grow"><div class="t">Road to 2000</div><div class="s">Your training plan</div></div></button>
+        <button class="tile co"><div class="ic" style="background:linear-gradient(135deg,#f39a3a,#a85a14)">${I.coach}</div><div class="grow"><div class="t">Coaches</div><div class="s">Meet all six</div></div></button>
+        <button class="tile lib"><div class="ic" style="background:linear-gradient(135deg,#f06a8f,#a8264a)">${I.video}</div><div class="grow"><div class="t">Library</div><div class="s">Videos & links</div></div></button>
       </div>
     </div>`;
-  $(".course", root).onclick = () => go("course");
-  $(".op", root).onclick = () => go("openings/openings");
-  $(".gb", root).onclick = () => go("openings/gambits");
-  $(".eg", root).onclick = () => go("endgames");
-  $(".vi", root).onclick = () => go("vision");
-  $(".pl", root).onclick = () => go("plan");
-  $(".lib", root).onclick = () => go("library");
+  const on = (c, r) => ($(c, root).onclick = () => go(r));
+  on(".op", "openings/openings"); on(".gb", "openings/gambits"); on(".rep", "repertoire"); on(".eg", "endgames"); on(".vi", "vision"); on(".pl", "plan"); on(".co", "coaches"); on(".lib", "library");
   loadCourse().then((C) => {
-    const all = C.flatMap((l) => l.lessons);
-    const done = all.filter((l) => s.lessons[l.id] && s.lessons[l.id].done).length;
-    const pc = $(".cprog", root); if (!pc) return;
-    pc.textContent = `${done}/${all.length} lessons · ${C.length} levels`;
-    $(".cbar", root).style.width = Math.round((done / all.length) * 100) + "%";
+    const grid = $(".course-grid", root); if (!grid) return;
+    grid.innerHTML = C.map((lv, k) => { const d = levelDone(s, lv), n = lv.lessons.length, co = coachOfLevel(lv); return `<div class="course-card press" data-id="${lv.id}"><div class="cc-cover">${coverSVG(k)}</div>
+      <div class="cc-meta"><div class="grow"><div class="eyebrow">${esc(lv.band || "")} · ${n} lessons</div><div class="cc-title">${esc(lv.title.replace(/^Level \d+ — /, ""))}</div><div class="row gap-s tiny muted mt-s"><span class="av" style="width:22px;height:22px;border-radius:8px">${charSVG(co.look, { label: co.name })}</span>with ${esc(co.short)}</div></div>${ring(d / n, { size: 44, stroke: 4, label: d === n ? I.check : `${d}/${n}` })}</div></div>`; }).join("");
+    $$(".course-card", grid).forEach((el) => (el.onclick = () => go("course/" + el.dataset.id)));
+    // continue where you left off
+    const all = C.flatMap((lv, k) => lv.lessons.map((l) => ({ ...l, level: lv, k })));
+    const n = all.find((l) => !(s.lessons[l.id] && s.lessons[l.id].done));
+    if (n) {
+      const co = coachOfLevel(n.level);
+      $(".continue", root).innerHTML = `<div class="cover-card nl"><div class="cv">${coverSVG(n.k)}</div><div class="meta"><div class="eyebrow" style="color:#fff;opacity:.85">Continue · ${esc(n.level.title.replace(/^Level \d+ — /, ""))} · with ${esc(co.short)}</div><div class="t">${esc(n.title)}</div><div class="s">${n.minutes || 10} min</div></div></div>`;
+      $(".nl", root).onclick = () => go("lesson/" + n.id);
+    }
+    recommend(C).then((html) => { const r = $(".recs", root); if (r && html) r.innerHTML = html; $$(".rec", root).forEach((b) => (b.onclick = () => go(b.dataset.go))); });
   });
 }
 
-export function renderCourse(root) {
+// "Recommended for you": from your reviewed games (mistake types, weakest phase, worst openings)
+async function recommend(C) {
   const s = state();
-  root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Zero to 2000</h2></div><div class="path" style="max-width:720px"><div class="empty">Loading course…</div></div>`;
-  $(".back", root).onclick = () => back();
+  const motifs = {};
+  for (const m of s.mistakes) if (m.motif) motifs[m.motif] = (motifs[m.motif] || 0) + 1;
+  const phase = { opening: [], middlegame: [], endgame: [] };
+  for (const g of s.games) if (g.review && g.review.phases && g.review.phases[g.color]) for (const k in phase) if (g.review.phases[g.color][k] != null) phase[k].push(g.review.phases[g.color][k]);
+  const avg = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
+  const weakPhase = Object.entries(phase).map(([k, a]) => [k, avg(a)]).filter(([, v]) => v != null).sort((a, b) => a[1] - b[1])[0];
+  const ops = {};
+  for (const g of s.games) if (g.opening && g.mode !== "friend") { const o = ops[g.opening] || (ops[g.opening] = { n: 0, score: 0 }); o.n++; o.score += g.score || 0; }
+  const worstOp = Object.entries(ops).filter(([, v]) => v.n >= 2).sort((a, b) => a[1].score / a[1].n - b[1].score / b[1].n)[0];
+  const recs = [];
+  const topMotif = Object.entries(motifs).sort((a, b) => b[1] - a[1])[0];
+  const MOTIF = { hanging: ["Stop hanging pieces", "puzzle/theme/hangingPiece", "l2"], "allowed-tactic": ["Spot your opponent's tactics", "puzzle/theme/fork", "l4"], "missed-win": ["Find the winning tactic", "puzzle/theme/fork", "l8"], "allowed-mate": ["King safety", "puzzle/theme/mateIn2", "l11"], "missed-mate": ["Checkmate patterns", "puzzle/theme/mateIn2", "l4"], endgame: ["Endgame technique", "endgames", "l6"], opening: ["Opening principles", "openings/openings", "l3"], positional: ["Plans and structure", "puzzle/theme/middlegame", "l5"] };
+  if (topMotif && MOTIF[topMotif[0]]) { const [t, r, lv] = MOTIF[topMotif[0]]; recs.push([`${t}`, `${topMotif[1]} of your mistakes are this type`, r, I.puzzle]); const L = C.find((x) => x.id === lv); if (L) { const nx = L.lessons.find((l) => !(s.lessons[l.id] && s.lessons[l.id].done)) || L.lessons[0]; recs.push([`Lesson: ${nx.title}`, L.title.replace(/^Level \d+ — /, ""), "lesson/" + nx.id, I.learn]); } }
+  if (weakPhase && weakPhase[1] < 85) recs.push([`Your ${weakPhase[0]} (${Math.round(weakPhase[1])}%)`, "Your weakest phase in reviewed games", weakPhase[0] === "endgame" ? "endgames" : weakPhase[0] === "opening" ? "openings/openings" : "puzzle/theme/middlegame", I.chart]);
+  if (worstOp) recs.push([`Shore up: ${worstOp[0]}`, `${Math.round((worstOp[1].score / worstOp[1].n) * 100)}% score in ${worstOp[1].n} games`, "openings/openings", I.book]);
+  if (!recs.length) return `<div class="card rec-card"><div class="eyebrow">Recommended for you</div><div class="small muted mt-s">Play and review a few games — your recommendations come from your own mistakes.</div></div>`;
+  return `<div class="card rec-card"><div class="eyebrow mb">Recommended for you</div>${recs.slice(0, 3).map(([t, d, r, ic]) => `<button class="list-row rec" data-go="${r}" style="width:100%;background:none;border-left:0;border-right:0;border-top:0;color:inherit;text-align:left"><span class="rec-ic">${ic}</span><div class="grow"><b class="small">${esc(t)}</b><div class="tiny muted">${esc(d)}</div></div><span class="chev">›</span></button>`).join("")}</div>`;
+}
+
+// one course (level): cover, coach intro, chapters with progress
+export function renderCourse(root, [lvId]) {
+  const s = state();
+  root.innerHTML = `<div class="empty">${skeleton(4)}</div>`;
   loadCourse().then((C) => {
+    if (!lvId) return go("learn", { replace: true });
+    const k = C.findIndex((x) => x.id === lvId); const lv = C[k];
+    if (!lv) { root.innerHTML = '<div class="empty">Course not found.</div>'; return; }
+    const co = coachOfLevel(lv), d = levelDone(s, lv);
     let nextFound = false;
-    const html = C.map((lv, k) => {
-      const done = lv.lessons.filter((l) => s.lessons[l.id] && s.lessons[l.id].done).length;
-      return `<div class="unit"><div class="unit-head" style="background:linear-gradient(135deg,${UNIT_COLORS[k % UNIT_COLORS.length]},color-mix(in srgb,${UNIT_COLORS[k % UNIT_COLORS.length]} 60%,#000))">
-        <div class="band">${esc(lv.band || "")} ${lv.band ? "rating" : ""} · ${done}/${lv.lessons.length}</div><h3>${esc(lv.title)}</h3><div class="small" style="opacity:.9">${esc(lv.subtitle || "")}</div></div>
-        ${lv.lessons.map((l, i) => {
-          const d = s.lessons[l.id] && s.lessons[l.id].done;
-          let cls = d ? "done" : "";
-          if (!d && !nextFound) { cls = "next"; nextFound = true; }
-          const nEx = (l.steps || []).filter((x) => x.type === "exercise" || x.type === "choice" || x.type === "play").length;
-          return `<div class="lesson-row ${cls}" data-id="${l.id}"><div class="dot">${d ? "✓" : i + 1}</div><div class="grow"><div class="bold">${esc(l.title)}</div><div class="tiny muted">${l.minutes || 10} min · ${nEx} exercises${l.videos && l.videos.length ? " · ▶ " + l.videos.length : ""}</div></div>${cls === "next" ? '<span class="badge-pill acc">Next</span>' : ""}</div>`;
-        }).join("")}</div>`;
-    }).join("");
-    $(".path", root).innerHTML = html;
+    root.innerHTML = `<div class="course-hero"><div class="ch-cover">${coverSVG(k)}</div><button class="back" aria-label="Back">‹</button>
+        <div class="ch-meta"><div class="eyebrow" style="color:#fff;opacity:.85">${esc(lv.band || "")} · ${d}/${lv.lessons.length} done</div><h1>${esc(lv.title.replace(/^Level \d+ — /, ""))}</h1><div class="progress mt-s"><i style="width:${Math.round((d / lv.lessons.length) * 100)}%"></i></div></div></div>
+      <div class="grid" style="max-width:720px"><div class="card ch-coach"></div>
+      <div class="sec-title">Chapters</div>
+      ${lv.lessons.map((l, i) => {
+        const done = s.lessons[l.id] && s.lessons[l.id].done;
+        let cls = done ? "done" : "";
+        if (!done && !nextFound) { cls = "next"; nextFound = true; }
+        const nEx = (l.steps || []).filter((x) => ["exercise", "choice", "play"].includes(x.type)).length;
+        const best = s.lessons[l.id] && s.lessons[l.id].best;
+        return `<div class="lesson-row ${cls}" data-id="${l.id}">${ring(done ? 1 : 0, { size: 40, stroke: 4, label: done ? I.check : String(i + 1) })}<div class="grow"><div class="bold">${esc(l.title)}</div><div class="tiny muted">${l.minutes || 10} min · ${nEx} exercises${l.videos && l.videos.length ? " · ▶ " + l.videos.length : ""}${best != null && done ? ` · ${Math.round(best * 100)}%` : ""}</div></div>${cls === "next" ? '<span class="badge-pill acc">Next</span>' : `<span class="chev">›</span>`}</div>`;
+      }).join("")}</div>`;
+    $(".back", root).onclick = () => back();
+    coachBubble($(".ch-coach", root), co, `${esc(lv.subtitle || "")}. I'll be your coach for this course.`, { expr: "happy" });
     $$(".lesson-row", root).forEach((r) => (r.onclick = () => go("lesson/" + r.dataset.id)));
-    const nx = $(".lesson-row.next", root); if (nx) nx.scrollIntoView({ block: "center" });
   });
 }
 
-// ---------- lesson player ----------
+// ---------- lesson player: the coach narrates in a speech bubble ----------
 export function renderLesson(root, [id]) {
   const s = state();
   let alive = true, cleanupStep = null;
-  root.innerHTML = `<div class="empty">Loading…</div>`;
+  root.innerHTML = `<div class="empty">${skeleton(4)}</div>`;
   loadCourse().then((C) => {
     if (!alive) return;
     let lesson = null, level = null;
     for (const lv of C) for (const l of lv.lessons) if (l.id === id) { lesson = l; level = lv; }
     if (!lesson) { root.innerHTML = '<div class="empty">Lesson not found.</div>'; return; }
+    const co = coachOfLevel(level);
     const flat = C.flatMap((lv) => lv.lessons);
     const nextLesson = flat[flat.indexOf(lesson) + 1];
     const steps = lesson.steps || [];
     let i = 0, score = 0, tasks = 0;
-    root.innerHTML = `<div class="topbar"><button class="back">‹</button><div class="steps-dots"></div><span class="small muted cnt"></span></div>
-      <div class="small muted bold" style="margin:-6px 0 8px">${esc(level.title)} · ${esc(lesson.title)}</div>
-      <div class="lesson-layout"><div class="lb"></div><div class="lt"><div class="step"></div><div class="row gap mt nav"><button class="btn ghost prev">‹ Back</button><button class="btn primary grow nextb">Continue</button></div></div></div>`;
-    $(".back", root).onclick = () => go("course");
+    root.innerHTML = `<div class="topbar"><button class="back" aria-label="Back">‹</button><div class="steps-dots"></div><span class="small muted cnt"></span></div>
+      <div class="eyebrow" style="margin:-6px 0 8px">${esc(level.title.replace(/^Level \d+ — /, ""))} · ${esc(lesson.title)}</div>
+      <div class="lesson-layout"><div class="lb"></div><div class="lt"><div class="lesson-coach"></div><div class="step"></div><div class="row gap mt nav"><button class="btn ghost prev">‹ Back</button><button class="btn primary grow nextb">Continue</button></div></div></div>`;
+    $(".back", root).onclick = () => go("course/" + level.id);
+    const cb = coachBubble($(".lesson-coach", root), co, "", { size: 60 });
     const dots = () => ($(".steps-dots", root).innerHTML = steps.map((_, k) => `<i class="${k < i ? "done" : k === i ? "cur" : ""}"></i>`).join(""));
+    const firstSentence = (t) => String(t || "").replace(/\n+/g, " ").split(/(?<=[.!?])\s/)[0];
 
     function show() {
       if (cleanupStep) { cleanupStep(); cleanupStep = null; }
@@ -104,20 +152,26 @@ export function renderLesson(root, [id]) {
       lb.innerHTML = ""; st.innerHTML = "";
       $(".prev", root).style.visibility = i > 0 ? "visible" : "hidden";
       const nextb = $(".nextb", root);
-      nextb.disabled = false;
-      nextb.textContent = "Continue";
+      nextb.disabled = false; nextb.textContent = "Continue";
       if (i >= steps.length) return finish();
       const step = steps[i];
       if (step.type === "text") {
         lb.classList.add("hide");
-        st.innerHTML = `<div class="card step-text fade-in">${md(step.text)}</div>${i === 0 ? videoList(lesson.videos || [], lesson.links || []) : ""}`;
+        // the coach says the lesson text; long texts: the first sentence in the bubble, the rest below
+        const txt = String(step.text || "");
+        const head = firstSentence(txt);
+        cb.say(md(head).replace(/^<p>|<\/p>$/g, ""), i === 0 ? "happy" : "neutral");
+        if (cb.ctl) cb.ctl.pose("explain", 1800);
+        const rest = txt.slice(txt.indexOf(head) + head.length).trim();
+        st.innerHTML = `${rest ? `<div class="card step-text fade-in">${md(rest)}</div>` : ""}${i === 0 ? videoList(lesson.videos || [], lesson.links || []) : ""}`;
       } else {
         lb.classList.remove("hide");
         const bd = document.createElement("div"); lb.appendChild(bd);
-        if (step.type === "board") cleanupStep = boardStep(bd, st, step);
-        else if (step.type === "exercise") { nextb.disabled = true; tasks++; cleanupStep = exerciseStep(bd, st, step, (ok) => { if (ok) score++; nextb.disabled = false; nextb.textContent = "Continue"; }); }
-        else if (step.type === "choice") { nextb.disabled = true; tasks++; cleanupStep = choiceStep(bd, st, step, (ok) => { if (ok) score++; nextb.disabled = false; }); }
-        else if (step.type === "play") { nextb.disabled = true; tasks++; nextb.textContent = "Skip"; nextb.disabled = false; cleanupStep = playStep(bd, st, step, (ok) => { if (ok) score++; nextb.textContent = "Continue"; }); }
+        const react = (ok) => { if (!cb.ctl) return; if (ok) { cb.ctl.react("celebrate"); cb.say(pick(["Exactly right!", "That's it!", "Well found!", "Correct — nicely done."]), "happy"); } else { cb.ctl.expr("worried", 1600); } };
+        if (step.type === "board") { cb.say(md(firstSentence(step.text)).replace(/^<p>|<\/p>$/g, "")); cleanupStep = boardStep(bd, st, step); }
+        else if (step.type === "exercise") { cb.say("Your turn: find the move.", "thinking"); nextb.disabled = true; tasks++; cleanupStep = exerciseStep(bd, st, step, (ok) => { if (ok) score++; react(ok); nextb.disabled = false; nextb.textContent = "Continue"; }); }
+        else if (step.type === "choice") { cb.say("Think it through, then choose.", "thinking"); nextb.disabled = true; tasks++; cleanupStep = choiceStep(bd, st, step, (ok) => { if (ok) score++; react(ok); nextb.disabled = false; }); }
+        else if (step.type === "play") { cb.say(step.goal === "win" ? "Win this position against the engine." : "Hold the draw against the engine.", "neutral"); tasks++; nextb.textContent = "Skip"; nextb.disabled = false; cleanupStep = playStep(bd, st, step, (ok) => { if (ok) score++; react(ok); nextb.textContent = "Continue"; }); }
         else st.innerHTML = `<div class="card">${md(step.text || "")}</div>`;
       }
     }
@@ -125,17 +179,19 @@ export function renderLesson(root, [id]) {
       const prev = s.lessons[lesson.id] || {};
       s.lessons[lesson.id] = { done: true, score, tasks, best: Math.max(prev.best || 0, tasks ? score / tasks : 1), date: Date.now() };
       if (!prev.done) { s.xp += 30; s.daily.lesson++; }
-      touchStreak();
-      save();
-      sfx("win");
-      $(".lb", root).classList.add("hide");
-      $(".nav", root).classList.add("hide");
-      $(".step", root).innerHTML = `<div class="card tc fade-in"><div class="hand">🏆</div><h2>Lesson complete</h2><p class="muted">${tasks ? `${score}/${tasks} exercises right first time` : "Nice work."} · +30 XP</p>
+      if (level.lessons.every((l) => s.lessons[l.id] && s.lessons[l.id].done)) { s.levelsDone = [...new Set([...(s.levelsDone || []), level.id])]; }
+      touchStreak(); save();
+      sfx("win"); celebrate();
+      checkAchievements({ event: "lesson", delay: 1400 });
+      $(".lb", root).classList.add("hide"); $(".nav", root).classList.add("hide");
+      if (cb.ctl) cb.ctl.react("celebrate");
+      cb.say(`Lesson complete! ${tasks ? `${score} of ${tasks} exercises right first time.` : ""} +30 XP.`, "happy");
+      $(".step", root).innerHTML = `<div class="card tc fade-in"><h2>Lesson complete</h2><p class="muted">${tasks ? `${score}/${tasks} exercises right first time` : "Nice work."} · +30 XP</p>
         ${videoList(lesson.videos || [], lesson.links || [])}
-        <div class="col gap mt">${nextLesson ? `<button class="btn primary big nl">Next: ${esc(nextLesson.title)}</button>` : ""}<button class="btn again">Repeat lesson</button><button class="btn ghost bc">Back to course</button></div></div>`;
+        <div class="col gap mt">${nextLesson ? `<button class="btn primary big nl">Next: ${esc(nextLesson.title)}</button>` : ""}<button class="btn again">Repeat lesson</button><button class="btn ghost bc">Back to the course</button></div></div>`;
       const nl = $(".nl", root); if (nl) nl.onclick = () => go("lesson/" + nextLesson.id);
       $(".again", root).onclick = () => { i = 0; score = 0; tasks = 0; $(".nav", root).classList.remove("hide"); show(); };
-      $(".bc", root).onclick = () => go("course");
+      $(".bc", root).onclick = () => go("course/" + level.id);
     }
     $(".prev", root).onclick = () => { if (i > 0) { i--; show(); } };
     $(".nextb", root).onclick = () => { i++; show(); };
@@ -161,7 +217,7 @@ export function exerciseStep(bd, st, step, done) {
   const b = new Board(bd, { fen: step.fen, orientation: me, onMove });
   let k = 0, wrong = 0, finished = false;
   st.innerHTML = `<div class="card step-text fade-in"><div class="row gap-s mb"><span class="cls-badge" style="background:${me === "w" ? "#fff" : "#222"};border:1px solid #888"></span><b>${sideName(step.fen)} to move</b></div>${md(String(step.text || "").replace(/^s*(White|Black) to move[.:,]?s*/i, ""))}</div>
-    <div class="fb"></div><div class="row gap mt"><button class="btn sm ghost hint">${I.bulb} Hint</button><button class="btn sm ghost show">Show answer</button></div>`;
+    <div class="fb"></div><div class="row gap mt"><button class="btn sm ghost hint">${I.bulb} Hint</button><button class="btn sm ghost show">${I.play2} Show me</button></div>`;
   const fb = $(".fb", st);
   const arm = () => b.setMovable(me, destsOf(c));
   arm();

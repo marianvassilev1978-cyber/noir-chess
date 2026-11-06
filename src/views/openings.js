@@ -4,7 +4,11 @@ import { $, $$, esc, md, sheet, toast, loadJSON, loadJSONOpt, today } from "../u
 import { Board, destsOf, checkSquare } from "../board.js";
 import { state, save, touchStreak } from "../store.js";
 import { moveSound, play as sfx } from "../sound.js";
-import { videoList } from "../ui.js";
+import { videoList, coachBubble, avatar, sectionHead } from "../ui.js";
+import { coachById } from "../coaches.js";
+import { newGame } from "./game.js";
+import { BOT_GROUPS, ALL_BOTS } from "../bots.js";
+import { currentRating } from "../store.js";
 import { moveSan } from "../analysis.js";
 import { I } from "../icons.js";
 import { go, back } from "../router.js";
@@ -26,7 +30,10 @@ export function renderList(root, [kind = "openings"]) {
   root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>${kind === "gambits" ? "Gambits" : "Openings"}</h2></div>
     <div class="seg mb kinds" style="max-width:420px"><button data-k="openings">Openings</button><button data-k="gambits">Gambits</button></div>
     <div class="chips mb sides"><button class="chip" data-s="all">All</button><button class="chip" data-s="w">As White</button><button class="chip" data-s="b">As Black</button><button class="chip" data-s="rep">⭐ My repertoire</button></div>
+    <div class="row gap mb"><button class="btn sm exb">${I.analysis} Opening explorer</button><button class="btn sm rpb">${I.star} My repertoire</button></div>
     <div class="due-box"></div><div class="grid auto list"><div class="empty">Loading…</div></div>`;
+  $(".exb", root).onclick = () => go("analysis/" + encodeURIComponent(JSON.stringify({ moves: [], tab: "explorer" })));
+  $(".rpb", root).onclick = () => go("repertoire");
   $(".back", root).onclick = () => back();
   $$(".kinds button", root).forEach((b) => { b.classList.toggle("on", b.dataset.k === kind); b.onclick = () => go("openings/" + b.dataset.k); });
   let side = "all";
@@ -34,6 +41,7 @@ export function renderList(root, [kind = "openings"]) {
     const list = D[kind];
     const repIds = new Set();
     if (rep) for (const st of rep.stages || []) for (const k of ["white", "black_vs_e4", "black_vs_d4", "black_vs_other"]) for (const id of st[k] || []) repIds.add(id);
+    const mineR = state().repertoire; if (mineR && Object.values(mineR).flat().length) { repIds.clear(); for (const id of Object.values(mineR).flat()) repIds.add(id); }
     const due = dueLines();
     if (due.length) {
       $(".due-box", root).innerHTML = `<button class="tile mb rev" style="background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 25%,var(--panel)),var(--panel))"><div class="ic" style="background:#e09b2d">${I.timer}</div><div><div class="t">Review due: ${due.length} line${due.length > 1 ? "s" : ""}</div><div class="s">Spaced repetition — keep them in memory</div></div><span class="chev">›</span></button>`;
@@ -60,6 +68,7 @@ function lineFen(line, plies = 99) { const c = new Chess(); for (const m of line
 
 export function renderOpening(root, [id]) {
   if (id === "_review") return renderReview(root);
+  if (id === "_rep") return renderReview(root, true);
   const s = state();
   root.innerHTML = `<div class="empty">Loading…</div>`;
   loadOpenings().then((D) => {
@@ -77,7 +86,8 @@ export function renderOpening(root, [id]) {
     new Board($("#ob", root), { fen: lineFen(o.lines[0], 10), orientation: o.side, interactive: false });
     $$(".lesson-row", root).forEach((r) => (r.onclick = () => {
       const l = o.lines.find((x) => x.id === r.dataset.l);
-      const sh = sheet(`<p class="small">${md(l.intro || "")}</p><div class="col gap"><button class="btn primary learn">📖 Learn — step through with explanations</button><button class="btn drill">🧠 Practice — play it from memory</button></div>`, { title: l.name });
+      const sh = sheet(`<p class="small">${md(l.intro || "")}</p><div class="col gap"><button class="btn primary learn">${I.book} Learn — every move explained</button><button class="btn drill">${I.target} Drill — play it from memory</button><button class="btn vsbot">${I.play2} Play this opening vs a bot</button></div>`, { title: l.name });
+      $(".vsbot", sh.el).onclick = () => { sh.close(); playVsBot(o, l); };
       $(".learn", sh.el).onclick = () => { sh.close(); lineTrainer(root, o, l, "learn"); };
       $(".drill", sh.el).onclick = () => { sh.close(); lineTrainer(root, o, l, "drill"); };
     }));
@@ -89,12 +99,15 @@ function lineTrainer(root, o, l, mode, { onFinish, queue } = {}) {
   const me = o.side;
   root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2 class="grow" style="font-size:18px">${esc(l.name)}</h2><span class="badge-pill ${mode === "drill" ? "gold" : "acc"}">${mode === "drill" ? "Practice" : "Learn"}</span></div>
     <div class="lesson-layout"><div class="lb"><div id="lt"></div><div class="movelist mt-s lml" style="border-radius:8px"></div></div><div class="lt">
-      <div class="card step-text expl"></div><div class="fb"></div>
+      <div class="ot-coach"></div><div class="fb"></div>
       <div class="row gap mt"><button class="btn ghost bk">‹</button><button class="btn primary grow fw">Next ›</button></div>
       ${mode === "drill" ? "" : '<button class="btn ghost mt sw">Switch to practice</button>'}
     </div></div>`;
   $(".back", root).onclick = () => renderOpening(root, [o.id]);
   const c = new Chess();
+  const coach = o.kind === "gambits" && mode === "drill" ? coachById("dante") : coachById("juno");
+  const cb = coachBubble($(".ot-coach", root), coach, "", { size: 56 });
+  const say = (html, e) => cb.say(html, e);
   const b = new Board($("#lt", root), { orientation: me, onMove });
   let k = 0, errors = 0, busy = false;
   // deliberate blunders in trap lines (dubious) are played for you, so you only drill the moves worth knowing
@@ -115,13 +128,13 @@ function lineTrainer(root, o, l, mode, { onFinish, queue } = {}) {
       if (!done) {
         try { const t = new Chess(c.fen()); const mm = moveSan(t, nxt.san); b.setArrows(mine(k) ? [{ from: mm.from, to: mm.to, color: nxt.dubious ? "r" : "g" }] : []); } catch {}
       } else b.setArrows([]);
-      $(".expl", root).innerHTML = k === 0 ? md(l.intro || "") : `<div class="bold mb">${Math.ceil(k / 2)}${k % 2 ? "." : "..."} ${esc(l.moves[k - 1].san)}</div>${md(l.moves[k - 1].text || "")}`;
-      if (done) $(".expl", root).innerHTML += `<div class="feedback ok mt">${md(l.summary || "End of the line.")}</div>`;
+      if (done) say(`<b>That's the line.</b> ${esc(l.summary || "")}`, "happy");
+      else say(k === 0 ? esc(l.intro || "Let's walk through it.") : `<b>${Math.ceil(k / 2)}${k % 2 ? "." : "..."} ${esc(l.moves[k - 1].san)}</b> ${esc(l.moves[k - 1].text || "")}`, l.moves[k - 1] && l.moves[k - 1].dubious ? "worried" : null);
       $(".fw", root).textContent = done ? "Practice it now" : mine(k) ? "Show my move ›" : "Next ›";
     } else {
       b.setArrows([]);
       b.setMovable(!done && mine(k) ? me : null, !done && mine(k) ? destsOf(c) : null);
-      if (!done) $(".expl", root).innerHTML = k === 0 ? `Play the line as ${me === "w" ? "White" : "Black"} from memory.` : `<div class="bold mb">${esc(l.moves[k - 1].san)}</div>${md(l.moves[k - 1].text || "")}`;
+      if (!done) say(k === 0 ? `Play the line as ${me === "w" ? "White" : "Black"} from memory.` : `<b>${esc(l.moves[k - 1].san)}</b> ${esc(l.moves[k - 1].text || "")}`);
       $(".fw", root).classList.toggle("hide", !done);
       if (done) finish();
     }
@@ -172,12 +185,51 @@ function lineTrainer(root, o, l, mode, { onFinish, queue } = {}) {
   if (mode === "drill" && !mine(0)) setTimeout(step, 500);
 }
 
-function renderReview(root) {
+function renderReview(root, rep = false) {
   loadOpenings().then((D) => {
     const all = [...D.openings, ...D.gambits];
-    const queue = dueLines().map((id) => { for (const o of all) { const l = o.lines.find((x) => x.id === id); if (l) return { o, l }; } return null; }).filter(Boolean);
+    let queue = dueLines().map((id) => { for (const o of all) { const l = o.lines.find((x) => x.id === id); if (l) return { o, l }; } return null; }).filter(Boolean);
+    if (rep) {
+      const R = state().repertoire || {};
+      const ids = new Set(Object.values(R).flat());
+      const mine = all.filter((o) => ids.has(o.id)).flatMap((o) => o.lines.map((l) => ({ o, l })));
+      const st = (l) => (state().openings[l.id] || {}).stars || 0;
+      queue = [...queue.filter((q) => ids.has(q.o.id)), ...mine.filter((q) => !queue.some((x) => x.l.id === q.l.id)).sort((a, b) => st(a.l) - st(b.l))].slice(0, 12);
+    }
     if (!queue.length) { root.innerHTML = '<div class="topbar"><button class="back">‹</button><h2>Review</h2></div><div class="empty">All caught up. 🎉</div>'; $(".back", root).onclick = () => back(); return; }
     const next = () => { const q = queue.shift(); if (!q) return go("openings/openings"); lineTrainer(root, q.o, q.l, "drill", { onFinish: next, queue }); };
     next();
+  });
+}
+
+// "Play this opening vs bot": the bot is forced into the line, then plays freely
+function playVsBot(o, l) {
+  const me = o.side, botSide = me === "w" ? "b" : "w";
+  const r = currentRating("rapid") || 1000;
+  const bots = ALL_BOTS.filter((b) => b.style !== "engine").sort((a, b) => Math.abs(a.elo - r) - Math.abs(b.elo - r)).slice(0, 6);
+  const sh = sheet(`<p class="small muted">The bot plays its side of <b>${esc(l.name)}</b> for as long as you stay in the line, then it plays freely. Casual game.</p>
+    <div class="list">${bots.map((b, i) => `<div class="list-row pb" data-i="${i}">${avatar(b, 40)}<div class="grow"><b class="small">${esc(b.name)}</b><div class="tiny muted">${b.elo}</div></div><span class="chev">›</span></div>`).join("")}</div>`, { title: "Play this opening" });
+  $$(".pb", sh.el).forEach((el) => (el.onclick = () => { sh.close(); newGame({ bot: bots[+el.dataset.i], tc: "10+5", color: me, rated: false, forcedLine: { side: botSide, type: "main", moves: l.moves.map((m) => m.san), dubious: [] }, opening: o.id }); }));
+}
+
+// ---------- repertoire builder ----------
+export function renderRepertoire(root) {
+  const s = state();
+  const R = s.repertoire || (s.repertoire = { white: [], vsE4: [], vsD4: [] });
+  root.innerHTML = `${sectionHead("openings", "My repertoire", "Pick your White openings and your defences. Drills and reviews focus on them.", `<button class="back" aria-label="Back">‹</button>`)}<div class="grid rep-g" style="max-width:720px"><div class="skel" style="height:200px"></div></div>`;
+  $(".back", root).onclick = () => back();
+  loadOpenings().then((D) => {
+    const all = [...D.openings, ...D.gambits];
+    const first = (o) => (o.lines[0] && o.lines[0].moves[0] && o.lines[0].moves[0].san) || "";
+    const groups = [["white", "As White", all.filter((o) => o.side === "w")], ["vsE4", "As Black vs 1.e4", all.filter((o) => o.side === "b" && first(o) === "e4")], ["vsD4", "As Black vs 1.d4 and others", all.filter((o) => o.side === "b" && first(o) !== "e4")]];
+    const draw = () => {
+      const lines = Object.values(R).flat().flatMap((id) => (all.find((o) => o.id === id) || { lines: [] }).lines);
+      const mastered = lines.filter((l) => (s.openings[l.id] || {}).stars >= 3).length;
+      $(".rep-g", root).innerHTML = `<div class="card"><div class="row between"><div><div class="eyebrow">Your repertoire</div><div class="display" style="font-size:28px">${lines.length} lines · ${mastered} mastered</div></div><button class="btn primary drillrep" ${lines.length ? "" : "disabled"}>${I.target} Drill it</button></div></div>` +
+        groups.map(([k, t, list]) => `<div class="sec-title">${t}</div><div class="chips">${list.map((o) => `<button class="chip rp ${R[k].includes(o.id) ? "on" : ""}" data-k="${k}" data-id="${o.id}">${R[k].includes(o.id) ? "★ " : ""}${esc(o.name)}</button>`).join("")}</div>`).join("");
+      $$(".rp", root).forEach((b) => (b.onclick = () => { const k = b.dataset.k, id = b.dataset.id; R[k] = R[k].includes(id) ? R[k].filter((x) => x !== id) : [...R[k], id]; save(); draw(); }));
+      const dr = $(".drillrep", root); if (dr) dr.onclick = () => go("opening/_rep");
+    };
+    draw();
   });
 }

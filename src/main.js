@@ -69,6 +69,7 @@ register("course", Learn.renderCourse);
 register("lesson", Learn.renderLesson);
 register("openings", Openings.renderList);
 register("opening", Openings.renderOpening);
+register("repertoire", Openings.renderRepertoire);
 register("endgames", (r) => X.renderGym(r, []));
 register("drill", X.renderGym);
 register("vision", X.renderVision);

@@ -5,7 +5,10 @@ import { state, save, touchStreak, currentRating, bestRating } from "../store.js
 import { play as sfx } from "../sound.js";
 import { playStep, loadCourse } from "./learn.js";
 import { loadOpenings, dueLines } from "./openings.js";
-import { videoList, ratingChart } from "../ui.js";
+import { videoList, ratingChart, sectionHead, coachBubble, ring } from "../ui.js";
+import { coachById } from "../coaches.js";
+import { celebrate } from "../art/fx.js";
+import { checkAchievements } from "../achievements.js";
 import { I } from "../icons.js";
 import { go, back } from "../router.js";
 
@@ -23,8 +26,9 @@ export function renderGym(root, [id]) {
       cleanup = playStep($("#gb", root), $(".gs", root), d, () => {}, {
         onResult: (ok, moves) => {
           const r = s.drills[d.id] || { tries: 0 };
-          r.tries++; if (ok) { r.done = true; r.best = Math.min(r.best || 999, moves); s.xp += 20; }
+          r.tries++; if (ok) { r.done = true; r.best = Math.min(r.best || 999, moves); s.xp += 20; celebrate(); }
           s.drills[d.id] = r; s.daily.drills++; touchStreak(); save();
+          checkAchievements({ event: "drill", delay: 1200 });
         },
       });
       const idx = drills.indexOf(d);
@@ -34,11 +38,12 @@ export function renderGym(root, [id]) {
     if (!drills.length) { root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Endgame Gym</h2></div><div class="empty">The endgame drills are still being built — check back after the next update.</div>`; $(".back", root).onclick = () => back(); return; }
     const groups = [...new Set(drills.map((d) => d.group))];
     const done = drills.filter((d) => s.drills[d.id] && s.drills[d.id].done).length;
-    root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Endgame Gym</h2><span class="badge-pill acc">${done}/${drills.length}</span></div>
-      <p class="muted small" style="max-width:720px">Real technique against full-strength Stockfish. "Win it" means checkmate (or promote with a won position) within the move limit. "Hold the draw" means survive. Strong players know every one of these by heart.</p>
+    root.innerHTML = `${sectionHead("endgames", "Endgame Gym", "", `<button class="back" aria-label="Back">‹</button>${ring(done / drills.length, { size: 52, stroke: 5, label: done + "" })}`)}
+      <div class="card gym-coach" style="max-width:720px"></div>
       <div style="max-width:720px">${groups.map((g) => `<div class="sec-title">${esc(g)}</div>${drills.filter((d) => d.group === g).map((d) => { const r = s.drills[d.id]; return `<div class="lesson-row ${r && r.done ? "done" : ""}" data-id="${d.id}"><div class="dot">${r && r.done ? "✓" : d.goal === "win" ? "W" : "½"}</div><div class="grow"><div class="bold small">${esc(d.title)}</div><div class="tiny muted">${d.goal === "win" ? "Win" : "Draw"} in ${d.maxMoves} · ${esc(d.band || "")}${r && r.best ? " · best " + r.best + " moves" : ""}</div></div><span class="chev">›</span></div>`; }).join("")}`).join("")}</div>`;
     $(".back", root).onclick = () => back();
     $$(".lesson-row", root).forEach((r) => (r.onclick = () => go("drill/" + r.dataset.id)));
+    coachBubble($(".gym-coach", root), coachById("anselm"), `Real technique against full-strength Stockfish and the tablebase. <b>Win it</b> means mate (or promote into a won position) within the move limit; <b>Hold the draw</b> means survive. Strong players know every one of these by heart.`);
   });
   return () => cleanup && cleanup();
 }
@@ -48,7 +53,7 @@ export function renderVision(root) {
   const s = state();
   let color = "w", running = false, score = 0, target = null, timer = null, t0 = 0, board = null;
   const DUR = 30000;
-  root.innerHTML = `<div class="topbar"><button class="back">‹</button><h2>Vision</h2></div>
+  root.innerHTML = `${sectionHead("learn", "Vision", "Name the square, fast.", `<button class="back" aria-label="Back">‹</button>`)}
     <div class="lesson-layout"><div class="lb" style="position:relative"><div id="vb"></div><div class="vt" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div class="vision-target" style="color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.7)"></div></div></div>
     <div class="lt"><div class="card"><p class="small">A square name appears. Tap it on the board as fast as you can. Strong players "see" coordinates without thinking — it makes calculation and notation much faster.</p>
       <div class="seg cs mb"><button data-c="w">As White</button><button data-c="b">As Black</button></div>

@@ -60,7 +60,7 @@ window.addEventListener("popstate", () => { if (!mirroring && !inClaude) back();
 function navOf(name) {
   if (["play", "game", "review", "analysis", "history"].includes(name)) return "play";
   if (["puzzles", "rush", "mistakes", "puzzle", "daily", "duel", "puzzle-stats"].includes(name)) return "puzzles";
-  if (["learn", "course", "lesson", "openings", "opening", "endgames", "drill", "vision", "library", "plan"].includes(name)) return "learn";
+  if (["learn", "course", "lesson", "openings", "opening", "endgames", "drill", "vision", "library", "plan", "repertoire"].includes(name)) return "learn";
   if (["profile", "settings", "stats", "coaches", "achievements", "archive"].includes(name)) return "profile";
   return "home";
 }

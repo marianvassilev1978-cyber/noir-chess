@@ -585,3 +585,24 @@ body.in-claude .hide-in-claude { display: none !important; }
 .cp-item .av { border: 2px solid transparent; }
 .cp-item.on { color: var(--text); }
 .cp-item.on .av { border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-glow); }
+
+/* learn */
+.course-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 720px) { .course-grid { grid-template-columns: 1fr 1fr; } }
+.course-card { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(180deg, var(--glass2), var(--glass)); cursor: pointer; box-shadow: var(--sh-1); will-change: transform; }
+.course-card .cc-cover { aspect-ratio: 16 / 7; overflow: hidden; }
+.course-card .cc-meta { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+.course-card .cc-title { font-family: var(--font-display); font-size: 24px; line-height: 1.05; margin-top: 2px; }
+.course-hero { position: relative; margin: calc(-14px - var(--safe-t)) -16px 14px; height: 250px; overflow: hidden; color: #fff; }
+.course-hero .ch-cover { position: absolute; inset: 0; }
+.course-hero .ch-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.75)); }
+.course-hero .back { position: absolute; top: calc(12px + var(--safe-t)); left: 16px; }
+.course-hero .ch-meta { position: absolute; left: 16px; right: 16px; bottom: 16px; }
+.course-hero h1 { margin: 2px 0 0; font-size: 38px; }
+@media (min-width: 960px) { .course-hero { margin: -28px -32px 18px; border-radius: 0 0 28px 28px; } }
+.lesson-row .pring b svg { width: 16px; height: 16px; color: var(--good); }
+.lesson-coach .coachbox { padding: 0 0 10px; }
+.ot-coach .coachbox { padding: 0 0 8px; }
+.rec-ic { width: 34px; height: 34px; border-radius: 11px; background: var(--glass2); display: inline-flex; align-items: center; justify-content: center; color: var(--acc2); flex: none; }
+.rec-ic svg { width: 18px; height: 18px; }
+.gym-coach .coachbox { padding: 0; }
