@@ -101,7 +101,7 @@ export function render(root, [id]) {
     const V = voice(coach.id);
     const intro = rec.score === 1 ? V.afterWin[0] : rec.score === 0 ? V.afterLoss[0] : V.afterDraw[0];
     const ph = R.phases || { w: {}, b: {} };
-    root.innerHTML = `<div class="topbar"><button class="back" aria-label="Back">‹</button><h2>Game Review</h2><button class="icon-btn pgn" aria-label="Copy PGN">${I.copy}</button></div>
+    root.innerHTML = `<div class="topbar"><button class="back" aria-label="Back">‹</button><h2>Game Review</h2><button class="icon-btn pgn" aria-label="Copy PGN">${I.copy}</button><button class="icon-btn rv-close" aria-label="Close review">${I.x}</button></div>
       <div class="grid" style="max-width:640px;margin:0 auto">
       <div class="card"><div class="sum-coach"></div>
         <div class="accs mt">
@@ -114,7 +114,7 @@ export function render(root, [id]) {
         ${op ? `<div class="small mt-s"><span class="muted">Opening:</span> <b>${esc(op.eco)}</b> ${esc(op.name)}</div>` : ""}
       </div>
       <button class="btn primary big go-walk">${I.play2} Start review with ${esc(coach.short)}</button>
-      <div class="card"><div class="cls-table">${ORDER.map((k) => `<div class="v" style="color:${CLS[k].color}">${R.counts.w[k] || 0}</div><div class="c">${badgeHTML(k)} ${CLS[k].label}</div><div class="v" style="color:${CLS[k].color}">${R.counts.b[k] || 0}</div>`).join("")}</div></div>
+      <div class="card"><div class="tiny muted mb">Tap a row to jump to those moves.</div><div class="cls-table">${ORDER.map((k) => `<button class="v" data-k="${k}" data-side="w" style="color:${CLS[k].color}">${R.counts.w[k] || 0}</button><button class="c" data-k="${k}">${badgeHTML(k)} ${CLS[k].label}</button><button class="v" data-k="${k}" data-side="b" style="color:${CLS[k].color}">${R.counts.b[k] || 0}</button>`).join("")}</div></div>
       <div class="card"><div class="eyebrow mb">Game phases</div><div class="phases">${["opening", "middlegame", "endgame"].map((k) => { const a = PH(ph.w[k]), b = PH(ph.b[k]); return `<div class="phr"><span class="pv" style="color:${a.c}">${a.ic ? badgeHTML(a.ic) : ""} ${ph.w[k] != null ? Math.round(ph.w[k]) : "—"}</span><b>${k[0].toUpperCase() + k.slice(1)}</b><span class="pv" style="color:${b.c}">${ph.b[k] != null ? Math.round(ph.b[k]) : "—"} ${b.ic ? badgeHTML(b.ic) : ""}</span></div>`; }).join("")}</div></div>
       <div class="grid two"><button class="btn go-moves">${I.analysis} All moves</button><button class="btn go-verdict">${I.medal} Coach's verdict</button></div>
       <button class="btn ghost an">${I.analysis} Open in analysis board</button>
@@ -130,7 +130,17 @@ export function render(root, [id]) {
     $(".go-verdict", root).onclick = () => verdictView(R);
     $(".an", root).onclick = () => go("analysis/" + encodeURIComponent(JSON.stringify({ moves: rec.moves, startFen: rec.startFen || null, ply: rec.moves.length - 1, orientation: you })));
     $(".pgn", root).onclick = () => copyText(toPGN(rec));
+    $(".rv-close", root).onclick = closeReview;
+    // tap a classification: jump to those moves (left = White, right = Black, middle = yours)
+    $$(".cls-table [data-k]", root).forEach((el) => (el.onclick = () => {
+      const k = el.dataset.k, side = el.dataset.side || you;
+      const list = R.plies.filter((p) => p.cls === k && (side === "all" || p.color === side)).map((p) => p.i);
+      const any = list.length ? list : R.plies.filter((p) => p.cls === k).map((p) => p.i);
+      if (!any.length) return toast(`No ${CLS[k].label.toLowerCase()} moves in this game.`);
+      explore(R, any[0], { cls: k, list: any });
+    }));
   }
+  function closeReview() { const s2 = state(); if (s2.live && s2.live.id === rec.id) s2.live = null; go("play"); }
 
   function summaryLine(R) {
     const acc = you === "w" ? R.accW : R.accB;
@@ -160,7 +170,7 @@ export function render(root, [id]) {
     root.className = "view full";
     root.innerHTML = `<div class="game">
       <div class="board-col">
-        <div class="row" style="padding:0 6px;gap:8px"><button class="back" aria-label="Back to summary">‹</button><b class="grow">${title}</b><span class="badge-pill step-n"></span></div>
+        <div class="row" style="padding:0 6px;gap:8px"><button class="back" aria-label="Back to summary">‹</button><b class="grow">${title}</b><span class="badge-pill step-n"></span><button class="icon-btn rv-close2" aria-label="Close review" style="width:36px;height:36px">${I.x}</button></div>
         <div class="top-bar">${playerBar(you === "w" ? opp : youP, { rating: you === "w" ? (rec.mode === "friend" ? null : rec.bot.elo) : rec.userRating })}</div>
         <div class="board-row"><div class="eb"></div><div class="board-holder"><div id="rbd"></div></div></div>
         <div class="bot-bar">${playerBar(you === "w" ? youP : opp, { rating: you === "w" ? rec.userRating : (rec.mode === "friend" ? null : rec.bot.elo) })}</div>
@@ -170,6 +180,7 @@ export function render(root, [id]) {
     const eb = new EvalBar($(".eb", root));
     cleanupBoard = () => board.destroy();
     $(".back", root).onclick = () => { board.destroy(); summary(R); };
+    $(".rv-close2", root).onclick = () => { board.destroy(); closeReview(); };
     return { board, eb };
   }
   function place(board, eb, R, i) {
@@ -230,9 +241,17 @@ export function render(root, [id]) {
   }
 
   // ---------- every move ----------
-  function explore(R, start) {
-    const { board, eb } = boardScreen(R, { title: "All moves" });
+  function explore(R, start, cyc = null) {
+    const { board, eb } = boardScreen(R, { title: cyc ? CLS[cyc.cls].label + " moves" : "All moves" });
     let cur = start ?? 0;
+    if (cyc) {
+      const bar = h(`<div class="cyc-bar"><button class="icon-btn cy-p" aria-label="Previous">${I.prev}</button><span class="grow tc small cy-t"></span><button class="icon-btn cy-n" aria-label="Next">${I.next}</button></div>`);
+      $(".side-panel", root).prepend(bar);
+      const upd = () => { const k = Math.max(0, cyc.list.indexOf(cur)); $(".cy-t", root).innerHTML = `${badgeHTML(cyc.cls)} ${CLS[cyc.cls].label} ${k + 1} of ${cyc.list.length}`; };
+      $(".cy-p", root).onclick = () => { const k = cyc.list.indexOf(cur); show(cyc.list[(k - 1 + cyc.list.length) % cyc.list.length], true); upd(); };
+      $(".cy-n", root).onclick = () => { const k = cyc.list.indexOf(cur); show(cyc.list[(k + 1) % cyc.list.length], true); upd(); };
+      setTimeout(upd, 0);
+    }
     $(".rv-ctrl", root).innerHTML = `<button class="icon-btn" id="r-first" aria-label="First">${I.first}</button><button class="icon-btn" id="r-prev" aria-label="Previous">${I.prev}</button><button class="icon-btn" id="r-next" aria-label="Next">${I.next}</button><button class="icon-btn" id="r-last" aria-label="Last">${I.last}</button><button class="icon-btn" id="r-flip" aria-label="Flip">${I.flip}</button>`;
     const marks = R.plies.filter((p) => ["blunder", "mistake", "miss", "brilliant", "great"].includes(p.cls)).map((p) => ({ i: p.i, color: CLS[p.cls].color }));
     function show(i, sound = false) {

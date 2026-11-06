@@ -128,9 +128,11 @@ export function render(root, [arg]) {
     if (!engineOn) { lines.innerHTML = '<div class="small muted a-line">Engine off</div>'; board.setArrows([]); eb.set({ cp: 0 }, board.orientation); $(".eng-d", root).textContent = ""; return; }
     if (c.isGameOver()) { lines.innerHTML = `<div class="small bold a-line">${c.isCheckmate() ? "Checkmate" : "Draw"}</div>`; board.setArrows([]); return; }
     const fen = c.fen(), sig = job.signal;
-    let lastDraw = 0;
-    const draw = (j) => {
-      const now = performance.now(); if (now - lastDraw < 180) return; lastDraw = now;
+    if (!ANA.ready) $(".eng-d", root).textContent = ANA.kind === "unavailable" ? "engine unavailable" : "starting engine…";
+    // throttle live updates to ~5 a second; the final result always draws (a fast engine can finish inside the first 180 ms)
+    let lastDraw = -1e9;
+    const draw = (j, force) => {
+      const now = performance.now(); if (!force && now - lastDraw < 180) return; lastDraw = now;
       const L = Object.keys(j.lines).sort((a, b) => a - b).map((k) => j.lines[k]);
       if (!L.length) return;
       $(".eng-d", root).textContent = "depth " + L[0].depth;
@@ -139,7 +141,7 @@ export function render(root, [arg]) {
       $$(".a-line", lines).forEach((r) => (r.onclick = () => { const l = L[+r.dataset.i]; const cc = new Chess(cur.fen); try { const m = cc.move({ from: l.move.slice(0, 2), to: l.move.slice(2, 4), promotion: l.move[4] }); addMove(m, cc.fen()); moveSound(m); sync(true); } catch {} }));
       board.setArrows(L.slice(0, 3).map((l, i) => ({ from: l.move.slice(0, 2), to: l.move.slice(2, 4), color: i === 0 ? "b" : "g", opacity: i === 0 ? 0.85 : 0.4, width: i === 0 ? 0.17 : 0.1 })));
     };
-    ANA.analyse(fen, { depth: localStorage.getItem("noir.test") ? 10 : 22, multipv: 3, noCache: true, signal: sig, onInfo: (_, j) => draw(j) }).then((r) => { if (sig.aborted) return; lastDraw = 0; draw({ lines: Object.fromEntries(r.lines.map((l, i) => [i + 1, l])) }); }).catch(() => {});
+    ANA.analyse(fen, { depth: localStorage.getItem("noir.test") ? 10 : 22, multipv: 3, noCache: true, signal: sig, onInfo: (_, j) => draw(j) }).then((r) => { if (sig.aborted) return; draw({ lines: Object.fromEntries(r.lines.map((l, i) => [i + 1, l])) }, true); }).catch(() => {});
   }
 
   function addMove(m, fen) {

@@ -2,7 +2,7 @@
 import { $, $$, esc, sheet, toast, timeAgo } from "../util.js";
 import { state, save, currentRating, catOf, previewGame, isProvisional, ratingLabel } from "../store.js";
 import { BOT_GROUPS, ALL_BOTS, botById, STYLES, customBot } from "../bots.js";
-import { findOpponent, playerById } from "../players.js";
+import { findOpponent, playerById, POOL_SIZE } from "../players.js";
 import { newGame, startPlacement, resumeLive, nextPlacement, resolveBot } from "./game.js";
 import { avatar, deltaPill, sectionHead } from "../ui.js";
 import { I } from "../icons.js";
@@ -27,11 +27,13 @@ export function render(root) {
   const st = s.settings;
   let sel = { tc: st.lastTc || st.defaultTc || "10+0", color: st.lastColor || "random", rated: st.lastRated !== undefined ? st.lastRated : true };
   const live = s.live && !s.live.result;
-  let opp = null;
+  let opp = null, picked = false;
   const cat = () => catOf(sel.tc);
   const myR = () => currentRating(cat()) || (s.placement && s.placement.rating) || 800;
-  function pickOpp() { opp = findOpponent(myR(), { recent: s.recentOpps || [] }); }
-  pickOpp();
+  function pickOpp() { opp = findOpponent(myR(), { recent: s.recentOpps || [] }); picked = false; }
+  const fromId = (id) => (!id ? null : /^p\d+$/.test(id) ? playerById(id) : id.startsWith("echo-") ? customBot(+id.slice(5)) : botById(id));
+  opp = fromId(st.pickedOpp); picked = !!opp;
+  if (!opp) pickOpp();
 
   root.innerHTML = `${sectionHead("play", "Play", "", `<span class="badge-pill acc">${esc(cat())} ${ratingLabel(cat())}</span>`)}
     ${live ? `<button class="tile mb resume">${avatar(resolveBot(s.live.bot), 48)}<div class="grow"><div class="t">Continue vs ${esc(s.live.bot.name)}</div><div class="s">Move ${Math.ceil(s.live.moves.length / 2)} · ${s.live.rated ? "rated" : "casual"} · ${tcLabel(s.live.tc)}</div></div><span class="chev">›</span></button>` : ""}
@@ -40,7 +42,8 @@ export function render(root) {
       <div class="hero">
         <div class="eyebrow">Next opponent · ${tcLabel(sel.tc)} ${sel.rated ? "rated" : "casual"}</div>
         <div class="pre-card mt-s opp"></div>
-        <div class="cta-row"><button class="btn primary big start">${I.play2} Play</button><button class="btn big reroll" style="font-size:15px">${I.undo} Another</button></div>
+        <div class="cta-row"><button class="btn primary big start">${I.play2} Play</button><button class="btn big choose" style="font-size:15px">${I.coach} Change opponent</button></div>
+        <div class="row center mt-s"><button class="btn sm ghost reroll">${I.undo} Another player at my level</button></div>
       </div>
       <div class="card">
         <div class="row between"><div class="eyebrow">Time control</div><span class="small muted cat-r"></span></div>
@@ -65,6 +68,7 @@ export function render(root) {
   function drawOpp() {
     const o = opp;
     const rec = s.opponents[o.id];
+    $(".hero .eyebrow", root).textContent = `${picked ? "Your pick" : "Matched to you"} · ${tcLabel(sel.tc)} ${sel.rated ? "rated" : "casual"}`;
     $(".opp", root).innerHTML = `${avatar(o, 64)}<div class="grow"><div class="row gap-s">${o.title ? `<span class="title-b">${o.title}</span>` : ""}<b style="font-size:17px">${esc(o.name)}</b><span>${o.flag}</span></div>
       <div class="small muted">${o.elo} · ${STYLES[o.style].name}${o.white && o.white[0] ? " · plays " + esc(o.white[0].replace(/-/g, " ")) : ""}</div>
       ${rec ? `<div class="tiny muted">You ${rec.w}–${rec.d}–${rec.l} vs them</div>` : `<div class="tiny dim">${esc(o.bio || "")}</div>`}
@@ -74,9 +78,9 @@ export function render(root) {
   function drawTC() {
     const grp = (g) => `<div><div class="row gap-s tiny bold muted" style="margin:8px 0 6px"><span style="width:16px;height:16px;display:inline-flex">${I[g.icon]}</span>${g.cat}${g.cat !== "Unlimited" ? ` <span class="dim">· ${ratingLabel(g.key)}</span>` : ""}</div><div class="tc-grid">${g.list.map((t) => `<button class="tc-btn ${sel.tc === t ? "on" : ""}" data-tc="${t}">${tcLabel(t)}</button>`).join("")}</div></div>`;
     $(".tcs", root).innerHTML = TCS.slice(0, 3).map(grp).join("") + `<div class="grid two" style="gap:10px">${TCS.slice(3).map(grp).join("")}</div>`;
-    $$(".tc-btn", root).forEach((b) => (b.onclick = () => { const oldCat = cat(); sel.tc = b.dataset.tc; if (cat() !== oldCat) pickOpp(); drawTC(); drawOpp(); drawHead(); }));
+    $$(".tc-btn", root).forEach((b) => (b.onclick = () => { const oldCat = cat(); sel.tc = b.dataset.tc; if (cat() !== oldCat && !picked) pickOpp(); drawTC(); drawOpp(); drawHead(); }));
   }
-  function drawHead() { $(".hero .eyebrow", root).textContent = `Next opponent · ${tcLabel(sel.tc)} ${sel.rated ? "rated" : "casual"}`; $(".cat-r", root).textContent = `${cat()} ${ratingLabel(cat())}${isProvisional(cat()) ? " (provisional)" : ""}`; }
+  function drawHead() { $(".hero .eyebrow", root).textContent = `${picked ? "Your pick" : "Matched to you"} · ${tcLabel(sel.tc)} ${sel.rated ? "rated" : "casual"}`; $(".cat-r", root).textContent = `${cat()} ${ratingLabel(cat())}${isProvisional(cat()) ? " (provisional)" : ""}`; }
   function drawSeg() {
     $$(".colors button", root).forEach((b) => b.classList.toggle("on", b.dataset.c === sel.color));
     $$(".modes button", root).forEach((b) => b.classList.toggle("on", (b.dataset.r === "1") === sel.rated));
@@ -105,6 +109,8 @@ export function render(root) {
       ${rec ? `<div class="small tc mt-s">Your record: <b>${rec.w}</b> wins · <b>${rec.d}</b> draws · <b>${rec.l}</b> losses</div>` : ""}
       ${sel.rated ? `<div class="row center mt">${stakes(cat(), b.elo)}</div>` : ""}
       <button class="btn primary big mt go">${I.play2} Play ${esc(b.name)} · ${tcLabel(sel.tc)} ${sel.rated ? "rated" : "casual"}</button></div>`, { title: "" });
+    sh.el.querySelector(".go").insertAdjacentHTML("afterend", `<button class="btn ghost mt-s setopp" style="width:100%">Set as my opponent</button>`);
+    $(".setopp", sh.el).onclick = () => { opp = b; picked = true; st.pickedOpp = b.id; save(); sh.close(); drawOpp(); drawHead(); };
     const ctl = bring($(".bs-port .char", sh.el), { enter: true });
     setTimeout(() => ctl && ctl.expr("happy", 1500), 500);
     $(".go", sh.el).onclick = () => { sh.close(); start(b); };
@@ -114,7 +120,8 @@ export function render(root) {
   $$(".colors button", root).forEach((b) => (b.onclick = () => { sel.color = b.dataset.c; drawSeg(); }));
   $$(".modes button", root).forEach((b) => (b.onclick = () => { sel.rated = b.dataset.r === "1"; drawSeg(); drawOpp(); drawHead(); }));
   $(".start", root).onclick = () => start(opp);
-  $(".reroll", root).onclick = () => { s.recentOpps = [opp.id, ...(s.recentOpps || [])].slice(0, 15); pickOpp(); drawOpp(); };
+  $(".reroll", root).onclick = () => { s.recentOpps = [opp.id, ...(s.recentOpps || [])].slice(0, 15); st.pickedOpp = null; save(); pickOpp(); drawOpp(); drawHead(); };
+  $(".choose", root).onclick = () => opponentPicker(myR(), (o) => { opp = o; picked = true; st.pickedOpp = o.id; save(); drawOpp(); drawHead(); });
   const rs = $(".resume", root); if (rs) rs.onclick = () => { resumeLive(); go("game"); };
   const pl = $(".place", root);
   if (pl) pl.onclick = () => {
@@ -188,5 +195,44 @@ export function renderHistory(root) {
   $$(".hf .chip", root).forEach((c) => (c.onclick = () => { f = c.dataset.f; draw(); }));
   $(".q", root).oninput = (e) => { q = e.target.value.toLowerCase(); draw(); };
   $(".ex", root).onclick = async () => { const { toPGN } = await import("./review.js"); const { copyText, download } = await import("../util.js"); const txt = s.games.map(toPGN).join("\n\n"); download("noir-chess-games.pgn", txt, "application/x-chess-pgn"); copyText(txt); };
+  draw();
+}
+
+// ---------- choose your opponent: matched, featured bots, any of the 2,000 players, or an exact strength ----------
+const STYLE_KEYS = ["all", "aggressive", "positional", "trickster", "defensive", "chaotic"];
+export function opponentPicker(myR, onPick) {
+  const s = state();
+  let tab = "match", target = Math.round(myR / 50) * 50, style = "all", tier = (BOT_GROUPS.find((g) => g.bots.some((b) => Math.abs(b.elo - myR) < 200)) || BOT_GROUPS[0]).id, custom = target;
+  const sh = sheet(`<div class="seg op-tabs"><button data-t="match">Matched</button><button data-t="bots">Bots</button><button data-t="players">Players</button><button data-t="custom">Custom</button></div><div class="op-body mt"></div>`, { title: "Choose your opponent", wide: true });
+  const body = $(".op-body", sh.el);
+  const row = (o) => { const r = s.opponents[o.id]; return `<button class="list-row op-row" data-id="${o.id}" style="width:100%;background:none;border-left:0;border-right:0;border-top:0;color:inherit;text-align:left">${avatar(o, 46)}<div class="grow"><div class="row gap-s">${o.title ? `<span class="title-b">${o.title}</span>` : ""}<b class="small">${esc(o.name)}</b><span class="tiny">${o.flag || ""}</span></div><div class="tiny muted">${STYLES[o.style] ? STYLES[o.style].name : ""}${o.bio && !o.generated ? " · " + esc(o.bio) : ""}${r ? ` · you ${r.w}–${r.d}–${r.l}` : ""}</div></div><span class="badge-pill">${o.elo}</span></button>`; };
+  const bind = (list) => $$(".op-row", body).forEach((el) => (el.onclick = () => { const o = list.find((x) => x.id === el.dataset.id); sh.close(); onPick(o); }));
+  const near = (t, filt, n) => { const out = []; for (let i = 0; i < POOL_SIZE; i++) { const p = playerById("p" + i); if (filt(p)) out.push(p); } return out.sort((a, b) => Math.abs(a.elo - t) - Math.abs(b.elo - t)).slice(0, n).sort((a, b) => a.elo - b.elo); };
+  function draw() {
+    $$(".op-tabs button", sh.el).forEach((b) => b.classList.toggle("on", b.dataset.t === tab));
+    if (tab === "match") {
+      const list = near(myR, (p) => Math.abs(p.elo - myR) <= 50 && !(s.recentOpps || []).includes(p.id), 10);
+      body.innerHTML = `<p class="tiny muted">Players within ±50 of your rating (${myR}).</p>${list.map(row).join("")}`; bind(list);
+    } else if (tab === "bots") {
+      const g = BOT_GROUPS.find((x) => x.id === tier);
+      body.innerHTML = `<div class="chips scroll op-tiers">${BOT_GROUPS.map((x) => `<button class="chip ${x.id === tier ? "on" : ""}" data-t="${x.id}">${x.name} <span class="tiny dim">${x.range}</span></button>`).join("")}</div><div class="mt-s">${g.bots.map(row).join("")}</div>`;
+      $$(".op-tiers .chip", body).forEach((c) => (c.onclick = () => { tier = c.dataset.t; draw(); }));
+      bind(g.bots);
+    } else if (tab === "players") {
+      const list = near(target, (p) => style === "all" || p.style === style, 30);
+      body.innerHTML = `<div class="row between"><b>Rating around</b><b class="tv">${target}</b></div><input type="range" class="tr" min="100" max="3200" step="50" value="${target}" aria-label="Rating">
+        <div class="chips mt-s">${STYLE_KEYS.map((k) => `<button class="chip st ${style === k ? "on" : ""}" data-s="${k}">${k === "all" ? "All styles" : STYLES[k].name}</button>`).join("")}</div>
+        <div class="mt-s plist">${list.map(row).join("")}</div>`;
+      $(".tr", body).oninput = (e) => { $(".tv", body).textContent = e.target.value; };
+      $(".tr", body).onchange = (e) => { target = +e.target.value; draw(); };
+      $$(".st", body).forEach((c) => (c.onclick = () => { style = c.dataset.s; draw(); }));
+      bind(list);
+    } else {
+      body.innerHTML = `<p class="small muted">A sparring partner at exactly the strength you pick.</p><div class="row between"><b>Strength</b><b class="cv">${custom}</b></div><input type="range" class="cr2" min="100" max="3200" step="25" value="${custom}" aria-label="Strength"><button class="btn primary big mt cgo">Choose Echo · ${custom}</button>`;
+      $(".cr2", body).oninput = (e) => { custom = +e.target.value; $(".cv", body).textContent = custom; $(".cgo", body).textContent = "Choose Echo · " + custom; };
+      $(".cgo", body).onclick = () => { sh.close(); onPick(customBot(custom)); };
+    }
+  }
+  $$(".op-tabs button", sh.el).forEach((b) => (b.onclick = () => { tab = b.dataset.t; draw(); }));
   draw();
 }

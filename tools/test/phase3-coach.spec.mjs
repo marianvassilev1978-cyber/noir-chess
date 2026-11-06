@@ -72,7 +72,7 @@ test("coach walkthrough: key moments, Show me, Why is my move bad, Retry, verdic
 
 test("analysis board: lines with depth, variation tree, explorer, PGN with variations, practice", async ({ page }) => {
   await boot(page, { route: "analysis" });
-  await expect(page.locator(".eng-d")).toContainText("depth", { timeout: 20000 });
+  await expect(page.locator(".eng-d")).toContainText("depth", { timeout: 60000 });
   await expect(page.locator(".a-line")).toHaveCount(3);
   await move(page, "e2", "e4", { sel: "#abd" }); await move(page, "e7", "e5", { sel: "#abd" });
   await page.locator("#a-prev").click(); // back to after 1.e4

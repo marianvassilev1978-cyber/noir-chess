@@ -3,6 +3,7 @@
 // All scores returned are from WHITE's point of view: cp (centipawns) or mate (moves, + = white mates).
 
 const MATE = 100000;
+const TEST = (() => { try { return !!localStorage.getItem("noir.test"); } catch { return false; } })();
 
 class Engine {
   constructor(name) {
@@ -15,6 +16,39 @@ class Engine {
     this.cache = new Map();
     this.readyP = null;
     this.opts = {};
+    this.lastMsg = 0;
+    this.restarts = 0;
+    this.dog = null;
+    this.ping = 0;
+    this.log = [];
+  }
+  _t(s) { if (TEST) { this.log.push(Math.round(performance.now()) + " " + s); if (this.log.length > 200) this.log.shift(); } }
+
+  // Stockfish prints at least every few seconds while it searches (each depth, and currmove lines after 3 s).
+  // Silence for 20 s with a job running = the worker is dead: start a new one and run the job again.
+  _watch() {
+    if (this.dog) return;
+    this.dog = setInterval(() => {
+      if (!this.ready || document.hidden) return;
+      if (this.ping && performance.now() - this.ping > 5000) { this._t("no readyok: restart"); this._restart(); return; }
+      if (this.cur && performance.now() - this.lastMsg > 20000) { this._t("silent: restart"); this._restart(); }
+    }, 1000);
+    // back from the background (iOS may have killed the worker): ask "isready" at once instead of finding out on the next move
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) return;
+      this.lastMsg = performance.now();
+      if (this.ready && this.w) { this.ping = performance.now(); this._send("isready"); }
+    });
+  }
+
+  _restart() {
+    const j = this.cur;
+    this.cur = null;
+    try { this.w && this.w.terminate(); } catch {}
+    this.w = null; this.ready = false; this.readyP = null; this.opts = {}; this.ping = 0;
+    this.restarts++;
+    if (j) { if (j.aborted) j.reject(new DOMException("aborted", "AbortError")); else { j.lines = {}; this.queue.unshift(j); } }
+    this.init();
   }
 
   init() {
@@ -24,7 +58,7 @@ class Engine {
       try { new WebAssembly.Module(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0])); } catch { wasm = false; }
       const tries = (wasm ? [["sf.js", 30000, "Stockfish 18"]] : []).concat([["sf-asm.js", 60000, "Stockfish 18 (compat)"]]);
       for (const [url, to, kind] of tries) {
-        try { await this._start(url, to); this.kind = kind; this.ready = true; this._next(); return true; }
+        try { this._t("init " + url); await this._start(url, to); this._t("ready q" + this.queue.length); this.kind = kind; this.ready = true; this.lastMsg = performance.now(); this._watch(); this._next(); return true; }
         catch (e) { try { this.w && this.w.terminate(); } catch {} this.w = null; }
       }
       this.kind = "unavailable";
@@ -43,7 +77,7 @@ class Engine {
         const line = typeof e.data === "string" ? e.data : "";
         if (line === "uciok") {
           clearTimeout(t);
-          w.onmessage = (ev) => typeof ev.data === "string" && this._line(ev.data);
+          w.onmessage = (ev) => { this.lastMsg = performance.now(); this.ping = 0; if (typeof ev.data === "string") this._line(ev.data); };
           this._send("setoption name Hash value 16");
           this._send("isready");
           res();
@@ -70,6 +104,7 @@ class Engine {
     return new Promise((resolve, reject) => {
       job.resolve = resolve; job.reject = reject;
       if (job.prio > 0) this.queue.unshift(job); else this.queue.push(job);
+      this._t("queue d" + (job.depth || "") + " q" + this.queue.length + " ready=" + this.ready);
       if (job.signal) job.signal.addEventListener("abort", () => this.cancel(job));
       this._next();
     });
@@ -77,12 +112,14 @@ class Engine {
 
   cancel(job) {
     const i = this.queue.indexOf(job);
+    this._t("cancel inQueue=" + (i >= 0) + " cur=" + (this.cur === job));
     if (i >= 0) { this.queue.splice(i, 1); job.reject(new DOMException("aborted", "AbortError")); }
     else if (this.cur === job) { job.aborted = true; this._send("stop"); }
   }
 
   // drop all queued jobs (e.g. leaving a review screen)
   clear() {
+    this._t("clear q" + this.queue.length + " cur=" + !!this.cur);
     for (const j of this.queue) j.reject(new DOMException("aborted", "AbortError"));
     this.queue = [];
     if (this.cur) { this.cur.aborted = true; this._send("stop"); }
@@ -95,7 +132,9 @@ class Engine {
   _next() {
     if (!this.ready || this.cur || !this.queue.length) return;
     const j = (this.cur = this.queue.shift());
+    this._t("start d" + (j.depth || "") + " " + j.fen.slice(0, 20));
     j.lines = {};
+    this.lastMsg = performance.now();
     j.turn = j.fen.split(" ")[1];
     if (j.elo) { this.setOption("UCI_LimitStrength", "true"); this.setOption("UCI_Elo", Math.round(j.elo)); }
     else this.setOption("UCI_LimitStrength", "false");
@@ -127,6 +166,7 @@ class Engine {
       j.lines[mp] = { depth, cp, mate, move: pv[0], pv, score: scoreOf(cp, mate) };
       if (j.onInfo && mp === 1) j.onInfo(j.lines[1], j);
     } else if (l.startsWith("bestmove")) {
+      this._t(l + " aborted=" + !!j.aborted);
       const best = l.split(" ")[1];
       const lines = Object.keys(j.lines).sort((a, b) => a - b).map((k) => j.lines[k]);
       const res = { best: best && best !== "(none)" ? best : null, lines, fen: j.fen };

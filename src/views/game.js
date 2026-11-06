@@ -14,7 +14,7 @@ import { play as sfx, moveSound } from "../sound.js";
 import { playerBar, capturedHTML, moveStrip, EvalBar, lineViewer, userPlayer, avatar, deltaPill } from "../ui.js";
 import { openingOf, loadEco } from "../eco.js";
 import { I } from "../icons.js";
-import { go } from "../router.js";
+import { go, back } from "../router.js";
 import { bring, countTo, popIn } from "../art/motion.js";
 import { burst, celebrate, haptic } from "../art/fx.js";
 import { mainCoach } from "../coaches.js";
@@ -74,6 +74,7 @@ export function render(root) {
   root.className = "view full";
   root.innerHTML = `<div class="game">
     <div class="board-col">
+      <div class="g-head"><button class="icon-btn g-close" aria-label="Close game">${I.x}</button><span class="tiny muted g-tc grow"></span><button class="icon-btn g-flip" aria-label="Flip board">${I.flip}</button></div>
       <div class="top-bar">${playerBar(opp, { rating: g.mode === "friend" ? null : g.bot.elo, color: orient === "w" ? "b" : "w", clock: !!g.clocks })}</div>
       <div class="board-row"><div class="eb ${s.settings.evalBar && casual ? "" : "hide"}"></div><div class="board-holder"><div id="bd"></div><button class="btn sm primary back-live hide">${I.play2} Back to game</button></div></div>
       <div class="bot-bar">${playerBar(user, { rating: g.mode === "friend" ? null : g.userRating, color: orient, clock: !!g.clocks, provisional: g.prov })}</div>
@@ -110,7 +111,7 @@ export function render(root) {
     const canAbort = n < 4 && g.mode !== "friend";
     const btn = (id, ic, label, cls = "", dis = false) => `<button id="${id}" class="${cls}" ${dis ? "disabled" : ""} aria-label="${label}">${ic}<span>${label}</span></button>`;
     $(".actbar", root).innerHTML = over
-      ? btn("a-review", I.analysis, "Review") + btn("a-rematch", I.undo, "Rematch") + btn("a-new", I.plus, "New game") + btn("a-flip", I.flip, "Flip")
+      ? btn("a-review", I.analysis, "Review") + btn("a-rematch", I.undo, "Rematch") + btn("a-new", I.plus, "New game") + btn("a-exit", I.x, "Exit")
       : (canAbort ? btn("a-abort", I.x, "Abort") : btn("a-resign", I.flag, "Resign", "warn")) +
         btn("a-draw", I.half, "Draw", "", canAbort && g.mode !== "friend") +
         (casual || g.mode === "friend" ? btn("a-undo", I.undo, "Takeback", "", !n) : "") +
@@ -118,7 +119,7 @@ export function render(root) {
         btn("a-flip", I.flip, "Flip") + btn("a-set", I.gear, "Settings") + btn("a-leave", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 17l5-5-5-5M15 12H3"/></svg>`, "Leave");
     const on = (id, f) => { const e = $("#" + id, root); if (e) e.onclick = f; };
     on("a-flip", flip); on("a-resign", resign); on("a-abort", abortGame); on("a-draw", offerDraw); on("a-undo", () => takeback(false)); on("a-hint", hint); on("a-set", settingsSheet); on("a-leave", leave);
-    on("a-review", () => go("review/" + g.id)); on("a-rematch", rematch); on("a-new", () => go("play"));
+    on("a-review", () => go("review/" + g.id)); on("a-rematch", rematch); on("a-new", () => go("play")); on("a-exit", exitGame);
   }
 
   // ---------- rendering ----------
@@ -397,19 +398,18 @@ export function render(root) {
         placementHTML = `<div class="hero mt"><div class="eyebrow">Your starting rating</div><div class="big-num">${rating}</div><div class="small">From 5 placement games. Every rated game moves it from here.</div></div>`;
       } else if (run) placementHTML = `<p class="mt">Placement: ${run.games.length}/5 played.</p>`;
     }
+    if (rec.delta != null) { const nr = st.ratings[rec.cat].r; oldR = nr - rec.delta; }
     const upBig = won && rec.bot.elo >= (oldR || 0) + 100;
     const sh = sheet(`<div class="result-card">
       <div class="res-t">${title}</div>
       <div class="res-s">by ${esc(rec.termination)}</div>
-      ${rec.mode !== "friend" ? `<div class="vs"><div class="col" style="align-items:center;gap:6px">${avatar(userPlayer(), 72, "", won ? "win" : "")}<b class="small">You</b></div><div class="display" style="font-size:22px;color:var(--mut)">vs</div><div class="col" style="align-items:center;gap:6px">${avatar(resolveBot(rec.bot), 72, "", !won && !drew ? "win" : "")}<b class="small">${esc(rec.bot.name)}</b></div></div>` : ""}
+      ${rec.mode !== "friend" ? `<div class="vs"><div class="col" style="align-items:center;gap:6px">${avatar(userPlayer(), 60, "", won ? "win" : "")}<b class="small">You</b></div><div class="display" style="font-size:22px;color:var(--mut)">vs</div><div class="col" style="align-items:center;gap:6px">${avatar(resolveBot(rec.bot), 60, "", !won && !drew ? "win" : "")}<b class="small">${esc(rec.bot.name)}</b></div></div>` : ""}
       ${rec.delta != null ? `<div class="eyebrow">${esc(rec.cat)} rating</div><div class="res-rating"><span class="big-num rr">${oldR}</span>${deltaPill(rec.delta)}</div>` : ""}
       ${placementHTML}
       ${rec.mode !== "friend" ? `<div class="quick-acc"><div class="qa"><div class="eyebrow">Your accuracy</div><b class="qa-u">…</b></div><div class="qa"><div class="eyebrow">${esc(rec.bot.name)}</div><b class="qa-o">…</b></div></div>` : ""}
-      <div class="col gap mt">
-        <button class="btn primary big r-review">${I.analysis} Game Review</button>
-        <div class="grid two">${rec.placement && !st.placement ? `<button class="btn r-nextp" style="grid-column:span 2">Next placement game</button>` : `<button class="btn r-rematch">${I.undo} Rematch</button><button class="btn r-new">${I.plus} New opponent</button>`}</div>
-        <button class="btn ghost r-pgn">${I.copy} Share PGN</button>
-      </div></div>`, { title: "" });
+      <button class="btn sm ghost r-pgn mt-s">${I.copy} Copy PGN</button>
+      </div>`, { title: "", footer: `<button class="btn primary big r-review">${I.analysis} Game Review</button>
+        <div class="grid three mt-s" style="gap:8px">${rec.placement && !st.placement ? `<button class="btn r-nextp" style="grid-column:span 2">Next placement</button>` : `<button class="btn r-rematch">${I.undo} Rematch</button><button class="btn r-new">${I.plus} New</button>`}<button class="btn r-exit">${I.x} Exit</button></div>` });
     if (rec.delta != null) setTimeout(() => countTo($(".rr", sh.el), oldR, oldR + rec.delta, { duration: 1.2 }), 350);
     if (won) { celebrate({ big: upBig }); haptic("heavy"); }
     $(".r-review", sh.el).onclick = () => { sh.close(); go("review/" + rec.id); };
@@ -417,6 +417,7 @@ export function render(root) {
     const nw = $(".r-new", sh.el); if (nw) nw.onclick = () => { sh.close(); go("play"); };
     const np = $(".r-nextp", sh.el); if (np) np.onclick = () => { sh.close(); nextPlacement(); };
     $(".r-pgn", sh.el).onclick = () => copyText(toPGN(rec));
+    $(".r-exit", sh.el).onclick = () => { sh.close(); exitGame(); };
     // quick accuracy for both sides (a fast review; the full review runs deeper)
     if (rec.mode !== "friend" && rec.moves.length >= 4) {
       reviewGame(rec.moves, rec.startFen, { depth: TEST() ? 6 : 9 }).then((R) => {
@@ -444,8 +445,9 @@ export function render(root) {
     if (g.moves.length >= 4) return resign();
     abort.abort(); state().live = null; save(); G = null; toast("Game aborted · no rating change"); go("play");
   }
+  function exitGame() { if (G === g) G = null; if (state().live && state().live.id === g.id) { state().live = null; save(); } back(); }
   async function leave() {
-    if (g.result) return go("play");
+    if (g.result) return exitGame();
     if (g.moves.length < 4 && g.mode !== "friend") return abortGame();
     const msg = g.rated ? "Leave this game? It counts as a resignation." : "Leave this game? It will be recorded as a resignation.";
     if (!(await confirmSheet(msg, "Leave", "Stay"))) return;
@@ -498,6 +500,10 @@ export function render(root) {
     const co = $(".co", sh.el); co.value = st.coords || "inside"; co.onchange = () => { st.coords = co.value; save(); board.drawCoords(); };
   }
 
+  // header
+  $(".g-close", root).onclick = () => (g.result ? exitGame() : leave());
+  $(".g-flip", root).onclick = flip;
+  $(".g-tc", root).textContent = `${g.rated ? "Rated" : g.mode === "friend" ? "Pass & play" : "Casual"} · ${g.tc === "none" ? "Unlimited" : g.tc.replace("+", " | ")}`;
   // move browsing
   $("#b-prev", root).onclick = () => { const cur = viewPly === null ? g.moves.length - 1 : viewPly; viewPly = Math.max(-1, cur - 1); sync(false); };
   $("#b-next", root).onclick = () => { if (viewPly === null) return; viewPly = viewPly + 1 >= g.moves.length - 1 ? null : viewPly + 1; sync(false); };

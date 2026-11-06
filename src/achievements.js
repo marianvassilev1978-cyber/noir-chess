@@ -84,8 +84,9 @@ export function checkAchievements(ctx = {}) {
 }
 
 function nextUnlock() {
+  if (!queue.length) { showing = false; return; }
+  if (document.querySelector(".sheet-back")) { showing = true; setTimeout(nextUnlock, 1200); return; }
   const a = queue.shift();
-  if (!a) { showing = false; return; }
   showing = true;
   const el = document.createElement("div");
   el.className = "ach-pop";

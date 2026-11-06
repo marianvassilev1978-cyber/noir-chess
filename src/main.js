@@ -2,7 +2,7 @@
 import "./styles.css";
 import { load, initCloud, onSync, state } from "./store.js";
 import { applyTheme } from "./themes.js";
-import { initEngines } from "./engine.js";
+import { initEngines, ANA, PLAY } from "./engine.js";
 import { initClaude } from "./coach.js";
 import { register, start, go, rerender, currentRoute, inClaude, onRoute } from "./router.js";
 import { I } from "./icons.js";
@@ -96,7 +96,7 @@ document.body.classList.toggle("in-claude", inClaude);
 const FRESH = (() => { const st = state(); return !st.updatedAt && !st.onboarded && !st.games.length && !localStorage.getItem("noir.test"); })();
 // test hooks (only when localStorage["noir.test"] is set by the Playwright suite)
 if (localStorage.getItem("noir.test")) {
-  Promise.all([import("./store.js"), import("./achievements.js")]).then(([st, ach]) => { window.__noir = Object.assign(window.__noir || {}, { go, state: st.state, save: st.save, previewGame: st.previewGame, newGame: Game.newGame, checkAchievements: ach.checkAchievements, botQueue: (window.__noir && window.__noir.botQueue) || [] }); });
+  Promise.all([import("./store.js"), import("./achievements.js")]).then(([st, ach]) => { window.__noir = Object.assign(window.__noir || {}, { go, state: st.state, save: st.save, previewGame: st.previewGame, newGame: Game.newGame, checkAchievements: ach.checkAchievements, killEngine: () => ANA.w && ANA.w.terminate(), engineLog: () => ANA.log.concat(["--play--"], PLAY.log), engines: () => [ANA, PLAY].map((e) => ({ name: e.name, kind: e.kind, ready: e.ready, busy: !!e.cur, queued: e.queue.length, restarts: e.restarts, silentMs: Math.round(performance.now() - e.lastMsg) })), botQueue: (window.__noir && window.__noir.botQueue) || [] }); });
 }
 start();
 if (FRESH) go("welcome", { replace: true });
