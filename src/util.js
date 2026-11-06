@@ -76,7 +76,7 @@ export function toast(msg, ms = 2200) {
 // Bottom sheet / modal. Returns {el, close}. content is html string or element.
 export function sheet(content, { title = "", onClose, wide = false, dismissable = true } = {}) {
   const back = h(`<div class="sheet-back"><div class="sheet ${wide ? "wide" : ""}" role="dialog">
-    ${title ? `<div class="sheet-head"><h3>${title}</h3>${dismissable ? '<button class="icon-btn x" aria-label="Close">✕</button>' : ""}</div>` : ""}
+    ${title ? `<div class="sheet-head"><h3>${title}</h3>${dismissable ? '<button class="icon-btn sheet-x" aria-label="Close">✕</button>' : ""}</div>` : ""}
     <div class="sheet-body"></div></div></div>`);
   const body = $(".sheet-body", back);
   if (typeof content === "string") body.innerHTML = content; else body.appendChild(content);
@@ -92,7 +92,7 @@ export function sheet(content, { title = "", onClose, wide = false, dismissable 
   };
   if (dismissable) {
     back.addEventListener("click", (e) => { if (e.target === back) close(); });
-    const x = $(".x", back); if (x) x.onclick = close;
+    const x = $(".sheet-x", back); if (x) x.onclick = close;
   }
   return { el: back, body, close };
 }

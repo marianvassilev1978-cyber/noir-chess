@@ -18,6 +18,7 @@ import * as Learn from "./views/learn.js";
 import * as Openings from "./views/openings.js";
 import * as X from "./views/extras.js";
 import * as Profile from "./views/profile.js";
+import * as Coaches from "./views/coaches.js";
 
 load();
 applyTheme();
@@ -72,6 +73,7 @@ register("plan", X.renderPlan);
 register("library", X.renderLibrary);
 register("profile", Profile.render);
 register("settings", Profile.renderSettings);
+register("coaches", Coaches.render);
 
 document.body.classList.toggle("in-claude", inClaude);
 // test hooks (only when localStorage["noir.test"] is set by the Playwright suite)

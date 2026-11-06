@@ -11,6 +11,7 @@ import { BOT_LOOKS, AVATAR_LOOKS } from "./art/cast.js";
 import { bring, typeInto } from "./art/motion.js";
 import { sectionArt, emptyArt } from "./art/scenes.js";
 import { playerById } from "./players.js";
+import { stepNote } from "./coach.js";
 
 // Avatar: original SVG art when the player has a look (bots, coaches, you); emoji only as a last resort.
 export function lookOf(p) {
@@ -147,23 +148,27 @@ export function evalGraph(evals, cur, onPick, marks = []) {
   return svg;
 }
 
-// Sheet that plays a line out on a board: steps of {uci,san,note}
-export function lineViewer({ title, fen, pv, intro = "", outro = "", orientation = "w", maxPlies = 10 }) {
+// Sheet that plays a line out on a board, move by move (◀ ▶, auto-play), with the coach narrating each step.
+export function lineViewer({ title, fen, pv, intro = "", outro = "", orientation = "w", maxPlies = 10, coach = null, evalEnd = null }) {
   const c = new Chess(fen);
   const steps = [];
   for (const u of pv.slice(0, maxPlies)) {
-    try { const m = c.move({ from: u.slice(0, 2), to: u.slice(2, 4), promotion: u[4] }); steps.push({ m, fen: c.fen(), check: checkSquare(c) }); } catch { break; }
+    const before = c.fen();
+    try { const m = c.move({ from: u.slice(0, 2), to: u.slice(2, 4), promotion: u[4] }); steps.push({ m, fen: c.fen(), check: checkSquare(c), note: stepNote(before, u) }); } catch { break; }
   }
-  const s = sheet(`<div class="lp-board" style="max-width:min(100%,52vh);margin:0 auto"></div>
-    <div class="movelist mt-s lp-moves" style="border-radius:8px"></div>
-    <div class="small mt-s lp-cap">${md(intro)}</div>
-    <div class="ctrl" style="background:none;padding:8px 0 0">
-      <button class="icon-btn b0">${I.first}</button><button class="icon-btn bp">${I.prev}</button>
-      <button class="icon-btn ba" style="flex:2">${I.play2}</button>
-      <button class="icon-btn bn">${I.next}</button><button class="icon-btn bl">${I.last}</button></div>`, { title, wide: false });
+  const s = sheet(`<div class="lp-board" style="max-width:min(100%,46vh);margin:0 auto"></div>
+    <div class="movelist mt-s lp-moves" style="border-radius:12px"></div>
+    <div class="lp-coach mt-s"></div>
+    <div class="ctrl" style="padding:8px 0 0">
+      <button class="icon-btn b0" aria-label="Start">${I.first}</button><button class="icon-btn bp" aria-label="Back">${I.prev}</button>
+      <button class="icon-btn ba" style="flex:2" aria-label="Play">${I.play2}</button>
+      <button class="icon-btn bn" aria-label="Forward">${I.next}</button><button class="icon-btn bl" aria-label="End">${I.last}</button></div>`, { title, wide: false });
   const b = new Board($(".lp-board", s.el), { fen, orientation, interactive: false });
+  const cb = coach ? coachBubble($(".lp-coach", s.el), coach, "", { size: 46 }) : null;
+  if (!coach) $(".lp-coach", s.el).innerHTML = `<div class="small lp-cap"></div>`;
   let i = -1, timer = null;
   const sans = steps.map((x) => x.m.san);
+  const say = (txt, expr) => { if (cb) cb.say(txt, expr); else $(".lp-cap", s.el).innerHTML = md(txt); };
   const show = (k, sound = true) => {
     i = Math.max(-1, Math.min(steps.length - 1, k));
     if (i < 0) b.setFen(fen, { lastMove: null, check: null });
@@ -171,7 +176,9 @@ export function lineViewer({ title, fen, pv, intro = "", outro = "", orientation
     b.setArrows(i + 1 < steps.length ? [{ from: steps[i + 1].m.from, to: steps[i + 1].m.to, color: "o", opacity: 0.55 }] : []);
     const startNo = +fen.split(" ")[5] || 1;
     moveStrip($(".lp-moves", s.el), sans, i, null, (j) => { stop(); show(j); }, startNo, fen.split(" ")[1]);
-    $(".lp-cap", s.el).innerHTML = md(i === steps.length - 1 && outro ? outro : intro);
+    if (i < 0) say(intro || "Watch the line.");
+    else if (i === steps.length - 1) say(`${steps[i].note} ${outro}${evalEnd ? ` Evaluation: **${fmtEval(evalEnd)}**.` : ""}`, /behind|lose/.test(outro) ? "worried" : /ahead|Checkmate!/.test(outro) ? "happy" : null);
+    else say(steps[i].note);
   };
   const stop = () => { clearInterval(timer); timer = null; $(".ba", s.el).innerHTML = I.play2; };
   $(".b0", s.el).onclick = () => { stop(); show(-1); };
@@ -182,10 +189,11 @@ export function lineViewer({ title, fen, pv, intro = "", outro = "", orientation
     if (timer) return stop();
     if (i >= steps.length - 1) show(-1, false);
     $(".ba", s.el).innerHTML = I.pause;
-    timer = setInterval(() => { if (i >= steps.length - 1) return stop(); show(i + 1); }, 1100);
+    timer = setInterval(() => { if (i >= steps.length - 1) return stop(); show(i + 1); }, 1500);
   };
   show(-1, false);
-  setTimeout(() => $(".ba", s.el).click(), 500);
+  setTimeout(() => $(".ba", s.el) && $(".ba", s.el).click(), 900);
+  s.steps = steps; s.show = show;
   return s;
 }
 
@@ -241,7 +249,8 @@ export function coachBubble(container, coach, html = "", { expr = "neutral", siz
   const txt = container.querySelector(".txt");
   const api = {
     el: container.firstElementChild, ctl,
-    say(h, e) { if (e) ctl && ctl.expr(e, e === "neutral" ? 0 : 2600); return typeInto(txt, md(h).replace(/^<p>|<\/p>$/g, ""), { ctl }); },
+    // text is trusted app copy (engine facts, names): **bold** becomes <b>, existing HTML (badges) is kept
+    say(h, e) { if (e) ctl && ctl.expr(e, e === "neutral" ? 0 : 2600); return typeInto(txt, String(h).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"), { ctl }); },
   };
   if (html) api.say(html, expr);
   return api;

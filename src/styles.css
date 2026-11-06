@@ -522,3 +522,44 @@ body.in-claude .hide-in-claude { display: none !important; }
 .bcard .bport { width: 110px; height: 110px; border-radius: 16px; overflow: hidden; margin: 0 auto 8px; }
 .bcard .bname { font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bot-sheet .bs-port { width: 170px; height: 170px; border-radius: 34px; overflow: hidden; margin: -6px auto 12px; box-shadow: var(--sh-2); }
+/* review */
+.rv-stage { width: 150px; height: 150px; margin: 0 auto -8px; }
+.rv-ring { display: flex; justify-content: center; }
+.phases { display: grid; gap: 8px; }
+.phr { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; font-size: 14px; }
+.phr b { text-align: center; font-weight: 650; }
+.phr .pv { display: inline-flex; align-items: center; gap: 6px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.phr .pv:last-child { justify-content: flex-end; }
+.verdict-hero { display: flex; align-items: flex-end; gap: 6px; }
+.verdict-hero .vstage { width: 120px; height: 120px; flex: none; border-radius: 26px; overflow: hidden; }
+.vlist { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; }
+.vlist li::marker { font-weight: 800; color: var(--mut); }
+.rv-coach .coachbox { padding: 10px; }
+/* analysis */
+.a-lines { display: grid; gap: 2px; padding: 0 6px; height: 102px; align-content: start; overflow: hidden; }
+.a-line { height: 32px; }
+.a-line { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 10px; cursor: pointer; overflow: hidden; }
+.a-line .small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.a-line:active { background: var(--glass2); }
+.op-name { padding: 4px 10px; min-height: 22px; color: var(--mut); }
+.a-tree { padding: 10px 12px; max-height: 34vh; overflow-y: auto; }
+.tree { font-size: 14.5px; line-height: 1.9; }
+.tree .n { color: var(--dim); margin: 0 3px 0 4px; font-variant-numeric: tabular-nums; }
+.tree .m { padding: 2px 5px; border-radius: 7px; cursor: pointer; font-weight: 600; }
+.tree .m.cur { background: color-mix(in srgb, var(--acc) 26%, transparent); box-shadow: inset 0 -2px 0 var(--acc); }
+.tree .var { color: var(--mut); font-size: 13px; }
+.tree .var .m { font-weight: 500; }
+.a-exp { max-height: 40vh; overflow-y: auto; padding: 4px 6px; }
+.exp-name { padding: 8px 10px; font-size: 13px; color: var(--acc2); }
+.exp-row { padding: 9px 8px; gap: 10px; }
+.exp-san { min-width: 48px; }
+.coach-card .cc-top { display: flex; gap: 14px; align-items: center; }
+.coach-card .cc-port { width: 104px; height: 104px; border-radius: 28px; overflow: hidden; flex: none; box-shadow: var(--sh-2); }
+.coach-card .cc-name { margin: 2px 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; }
+.coach-card.main { border-color: color-mix(in srgb, var(--acc) 55%, transparent); box-shadow: 0 0 0 1px var(--acc), var(--sh-2); }
+.shead .back { position: absolute; top: calc(12px + var(--safe-t)); left: 16px; }
+.coach-pick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.cp-item { display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; color: var(--mut); cursor: pointer; padding: 4px 0; border-radius: 14px; }
+.cp-item .av { border: 2px solid transparent; }
+.cp-item.on { color: var(--text); }
+.cp-item.on .av { border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-glow); }

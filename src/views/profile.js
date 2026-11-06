@@ -8,6 +8,8 @@ import { play as sfx, testSound, audioState, preloadCurrent } from "../sound.js"
 import { I } from "../icons.js";
 import { go, back } from "../router.js";
 import { engineName } from "../engine.js";
+import { COACHES } from "../coaches.js";
+import { charSVG } from "../art/character.js";
 
 export function render(root) {
   const s = state();
@@ -82,7 +84,8 @@ export function renderSettings(root) {
       ${tog("confirmResign", "Confirm resign", "")}
       ${tog("classOnBoard", "Move badges on board", "Brilliant / Blunder icons on the square")}
     </div>
-    <div class="card"><h3>Coach (practice games)</h3>
+    <div class="card"><h3>Your coach</h3><div class="coach-pick"></div><button class="btn sm ghost mt-s mtc">Meet the coaches ›</button></div>
+    <div class="card"><h3>Coach (casual games)</h3>
       ${tog("coachLive", "Live coach", "Rate every move as you play")}
       ${tog("guard", "Blunder guard", "Warn me before I play a move that loses a lot")}
       ${tog("evalBar", "Eval bar", "Show the engine evaluation while playing")}
@@ -92,6 +95,9 @@ export function renderSettings(root) {
     <div class="card small muted"><h3>About</h3>Noir Chess 2 · build ${esc(window.NOIR_BUILD || "dev")} · ${esc(engineName())}<br>Engine: Stockfish 18 (GPLv3) via stockfish.js · Rules: chess.js (BSD-2) · Puzzles & opening names: Lichess databases (CC0) · Pieces: see credits above · Sounds: Wood = Kenney recordings (CC0), achievement chime synthesised for Noir Chess; SFX and Piano = Lichess sets by Enigmahack (AGPLv3+) · Animation: Motion by motion.dev (MIT) · Confetti: canvas-confetti (ISC) · iPhone haptics technique from ios-haptics (MIT) · Fonts: Inter and Instrument Serif (SIL Open Font License 1.1) · All characters, avatars, badges, covers and backgrounds are original art made for Noir Chess.</div>
     </div></div>`;
   $(".back", root).onclick = () => back();
+  const cp = () => { $(".coach-pick", root).innerHTML = COACHES.map((c) => `<button class="cp-item ${st.coach === c.id ? "on" : ""}" data-c="${c.id}" aria-label="${c.name}"><span class="av" style="width:54px;height:54px;border-radius:18px">${charSVG(c.look, { label: c.name })}</span><span class="tiny">${c.short}</span></button>`).join(""); $$(".cp-item", root).forEach((b) => (b.onclick = () => { st.coach = b.dataset.c; save(); cp(); })); };
+  cp();
+  $(".mtc", root).onclick = () => go("coaches");
   const pv = new Board($("#pv", root), { fen: "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5", interactive: false });
   pv.setFen("r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5", { lastMove: ["g8", "f6"], animate: false });
   const refresh = () => { applyTheme(); pv.refreshPieces(); pv.drawCoords(); save(); };

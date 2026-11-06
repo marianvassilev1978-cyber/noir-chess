@@ -162,6 +162,14 @@ export function classify({ fenBefore, uci, color, before, after, prevCls, legalC
   return { cls, loss, acc, wBest, wAfter };
 }
 
+// game phase at a position: endgame once little material is left, opening for the first 20 plies
+export function phaseAt(fen, ply) {
+  const c = new Chess(fen); let np = 0, q = 0;
+  for (const row of c.board()) for (const p of row) if (p && p.type !== "k" && p.type !== "p") { np += VAL[p.type]; if (p.type === "q") q++; }
+  if (np <= 26 || (q === 0 && np <= 32)) return "endgame";
+  return ply < 20 ? "opening" : "middlegame";
+}
+
 // Full review of a game. moves: SAN list. Returns plies with classification.
 export async function reviewGame(moves, startFen, { depth = 14, onProgress, signal } = {}) {
   await loadEco().catch(() => {});
@@ -197,6 +205,13 @@ export async function reviewGame(moves, startFen, { depth = 14, onProgress, sign
     });
     prevCls = r.cls;
   }
+  // phase of every ply, and accuracy per phase for each side
+  for (const p of plies) p.phase = phaseAt(p.fenBefore, p.i);
+  const phases = { w: {}, b: {} };
+  for (const col of ["w", "b"]) for (const ph of ["opening", "middlegame", "endgame"]) {
+    const a = plies.filter((p) => p.color === col && p.phase === ph && p.cls !== "forced").map((p) => (p.cls === "book" ? 100 : p.acc));
+    phases[col][ph] = a.length >= 2 ? gameAccuracy(a) : null;
+  }
   const accW = gameAccuracy(plies.filter((p) => p.color === "w" && p.cls !== "book" && p.cls !== "forced").map((p) => p.acc));
   const accB = gameAccuracy(plies.filter((p) => p.color === "b" && p.cls !== "book" && p.cls !== "forced").map((p) => p.acc));
   const counts = { w: {}, b: {} };
@@ -204,7 +219,7 @@ export async function reviewGame(moves, startFen, { depth = 14, onProgress, sign
   const real = (c) => plies.filter((p) => p.color === c && p.cls !== "book" && p.cls !== "forced").length;
   const nW = real("w"), nB = real("b");
   return {
-    plies, fens, evals: evals.map((e) => e.top), accW, accB, counts,
+    plies, fens, evals: evals.map((e) => e.top), accW, accB, counts, phases,
     ratingW: ratingFromAccuracy(accW, nW), ratingB: ratingFromAccuracy(accB, nB),
     depth,
   };
