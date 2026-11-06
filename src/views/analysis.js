@@ -38,7 +38,7 @@ export function render(root, [arg]) {
   let job = null, engineOn = true, tab = init.tab === "explorer" ? "explorer" : "moves";
 
   root.className = "view full";
-  root.innerHTML = `<div class="game">
+  root.innerHTML = `<div class="game anl">
     <div class="board-col">
       <div class="row" style="padding:0 6px;min-height:44px;gap:8px"><button class="back" aria-label="Back">‹</button><b class="grow">Analysis</b><span class="small muted eng-d"></span></div>
       <div class="a-lines"></div>

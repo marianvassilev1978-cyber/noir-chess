@@ -3,7 +3,7 @@
 const views = {};
 const routeHooks = [];
 export const onRoute = (f) => routeHooks.push(f);
-const IMMERSIVE = ["game", "review", "analysis", "lesson", "drill", "puzzle", "rush", "mistakes", "vision", "opening", "duel"];
+const IMMERSIVE = ["game", "review", "analysis", "lesson", "drill", "puzzle", "rush", "mistakes", "vision", "opening", "duel", "welcome"];
 let cleanup = null, current = null, stack = [];
 export const inClaude = /claude|anthropic/.test(location.hostname) || window.top !== window;
 export const routes = views;
@@ -61,6 +61,6 @@ function navOf(name) {
   if (["play", "game", "review", "analysis", "history"].includes(name)) return "play";
   if (["puzzles", "rush", "mistakes", "puzzle", "daily", "duel", "puzzle-stats"].includes(name)) return "puzzles";
   if (["learn", "course", "lesson", "openings", "opening", "endgames", "drill", "vision", "library", "plan", "repertoire"].includes(name)) return "learn";
-  if (["profile", "settings", "stats", "coaches", "achievements", "archive"].includes(name)) return "profile";
+  if (["profile", "settings", "stats", "coaches", "achievements", "archive", "credits"].includes(name)) return "profile";
   return "home";
 }

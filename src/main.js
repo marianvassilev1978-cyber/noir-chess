@@ -1,6 +1,6 @@
 // Noir Chess 2 — app entry.
 import "./styles.css";
-import { load, initCloud, onSync } from "./store.js";
+import { load, initCloud, onSync, state } from "./store.js";
 import { applyTheme } from "./themes.js";
 import { initEngines } from "./engine.js";
 import { initClaude } from "./coach.js";
@@ -17,9 +17,10 @@ import * as Puzzles from "./views/puzzles.js";
 import * as Learn from "./views/learn.js";
 import * as Openings from "./views/openings.js";
 import * as X from "./views/extras.js";
-import * as Profile from "./views/profile.js";
 import * as Coaches from "./views/coaches.js";
 import * as Me from "./views/me.js";
+import * as Settings from "./views/settings.js";
+import * as Welcome from "./views/welcome.js";
 
 load();
 applyTheme();
@@ -44,6 +45,13 @@ function moveIndicator() {
   if (reduced() || !ind.dataset.ready) { ind.style.transform = `translateX(${x}px)`; ind.dataset.ready = "1"; return; }
   animate(ind, { x }, { type: "spring", stiffness: 420, damping: 32 });
 }
+function a11y(root) {
+  root.querySelectorAll("button:not([aria-label])").forEach((b) => {
+    if (b.classList.contains("back")) return b.setAttribute("aria-label", "Back");
+    if (!b.textContent.trim() || b.textContent.trim().length <= 2) b.setAttribute("aria-label", b.title || b.id.replace(/^[a-z]-/, "") || "Button");
+  });
+}
+new MutationObserver(() => { clearTimeout(window.__a11yT); window.__a11yT = setTimeout(() => a11y(document.body), 120); }).observe(document.body, { childList: true, subtree: true });
 onRoute((name, root, immersive) => {
   moveIndicator();
   if (reduced()) return;
@@ -79,15 +87,19 @@ register("library", X.renderLibrary);
 register("profile", Me.render);
 register("stats", Me.renderStats);
 register("achievements", Me.renderAchievements);
-register("settings", Profile.renderSettings);
+register("settings", Settings.render);
+register("credits", Settings.renderCredits);
+register("welcome", Welcome.render);
 register("coaches", Coaches.render);
 
 document.body.classList.toggle("in-claude", inClaude);
+const FRESH = (() => { const st = state(); return !st.updatedAt && !st.onboarded && !st.games.length && !localStorage.getItem("noir.test"); })();
 // test hooks (only when localStorage["noir.test"] is set by the Playwright suite)
 if (localStorage.getItem("noir.test")) {
   Promise.all([import("./store.js"), import("./achievements.js")]).then(([st, ach]) => { window.__noir = Object.assign(window.__noir || {}, { go, state: st.state, save: st.save, previewGame: st.previewGame, newGame: Game.newGame, checkAchievements: ach.checkAchievements, botQueue: (window.__noir && window.__noir.botQueue) || [] }); });
 }
 start();
+if (FRESH) go("welcome", { replace: true });
 const sp = document.getElementById("splash");
 if (sp) setTimeout(() => { sp.style.opacity = "0"; setTimeout(() => sp.remove(), 460); }, 350);
 
