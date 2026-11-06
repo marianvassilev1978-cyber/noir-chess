@@ -64,8 +64,8 @@ export function puzzlePlayer(el, p, { onDone, onStatus, setup = true, allowAnyMa
   const userColor = setup ? (c.turn() === "w" ? "b" : "w") : c.turn();
   const board = new Board(el, { orientation: userColor, onMove });
   const apply = (u) => { const m = c.move({ from: u.slice(0, 2), to: u.slice(2, 4), promotion: u[4] }); board.setFen(c.fen(), { lastMove: [m.from, m.to], check: checkSquare(c) }); moveSound(m); return m; };
-  const arm = () => board.setMovable(userColor, destsOf(c));
-  function opponent() { board.setMovable(null, null); setTimeout(() => { if (finished) return; apply(sol[idx]); idx++; arm(); }, 380); }
+  const arm = () => { board.setMovable(userColor, destsOf(c)); if (TESTM) window.__noir.pzArmed = idx; };
+  function opponent() { board.setMovable(null, null); if (TESTM) window.__noir.pzArmed = -1; setTimeout(() => { if (finished) return; apply(sol[idx]); idx++; arm(); }, 380); }
   function onMove(from, to, promo) {
     if (finished) return;
     onUserMove && onUserMove();

@@ -535,7 +535,7 @@ body.in-claude .hide-in-claude { display: none !important; }
 .quick-acc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0 4px; }
 .quick-acc .qa { background: var(--glass); border: 1px solid var(--line); border-radius: 14px; padding: 8px; }
 .quick-acc .qa b { font-family: var(--font-display); font-size: 28px; font-weight: 400; display: block; line-height: 1.1; }
-.ach-pop { position: fixed; left: 12px; right: 12px; top: calc(10px + var(--safe-t)); z-index: 350; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 22px; background: color-mix(in srgb, var(--panel2) 92%, transparent); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border: 1px solid color-mix(in srgb, var(--acc) 45%, transparent); box-shadow: var(--sh-3), 0 0 30px var(--acc-glow); max-width: 480px; margin: 0 auto; cursor: pointer; }
+.ach-pop { position: fixed; left: 12px; right: 12px; top: calc(10px + var(--safe-t)); z-index: 350; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 22px; background: color-mix(in srgb, var(--panel2) 92%, transparent); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border: 1px solid color-mix(in srgb, var(--acc) 45%, transparent); box-shadow: var(--sh-3), 0 0 30px var(--acc-glow); max-width: 480px; margin: 0 auto; pointer-events: none; }
 .ach-pop b { font-family: var(--font-display); font-weight: 400; font-size: 24px; display: block; line-height: 1.1; }
 /* play hub */
 .bot-scroll { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 2px 16px 6px; scroll-snap-type: x mandatory; }

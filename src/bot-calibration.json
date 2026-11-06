@@ -1,1 +1,36 @@
-{"skill":{},"note":"uncalibrated: skill = elo until tools/calibrate.mjs runs"}
+{
+ "skill": {
+  "bean": 100,
+  "pip": 270,
+  "nell": 370,
+  "otto": 625,
+  "mila": 880,
+  "teo": 1030,
+  "ravi": 1285,
+  "ivo": 1385,
+  "sara": 1485,
+  "bruno": 1585,
+  "jules": 1685,
+  "vlad": 1785,
+  "zorg": 1885,
+  "wren": 1985,
+  "hana": 2085,
+  "ada": 2185,
+  "marco": 2285,
+  "nadia": 2385,
+  "chen": 2485,
+  "elena": 2585,
+  "kofi": 2678,
+  "magda": 2771,
+  "leon": 2864,
+  "boris": 2957,
+  "yara": 3050,
+  "atlas": 3085,
+  "noir": 3120,
+  "max": 3200
+ },
+ "games": 20,
+ "passes": 2,
+ "date": "2026-11-06",
+ "note": "Calibrated 100-2100 from bot-vs-bot matches (tools/calibration-log.md). 2200+: engine strength saturates (strong bots mostly draw each other), so the top tier is spread just below full strength; only Stockfish Max (3200) plays at full strength."
+}

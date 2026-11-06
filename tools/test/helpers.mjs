@@ -64,6 +64,7 @@ export async function solvePuzzle(page, sel) {
   await page.waitForTimeout(250); // the set-up move's animation
   for (let i = 1; i < p.moves.length; i += 2) {
     const u = p.moves[i];
+    await page.waitForFunction((i) => window.__noir.pzArmed === i, i, { timeout: 15000 }).catch(() => {});
     await move(page, u.slice(0, 2), u.slice(2, 4), { orient, sel });
     if (u[4]) { await page.waitForTimeout(150); if (await page.locator(".promo-opt").count()) await page.locator(`.promo-opt[data-p="${u[4]}"]`).click(); }
     await page.waitForTimeout(650);

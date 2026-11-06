@@ -28,9 +28,11 @@ function renderPath(raw) {
   const params = rest.map(decodeURIComponent);
   const view = views[name] || views.home;
   if (cleanup) { try { cleanup(); } catch (e) { console.warn(e); } cleanup = null; }
-  const root = document.getElementById("view");
-  root.className = "view";
-  root.innerHTML = "";
+  // every screen gets a fresh container: late async work from the previous screen lands in the detached old one
+  const old = document.getElementById("view");
+  const root = document.createElement("div");
+  root.className = "view"; root.id = "view";
+  if (old) old.replaceWith(root); else document.getElementById("main").appendChild(root);
   window.scrollTo(0, 0);
   current = name;
   const immersive = IMMERSIVE.includes(name);

@@ -38,7 +38,7 @@ test("coach character: expressions, poses and blinking are driven by code", asyn
 test("settings persist across a reload", async ({ page }) => {
   await boot(page, { route: "settings" });
   await page.locator('.bds .swatch[data-b="jade"]').click();
-  await page.locator('.ths .chip[data-t="ember"]').click();
+  await page.locator('.theme-card[data-t="ember"]').click();
   await page.reload();
   await page.waitForFunction(() => !document.getElementById("splash"));
   const s = await store(page);

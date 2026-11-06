@@ -86,7 +86,7 @@ export function render(root, [id]) {
       save();
       try { checkAchievements({ event: "review" }); } catch {}
       if (ctl) ctl.react("celebrate");
-      setTimeout(() => summary(expand(rec)), TEST() ? 50 : 700);
+      setTimeout(() => { if (!abort.signal.aborted) summary(expand(rec)); }, TEST() ? 50 : 700);
     }).catch((e) => { if (e.name !== "AbortError") root.innerHTML += `<div class="card">Review failed: ${esc(e.message)}</div>`; });
   }
 
