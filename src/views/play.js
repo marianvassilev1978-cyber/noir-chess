@@ -174,11 +174,14 @@ export function renderHistory(root) {
   const draw = () => {
     $$(".hf .chip", root).forEach((c) => c.classList.toggle("on", c.dataset.f === f));
     const L = games.filter((g) => (f === "all" || (f === "won" && g.score === 1) || (f === "lost" && g.score === 0) || (f === "drawn" && g.score === 0.5) || (f === "rated" && g.rated) || g.cat === f) && (!q || (g.bot.name + " " + (g.opening || "")).toLowerCase().includes(q)));
+    let month = "";
     $(".list", root).innerHTML = L.length ? L.map((g) => {
+      const mo = new Date(g.date).toLocaleDateString(undefined, { month: "long", year: "numeric" });
+      const head = mo !== month ? ((month = mo), `<div class="eyebrow" style="padding:12px 2px 4px">${mo}</div>`) : "";
       const res = g.mode === "friend" ? g.result : g.score === 1 ? "W" : g.score === 0 ? "L" : "D";
       const col = g.score === 1 ? "var(--good)" : g.score === 0 ? "var(--bad)" : "#777";
       const acc = g.review ? (g.color === "w" ? g.review.accW : g.review.accB) : g.quick ? (g.color === "w" ? g.quick.accW : g.quick.accB) : null;
-      return `<div class="list-row" data-id="${g.id}"><span class="cls-badge lg" style="background:${col};border-radius:9px">${res}</span>${avatar(resolveBot(g.bot), 36)}<div class="grow"><div class="bold small">${esc(g.mode === "friend" ? "Pass & play" : g.bot.name)} <span class="muted">${g.bot.elo || ""}</span></div><div class="tiny muted">${tcLabel(g.tc)} · ${g.rated ? "rated" : "casual"} · ${Math.ceil(g.moves.length / 2)} moves${g.opening ? " · " + esc(g.opening) : ""} · ${timeAgo(g.date)}</div></div>${acc != null ? `<span class="badge-pill">${acc}%</span>` : ""}${g.delta != null ? deltaPill(g.delta) : ""}</div>`;
+      return head + `<div class="list-row" data-id="${g.id}"><span class="cls-badge lg" style="background:${col};border-radius:9px">${res}</span>${avatar(resolveBot(g.bot), 36)}<div class="grow"><div class="bold small">${esc(g.mode === "friend" ? "Pass & play" : g.bot.name)} <span class="muted">${g.bot.elo || ""}</span></div><div class="tiny muted">${tcLabel(g.tc)} · ${g.rated ? "rated" : "casual"} · ${Math.ceil(g.moves.length / 2)} moves${g.opening ? " · " + esc(g.opening) : ""} · ${timeAgo(g.date)}</div></div>${acc != null ? `<span class="badge-pill">${acc}%</span>` : ""}${g.delta != null ? deltaPill(g.delta) : ""}</div>`;
     }).join("") : '<div class="empty">No games here yet.</div>';
     $$(".list-row", root).forEach((r) => (r.onclick = () => go("review/" + r.dataset.id)));
   };

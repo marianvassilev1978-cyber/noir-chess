@@ -19,6 +19,7 @@ import * as Openings from "./views/openings.js";
 import * as X from "./views/extras.js";
 import * as Profile from "./views/profile.js";
 import * as Coaches from "./views/coaches.js";
+import * as Me from "./views/me.js";
 
 load();
 applyTheme();
@@ -75,14 +76,16 @@ register("drill", X.renderGym);
 register("vision", X.renderVision);
 register("plan", X.renderPlan);
 register("library", X.renderLibrary);
-register("profile", Profile.render);
+register("profile", Me.render);
+register("stats", Me.renderStats);
+register("achievements", Me.renderAchievements);
 register("settings", Profile.renderSettings);
 register("coaches", Coaches.render);
 
 document.body.classList.toggle("in-claude", inClaude);
 // test hooks (only when localStorage["noir.test"] is set by the Playwright suite)
 if (localStorage.getItem("noir.test")) {
-  import("./store.js").then((st) => { window.__noir = Object.assign(window.__noir || {}, { go, state: st.state, save: st.save, previewGame: st.previewGame, newGame: Game.newGame, botQueue: (window.__noir && window.__noir.botQueue) || [] }); });
+  Promise.all([import("./store.js"), import("./achievements.js")]).then(([st, ach]) => { window.__noir = Object.assign(window.__noir || {}, { go, state: st.state, save: st.save, previewGame: st.previewGame, newGame: Game.newGame, checkAchievements: ach.checkAchievements, botQueue: (window.__noir && window.__noir.botQueue) || [] }); });
 }
 start();
 const sp = document.getElementById("splash");

@@ -172,6 +172,7 @@ function lineTrainer(root, o, l, mode, { onFinish, queue } = {}) {
     st.last = Date.now();
     s.openings[l.id] = st;
     s.daily.opening++; s.xp += 5 * got; touchStreak(); save();
+    import("../achievements.js").then((m) => m.checkAchievements({ event: "opening", delay: 1200 }));
     sfx(got === 3 ? "win" : "correct");
     $(".fb", root).innerHTML = `<div class="feedback ok fade-in"><div style="font-size:26px">${stars(got)}</div><b>${errors === 0 ? "Perfect — no mistakes." : errors + " mistake" + (errors > 1 ? "s" : "") + "."}</b> Next review in ${BOX_DAYS[st.box]} day${BOX_DAYS[st.box] > 1 ? "s" : ""}.<br>${md(l.summary || "")}</div>`;
     $(".fw", root).classList.remove("hide");

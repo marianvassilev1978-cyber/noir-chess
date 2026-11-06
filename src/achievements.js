@@ -52,8 +52,27 @@ export const ACH = [
 export const achById = (id) => ACH.find((a) => a.id === id);
 
 let queue = [], showing = false;
+export const GOALS = [["puzzles", "Puzzles", 15], ["lesson", "Lesson", 1], ["opening", "Openings", 2], ["games", "Games", 2], ["reviews", "Review", 1]];
+export function checkDaily() {
+  const s = state();
+  const d = s.daily;
+  const aw = s.dailyAward && s.dailyAward.date === d.date ? s.dailyAward : (s.dailyAward = { date: d.date, done: [] });
+  const fresh = GOALS.filter(([k, , g]) => (d[k] || 0) >= g && !aw.done.includes(k));
+  if (!fresh.length) return;
+  aw.done.push(...fresh.map((x) => x[0]));
+  s.xp += 10 * fresh.length;
+  const all = GOALS.every(([k]) => aw.done.includes(k));
+  if (all) { s.xp += 50; s.perfectDays = (s.perfectDays || 0) + 1; }
+  save();
+  setTimeout(() => {
+    import("./util.js").then(({ toast }) => toast(all ? "🏁 Perfect day: every goal done · +50 XP" : `Goal done: ${fresh.map((x) => x[1]).join(", ")} · +${10 * fresh.length} XP`));
+    sfx(all ? "win" : "correct");
+    if (all) import("./art/fx.js").then((m) => m.celebrate({ big: true }));
+  }, 2400);
+}
 export function checkAchievements(ctx = {}) {
   const s = state();
+  try { checkDaily(); } catch (e) { console.warn(e); }
   const fresh = [];
   for (const a of ACH) {
     if (s.achievements[a.id]) continue;
