@@ -6,18 +6,21 @@ const FILES = "abcdefgh";
 export const sqName = (f, r) => FILES[f] + (r + 1);
 const sqXY = (sq) => [FILES.indexOf(sq[0]), +sq[1] - 1];
 
+// Move classifications: original palette and glyphs (see --c-* tokens in styles.css).
+const G = (d, extra = "") => `<svg viewBox="0 0 24 24" fill="#fff" ${extra}>${d}</svg>`;
+const T = (t, sz = 13) => `<svg viewBox="0 0 24 24"><text x="12" y="${sz > 12 ? 17 : 16.5}" text-anchor="middle" font-size="${sz}" font-weight="900" font-family="Inter, sans-serif" fill="#fff" letter-spacing="-1">${t}</text></svg>`;
 export const CLS = {
-  brilliant: { sym: "!!", color: "#1baaa6", label: "Brilliant" },
-  great: { sym: "!", color: "#5b8bb4", label: "Great" },
-  best: { sym: "★", color: "#7fa650", label: "Best" },
-  excellent: { sym: "👍", color: "#96bc4b", label: "Excellent", svg: '<svg viewBox="0 0 24 24" width="62%" height="62%" fill="#fff"><path d="M2 21h3V10H2zm20-10a2 2 0 0 0-2-2h-6.3l1-4.6v-.3a1.5 1.5 0 0 0-.4-1L13.2 2 7.6 7.6A2 2 0 0 0 7 9v10a2 2 0 0 0 2 2h9a2 2 0 0 0 1.8-1.2l3-7.1c.1-.2.2-.5.2-.7z"/></svg>' },
-  good: { sym: "✓", color: "#95b776", label: "Good" },
-  book: { sym: "📖", color: "#a88764", label: "Book", svg: '<svg viewBox="0 0 24 24" width="62%" height="62%" fill="#fff"><path d="M12 6.5C10.3 5.2 7.9 4.5 5 4.5c-1 0-2 .1-3 .3v14c1-.2 2-.3 3-.3 2.9 0 5.3.7 7 2 1.7-1.3 4.1-2 7-2 1 0 2 .1 3 .3v-14c-1-.2-2-.3-3-.3-2.9 0-5.3.7-7 2z"/></svg>' },
-  inaccuracy: { sym: "?!", color: "#f7c045", label: "Inaccuracy" },
-  mistake: { sym: "?", color: "#e58f2a", label: "Mistake" },
-  miss: { sym: "✕", color: "#ee6b55", label: "Miss" },
-  blunder: { sym: "??", color: "#ca3431", label: "Blunder" },
-  forced: { sym: "□", color: "#97a29e", label: "Forced" },
+  brilliant: { sym: "!!", color: "#c38bff", label: "Brilliant", svg: T("!!", 14) },
+  great: { sym: "!", color: "#5fa2ff", label: "Great", svg: T("!", 16) },
+  best: { sym: "★", color: "#3cc97f", label: "Best", svg: G('<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7Z"/>') },
+  excellent: { sym: "✦", color: "#84d16a", label: "Excellent", svg: G('<path d="M12 3l2 6.5 6.5 2-6.5 2-2 6.5-2-6.5-6.5-2 6.5-2Z"/>') },
+  good: { sym: "✓", color: "#9bb594", label: "Good", svg: G('<path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>') },
+  book: { sym: "📖", color: "#c9a06a", label: "Book", svg: G('<path d="M12 6.5C10.3 5.2 7.9 4.5 5 4.5c-1 0-2 .1-3 .3v14c1-.2 2-.3 3-.3 2.9 0 5.3.7 7 2 1.7-1.3 4.1-2 7-2 1 0 2 .1 3 .3v-14c-1-.2-2-.3-3-.3-2.9 0-5.3.7-7 2z"/>') },
+  inaccuracy: { sym: "?!", color: "#f2c94c", label: "Inaccuracy", svg: T("?!", 13) },
+  mistake: { sym: "?", color: "#f39a3a", label: "Mistake", svg: T("?", 16) },
+  miss: { sym: "✕", color: "#f06a8f", label: "Miss", svg: G('<circle cx="12" cy="12" r="7.5" stroke="#fff" stroke-width="2.4" fill="none"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>') },
+  blunder: { sym: "??", color: "#ef4a4a", label: "Blunder", svg: T("??", 13) },
+  forced: { sym: "□", color: "#94a0b2", label: "Forced", svg: G('<path d="M5 12h11M12 6.5l5.5 5.5-5.5 5.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>') },
 };
 export function badgeHTML(cls, size = "") {
   const c = CLS[cls]; if (!c) return "";
@@ -81,6 +84,13 @@ export class Board {
     if (cx < 0 || cx > 7 || cy < 0 || cy > 7) return null;
     return this.orientation === "w" ? sqName(cx, 7 - cy) : sqName(7 - cx, cy);
   }
+
+  // client rect of a square (for eye tracking, bursts)
+  sqRect(sq) {
+    const r = this.el.getBoundingClientRect(), [x, y] = this.pos(sq), w = r.width / 8;
+    return { left: r.left + x * w, top: r.top + y * w, width: w, height: w, x: r.left + (x + 0.5) * w, y: r.top + (y + 0.5) * w };
+  }
+  setDim(on) { this.el.classList.toggle("dim", !!on); }
 
   drawCoords() {
     const s = state().settings.coords;
@@ -320,8 +330,16 @@ export class Board {
 
   bind() {
     const el = this.el;
-    let drag = null, rdrag = null;
+    let drag = null, rdrag = null, lp = null;
     const down = (e) => {
+      // touch: long-press a square to draw an arrow (drag to another square) or a circle (release on the same square)
+      if (this.o.draw && e.pointerType !== "mouse" && e.button === 0) {
+        const sq0 = this.sqAt(e.clientX, e.clientY);
+        if (sq0) {
+          clearTimeout(lp && lp.t);
+          lp = { from: sq0, sx: e.clientX, sy: e.clientY, t: setTimeout(() => { if (lp && !lp.moved) { rdrag = { from: lp.from, color: "o" }; if (drag) { drag.el.classList.remove("dragging"); this.place(drag.el, drag.from); drag = null; } this.selected = null; this.renderHL(); this.setMarks({ ...this.marks, [lp.from]: "user" }); } }, 380) };
+        }
+      }
       if (e.button === 2) { // right-drag: draw arrows
         const sq = this.sqAt(e.clientX, e.clientY); if (sq) rdrag = { from: sq, color: e.shiftKey ? "r" : e.altKey ? "b" : e.ctrlKey ? "y" : "g" };
         return;
@@ -351,18 +369,23 @@ export class Board {
       } else { this.selected = null; this.renderHL(); }
     };
     const move = (e) => {
+      if (lp && Math.hypot(e.clientX - lp.sx, e.clientY - lp.sy) > 8) lp.moved = true;
       if (!drag) return;
       const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
       if (!drag.started && Math.hypot(dx, dy) < 4) return;
       if (!drag.started) { drag.started = true; drag.el.classList.add("dragging"); }
       const sz = drag.rect.width / 8;
-      const x = e.clientX - drag.rect.left - sz / 2, y = e.clientY - drag.rect.top - sz / 2;
-      drag.el.style.transform = `translate(${x}px, ${y}px) scale(1.12)`;
-      const hv = this.sqAt(e.clientX, e.clientY);
+      // lift the piece above the finger on touch so it is never hidden
+      const lift = e.pointerType === "touch" ? sz * 0.55 : 0;
+      const x = e.clientX - drag.rect.left - sz / 2, y = e.clientY - drag.rect.top - sz / 2 - lift;
+      drag.el.style.transform = `translate(${x}px, ${y}px) scale(${e.pointerType === "touch" ? 1.22 : 1.12})`;
+      const hv = this.sqAt(e.clientX, e.clientY - lift) || this.sqAt(e.clientX, e.clientY);
       if (hv !== this.hover) { this.hover = hv; this.renderHL(); }
     };
     const up = (e) => {
+      if (lp) { clearTimeout(lp.t); lp = null; }
       if (rdrag) {
+        if (this.marks[rdrag.from] === "user") { const m = { ...this.marks }; delete m[rdrag.from]; this.marks = m; this.renderHL(); }
         const to = this.sqAt(e.clientX, e.clientY);
         if (to) {
           const i = this.userArrows.findIndex((a) => a.from === rdrag.from && a.to === to);
@@ -375,7 +398,7 @@ export class Board {
       const d = drag; drag = null;
       d.el.classList.remove("dragging");
       this.hover = null;
-      const to = this.sqAt(e.clientX, e.clientY);
+      const to = this.sqAt(e.clientX, e.clientY - (e.pointerType === "touch" ? (d.rect.width / 8) * 0.55 : 0)) || this.sqAt(e.clientX, e.clientY);
       if (d.started) {
         this.place(d.el, d.from);
         if (to && to !== d.from) { this.noAnimSq = this.mapCastle(d.from, to); this.tryMove(d.from, to); }

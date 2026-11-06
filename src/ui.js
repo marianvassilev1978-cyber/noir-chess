@@ -6,16 +6,36 @@ import { winW, fmtEval, pvSan } from "./analysis.js";
 import { moveSound } from "./sound.js";
 import { I } from "./icons.js";
 import { state } from "./store.js";
+import { charSVG } from "./art/character.js";
+import { BOT_LOOKS, AVATAR_LOOKS } from "./art/cast.js";
+import { bring, typeInto } from "./art/motion.js";
+import { sectionArt, emptyArt } from "./art/scenes.js";
 
+// Avatar: original SVG art when the player has a look (bots, coaches, you); emoji only as a last resort.
+export function lookOf(p) {
+  if (!p) return null;
+  if (p.look) return p.look;
+  const id = p.id || p.botId || (p.name && String(p.name).toLowerCase().replace(/[^a-z]/g, ""));
+  if (id && BOT_LOOKS[id]) return { ...BOT_LOOKS[id], id };
+  if (id && AVATAR_LOOKS[id]) return { ...AVATAR_LOOKS[id], id };
+  if (id === "stockfishmax") return { ...BOT_LOOKS.max, id: "max" };
+  return null;
+}
 export function avatar(p, size = 38, extra = "", cls = "") {
   if (!p) return "";
-  const bg = p.bg || "linear-gradient(135deg,#5d8a32,#81b64c)";
+  const look = lookOf(p);
+  if (look) return `<div class="av ${cls}" style="width:${size}px;height:${size}px;${extra}">${charSVG(look, { label: p.name || look.name || "Avatar" })}</div>`;
+  const bg = p.bg || "linear-gradient(135deg,#3a3a40,#1c1c20)";
   return `<div class="av ${cls}" style="width:${size}px;height:${size}px;background:${bg};font-size:${Math.round(size * 0.56)}px;${extra}">${esc(p.av || "♟")}</div>`;
+}
+export function avatarRated(p, rating, size = 44) {
+  return `<div class="avr">${avatar(p, size)}${rating ? `<span class="rbadge">${esc(rating)}</span>` : ""}</div>`;
 }
 
 export function userPlayer() {
   const s = state();
-  return { name: s.settings.name || "You", av: s.profile.avatar || "♞", bg: "linear-gradient(135deg,#3a3936,#262522)", flag: "🇧🇬" };
+  const id = AVATAR_LOOKS[s.profile.avatar] ? s.profile.avatar : "a-knight";
+  return { name: s.settings.name || "You", id, look: { ...AVATAR_LOOKS[id], id }, flag: s.profile.flag || "🇧🇬" };
 }
 
 // captured pieces + material advantage for one side
@@ -193,4 +213,34 @@ export function videoList(videos = [], links = []) {
   }
   for (const l of links) html += `<a class="video-card" href="${esc(l.url)}" target="_blank" rel="noopener"><div class="thumb" style="background:var(--bg3);display:flex"></div><div class="grow"><div class="bold small">${esc(l.title)}</div><div class="tiny muted">${esc(new URL(l.url).hostname)}</div></div></a>`;
   return html;
+}
+
+// ---------- design-system components ----------
+// progress ring: pct 0..1
+export function ring(pct, { size = 56, stroke = 6, label = "", cls = "" } = {}) {
+  const r = (size - stroke) / 2, c = 2 * Math.PI * r, off = c * (1 - Math.max(0, Math.min(1, pct || 0)));
+  return `<div class="pring ${cls}" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle class="tr" cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke-width="${stroke}"/><circle class="fg" cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke-width="${stroke}" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg><b>${label}</b></div>`;
+}
+export function deltaPill(d) {
+  if (d == null) return "";
+  const cls = d > 0 ? "up" : d < 0 ? "down" : "zero";
+  return `<span class="delta ${cls}">${d > 0 ? "+" + d : d < 0 ? "−" + Math.abs(d) : "±0"}</span>`;
+}
+export function skeleton(lines = 3) { return `<div class="col gap">${Array.from({ length: lines }, (_, i) => `<div class="skel" style="height:${i ? 16 : 24}px;width:${i ? 60 + ((i * 17) % 35) : 45}%"></div>`).join("")}</div>`; }
+export function emptyState(title, text = "", cta = "") { return `<div class="empty">${emptyArt()}<b>${esc(title)}</b>${text ? `<div class="small">${esc(text)}</div>` : ""}${cta}</div>`; }
+// section header with animated art banner
+export function sectionHead(kind, title, sub = "", right = "") {
+  return `<div class="shead"><div class="shead-art">${sectionArt(kind)}</div><div class="shead-body"><div class="grow"><h1>${title}</h1>${sub ? `<div class="small muted">${sub}</div>` : ""}</div>${right}</div></div>`;
+}
+// coach speech bubble with an animated face; returns {el, ctl, say(html, expr)}
+export function coachBubble(container, coach, html = "", { expr = "neutral", size = 56 } = {}) {
+  container.innerHTML = `<div class="coachbox"><div class="face" style="width:${size}px;height:${size}px">${charSVG(coach.look, { label: coach.name })}</div><div class="bubble"><div class="who">${esc(coach.short || coach.name)}</div><div class="txt"></div></div></div>`;
+  const ctl = bring(container.querySelector(".char"));
+  const txt = container.querySelector(".txt");
+  const api = {
+    el: container.firstElementChild, ctl,
+    say(h, e) { if (e) ctl && ctl.expr(e, e === "neutral" ? 0 : 2600); return typeInto(txt, md(h).replace(/^<p>|<\/p>$/g, ""), { ctl }); },
+  };
+  if (html) api.say(html, expr);
+  return api;
 }

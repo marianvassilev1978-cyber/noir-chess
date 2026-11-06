@@ -10,9 +10,9 @@ const WOOD = {
   move: ["move1", "move2", "move3", "move4", "move5"],
   capture: ["capture1", "capture2", "capture3"],
   castle: ["castle"], check: ["check"], promote: ["promote"], start: ["start"], notify: ["start"],
-  lowtime: ["lowtime"], win: ["win"], lose: ["lose"], draw: ["draw"], correct: ["correct"], wrong: ["wrong"],
+  lowtime: ["lowtime"], win: ["win"], lose: ["lose"], draw: ["draw"], correct: ["correct"], wrong: ["wrong"], achievement: ["achievement"], end: ["draw"],
 };
-const LICHESS = { move: "Move", capture: "Capture", check: "Check", castle: "Move", promote: "Check", start: "GenericNotify", notify: "GenericNotify", lowtime: "LowTime", win: "Victory", lose: "Defeat", draw: "Draw", correct: "GenericNotify", wrong: "Capture" };
+const LICHESS = { move: "Move", capture: "Capture", check: "Check", castle: "Move", promote: "Check", start: "GenericNotify", notify: "GenericNotify", lowtime: "LowTime", win: "Victory", lose: "Defeat", draw: "Draw", correct: "GenericNotify", wrong: "Capture", achievement: "Victory", end: "GenericNotify" };
 
 const curSet = () => { const s = state().settings.soundSet; return s === "sfx" || s === "piano" ? s : "wood"; };
 function urlsFor(set, name) {
@@ -120,7 +120,7 @@ const gesture = () => { setSession(); if (needsUnlock()) unlock(); };
 document.addEventListener("visibilitychange", () => { if (!document.hidden && ctx && ctx.state !== "running") ctx.resume().catch(() => {}); });
 
 // ---------------- public API ----------------
-const LEVEL = { start: 0.9, notify: 0.9, win: 1, lose: 1, draw: 1, lowtime: 1, correct: 0.9, wrong: 0.9 };
+const LEVEL = { start: 0.9, notify: 0.9, win: 1, lose: 1, draw: 1, lowtime: 1, correct: 0.9, wrong: 0.9, achievement: 0.85 };
 let lastPick = {};
 export function play(name) {
   const s = state().settings;

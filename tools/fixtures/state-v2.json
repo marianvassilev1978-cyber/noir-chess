@@ -1,0 +1,844 @@
+{
+ "v": 2,
+ "updatedAt": 1793901600000,
+ "profile": {
+  "name": "You",
+  "avatar": "🦁",
+  "country": "bg",
+  "joined": 1790445600000
+ },
+ "placement": {
+  "rating": 1000,
+  "date": 1790532000000
+ },
+ "ratings": {
+  "bullet": {
+   "r": null,
+   "games": 0,
+   "hist": [],
+   "best": 0
+  },
+  "blitz": {
+   "r": 1180,
+   "games": 12,
+   "hist": [
+    [
+     1793037600000,
+     1150
+    ],
+    [
+     1793469600000,
+     1180
+    ]
+   ],
+   "best": 1195
+  },
+  "rapid": {
+   "r": 1240,
+   "games": 37,
+   "hist": [
+    [
+     1791309600000,
+     1000
+    ],
+    [
+     1792173600000,
+     1100
+    ],
+    [
+     1793037600000,
+     1190
+    ],
+    [
+     1793728800000,
+     1240
+    ]
+   ],
+   "best": 1262
+  },
+  "classical": {
+   "r": null,
+   "games": 0,
+   "hist": [],
+   "best": 0
+  },
+  "puzzle": {
+   "r": 1405,
+   "games": 220,
+   "hist": [
+    [
+     1793124000000,
+     1300
+    ],
+    [
+     1793815200000,
+     1405
+    ]
+   ],
+   "best": 1430
+  }
+ },
+ "games": [
+  {
+   "id": "g1",
+   "date": 1793642400000,
+   "mode": "bot",
+   "botId": "ivo",
+   "bot": {
+    "name": "Ivo",
+    "elo": 1000,
+    "av": "⚽",
+    "bg": "linear-gradient(135deg,#43e97b,#38f9d7)"
+   },
+   "color": "w",
+   "tc": "10+0",
+   "cat": "rapid",
+   "rated": true,
+   "result": "1-0",
+   "termination": "checkmate",
+   "moves": [
+    "e4",
+    "e5",
+    "Bc4",
+    "Nc6",
+    "Qh5",
+    "Nf6",
+    "Qxf7#"
+   ],
+   "startFen": null,
+   "delta": 9,
+   "score": 1,
+   "userRating": 1231,
+   "placement": null,
+   "review": null,
+   "cls": []
+  },
+  {
+   "id": "g2",
+   "date": 1793728800000,
+   "mode": "bot",
+   "botId": "sara",
+   "bot": {
+    "name": "Sara",
+    "elo": 1150,
+    "av": "🎧",
+    "bg": "x"
+   },
+   "color": "w",
+   "tc": "10+0",
+   "cat": "rapid",
+   "rated": true,
+   "result": "0-1",
+   "termination": "resignation",
+   "moves": [
+    "d4",
+    "d5",
+    "Bf4",
+    "Nf6",
+    "e3",
+    "e6",
+    "Nf3",
+    "c5",
+    "c3",
+    "Nc6",
+    "Nbd2",
+    "Bd6",
+    "Bg3",
+    "O-O",
+    "Bd3",
+    "Qe7",
+    "Ne5",
+    "Nd7",
+    "Nxc6",
+    "bxc6"
+   ],
+   "startFen": null,
+   "delta": -11,
+   "score": 0,
+   "userRating": 1231,
+   "placement": null,
+   "review": {
+    "accW": 81.2,
+    "accB": 77.5,
+    "ratingW": 1450,
+    "ratingB": 1300,
+    "counts": {
+     "w": {
+      "best": 8,
+      "inaccuracy": 1,
+      "mistake": 1
+     },
+     "b": {
+      "best": 9,
+      "blunder": 1
+     }
+    },
+    "depth": 14,
+    "evals": [
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     },
+     {
+      "cp": 15,
+      "mate": null
+     }
+    ],
+    "plies": [
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "inaccuracy",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "blunder",
+      "loss": 25,
+      "acc": 30,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     },
+     {
+      "cls": "best",
+      "loss": 0,
+      "acc": 95,
+      "wBest": 50,
+      "wAfter": 50,
+      "best": "e2e4",
+      "bestPv": [
+       "e2e4"
+      ],
+      "replyPv": [],
+      "evalBefore": {
+       "cp": 20,
+       "mate": null
+      },
+      "evalAfter": {
+       "cp": 10,
+       "mate": null
+      }
+     }
+    ]
+   },
+   "cls": []
+  }
+ ],
+ "live": {
+  "id": "live1",
+  "date": 1793898000000,
+  "mode": "bot",
+  "bot": {
+   "id": "ivo",
+   "name": "Ivo",
+   "elo": 1000,
+   "av": "⚽",
+   "bg": "x",
+   "style": "normal",
+   "hi": [
+    "hi"
+   ]
+  },
+  "botId": "ivo",
+  "color": "w",
+  "tc": "10+0",
+  "cat": "rapid",
+  "rated": true,
+  "startFen": null,
+  "moves": [
+   "e4",
+   "e5",
+   "Nf3"
+  ],
+  "clocks": {
+   "w": 540000,
+   "b": 571000
+  },
+  "inc": 0,
+  "result": null,
+  "termination": null,
+  "takebacks": 0,
+  "hints": 0,
+  "cls": [],
+  "placement": null,
+  "startedAt": 1793898000000,
+  "lastTick": null,
+  "userRating": 1240,
+  "drawOffered": 0
+ },
+ "puzzle": {
+  "solved": 180,
+  "failed": 40,
+  "streak": 4,
+  "best": 17,
+  "seen": [
+   "36CI0",
+   "00008"
+  ],
+  "themeStats": {
+   "fork": {
+    "n": 30,
+    "ok": 21
+   },
+   "pin": {
+    "n": 12,
+    "ok": 5
+   },
+   "mateIn2": {
+    "n": 20,
+    "ok": 16
+   }
+  },
+  "dailyDone": "2026-11-05"
+ },
+ "rush": {
+  "best": {
+   "r3": 14,
+   "r5": 18,
+   "survival": 22
+  },
+  "hist": [
+   [
+    1793556000000,
+    "r3",
+    14
+   ]
+  ]
+ },
+ "mistakes": [
+  {
+   "id": "g2:9",
+   "fen": "r1bqkb1r/pp3ppp/2n1pn2/2pp4/3P1B2/2P1PN2/PP1N1PPP/R2QKB1R b KQkq - 1 6",
+   "best": "f8d6",
+   "bestSan": "Bd6",
+   "played": "Bd6",
+   "cls": "blunder",
+   "gameId": "g2",
+   "date": 1793728800000,
+   "solved": 1
+  }
+ ],
+ "openings": {
+  "vienna-gambit": {
+   "stars": 3,
+   "box": 2,
+   "due": "2026-11-04",
+   "last": 1793469600000
+  }
+ },
+ "lessons": {
+  "l1-board": {
+   "done": true,
+   "score": 3,
+   "tasks": 3,
+   "best": 1,
+   "date": 1791309600000
+  }
+ },
+ "drills": {
+  "eg-kqk-1": {
+   "tries": 2,
+   "done": true,
+   "best": 14
+  }
+ },
+ "vision": {
+  "best": {
+   "white": 24,
+   "black": 19
+  },
+  "hist": [
+   [
+    1793383200000,
+    "w",
+    24
+   ]
+  ]
+ },
+ "daily": {
+  "date": "2026-11-05",
+  "puzzles": 6,
+  "games": 1,
+  "lesson": 0,
+  "opening": 1,
+  "reviews": 0,
+  "drills": 0
+ },
+ "streak": {
+  "count": 9,
+  "last": "2026-11-05",
+  "best": 14
+ },
+ "xp": 2380,
+ "achievements": {},
+ "settings": {
+  "sound": true,
+  "soundSet": "wood",
+  "volume": 0.7,
+  "soundOnSilent": true,
+  "board": "brown",
+  "pieces": "staunty",
+  "theme": "midnight",
+  "coords": "inside",
+  "legal": true,
+  "anim": true,
+  "animMs": 160,
+  "autoQueen": true,
+  "premove": true,
+  "confirmResign": true,
+  "evalBar": true,
+  "coachLive": true,
+  "guard": false,
+  "classOnBoard": true,
+  "haptics": true,
+  "lastMove": true,
+  "name": "Mariyan",
+  "lastBot": "sara",
+  "lastTc": "5+3",
+  "lastColor": "w",
+  "lastRated": true,
+  "lastCustom": 1200
+ }
+}

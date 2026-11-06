@@ -22,22 +22,23 @@ function copyDir(src, dst) {
     entryPoints: [path.join(ROOT, "src/main.js")],
     bundle: true, minify: true, format: "iife", target: ["safari15", "chrome100"],
     outfile: path.join(OUT, "app.js"), sourcemap: false, legalComments: "none",
-    loader: { ".css": "css" },
+    loader: { ".css": "css", ".woff2": "file" }, external: ["fonts/*"],
   });
   // esbuild emits app.css next to app.js because main.js imports styles.css
   copyDir(path.join(ROOT, "public"), OUT);
   copyDir(path.join(ROOT, "content"), path.join(OUT, "content"));
   // content files the app does not need at runtime
-  fs.writeFileSync(path.join(OUT, "index.html"), fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8").replace(/__V__/g, V).replace("<title>", `<script>window.NOIR_BUILD="${V}"</script><title>`));
+  const logo = fs.readFileSync(path.join(ROOT, "tools/logo.svg"), "utf8").replace(/<svg xmlns="http:\/\/www.w3.org\/2000\/svg" /, "<svg ");
+  fs.writeFileSync(path.join(OUT, "index.html"), fs.readFileSync(path.join(ROOT, "src/index.html"), "utf8").replace(/__V__/g, V).replace("__LOGO__", logo).replace("<title>", `<script>window.NOIR_BUILD="${V}"</script><title>`));
   fs.writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify({
-    name: "Noir Chess", short_name: "Noir Chess", description: "Personal chess trainer — zero to 2000.",
+    name: "Noir Chess", short_name: "Noir Chess", description: "Personal chess trainer: bots, coaches, review, puzzles, openings.",
     start_url: "./", scope: "./", display: "standalone", orientation: "portrait",
-    background_color: "#302e2b", theme_color: "#302e2b",
+    background_color: "#0b0b0d", theme_color: "#0b0b0d",
     icons: [{ src: "icon-192.png", sizes: "192x192", type: "image/png" }, { src: "icon-512.png", sizes: "512x512", type: "image/png" }, { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }],
   }, null, 1));
   const list = [];
   (function walk(d, rel) { for (const f of fs.readdirSync(d)) { const a = path.join(d, f), r = rel ? rel + "/" + f : f; if (fs.statSync(a).isDirectory()) walk(a, r); else list.push(r); } })(OUT, "");
-  const precache = list.filter((f) => !/sf-asm\.js$|^sound\/piano|^sound\/sfx|\.md$/.test(f) && !/^pieces\/(?!cburnett|staunty|maestro)/.test(f));
+  const precache = list.filter((f) => !/sf-asm\.js$|^sound\/piano|^sound\/sfx|\.md$|\.txt$/.test(f) && !/^pieces\/(?!cburnett|staunty|maestro)/.test(f));
   fs.writeFileSync(path.join(OUT, "sw.js"), `// Offline cache. Version ${V}.
 const VERSION = "noir-${V}";
 const CORE = ${JSON.stringify(["./", ...precache.filter((f) => f !== "sw.js")])};

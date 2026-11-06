@@ -3,3 +3,6 @@ tools/sf/
 node_modules/
 *.zip
 tools/BRIEF-CONTENT.md
+tools/dev/
+test-results/
+playwright-report/

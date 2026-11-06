@@ -3,22 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#302e2b">
+<meta name="theme-color" content="#0b0b0d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Noir Chess">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="description" content="Personal chess trainer: bots from 150 to 3200, live coach, game review, puzzles, openings, endgames — zero to 2000.">
+<meta name="description" content="Personal chess trainer: 28 bots from 100 to 3200, six coaches, game review, puzzles, openings, endgames.">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
-<script>window.NOIR_BUILD="mw15cu1q"</script><title>Noir Chess</title>
-<link rel="stylesheet" href="app.css?v=mw15cu1q">
-<style>#splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:#302e2b;color:#fff;z-index:500;transition:opacity .3s;font-family:-apple-system,system-ui,sans-serif}#splash b{font-size:64px;color:#81b64c}</style>
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<script>window.NOIR_BUILD="mw4zjdic"</script><title>Noir Chess</title>
+<link rel="stylesheet" href="app.css?v=mw4zjdic">
+<style>
+#splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;background:radial-gradient(60% 40% at 50% 42%,#2a2214 0,#0b0b0d 70%);color:#f4f1ea;z-index:500;transition:opacity .45s ease}
+#splash .mk{animation:spIn .9s cubic-bezier(.3,1.4,.5,1) both;filter:drop-shadow(0 10px 30px rgba(226,180,94,.25))}
+#splash .wm{font-family:"Instrument Serif",Georgia,serif;font-size:34px;letter-spacing:.5px;animation:spTx .8s .25s cubic-bezier(.2,.8,.2,1) both}
+#splash .wm i{color:#f4d58e}
+@keyframes spIn{from{opacity:0;transform:scale(.6) translateY(10px)}}
+@keyframes spTx{from{opacity:0;transform:translateY(12px);filter:blur(6px)}}
+</style>
 </head>
 <body>
-<div id="splash"><b>♞</b><div style="font-weight:800">Noir Chess</div></div>
+<div id="splash"><div class="mk"><svg class="logo-mark" width="96" height="96" viewBox="0 0 100 100" role="img" aria-label="Noir Chess"><defs>
+    <linearGradient id="lg1g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7dc98"/><stop offset=".5" stop-color="#e2b45e"/><stop offset="1" stop-color="#a87a2e"/></linearGradient>
+    <linearGradient id="lg1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232327"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient>
+    <clipPath id="lg1c"><rect x="4" y="4" width="92" height="92" rx="26"/></clipPath></defs>
+    <rect x="4" y="10" width="92" height="92" rx="26" fill="#e2b45e" opacity=".18" filter="blur(6px)"/>
+    <rect x="4" y="4" width="92" height="92" rx="26" fill="url(#lg1b)"/>
+    <g clip-path="url(#lg1c)" opacity=".09"><rect x="4" y="27" width="23" height="23" fill="#fff"/><rect x="4" y="73" width="23" height="23" fill="#fff"/><rect x="27" y="4" width="23" height="23" fill="#fff"/><rect x="27" y="50" width="23" height="23" fill="#fff"/><rect x="50" y="27" width="23" height="23" fill="#fff"/><rect x="50" y="73" width="23" height="23" fill="#fff"/><rect x="73" y="4" width="23" height="23" fill="#fff"/><rect x="73" y="50" width="23" height="23" fill="#fff"/></g>
+    <rect x="4.5" y="4.5" width="91" height="91" rx="25.5" fill="none" stroke="url(#lg1g)" stroke-opacity=".55"/>
+    <g transform="translate(16 12) scale(.68)"><path d="M30 74c-2-14 4-24 16-30-8 2-15 0-19 5l-7-6c2-9 8-16 16-20l2-9 7 7c16 2 27 15 28 33 1 9 0 15-3 20ZM24 78h56a4 4 0 0 1 4 4v6H20v-6a4 4 0 0 1 4-4ZM44 30a3.5 3.5 0 1 0 0 .1Z" fill="url(#lg1g)"/></g>
+    <circle cx="44.5" cy="32.5" r="2.4" fill="#1a140a"/></svg></div><div class="wm">Noir <i>Chess</i></div></div>
 <div id="app"></div>
-<script src="app.js?v=mw15cu1q"></script>
+<script src="app.js?v=mw4zjdic"></script>
 </body>
 </html>

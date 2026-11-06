@@ -1,13 +1,13 @@
 {
  "name": "Noir Chess",
  "short_name": "Noir Chess",
- "description": "Personal chess trainer — zero to 2000.",
+ "description": "Personal chess trainer: bots, coaches, review, puzzles, openings.",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
  "orientation": "portrait",
- "background_color": "#302e2b",
- "theme_color": "#302e2b",
+ "background_color": "#0b0b0d",
+ "theme_color": "#0b0b0d",
  "icons": [
   {
    "src": "icon-192.png",

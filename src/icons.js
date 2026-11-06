@@ -38,5 +38,13 @@ export const I = {
   check: s('<path d="M5 12l5 5 9-10"/>'),
   x: s('<path d="M6 6l12 12M18 6L6 18"/>'),
   plus: s('<path d="M12 5v14M5 12h14"/>'),
+  flame: f('<path d="M12 2.5s6.5 5 6.5 11.3a6.5 6.5 0 0 1-13 0c0-3 1.6-5 1.6-5s.8 3 3.1 3c0-4.8 1.8-9.3 1.8-9.3Z" opacity=".95"/><path d="M12 13c-1.2 1.5-2.4 2.5-2.4 4.3a2.4 2.4 0 0 0 4.8 0c0-1.8-1.2-2.8-2.4-4.3Z" fill="#fff3c4"/>'),
+  trophy: f('<path d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.4A5 5 0 0 1 13 14.8V17h3v3H8v-3h3v-2.2A5 5 0 0 1 8.4 12H8a4 4 0 0 1-4-4V5h3Zm10 4v3a2 2 0 0 0 1-2V7ZM7 7H6v1a2 2 0 0 0 1 2Z"/>'),
+  coach: s('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/><path d="M17 3.5l1.2 1.2M19.5 7H21"/>'),
+  calendar: s('<rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/>'),
+  sparkle: f('<path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2Z"/>'),
+  medal: s('<circle cx="12" cy="15" r="5"/><path d="M8 3l2.5 7M16 3l-2.5 7"/>'),
+  bell: s('<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15Z"/><path d="M10 20a2 2 0 0 0 4 0"/>'),
+  duel: s('<path d="M4 4l7 7M20 4l-7 7M7 13l-3 3 4 4 3-3M17 13l3 3-4 4-3-3"/>'),
   star: f('<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"/>'),
 };

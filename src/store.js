@@ -12,7 +12,7 @@ export function defaults() {
   return {
     v: 2,
     updatedAt: 0,
-    profile: { name: "You", avatar: "♞", country: "bg", joined: Date.now() },
+    profile: { name: "You", avatar: "a-knight", country: "bg", joined: Date.now() },
     placement: null, // {rating, date}
     ratings: { bullet: rating0(), blitz: rating0(), rapid: rating0(), classical: rating0(), puzzle: rating0() },
     games: [],
@@ -30,7 +30,7 @@ export function defaults() {
     achievements: {},
     settings: {
       sound: true, soundSet: "wood", volume: 0.9, soundOnSilent: true,
-      board: "green", pieces: "cburnett", theme: "dark",
+      board: "noir", pieces: "cburnett", theme: "noir", coach: "amara",
       coords: "inside", legal: true, anim: true, animMs: 160,
       autoQueen: false, premove: true, confirmResign: true,
       evalBar: false, coachLive: true, guard: false,

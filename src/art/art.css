@@ -1,0 +1,62 @@
+/* ============ Characters (see public/art/STYLE.md) ============ */
+.char { display: block; width: 100%; height: 100%; overflow: visible; }
+.char * { transform-box: view-box; }
+.char .x, .char .pose, .char .m-talk { opacity: 0; transition: opacity 0.24s ease; }
+.char[data-expr="neutral"] .x-neutral, .char[data-expr="happy"] .x-happy, .char[data-expr="impressed"] .x-impressed,
+.char[data-expr="worried"] .x-worried, .char[data-expr="thinking"] .x-thinking { opacity: 1; }
+.char[data-pose="think"] .p-think, .char[data-pose="cheer"] .p-cheer, .char[data-pose="explain"] .p-explain { opacity: 1; }
+.char.talking .c-mouth .x { opacity: 0 !important; transition: none; }
+.char.talking .m-a { animation: talkA 0.32s steps(1) infinite; }
+.char.talking .m-b { animation: talkB 0.32s steps(1) infinite; }
+@keyframes talkA { 0% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes talkB { 0% { opacity: 0; } 50% { opacity: 1; } }
+
+/* blink: close in ~75 ms (ease-in), hold, open in ~150 ms (ease-out) */
+.char .c-lid { transform: scaleY(0); transform-box: fill-box; transform-origin: 50% 0%; transition: transform 0.15s cubic-bezier(.2, .7, .3, 1); }
+.char.blink .c-lid { transform: scaleY(1); transition: transform 0.075s cubic-bezier(.6, 0, .9, .5); }
+/* saccades on a slight arc: x and y ride different curves */
+.char .c-px { transform: translateX(var(--px, 0px)); transition: transform 0.15s cubic-bezier(.45, 0, .25, 1); }
+.char .c-pupil { transform: translateY(var(--py, 0px)); transition: transform 0.15s cubic-bezier(.1, .8, .3, 1); }
+/* follow-through: hair lags the head and swings a little further */
+.char .c-hair-front, .char .c-hair-back { transform-origin: 120px 110px; transform: rotate(calc(var(--tilt, 0deg) * 0.35)); transition: transform 0.75s cubic-bezier(.25, 1.6, .4, 1) 0.07s; }
+.char .c-head { transform-origin: 120px 168px; transform: rotate(var(--tilt, 0deg)) translateY(var(--hy, 0px)); transition: transform 0.6s cubic-bezier(.3, .7, .3, 1); }
+.char .c-body { transform-origin: 120px 240px; }
+.char.live .c-body { animation: breathe 4.2s ease-in-out infinite; }
+.char.live .c-head { animation: breatheHead 4.2s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.012, 1.018); } }
+@keyframes breatheHead { 0%, 100% { translate: 0 0; } 50% { translate: 0 -1.6px; } }
+.char[data-pose="cheer"].live .p-cheer .arm-l { animation: pump 0.5s ease-in-out infinite alternate; transform-origin: 54px 240px; }
+.char[data-pose="cheer"].live .p-cheer .arm-r { animation: pump 0.5s ease-in-out infinite alternate-reverse; transform-origin: 186px 240px; }
+@keyframes pump { from { transform: rotate(-3deg); } to { transform: rotate(3deg) translateY(-4px); } }
+.char.paused, .char.paused * { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  .char *, .char.live .c-body, .char.live .c-head { animation: none !important; }
+  .char .c-head, .char .c-pupil { transition: none; }
+}
+
+/* framed character (avatars) */
+.cframe { position: relative; flex: none; border-radius: 50%; overflow: hidden; background: #1c1c20; isolation: isolate; }
+.cframe .char { width: 100%; height: 100%; }
+.cframe.sq { border-radius: 22%; }
+.cframe .ring { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.12); pointer-events: none; }
+
+/* scenes, covers, badges */
+.section-art, .cover-svg { display: block; width: 100%; height: 100%; }
+.sa-float { animation: saFloat 5.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.sa-shadow { animation: saShadow 5.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.sa-breathe { animation: saBreathe 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.sa-twinkle { animation: twinkle 3.6s ease-in-out infinite; }
+@keyframes saFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-6px) rotate(-1.5deg); } }
+@keyframes saShadow { 0%, 100% { transform: scaleX(1); opacity: .35; } 50% { transform: scaleX(.86); opacity: .22; } }
+@keyframes saBreathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .8; } }
+.zz { animation: zz 3s ease-in-out infinite; opacity: 0; }
+.zz.z2 { animation-delay: .5s; } .zz.z3 { animation-delay: 1s; }
+@keyframes zz { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -10px); } }
+.badge-svg { display: block; overflow: visible; }
+.badge-svg .sh { opacity: 0; }
+.badge-svg.shine .sh { animation: badgeShine 1.4s cubic-bezier(.3, .6, .3, 1) .2s 1 both; }
+.badge-svg:not(.locked):hover .sh { animation: badgeShine 1.2s cubic-bezier(.3, .6, .3, 1) 1; }
+@keyframes badgeShine { 0% { opacity: 0; transform: translateX(0) rotate(20deg); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateX(160px) rotate(20deg); } }
+.badge-svg.locked { filter: saturate(0); opacity: .55; }
+.logo-mark { display: block; }
+@media (prefers-reduced-motion: reduce) { .sa-float, .sa-shadow, .sa-breathe, .sa-twinkle, .zz, .badge-svg .sh { animation: none !important; } .zz { opacity: 1; } }

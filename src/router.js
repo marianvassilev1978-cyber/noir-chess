@@ -1,6 +1,9 @@
 // In-memory router with a back stack. Inside the Claude artifact the URL hash can't carry "#/path",
 // so navigation never depends on it; on the standalone site the hash is mirrored for refresh/deep links.
 const views = {};
+const routeHooks = [];
+export const onRoute = (f) => routeHooks.push(f);
+const IMMERSIVE = ["game", "review", "analysis", "lesson", "drill", "puzzle", "rush", "mistakes", "vision", "opening", "duel"];
 let cleanup = null, current = null, stack = [];
 export const inClaude = /claude|anthropic/.test(location.hostname) || window.top !== window;
 export const routes = views;
@@ -30,10 +33,12 @@ function renderPath(raw) {
   root.innerHTML = "";
   window.scrollTo(0, 0);
   current = name;
-  document.body.classList.toggle("immersive", ["game", "review", "analysis", "lesson", "drill", "puzzle", "rush", "mistakes", "vision", "opening"].includes(name));
+  const immersive = IMMERSIVE.includes(name);
+  document.body.classList.toggle("immersive", immersive);
   document.querySelectorAll("[data-nav]").forEach((b) => b.classList.toggle("on", b.dataset.nav === navOf(name)));
   if (!inClaude && raw.length < 300) { mirroring = true; try { history.replaceState(null, "", "#/" + raw); } catch {} mirroring = false; }
   try { cleanup = view(root, params) || null; } catch (e) { console.error(e); root.innerHTML = `<div class="card">Something went wrong: ${String(e.message || e)}</div>`; }
+  for (const f of routeHooks) { try { f(name, root, immersive); } catch (e) { console.warn(e); } }
 }
 
 export function start() {

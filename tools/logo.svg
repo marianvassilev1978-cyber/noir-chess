@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="logo-mark" width="96" height="96" viewBox="0 0 100 100" role="img" aria-label="Noir Chess"><defs>
+    <linearGradient id="lg1g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7dc98"/><stop offset=".5" stop-color="#e2b45e"/><stop offset="1" stop-color="#a87a2e"/></linearGradient>
+    <linearGradient id="lg1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232327"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient>
+    <clipPath id="lg1c"><rect x="4" y="4" width="92" height="92" rx="26"/></clipPath></defs>
+    <rect x="4" y="10" width="92" height="92" rx="26" fill="#e2b45e" opacity=".18" filter="blur(6px)"/>
+    <rect x="4" y="4" width="92" height="92" rx="26" fill="url(#lg1b)"/>
+    <g clip-path="url(#lg1c)" opacity=".09"><rect x="4" y="27" width="23" height="23" fill="#fff"/><rect x="4" y="73" width="23" height="23" fill="#fff"/><rect x="27" y="4" width="23" height="23" fill="#fff"/><rect x="27" y="50" width="23" height="23" fill="#fff"/><rect x="50" y="27" width="23" height="23" fill="#fff"/><rect x="50" y="73" width="23" height="23" fill="#fff"/><rect x="73" y="4" width="23" height="23" fill="#fff"/><rect x="73" y="50" width="23" height="23" fill="#fff"/></g>
+    <rect x="4.5" y="4.5" width="91" height="91" rx="25.5" fill="none" stroke="url(#lg1g)" stroke-opacity=".55"/>
+    <g transform="translate(16 12) scale(.68)"><path d="M30 74c-2-14 4-24 16-30-8 2-15 0-19 5l-7-6c2-9 8-16 16-20l2-9 7 7c16 2 27 15 28 33 1 9 0 15-3 20ZM24 78h56a4 4 0 0 1 4 4v6H20v-6a4 4 0 0 1 4-4ZM44 30a3.5 3.5 0 1 0 0 .1Z" fill="url(#lg1g)"/></g>
+    <circle cx="44.5" cy="32.5" r="2.4" fill="#1a140a"/></svg>
